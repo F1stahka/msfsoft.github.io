@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  color: #eaeaea;
+  background: linear-gradient(to bottom, #020617, #000);
+  background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  overflow-x: hidden;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: #00aaff;
+  letter-spacing: 2px;
+}
+
+.lang-toggle button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-left: 8px;
+  cursor: pointer;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.lang-toggle button.active {
+  color: #00aaff;
+  text-shadow: 0 0 8px #00aaff;
+}
+
+section {
+  min-height: 90vh;
+  padding: 140px 12%;
+  text-align: center;
+}
+
+h2, h3 {
+  margin-bottom: 20px;
+  color: #00aaff;
+  text-shadow: 0 0 10px #0077ff;
+}
+
+p, li {
+  color: #cfcfcf;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 25px;
+  margin-top: 15px;
+  background: #00aaff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  box-shadow: 0 0 15px #00aaff;
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: rgba(0,0,0,0.8);
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Ефекти появи */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
