@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MSFSoft: Розробка інноваційних програмних рішень. Створюємо надійний код для успіху вашого бізнесу.">
+  <meta name="description" content="MSFSoft: Команда юних програмістів, яка спеціалізується на розробці сайтів, програм та ефективного коду.">
   
   <title>MSFSoft — Smart minds. Strong code.</title>
 
@@ -43,10 +43,13 @@
     section {
       padding: 100px 8%;
       text-align: center;
+      position: relative;
+      z-index: 2; /* Щоб контент був поверх фону hero */
     }
 
     h1, h2, h3, h4 {
       font-weight: 700;
+      color: var(--text-color);
     }
 
     .section-title {
@@ -63,10 +66,13 @@
       align-items: center;
       padding: 25px 8%;
       width: 100%;
-      position: absolute;
+      position: fixed; /* Фіксований хедер */
       top: 0;
       left: 0;
-      z-index: 10;
+      z-index: 100; /* Високий z-index, щоб був поверх всього */
+      background: rgba(0, 0, 0, 0.7); /* Напівпрозорий фон для хедера */
+      backdrop-filter: blur(5px); /* Ефект розмиття */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     .header__logo {
@@ -75,13 +81,50 @@
       letter-spacing: 1px;
       color: var(--text-color);
       text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .header__logo:hover {
+        color: var(--accent-color);
     }
     
     .header__nav {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 30px; /* Більший відступ між елементами навігації */
     }
+
+    .header__nav-list {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        margin-right: 20px;
+    }
+
+    .header__nav-link {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease, transform 0.3s ease;
+        position: relative;
+    }
+    .header__nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--accent-color);
+        left: 0;
+        bottom: -5px;
+        transition: width 0.3s ease;
+    }
+    .header__nav-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-2px);
+    }
+    .header__nav-link:hover::after {
+        width: 100%;
+    }
+
 
     .lang-toggle__btn {
       background: transparent;
@@ -96,6 +139,8 @@
 
     .lang-toggle__btn.active {
       color: var(--accent-color);
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
     
     /* --- 3. HERO SECTION --- */
@@ -104,12 +149,34 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-top: 80px; /* Відступ для хедера */
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)); /* Затемнення фону, якщо буде зображення */
+      padding-top: 100px; /* Відступ для фіксованого хедера */
+      position: relative;
+      overflow: hidden; /* Обрізати все, що виходить за межі секції */
+    }
+
+    /* Псевдоелемент для фону з горами */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.2) 100%), /* Градієнт для затемнення */
+            url('https://images.unsplash.com/photo-1465101162817-268153c9f7a6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Зображення гір */
+        background-size: cover;
+        background-position: center bottom; /* Зображення буде щільніше до низу */
+        filter: brightness(0.8) contrast(1.2); /* Невелике затемнення і контраст */
+        z-index: 1;
+        opacity: 0.8;
     }
 
     .hero__content {
+      position: relative; /* Щоб контент був поверх псевдоелемента */
+      z-index: 2;
       animation: fadeIn 1.5s ease-out;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Тінь для тексту, щоб краще читався */
     }
     
     @keyframes fadeIn {
@@ -123,11 +190,12 @@
     }
 
     .hero__desc {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto 40px;
       font-weight: 300;
       font-size: 1.2em;
       opacity: 0.9;
+      line-height: 1.6;
     }
 
     .hero__btn {
@@ -139,6 +207,7 @@
       font-weight: 500;
       border-radius: 50px;
       transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.3); /* Напівпрозорий фон для кнопки */
     }
 
     .hero__btn:hover {
@@ -148,7 +217,26 @@
       box-shadow: 0 10px 20px rgba(0, 183, 255, 0.25);
     }
     
-    /* --- 4. TECHNOLOGIES SECTION --- */
+    /* --- 4. ABOUT SECTION --- */
+    .about__content {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.1em;
+        line-height: 1.8;
+        text-align: left;
+    }
+    .about__content p {
+        margin-bottom: 20px;
+    }
+    .about__content h3 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+        text-align: center;
+        color: var(--accent-color);
+    }
+    
+    /* --- 5. TECHNOLOGIES SECTION --- */
     .technologies__grid {
       display: flex;
       flex-wrap: wrap;
@@ -162,6 +250,17 @@
       flex-direction: column;
       align-items: center;
       gap: 15px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      width: 150px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .tech-icon:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        border-color: var(--accent-color);
     }
 
     .tech-icon img {
@@ -172,12 +271,11 @@
     }
 
     .tech-icon:hover img {
-      transform: scale(1.15);
       opacity: 1;
       filter: drop-shadow(0 0 10px var(--accent-color));
     }
     
-    /* --- 5. TEAM SECTION --- */
+    /* --- 6. TEAM SECTION --- */
     .team__grid {
       display: flex;
       justify-content: center;
@@ -207,6 +305,13 @@
       border-radius: 50%;
       margin: 0 auto 20px;
       border: 3px solid var(--accent-color);
+      overflow: hidden; /* Якщо буде зображення */
+    }
+    /* Додаємо зображення за замовчуванням */
+    .team-member__photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
     .team-member h4 {
@@ -214,7 +319,7 @@
         margin-bottom: 5px;
     }
     
-    /* --- 6. CONTACT SECTION --- */
+    /* --- 7. CONTACT SECTION --- */
     .contact__form {
       display: flex;
       flex-direction: column;
@@ -233,6 +338,10 @@
       font-family: var(--font-main);
       font-size: 1em;
       transition: border-color 0.3s;
+    }
+    .contact__form input::placeholder,
+    .contact__form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.5);
     }
 
     .contact__form input:focus,
@@ -262,13 +371,35 @@
       background: var(--accent-hover);
     }
 
-    /* --- 7. FOOTER --- */
+    /* --- 8. FOOTER --- */
     .footer {
       text-align: center;
       padding: 30px;
       background: #010409;
       font-size: 0.9em;
       opacity: 0.8;
+    }
+
+    /* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+    @media (max-width: 768px) {
+        .header__nav-list {
+            display: none; /* Приховуємо меню для мобільних, якщо не потрібен гамбургер */
+        }
+        .header {
+            justify-content: center; /* Центруємо логотип, якщо немає меню */
+        }
+        .hero__title {
+            font-size: clamp(2em, 8vw, 3.5em);
+        }
+        .hero__desc {
+            font-size: 1em;
+        }
+        section {
+            padding: 80px 5%;
+        }
+        .section-title {
+            font-size: clamp(1.8em, 7vw, 2.5em);
+        }
     }
   </style>
 </head>
@@ -278,10 +409,16 @@
   <header class="header">
     <a href="#" class="header__logo">MSFSoft</a>
     <nav class="header__nav">
-      <div class="lang-toggle">
-        <button data-lang="ua" class="lang-toggle__btn active">UA</button>
-        <button data-lang="en" class="lang-toggle__btn">EN</button>
-      </div>
+        <ul class="header__nav-list">
+            <li><a href="#about" class="header__nav-link" data-key="navAbout">Про нас</a></li>
+            <li><a href="#technologies" class="header__nav-link" data-key="navTech">Технології</a></li>
+            <li><a href="#team" class="header__nav-link" data-key="navTeam">Команда</a></li>
+            <li><a href="#contact" class="header__nav-link" data-key="navContact">Контакти</a></li>
+        </ul>
+        <div class="lang-toggle">
+            <button data-lang="ua" class="lang-toggle__btn active">UA</button>
+            <button data-lang="en" class="lang-toggle__btn">EN</button>
+        </div>
     </nav>
   </header>
 
@@ -289,9 +426,28 @@
     <section class="hero">
       <div class="hero__content">
         <h1 class="hero__title" data-key="slogan">Розумні уми. Міцний код.</h1>
-        <p class="hero__desc" data-key="desc">Інноваційні програмні рішення від команди, що цінує креативність, якість і довіру.</p>
+        <p class="hero__desc" data-key="desc">MSFSoft — команда юних, амбітних програмістів, які спеціалізуються на розробці інноваційних програмних рішень. Ми цінуємо креативність, якість і довіру, створюючи продукти, що перевершують очікування.</p>
         <a href="#contact" class="hero__btn" data-key="contactBtn">Зв'язатися з нами</a>
       </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2 class="section-title" data-key="aboutTitle">Про нас</h2>
+        <div class="about__content">
+            <p data-key="aboutP1">
+                MSFSoft — це свіжий погляд на світ розробки програмного забезпечення. Ми молода, але сповнена ентузіазму та інноваційних ідей команда програмістів. Наша пристрасть до кодування та вирішення складних задач об'єднує нас, дозволяючи створювати ефективні та надійні IT-рішення.
+            </p>
+            <p data-key="aboutP2">
+                Ми спеціалізуємося на розробці веб-сайтів, від простих візитівок до більш складних інтерактивних платформ. Крім того, ми успішно займаємося написанням невеликих, але функціональних програм, а також оптимізацією та рефакторингом існуючого коду. Наша мета — втілити ваші ідеї в життя за допомогою чистих, масштабованих та ефективних рішень.
+            </p>
+            <p data-key="aboutP3">
+                У MSFSoft ми віримо, що навіть "неважкі програми" повинні бути виконані з найвищою якістю та увагою до деталей. Кожен рядок коду проходить ретельне тестування, а кожен проєкт супроводжується персональним підходом. Ми постійно вчимося та вдосконалюємося, щоб пропонувати вам найсучасніші технології та практики.
+            </p>
+            <h3><span data-key="aboutMission">Наша місія:</span></h3>
+            <p data-key="aboutMissionDesc">
+                Робити світ кращим за допомогою якісного коду. Ми прагнемо бути надійним партнером для наших клієнтів, допомагаючи їм досягати успіху через інноваційні та зрозумілі технологічні рішення.
+            </p>
+        </div>
     </section>
 
     <section class="technologies" id="technologies">
@@ -316,11 +472,12 @@
       <h2 class="section-title" data-key="teamTitle">Наша команда</h2>
       <div class="team__grid">
         <div class="team-member">
-          <div class="team-member__photo"></div>
+          <div class="team-member__photo">
+             </div>
           <h4>Yura F.</h4>
           <p data-key="founder">Засновник / Розробник</p>
         </div>
-      </div>
+        </div>
     </section>
 
     <section class="contact" id="contact">
@@ -348,8 +505,18 @@
       const translations = {
         ua: {
           slogan: "Розумні уми. Міцний код.",
-          desc: "Інноваційні програмні рішення від команди, що цінує креативність, якість і довіру.",
+          desc: "MSFSoft — команда юних, амбітних програмістів, які спеціалізуються на розробці інноваційних програмних рішень. Ми цінуємо креативність, якість і довіру, створюючи продукти, що перевершують очікування.",
           contactBtn: "Зв'язатися з нами",
+          navAbout: "Про нас",
+          navTech: "Технології",
+          navTeam: "Команда",
+          navContact: "Контакти",
+          aboutTitle: "Про нас",
+          aboutP1: "MSFSoft — це свіжий погляд на світ розробки програмного забезпечення. Ми молода, але сповнена ентузіазму та інноваційних ідей команда програмістів. Наша пристрасть до кодування та вирішення складних задач об'єднує нас, дозволяючи створювати ефективні та надійні IT-рішення.",
+          aboutP2: "Ми спеціалізуємося на розробці веб-сайтів, від простих візитівок до більш складних інтерактивних платформ. Крім того, ми успішно займаємося написанням невеликих, але функціональних програм, а також оптимізацією та рефакторингом існуючого коду. Наша мета — втілити ваші ідеї в життя за допомогою чистих, масштабованих та ефективних рішень.",
+          aboutP3: "У MSFSoft ми віримо, що навіть \"неважкі програми\" повинні бути виконані з найвищою якістю та увагою до деталей. Кожен рядок коду проходить ретельне тестування, а кожен проєкт супроводжується персональним підходом. Ми постійно вчимося та вдосконалюємося, щоб пропонувати вам найсучасніші технології та практики.",
+          aboutMission: "Наша місія:",
+          aboutMissionDesc: "Робити світ кращим за допомогою якісного коду. Ми прагнемо бути надійним партнером для наших клієнтів, допомагаючи їм досягати успіху через інноваційні та зрозумілі технологічні рішення.",
           techTitle: "Технології",
           teamTitle: "Наша команда",
           founder: "Засновник / Розробник",
@@ -360,8 +527,18 @@
         },
         en: {
           slogan: "Smart minds. Strong code.",
-          desc: "Innovative software solutions built by a team that values creativity, quality, and trust.",
+          desc: "MSFSoft is a team of young, ambitious programmers specializing in developing innovative software solutions. We value creativity, quality, and trust, creating products that exceed expectations.",
           contactBtn: "Contact Us",
+          navAbout: "About Us",
+          navTech: "Technologies",
+          navTeam: "Team",
+          navContact: "Contact",
+          aboutTitle: "About Us",
+          aboutP1: "MSFSoft offers a fresh perspective on software development. We are a young team, brimming with enthusiasm and innovative ideas. Our passion for coding and tackling complex challenges unites us, enabling us to create efficient and reliable IT solutions.",
+          aboutP2: "We specialize in website development, from simple business cards to more complex interactive platforms. Additionally, we successfully craft small yet functional applications, and optimize and refactor existing code. Our goal is to bring your ideas to life with clean, scalable, and effective solutions.",
+          aboutP3: "At MSFSoft, we believe that even 'lightweight' programs should be executed with the highest quality and attention to detail. Every line of code undergoes thorough testing, and every project is approached with a personalized touch. We are constantly learning and improving to offer you the latest technologies and practices.",
+          aboutMission: "Our Mission:",
+          aboutMissionDesc: "To make the world better through quality code. We strive to be a reliable partner for our clients, helping them achieve success through innovative and understandable technological solutions.",
           techTitle: "Technologies",
           teamTitle: "Our Team",
           founder: "Founder / Developer",
