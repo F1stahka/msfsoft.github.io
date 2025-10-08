@@ -1,109 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="uk"> <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MSFSoft — Smart minds. Strong code. Successful family.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>MSFSoft — Розробка інноваційних IT-рішень</title> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1 class="logo">MSFSoft</h1>
-    <div class="lang-toggle">
-      <button id="en-btn" class="active">EN</button>
-      <button id="ua-btn">UA</button>
-    </div>
+
+  <header class="header">
+    <a href="#" class="header__logo">MSFSoft</a>
+    <nav class="header__nav">
+      <div class="lang-toggle">
+        <button data-lang="ua" class="lang-toggle__btn active">UA</button>
+        <button data-lang="en" class="lang-toggle__btn">EN</button>
+      </div>
+    </nav>
   </header>
 
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="content">
-      <h2 id="slogan">Smart minds. Strong code. Successful family.</h2>
-      <p id="desc">Innovative software solutions built by a team that values creativity, quality, and trust.</p>
-      <a href="#contact" class="btn">Contact us</a>
-    </div>
-  </section>
-
-  <section class="technologies">
-    <h3 id="tech-title">Technologies We Use</h3>
-    <div class="icons">
-      <div class="icon">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-        <p>Python</p>
+  <main> <section class="hero">
+      <div class="hero__content">
+        <h1 class="hero__title" data-key="slogan">Розумні уми. Міцний код. Успішна сім'я.</h1>
+        <p class="hero__desc" data-key="desc">Інноваційні програмні рішення від команди, що цінує креативність, якість і довіру.</p>
+        <a href="#contact" class="hero__btn" data-key="contactBtn">Зв'язатися з нами</a>
       </div>
-      <div class="icon">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
-        <p>C</p>
-      </div>
-      <div class="icon">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
-        <p>C++</p>
-      </div>
-    </div>
-  </section>
+    </section>
+    
+    </main>
 
-  <section class="team">
-    <h3 id="team-title">Our Team</h3>
-    <div class="members">
-      <div class="member">
-        <div class="placeholder"></div>
-        <h4>Yura F.</h4>
-        <p>Founder / Developer</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h3 id="contact-title">Contact Us</h3>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Message..." required></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>© 2025 MSFSoft. All rights reserved.</p>
-  </footer>
-
-  <script>
-    const en = {
-      slogan: "Smart minds. Strong code. Successful family.",
-      desc: "Innovative software solutions built by a team that values creativity, quality, and trust.",
-      tech: "Technologies We Use",
-      team: "Our Team",
-      contact: "Contact Us"
-    };
-
-    const ua = {
-      slogan: "Розумні уми. Міцний код. Успішна сім'я.",
-      desc: "Інноваційні програмні рішення від команди, що цінує креативність, якість і довіру.",
-      tech: "Технології, які ми використовуємо",
-      team: "Наша команда",
-      contact: "Зв’яжіться з нами"
-    };
-
-    document.getElementById("en-btn").addEventListener("click", () => {
-      document.getElementById("slogan").textContent = en.slogan;
-      document.getElementById("desc").textContent = en.desc;
-      document.getElementById("tech-title").textContent = en.tech;
-      document.getElementById("team-title").textContent = en.team;
-      document.getElementById("contact-title").textContent = en.contact;
-      document.getElementById("en-btn").classList.add("active");
-      document.getElementById("ua-btn").classList.remove("active");
-    });
-
-    document.getElementById("ua-btn").addEventListener("click", () => {
-      document.getElementById("slogan").textContent = ua.slogan;
-      document.getElementById("desc").textContent = ua.desc;
-      document.getElementById("tech-title").textContent = ua.tech;
-      document.getElementById("team-title").textContent = ua.team;
-      document.getElementById("contact-title").textContent = ua.contact;
-      document.getElementById("ua-btn").classList.add("active");
-      document.getElementById("en-btn").classList.remove("active");
-    });
-  </script>
-</body>
+  <script src="script.js"></script> </body>
 </html>
