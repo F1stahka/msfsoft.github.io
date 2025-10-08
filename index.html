@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSFSoft</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">MSFSoft</div>
+    <div class="lang-switch">
+      <button id="ukr-btn">🇺🇦</button>
+      <button id="eng-btn">🇬🇧</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="content">
+      <h1 id="main-title">MSFSoft</h1>
+      <p id="slogan">Smart minds. Strong code. Successful family.</p>
+      <a href="#about" class="btn" id="learn-more">Learn more</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 id="about-title">About Us</h2>
+    <p id="about-text">
+      MSFSoft — a young and ambitious IT family that creates smart and reliable software solutions.
+      We combine creativity, technology, and teamwork to build the future.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2 id="services-title">Our Services</h2>
+    <ul id="services-list">
+      <li>🌐 Web development</li>
+      <li>📱 Mobile app design</li>
+      <li>💾 Custom software solutions</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2 id="contact-title">Contact Us</h2>
+    <p id="contact-text">Have a project in mind or want to collaborate?</p>
+    <a href="mailto:msfsoft.team@gmail.com" class="btn">Email us</a>
+  </section>
+
+  <footer>
+    <p>© 2025 MSFSoft. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const ukrBtn = document.getElementById("ukr-btn");
+    const engBtn = document.getElementById("eng-btn");
+
+    ukrBtn.addEventListener("click", () => {
+      document.getElementById("learn-more").textContent = "Дізнатися більше";
+      document.getElementById("about-title").textContent = "Про нас";
+      document.getElementById("about-text").textContent =
+        "MSFSoft — молода та амбітна ІТ-сім'я, що створює розумні та надійні програмні рішення. Ми поєднуємо креативність, технології та командну роботу, щоб будувати майбутнє.";
+      document.getElementById("services-title").textContent = "Наші послуги";
+      document.getElementById("services-list").innerHTML = `
+        <li>🌐 Веброзробка</li>
+        <li>📱 Дизайн мобільних додатків</li>
+        <li>💾 Індивідуальні програмні рішення</li>
+      `;
+      document.getElementById("contact-title").textContent = "Контакти";
+      document.getElementById("contact-text").textContent =
+        "Маєш ідею або хочеш співпрацювати?";
+      document.getElementById("learn-more").href = "#about";
+    });
+
+    engBtn.addEventListener("click", () => {
+      document.getElementById("learn-more").textContent = "Learn more";
+      document.getElementById("about-title").textContent = "About Us";
+      document.getElementById("about-text").textContent =
+        "MSFSoft — a young and ambitious IT family that creates smart and reliable software solutions. We combine creativity, technology, and teamwork to build the future.";
+      document.getElementById("services-title").textContent = "Our Services";
+      document.getElementById("services-list").innerHTML = `
+        <li>🌐 Web development</li>
+        <li>📱 Mobile app design</li>
+        <li>💾 Custom software solutions</li>
+      `;
+      document.getElementById("contact-title").textContent = "Contact Us";
+      document.getElementById("contact-text").textContent =
+        "Have a project in mind or want to collaborate?";
+    });
+  </script>
+</body>
+</html>
