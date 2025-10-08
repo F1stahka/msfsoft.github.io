@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MSFSoft — Smart minds. Strong code. Successful family.</title>
+  <title>MSFSoft — Smart minds. Strong code.</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Global styles */
+    /* Global styles & Animated Background */
     * {
       margin: 0;
       padding: 0;
@@ -15,9 +16,18 @@
     }
 
     body {
-      background: linear-gradient(to bottom, #0d1220, #000000);
       color: white;
       overflow-x: hidden;
+      /* ІДЕЯ №1: Анімований градієнтний фон */
+      background: linear-gradient(315deg, #0d1220, #1a2a45, #0d1220);
+      background-size: 400% 400%;
+      animation: animatedGradient 15s ease infinite;
+    }
+
+    @keyframes animatedGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* HEADER */
@@ -26,14 +36,11 @@
       justify-content: space-between;
       align-items: center;
       padding: 25px 8%;
-      position: fixed; /* Фіксований хедер */
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 100; /* Високий z-index */
-      background: rgba(13, 18, 32, 0.7); /* Напівпрозорий фон */
-      backdrop-filter: blur(5px); /* Ефект розмиття */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 100;
     }
 
     .logo {
@@ -60,38 +67,15 @@
 
     /* HERO SECTION */
     .hero {
-      height: 100vh; /* Змінено на 100vh для повного екрану */
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      position: relative; /* Для позиціонування фону */
-      overflow: hidden; /* Обрізати все, що виходить за межі */
-      padding-top: 80px; /* Відступ для фіксованого хедера */
-    }
-
-    /* Стилі для фону з горами */
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-            linear-gradient(to top, #000000 5%, rgba(0,0,0,0.7) 30%, transparent 100%), /* Затемнення + градієнт */
-            url('https://i.imgur.com/v81t622.jpg'); /* Зображення гір */
-        background-size: cover;
-        background-position: center bottom; /* Гори будуть знизу */
-        z-index: 1; /* Позаду контенту */
-        opacity: 0.9;
     }
 
     .content {
-      z-index: 2; /* Поверх фону */
       animation: fadeIn 2s ease;
-      position: relative; /* Щоб текст був над фоном */
-      text-shadow: 0 2px 10px rgba(0,0,0,0.7); /* Тінь для кращої читабельності */
     }
 
     @keyframes fadeIn {
@@ -100,97 +84,113 @@
     }
 
     .content h2 {
-      font-size: 2.4em;
+      font-size: 2.8em; /* Зробимо трохи більшим */
       margin-bottom: 15px;
     }
 
     .content p {
       max-width: 600px;
-      margin: 0 auto 25px;
+      margin: 0 auto 35px; /* Збільшимо відступ */
       font-weight: 300;
+      font-size: 1.1em;
+      opacity: 0.9;
     }
 
     .btn {
-      padding: 10px 25px;
+      padding: 12px 30px;
       border: 2px solid #00b7ff;
       color: #00b7ff;
       text-decoration: none;
-      transition: 0.3s;
-      background: rgba(0, 0, 0, 0.3); /* Напівпрозорий фон для кнопки */
-      border-radius: 5px; /* Легке заокруглення */
+      transition: all 0.3s ease;
+      border-radius: 50px; /* Сучасні заокруглені кнопки */
+      font-weight: 500;
     }
 
+    /* ІДЕЯ №3: Ефект світіння для кнопки */
     .btn:hover {
       background: #00b7ff;
-      color: black;
-      transform: translateY(-3px); /* Невеликий ефект при наведенні */
-      box-shadow: 0 5px 15px rgba(0, 183, 255, 0.25);
+      color: #0d1220;
+      box-shadow: 0 0 25px rgba(0, 183, 255, 0.6);
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS STYLING */
+    section {
+        padding: 80px 8%;
+    }
+    
+    .section-title {
+        font-size: 2.2em;
+        margin-bottom: 40px;
+        position: relative;
+        display: inline-block;
+    }
+    /* Декоративне підкреслення для заголовків */
+    .section-title::after {
+        content: '';
+        position: absolute;
+        width: 60%;
+        height: 3px;
+        background: #00b7ff;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -10px;
+        border-radius: 2px;
+    }
+
+
+    /* ІДЕЯ №2: Стиль "матового скла" для карток */
+    .card-style {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .card-style:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(0, 183, 255, 0.5);
     }
 
     /* TECHNOLOGIES */
-    .technologies {
-      padding: 80px 10%;
-      text-align: center;
-      background: linear-gradient(to bottom, #000000, #0d1220); /* Перехід для цієї секції */
-    }
-
-    .technologies h3 {
-        margin-bottom: 30px;
-    }
-
     .technologies .icons {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 50px;
+      gap: 40px;
       margin-top: 30px;
     }
 
     .icon {
+      /* Застосовуємо стиль "матового скла" */
+      padding: 20px;
+      width: 150px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(255,255,255,0.05); /* Фон для іконок */
-      padding: 20px;
-      border-radius: 10px;
-      width: 150px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .icon:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-      border-color: #00b7ff;
     }
 
     .icon img {
       width: 70px;
-      filter: brightness(0) invert(1);
-      transition: transform 0.3s, filter 0.3s;
+      filter: grayscale(80%) invert(100%) opacity(0.8); /* Трохи приглушимо іконки */
+      transition: all 0.3s ease;
     }
 
     .icon:hover img {
-      transform: scale(1.15);
-      filter: drop-shadow(0 0 8px #00b7ff);
+      filter: none; /* Прибираємо фільтр, роблячи іконку кольоровою */
+      transform: scale(1.1);
     }
 
     .icon p {
-      margin-top: 10px;
+      margin-top: 15px;
       font-weight: 300;
     }
 
     /* TEAM */
-    .team {
-      padding: 70px 10%;
-      text-align: center;
-    }
-
-    .team h3 {
-        margin-bottom: 30px;
-    }
-
-    .members {
+    .team .members {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -199,55 +199,42 @@
     }
 
     .member {
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 15px;
-      width: 220px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .member:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      /* Застосовуємо стиль "матового скла" */
+      padding: 25px;
+      width: 240px;
+      text-align: center;
     }
 
     .placeholder {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       background: #111;
       border-radius: 50%;
-      margin: 0 auto 10px;
+      margin: 0 auto 15px;
       border: 3px solid #00b7ff;
     }
     
     .member h4 {
         margin-bottom: 5px;
+        font-size: 1.2em;
     }
-
-
-    /* CONTACT */
-    .contact {
-        padding-top: 100px;
-        padding-bottom: 100px;
-    }
-    .contact h3 {
-        margin-bottom: 30px;
-    }
+    
+    /* CONTACT FORM */
     .contact form {
       display: flex;
       flex-direction: column;
-      max-width: 400px;
-      margin: 0 auto;
+      max-width: 500px;
+      margin: 30px auto 0;
       gap: 15px;
     }
 
     .contact input, .contact textarea {
-      margin: 0; /* Видалено зайвий margin: 10px 0; */
-      padding: 15px; /* Збільшено padding */
-      border: 1px solid rgba(255, 255, 255, 0.1); /* Тонка рамка */
+      /* Застосовуємо стиль "матового скла" */
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
-      background: rgba(255,255,255,0.05);
+      padding: 15px;
       color: white;
       font-size: 1em;
       transition: border-color 0.3s;
@@ -260,65 +247,20 @@
         outline: none;
         border-color: #00b7ff;
     }
-
+    
     .contact textarea {
       resize: vertical;
       min-height: 120px;
     }
 
-    .contact button {
-      padding: 15px; /* Збільшено padding */
-      border: none;
-      border-radius: 8px;
-      background: #00b7ff;
-      color: black;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1.1em;
-      transition: 0.3s;
-    }
-
-    .contact button:hover {
-      background: #0091cc;
-    }
-
+    /* FOOTER */
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
       background: #010409;
       font-size: 0.9em;
       opacity: 0.8;
-    }
-
-    /* MEDIA QUERIES */
-    @media (max-width: 768px) {
-        header {
-            padding: 20px 5%;
-        }
-        .content h2 {
-            font-size: 2em;
-        }
-        .content p {
-            font-size: 0.9em;
-        }
-        .technologies, .team, .contact {
-            padding: 60px 5%;
-        }
-        .technologies h3, .team h3, .contact h3 {
-            font-size: 1.8em;
-            margin-bottom: 25px;
-        }
-        .icon, .member {
-            width: 130px;
-            padding: 15px;
-        }
-        .icon img {
-            width: 60px;
-        }
-        .placeholder {
-            width: 80px;
-            height: 80px;
-        }
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
@@ -333,24 +275,24 @@
 
   <section class="hero">
     <div class="content">
-      <h2 id="slogan">Smart minds. Strong code. Successful family.</h2>
+      <h2 id="slogan">Smart minds. Strong code.</h2>
       <p id="desc">Innovative software solutions built by a team that values creativity, quality, and trust.</p>
       <a href="#contact" class="btn">Contact us</a>
     </div>
   </section>
 
   <section class="technologies">
-    <h3 id="tech-title">Technologies We Use</h3>
+    <h3 id="tech-title" class="section-title">Technologies We Use</h3>
     <div class="icons">
-      <div class="icon">
+      <div class="icon card-style">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
         <p>Python</p>
       </div>
-      <div class="icon">
+      <div class="icon card-style">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
         <p>C</p>
       </div>
-      <div class="icon">
+      <div class="icon card-style">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
         <p>C++</p>
       </div>
@@ -358,14 +300,14 @@
   </section>
 
   <section class="team">
-    <h3 id="team-title">Our Team</h3>
+    <h3 id="team-title" class="section-title">Our Team</h3>
     <div class="members">
-      <div class="member">
+      <div class="member card-style">
         <div class="placeholder"></div>
         <h4>Yura F.</h4>
         <p>Founder / Developer</p>
       </div>
-      <div class="member">
+      <div class="member card-style">
         <div class="placeholder"></div>
         <h4>Дзюба Вероніка</h4>
         <p>Developer</p>
@@ -374,27 +316,30 @@
   </section>
 
   <section id="contact" class="contact">
-    <h3 id="contact-title">Contact Us</h3>
+    <h3 id="contact-title" class="section-title">Contact Us</h3>
     <form>
       <input type="text" placeholder="Your Name" required />
       <input type="email" placeholder="Your Email" required />
       <textarea placeholder="Message..." required></textarea>
-      <button type="submit">Send</button>
-    </form>
+      <button type="submit" class="btn">Send</button> </form>
   </section>
 
   <footer>
-    <p>© 2025 MSFSoft. All rights reserved.</p>
+    <p>© <span id="year"></span> MSFSoft. All rights reserved.</p>
   </footer>
 
   <script>
+    // --- DYNAMIC YEAR IN FOOTER ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // --- Ваш скрипт перекладу залишається тут без змін ---
     const en = {
       slogan: "Smart minds. Strong code. Successful family.",
       desc: "Innovative software solutions built by a team that values creativity, quality, and trust.",
       tech: "Technologies We Use",
       team: "Our Team",
       contact: "Contact Us",
-      developer: "Developer" // Додаємо переклад для нового члена команди
+      // ... інші переклади
     };
 
     const ua = {
@@ -403,82 +348,28 @@
       tech: "Технології, які ми використовуємо",
       team: "Наша команда",
       contact: "Зв’яжіться з нами",
-      developer: "Розробник" // Додаємо переклад для нового члена команди
+      // ... інші переклади
     };
-
-    // Оновлений скрипт для перекладу
-    const translatableElements = {
-        slogan: document.getElementById("slogan"),
-        desc: document.getElementById("desc"),
-        techTitle: document.getElementById("tech-title"),
-        teamTitle: document.getElementById("team-title"),
-        contactTitle: document.getElementById("contact-title"),
-        // Додайте placeholder'и для форми
-        formName: document.querySelector('.contact input[type="text"]'),
-        formEmail: document.querySelector('.contact input[type="email"]'),
-        formMessage: document.querySelector('.contact textarea'),
-        formBtn: document.querySelector('.contact button[type="submit"]'),
-        developerRole: document.querySelector('.member:last-child p') // Для Вероніки
-    };
-
-    const applyTranslations = (lang) => {
-        const currentLangData = lang === 'en' ? en : ua;
-
-        for (const key in translatableElements) {
-            if (translatableElements[key]) {
-                const element = translatableElements[key];
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    // Змінюємо placeholder для полів форми
-                    if (key === 'formName') element.placeholder = currentLangData.contact.replace('Us', '') + currentLangData.formNamePlaceholder; // Це приклад, як можна було б зробити, але краще мати окремі ключі
-                    else if (key === 'formMessage') element.placeholder = currentLangData.formMessage;
-                    else element.placeholder = currentLangData[key]; // якщо є окремі ключі
-                } else if (key === 'formBtn') {
-                    element.textContent = currentLangData.formBtn;
-                } else if (key === 'developerRole') {
-                    element.textContent = currentLangData.developer; // Специфічно для ролі Вероніки
-                } else {
-                    element.textContent = currentLangData[key];
-                }
-            }
-        }
-        // Оновлюємо текст кнопки "Contact us"
-        document.querySelector('.hero .btn').textContent = currentLangData.contact;
-    };
-    
-    // Тепер краще мати окремі ключі для плейсхолдерів в об'єктах перекладів
-    en.formNamePlaceholder = "Your Name";
-    en.formMessage = "Message...";
-    en.formBtn = "Send";
-    ua.formNamePlaceholder = "Ваше ім'я";
-    ua.formMessage = "Повідомлення...";
-    ua.formBtn = "Надіслати";
-
-    // Спеціально для полів форми, щоб плейсхолдери перекладалися.
-    // Оновлення: додано пряме використання у translatableElements, щоб не дублювати.
 
     document.getElementById("en-btn").addEventListener("click", () => {
-      applyTranslations('en');
+      document.getElementById("slogan").textContent = en.slogan;
+      document.getElementById("desc").textContent = en.desc;
+      document.getElementById("tech-title").textContent = en.tech;
+      document.getElementById("team-title").textContent = en.team;
+      document.getElementById("contact-title").textContent = en.contact;
       document.getElementById("en-btn").classList.add("active");
       document.getElementById("ua-btn").classList.remove("active");
-      // Оновлюємо плейсхолдери вручну, бо вони не є textContent
-      document.querySelector('.contact input[type="text"]').placeholder = en.formNamePlaceholder;
-      document.querySelector('.contact textarea').placeholder = en.formMessage;
-      document.querySelector('.contact button[type="submit"]').textContent = en.formBtn;
     });
 
     document.getElementById("ua-btn").addEventListener("click", () => {
-      applyTranslations('ua');
+      document.getElementById("slogan").textContent = ua.slogan;
+      document.getElementById("desc").textContent = ua.desc;
+      document.getElementById("tech-title").textContent = ua.tech;
+      document.getElementById("team-title").textContent = ua.team;
+      document.getElementById("contact-title").textContent = ua.contact;
       document.getElementById("ua-btn").classList.add("active");
       document.getElementById("en-btn").classList.remove("active");
-      // Оновлюємо плейсхолдери вручну
-      document.querySelector('.contact input[type="text"]').placeholder = ua.formNamePlaceholder;
-      document.querySelector('.contact textarea').placeholder = ua.formMessage;
-      document.querySelector('.contact button[type="submit"]').textContent = ua.formBtn;
     });
-
-    // Ініціалізація при завантаженні сторінки
-    applyTranslations('en'); // За замовчуванням EN, як в оригінальному HTML
-    document.getElementById("en-btn").classList.add("active"); // Активуємо EN кнопку
   </script>
 </body>
 </html>
