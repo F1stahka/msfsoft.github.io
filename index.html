@@ -16,7 +16,7 @@
     :root {
       --primary-bg: #0d1220;
       --secondary-bg: #000000;
-      --text-color: #e2e8f0; /* Світліший, приємніший для очей */
+      --text-color: #e2e8f0;
       --accent-color: #00b7ff;
       --accent-hover: #0091cc;
       --card-bg: rgba(255, 255, 255, 0.05);
@@ -30,7 +30,7 @@
     }
 
     html {
-      scroll-behavior: smooth; /* Плавний скрол по якорях */
+      scroll-behavior: smooth;
     }
 
     body {
@@ -44,7 +44,7 @@
       padding: 100px 8%;
       text-align: center;
       position: relative;
-      z-index: 2; /* Щоб контент був поверх фону hero */
+      z-index: 2;
     }
 
     h1, h2, h3, h4 {
@@ -66,13 +66,14 @@
       align-items: center;
       padding: 25px 8%;
       width: 100%;
-      position: fixed; /* Фіксований хедер */
+      position: fixed;
       top: 0;
       left: 0;
-      z-index: 100; /* Високий z-index, щоб був поверх всього */
-      background: rgba(0, 0, 0, 0.7); /* Напівпрозорий фон для хедера */
-      backdrop-filter: blur(5px); /* Ефект розмиття */
+      z-index: 100;
+      background: rgba(13, 18, 32, 0.7); /* Напівпрозорий фон для хедера */
+      backdrop-filter: blur(8px);
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
     }
 
     .header__logo {
@@ -90,7 +91,7 @@
     .header__nav {
       display: flex;
       align-items: center;
-      gap: 30px; /* Більший відступ між елементами навігації */
+      gap: 30px;
     }
 
     .header__nav-list {
@@ -104,7 +105,7 @@
         color: var(--text-color);
         text-decoration: none;
         font-weight: 500;
-        transition: color 0.3s ease, transform 0.3s ease;
+        transition: color 0.3s ease;
         position: relative;
     }
     .header__nav-link::after {
@@ -113,13 +114,13 @@
         width: 0;
         height: 2px;
         background: var(--accent-color);
-        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
         bottom: -5px;
         transition: width 0.3s ease;
     }
     .header__nav-link:hover {
         color: var(--accent-color);
-        transform: translateY(-2px);
     }
     .header__nav-link:hover::after {
         width: 100%;
@@ -149,12 +150,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-top: 100px; /* Відступ для фіксованого хедера */
+      padding-top: 100px;
       position: relative;
-      overflow: hidden; /* Обрізати все, що виходить за межі секції */
+      overflow: hidden;
     }
 
-    /* Псевдоелемент для фону з горами */
     .hero::before {
         content: '';
         position: absolute;
@@ -162,21 +162,20 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: 
-            linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.2) 100%), /* Градієнт для затемнення */
-            url('https://images.unsplash.com/photo-1465101162817-268153c9f7a6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Зображення гір */
+        background: 
+            linear-gradient(to top, #000000 5%, rgba(0,0,0,0.7) 30%, transparent 100%),
+            url('https://i.imgur.com/v81t622.jpg');
         background-size: cover;
-        background-position: center bottom; /* Зображення буде щільніше до низу */
-        filter: brightness(0.8) contrast(1.2); /* Невелике затемнення і контраст */
+        background-position: center bottom;
         z-index: 1;
-        opacity: 0.8;
+        opacity: 0.9;
     }
 
     .hero__content {
-      position: relative; /* Щоб контент був поверх псевдоелемента */
+      position: relative;
       z-index: 2;
       animation: fadeIn 1.5s ease-out;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Тінь для тексту, щоб краще читався */
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
     }
     
     @keyframes fadeIn {
@@ -207,7 +206,7 @@
       font-weight: 500;
       border-radius: 50px;
       transition: all 0.3s ease;
-      background: rgba(0, 0, 0, 0.3); /* Напівпрозорий фон для кнопки */
+      background: rgba(0, 0, 0, 0.3);
     }
 
     .hero__btn:hover {
@@ -218,6 +217,9 @@
     }
     
     /* --- 4. ABOUT SECTION --- */
+    #about {
+        background: linear-gradient(to bottom, #000000, #0d1220);
+    }
     .about__content {
         max-width: 800px;
         margin: 0 auto;
@@ -305,9 +307,8 @@
       border-radius: 50%;
       margin: 0 auto 20px;
       border: 3px solid var(--accent-color);
-      overflow: hidden; /* Якщо буде зображення */
+      overflow: hidden;
     }
-    /* Додаємо зображення за замовчуванням */
     .team-member__photo img {
         width: 100%;
         height: 100%;
@@ -380,13 +381,13 @@
       opacity: 0.8;
     }
 
-    /* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+    /* --- 9. MEDIA QUERIES FOR RESPONSIVENESS --- */
     @media (max-width: 768px) {
         .header__nav-list {
-            display: none; /* Приховуємо меню для мобільних, якщо не потрібен гамбургер */
+            display: none;
         }
         .header {
-            justify-content: center; /* Центруємо логотип, якщо немає меню */
+            padding: 20px 5%;
         }
         .hero__title {
             font-size: clamp(2em, 8vw, 3.5em);
@@ -472,12 +473,17 @@
       <h2 class="section-title" data-key="teamTitle">Наша команда</h2>
       <div class="team__grid">
         <div class="team-member">
-          <div class="team-member__photo">
-             </div>
+          <div class="team-member__photo"></div>
           <h4>Yura F.</h4>
           <p data-key="founder">Засновник / Розробник</p>
         </div>
+
+        <div class="team-member">
+          <div class="team-member__photo"></div>
+          <h4>Дзюба Вероніка</h4>
+          <p data-key="developer">Розробник</p>
         </div>
+      </div>
     </section>
 
     <section class="contact" id="contact">
@@ -520,6 +526,7 @@
           techTitle: "Технології",
           teamTitle: "Наша команда",
           founder: "Засновник / Розробник",
+          developer: "Розробник",
           contactTitle: "Зв'яжіться з нами",
           formName: "Ваше ім'я",
           formMessage: "Повідомлення...",
@@ -542,6 +549,7 @@
           techTitle: "Technologies",
           teamTitle: "Our Team",
           founder: "Founder / Developer",
+          developer: "Developer",
           contactTitle: "Contact Us",
           formName: "Your Name",
           formMessage: "Message...",
@@ -556,6 +564,7 @@
       const setLanguage = (lang) => {
         translatableElements.forEach(element => {
           const key = element.dataset.key;
+          if (!translations[lang][key]) return;
           
           if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
             element.placeholder = translations[lang][key];
