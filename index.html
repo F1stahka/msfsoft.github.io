@@ -41,6 +41,7 @@
     /* ---------------------------------- */
     /* --- 2. CSS BACKGROUND EFFECTS --- */
     /* ---------------------------------- */
+    /* Ефект "Аврора" (кольорове сяйво) */
     .aurora-background {
         position: fixed; top: 50%; left: 50%; width: 120vmax; height: 120vmax;
         background: radial-gradient(circle, var(--primary-accent), transparent 40%),
@@ -54,23 +55,33 @@
         100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
     }
     
-    @function multiple-box-shadow($n) {
-      $value: '#{random(2000)}px #{random(2000)}px #FFF';
-      @for $i from 2 through $n {
-        $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
-      }
-      @return unquote($value);
-    }
-    
+    /* Ефект "Зоряне небо" на CSS (буде згенеровано JS) */
     #stars1, #stars2, #stars3 {
         width: 1px; height: 1px; background: transparent;
         animation: animStar 50s linear infinite;
         position: fixed; top: 0; left: 0; z-index: 0;
     }
-    #stars1 { box-shadow: multiple-box-shadow(700); }
-    #stars2 { box-shadow: multiple-box-shadow(200); animation-duration: 100s; }
-    #stars3 { box-shadow: multiple-box-shadow(100); animation-duration: 150s; }
+    #stars2 { animation-duration: 100s; }
+    #stars3 { animation-duration: 150s; }
     @keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
+
+    /* --- ЛОГОТИП НА ФОНІ --- */
+    .background-logo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://msfsoft.team/logo.svg'); /* <--- ВСТАВТЕ ШЛЯХ ДО ВАШОГО ЛОГО ТУТ */
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 40vmax; /* Розмір логотипу, можна змінити (наприклад, contain, cover, 50%) */
+        opacity: 0.03; /* Прозорість логотипу */
+        filter: grayscale(100%) blur(1px); /* Зробимо його чорно-білим і трохи розмитим */
+        z-index: 1; /* Між зорями/авророю та контентом */
+        pointer-events: none; /* Щоб лого не блокувало взаємодію з іншими елементами */
+    }
+
 
     /* ---------------------------------- */
     /* --- 3. HEADER & HERO --- */
@@ -208,8 +219,7 @@
   <div id="stars1"></div>
   <div id="stars2"></div>
   <div id="stars3"></div>
-
-  <header>
+  <div class="background-logo"></div> <header>
     <h1 class="logo">MSFSoft</h1>
     <div class="lang-toggle">
       <button data-lang="ua" class="lang-btn">UA</button>
@@ -353,6 +363,21 @@
       });
 
       setLanguage('ua'); // Встановлюємо українську за замовчуванням
+
+      // --- GENERATE STARS (FIX FOR SASS ISSUE) ---
+      function generateStarShadows(numStars) {
+        let shadow = '';
+        for (let i = 0; i < numStars; i++) {
+          const x = Math.floor(Math.random() * 2000);
+          const y = Math.floor(Math.random() * 2000);
+          shadow += `${x}px ${y}px #FFF${i === numStars - 1 ? '' : ','}`;
+        }
+        return shadow;
+      }
+
+      document.getElementById('stars1').style.boxShadow = generateStarShadows(700);
+      document.getElementById('stars2').style.boxShadow = generateStarShadows(200);
+      document.getElementById('stars3').style.boxShadow = generateStarShadows(100);
     });
   </script>
 
