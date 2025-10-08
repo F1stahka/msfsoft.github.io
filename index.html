@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,43 +7,47 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="overlay"></div>
   <header>
-    <div class="logo">MSFSoft</div>
-    <div class="lang-switch">
-      <button id="ukr-btn">🇺🇦</button>
-      <button id="eng-btn">🇬🇧</button>
+    <h1 class="logo">MSFSoft</h1>
+    <div class="lang-toggle">
+      <button id="lang-ua" class="active">🇺🇦</button>
+      <button id="lang-en">🇬🇧</button>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="content">
-      <h1 id="main-title">MSFSoft</h1>
-      <p id="slogan">Smart minds. Strong code. Successful family.</p>
-      <a href="#about" class="btn" id="learn-more">Learn more</a>
-    </div>
+  <section class="home fade-in">
+    <h2 data-ua="Розумні розуми. Сильний код. Успішна сім'я." 
+        data-en="Smart minds. Strong code. Successful family.">
+      Розумні розуми. Сильний код. Успішна сім'я.
+    </h2>
+    <p data-ua="Ми — команда, яка створює технології майбутнього."
+       data-en="We are a team creating the technologies of the future.">
+       Ми — команда, яка створює технології майбутнього.
+    </p>
+    <a href="#about" class="btn" data-ua="Дізнатися більше" data-en="Learn more">Дізнатися більше</a>
   </section>
 
-  <section id="about">
-    <h2 id="about-title">About Us</h2>
-    <p id="about-text">
-      MSFSoft — a young and ambitious IT family that creates smart and reliable software solutions.
-      We combine creativity, technology, and teamwork to build the future.
+  <section id="about" class="fade-in">
+    <h3 data-ua="Про нас" data-en="About Us">Про нас</h3>
+    <p data-ua="MSFSoft — це сім'я молодих інженерів, які прагнуть створювати якісне програмне забезпечення та реальні рішення для людей."
+       data-en="MSFSoft is a family of young engineers striving to build high-quality software and real solutions for people.">
+       MSFSoft — це сім'я молодих інженерів, які прагнуть створювати якісне програмне забезпечення та реальні рішення для людей.
     </p>
   </section>
 
-  <section id="services">
-    <h2 id="services-title">Our Services</h2>
-    <ul id="services-list">
-      <li>🌐 Web development</li>
-      <li>📱 Mobile app design</li>
-      <li>💾 Custom software solutions</li>
+  <section id="services" class="fade-in">
+    <h3 data-ua="Послуги" data-en="Services">Послуги</h3>
+    <ul>
+      <li data-ua="Розробка сайтів" data-en="Web development">Розробка сайтів</li>
+      <li data-ua="AI-рішення" data-en="AI solutions">AI-рішення</li>
+      <li data-ua="Технічна підтримка" data-en="Tech support">Технічна підтримка</li>
     </ul>
   </section>
 
-  <section id="contact">
-    <h2 id="contact-title">Contact Us</h2>
-    <p id="contact-text">Have a project in mind or want to collaborate?</p>
-    <a href="mailto:msfsoft.team@gmail.com" class="btn">Email us</a>
+  <section id="contact" class="fade-in">
+    <h3 data-ua="Контакти" data-en="Contact">Контакти</h3>
+    <p>Email: <a href="mailto:msfsoft.team@gmail.com">msfsoft.team@gmail.com</a></p>
   </section>
 
   <footer>
@@ -51,40 +55,30 @@
   </footer>
 
   <script>
-    const ukrBtn = document.getElementById("ukr-btn");
-    const engBtn = document.getElementById("eng-btn");
+    // Плавна поява елементів при скролі
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    });
+    fadeEls.forEach(el => observer.observe(el));
 
-    ukrBtn.addEventListener("click", () => {
-      document.getElementById("learn-more").textContent = "Дізнатися більше";
-      document.getElementById("about-title").textContent = "Про нас";
-      document.getElementById("about-text").textContent =
-        "MSFSoft — молода та амбітна ІТ-сім'я, що створює розумні та надійні програмні рішення. Ми поєднуємо креативність, технології та командну роботу, щоб будувати майбутнє.";
-      document.getElementById("services-title").textContent = "Наші послуги";
-      document.getElementById("services-list").innerHTML = `
-        <li>🌐 Веброзробка</li>
-        <li>📱 Дизайн мобільних додатків</li>
-        <li>💾 Індивідуальні програмні рішення</li>
-      `;
-      document.getElementById("contact-title").textContent = "Контакти";
-      document.getElementById("contact-text").textContent =
-        "Маєш ідею або хочеш співпрацювати?";
-      document.getElementById("learn-more").href = "#about";
+    // Перемикання мов
+    const uaBtn = document.getElementById('lang-ua');
+    const enBtn = document.getElementById('lang-en');
+    const texts = document.querySelectorAll('[data-ua]');
+
+    uaBtn.addEventListener('click', () => {
+      uaBtn.classList.add('active');
+      enBtn.classList.remove('active');
+      texts.forEach(t => t.textContent = t.getAttribute('data-ua'));
     });
 
-    engBtn.addEventListener("click", () => {
-      document.getElementById("learn-more").textContent = "Learn more";
-      document.getElementById("about-title").textContent = "About Us";
-      document.getElementById("about-text").textContent =
-        "MSFSoft — a young and ambitious IT family that creates smart and reliable software solutions. We combine creativity, technology, and teamwork to build the future.";
-      document.getElementById("services-title").textContent = "Our Services";
-      document.getElementById("services-list").innerHTML = `
-        <li>🌐 Web development</li>
-        <li>📱 Mobile app design</li>
-        <li>💾 Custom software solutions</li>
-      `;
-      document.getElementById("contact-title").textContent = "Contact Us";
-      document.getElementById("contact-text").textContent =
-        "Have a project in mind or want to collaborate?";
+    enBtn.addEventListener('click', () => {
+      enBtn.classList.add('active');
+      uaBtn.classList.remove('active');
+      texts.forEach(t => t.textContent = t.getAttribute('data-en'));
     });
   </script>
 </body>
