@@ -1,10 +1,278 @@
 <!DOCTYPE html>
-<html lang="uk"> <head>
+<html lang="uk">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MSFSoft — Розробка інноваційних IT-рішень</title> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="MSFSoft: Розробка інноваційних програмних рішень. Створюємо надійний код для успіху вашого бізнесу.">
+  
+  <title>MSFSoft — Smart minds. Strong code.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- 1. GLOBAL STYLES & CSS VARIABLES --- */
+    :root {
+      --primary-bg: #0d1220;
+      --secondary-bg: #000000;
+      --text-color: #e2e8f0; /* Світліший, приємніший для очей */
+      --accent-color: #00b7ff;
+      --accent-hover: #0091cc;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --font-main: "Poppins", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* Плавний скрол по якорях */
+    }
+
+    body {
+      background: linear-gradient(to bottom, var(--primary-bg), var(--secondary-bg));
+      color: var(--text-color);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 100px 8%;
+      text-align: center;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: clamp(2em, 5vw, 2.8em);
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* --- 2. HEADER --- */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 8%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .header__logo {
+      font-size: 1.8em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    
+    .header__nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .lang-toggle__btn {
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+      font-size: 1em;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      padding: 5px;
+    }
+
+    .lang-toggle__btn.active {
+      color: var(--accent-color);
+    }
+    
+    /* --- 3. HERO SECTION --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 80px; /* Відступ для хедера */
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)); /* Затемнення фону, якщо буде зображення */
+    }
+
+    .hero__content {
+      animation: fadeIn 1.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero__title {
+      font-size: clamp(2.5em, 6vw, 4em);
+      margin-bottom: 20px;
+    }
+
+    .hero__desc {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    .hero__btn {
+      display: inline-block;
+      padding: 14px 35px;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .hero__btn:hover {
+      background: var(--accent-color);
+      color: var(--primary-bg);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 183, 255, 0.25);
+    }
+    
+    /* --- 4. TECHNOLOGIES SECTION --- */
+    .technologies__grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 30px;
+    }
+
+    .tech-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .tech-icon img {
+      width: 70px;
+      filter: grayscale(100%) invert(100%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .tech-icon:hover img {
+      transform: scale(1.15);
+      opacity: 1;
+      filter: drop-shadow(0 0 10px var(--accent-color));
+    }
+    
+    /* --- 5. TEAM SECTION --- */
+    .team__grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .team-member {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 15px;
+      width: 250px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    
+    .team-member__photo {
+      width: 100px;
+      height: 100px;
+      background: #111;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 3px solid var(--accent-color);
+    }
+    
+    .team-member h4 {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+    }
+    
+    /* --- 6. CONTACT SECTION --- */
+    .contact__form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contact__form input,
+    .contact__form textarea {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      color: var(--text-color);
+      font-family: var(--font-main);
+      font-size: 1em;
+      transition: border-color 0.3s;
+    }
+
+    .contact__form input:focus,
+    .contact__form textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+
+    .contact__form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .contact__form button {
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent-color);
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact__form button:hover {
+      background: var(--accent-hover);
+    }
+
+    /* --- 7. FOOTER --- */
+    .footer {
+      text-align: center;
+      padding: 30px;
+      background: #010409;
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+  </style>
 </head>
+
 <body>
 
   <header class="header">
@@ -17,15 +285,126 @@
     </nav>
   </header>
 
-  <main> <section class="hero">
+  <main>
+    <section class="hero">
       <div class="hero__content">
-        <h1 class="hero__title" data-key="slogan">Розумні уми. Міцний код. Успішна сім'я.</h1>
+        <h1 class="hero__title" data-key="slogan">Розумні уми. Міцний код.</h1>
         <p class="hero__desc" data-key="desc">Інноваційні програмні рішення від команди, що цінує креативність, якість і довіру.</p>
         <a href="#contact" class="hero__btn" data-key="contactBtn">Зв'язатися з нами</a>
       </div>
     </section>
-    
-    </main>
 
-  <script src="script.js"></script> </body>
+    <section class="technologies" id="technologies">
+      <h2 class="section-title" data-key="techTitle">Технології</h2>
+      <div class="technologies__grid">
+        <div class="tech-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+          <p>Python</p>
+        </div>
+        <div class="tech-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+          <p>C</p>
+        </div>
+        <div class="tech-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+          <p>C++</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="team" id="team">
+      <h2 class="section-title" data-key="teamTitle">Наша команда</h2>
+      <div class="team__grid">
+        <div class="team-member">
+          <div class="team-member__photo"></div>
+          <h4>Yura F.</h4>
+          <p data-key="founder">Засновник / Розробник</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 class="section-title" data-key="contactTitle">Зв'яжіться з нами</h2>
+      <form class="contact__form">
+        <input type="text" data-key="formName" placeholder="Ваше ім'я" required />
+        <input type="email" placeholder="Ваш Email" required />
+        <textarea data-key="formMessage" placeholder="Повідомлення..." required></textarea>
+        <button type="submit" data-key="formBtn">Надіслати</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> MSFSoft. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // --- DYNAMIC YEAR IN FOOTER ---
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // --- LANGUAGE SWITCHER ---
+      const translations = {
+        ua: {
+          slogan: "Розумні уми. Міцний код.",
+          desc: "Інноваційні програмні рішення від команди, що цінує креативність, якість і довіру.",
+          contactBtn: "Зв'язатися з нами",
+          techTitle: "Технології",
+          teamTitle: "Наша команда",
+          founder: "Засновник / Розробник",
+          contactTitle: "Зв'яжіться з нами",
+          formName: "Ваше ім'я",
+          formMessage: "Повідомлення...",
+          formBtn: "Надіслати"
+        },
+        en: {
+          slogan: "Smart minds. Strong code.",
+          desc: "Innovative software solutions built by a team that values creativity, quality, and trust.",
+          contactBtn: "Contact Us",
+          techTitle: "Technologies",
+          teamTitle: "Our Team",
+          founder: "Founder / Developer",
+          contactTitle: "Contact Us",
+          formName: "Your Name",
+          formMessage: "Message...",
+          formBtn: "Send"
+        }
+      };
+
+      const langToggle = document.querySelector('.lang-toggle');
+      const translatableElements = document.querySelectorAll('[data-key]');
+      const langButtons = document.querySelectorAll('[data-lang]');
+
+      const setLanguage = (lang) => {
+        translatableElements.forEach(element => {
+          const key = element.dataset.key;
+          
+          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+            element.placeholder = translations[lang][key];
+          } else {
+            element.textContent = translations[lang][key];
+          }
+        });
+        
+        document.documentElement.lang = lang;
+        
+        langButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+      };
+
+      langToggle.addEventListener('click', (event) => {
+        const selectedLang = event.target.dataset.lang;
+        if (selectedLang) {
+          setLanguage(selectedLang);
+        }
+      });
+
+      // Set default language on load
+      setLanguage('ua');
+    });
+  </script>
+
+</body>
 </html>
