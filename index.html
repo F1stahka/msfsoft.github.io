@@ -3,373 +3,474 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MSFSoft — Smart minds. Strong code.</title>
+  <title>MSFSoft — Code. Create. Innovate.</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   
   <style>
-    /* Global styles & Animated Background */
+    /* ---------------------------------- */
+    /* --- 1. SETUP & GLOBAL STYLES --- */
+    /* ---------------------------------- */
+    :root {
+      --bg-color: #0d1220;
+      --primary-accent: #00b7ff;
+      --secondary-accent: #ff00c1;
+      --text-color: #e2e8f0;
+      --card-bg: rgba(20, 28, 51, 0.5);
+      --border-color: rgba(0, 183, 255, 0.2);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
     }
 
     body {
-      color: white;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: "Poppins", sans-serif;
       overflow-x: hidden;
-      /* ІДЕЯ №1: Анімований градієнтний фон */
-      background: linear-gradient(315deg, #0d1220, #1a2a45, #0d1220);
-      background-size: 400% 400%;
-      animation: animatedGradient 15s ease infinite;
+    }
+    
+    section {
+        padding: 100px 8%;
+        position: relative;
+        z-index: 2;
     }
 
-    @keyframes animatedGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* ---------------------------------- */
+    /* --- 2. PARTICLES.JS BACKGROUND --- */
+    /* ---------------------------------- */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
 
-    /* HEADER */
+    /* ---------------------------------- */
+    /* --- 3. HEADER --- */
+    /* ---------------------------------- */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 25px 8%;
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 100;
+      background: rgba(13, 18, 32, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     .logo {
       font-size: 1.8em;
       font-weight: 700;
       letter-spacing: 1px;
+      color: var(--primary-accent);
+      text-shadow: 0 0 10px rgba(0, 183, 255, 0.7);
     }
 
     .lang-toggle button {
-      background: transparent;
-      border: none;
-      color: white;
-      margin: 0 5px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: 0.3s;
+      background: transparent; border: none; color: white; margin: 0 5px; font-size: 1em; cursor: pointer; transition: 0.3s;
     }
+    .lang-toggle button.active { color: var(--primary-accent); }
 
-    .lang-toggle button.active {
-      color: #00b7ff;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    /* HERO SECTION */
+    /* ---------------------------------- */
+    /* --- 4. HERO SECTION & TYPEWRITER --- */
+    /* ---------------------------------- */
     .hero {
       height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
     }
 
-    .content {
-      animation: fadeIn 2s ease;
+    .hero__title {
+      font-size: clamp(2.5em, 6vw, 4.5em);
+      margin-bottom: 20px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Typewriter effect */
+    .typewriter {
+        border-right: .1em solid var(--primary-accent);
+        animation: blink-caret .75s step-end infinite;
     }
 
-    .content h2 {
-      font-size: 2.8em; /* Зробимо трохи більшим */
-      margin-bottom: 15px;
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--primary-accent); }
     }
 
-    .content p {
+    .hero__subtitle {
       max-width: 600px;
-      margin: 0 auto 35px; /* Збільшимо відступ */
+      margin: 0 auto 40px;
       font-weight: 300;
-      font-size: 1.1em;
+      font-size: 1.2em;
       opacity: 0.9;
+      line-height: 1.6;
     }
 
     .btn {
-      padding: 12px 30px;
-      border: 2px solid #00b7ff;
-      color: #00b7ff;
+      padding: 14px 35px;
+      border: 2px solid var(--primary-accent);
+      color: var(--primary-accent);
       text-decoration: none;
-      transition: all 0.3s ease;
-      border-radius: 50px; /* Сучасні заокруглені кнопки */
       font-weight: 500;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-
-    /* ІДЕЯ №3: Ефект світіння для кнопки */
     .btn:hover {
-      background: #00b7ff;
-      color: #0d1220;
-      box-shadow: 0 0 25px rgba(0, 183, 255, 0.6);
-      transform: translateY(-3px);
+      color: var(--bg-color);
+      background: var(--primary-accent);
+      box-shadow: 0 0 30px rgba(0, 183, 255, 0.7);
     }
 
-    /* SECTIONS STYLING */
-    section {
-        padding: 80px 8%;
-    }
-    
+    /* ---------------------------------- */
+    /* --- 5. SECTION STYLING & ANIMATION --- */
+    /* ---------------------------------- */
     .section-title {
-        font-size: 2.2em;
-        margin-bottom: 40px;
+        font-size: 2.5em;
+        margin-bottom: 50px;
         position: relative;
         display: inline-block;
+        color: var(--text-color);
     }
-    /* Декоративне підкреслення для заголовків */
     .section-title::after {
         content: '';
         position: absolute;
-        width: 60%;
+        width: 100%;
         height: 3px;
-        background: #00b7ff;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -10px;
+        background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+        left: 0;
+        bottom: -15px;
         border-radius: 2px;
     }
-
-
-    /* ІДЕЯ №2: Стиль "матового скла" для карток */
-    .card-style {
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      transition: all 0.3s ease;
+    
+    /* Scroll Reveal Animation */
+    .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .card-style:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(0, 183, 255, 0.5);
+    /* ---------------------------------- */
+    /* --- 6. TECHNOLOGIES & SKILL BARS --- */
+    /* ---------------------------------- */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    /* TECHNOLOGIES */
-    .technologies .icons {
+    .skill {
+        text-align: left;
+    }
+    .skill__name {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+    .skill__bar {
+        width: 100%;
+        height: 10px;
+        background: rgba(0,0,0,0.3);
+        border-radius: 5px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+    }
+    .skill__level {
+        height: 100%;
+        width: 0; /* Initially 0, JS will set it */
+        background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+        border-radius: 5px;
+        transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* ---------------------------------- */
+    /* --- 7. TEAM & 3D CARDS --- */
+    /* ---------------------------------- */
+    .team-grid {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 40px;
-      margin-top: 30px;
-    }
-
-    .icon {
-      /* Застосовуємо стиль "матового скла" */
-      padding: 20px;
-      width: 150px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .icon img {
-      width: 70px;
-      filter: grayscale(80%) invert(100%) opacity(0.8); /* Трохи приглушимо іконки */
-      transition: all 0.3s ease;
-    }
-
-    .icon:hover img {
-      filter: none; /* Прибираємо фільтр, роблячи іконку кольоровою */
-      transform: scale(1.1);
-    }
-
-    .icon p {
-      margin-top: 15px;
-      font-weight: 300;
-    }
-
-    /* TEAM */
-    .team .members {
-      display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 40px;
-      margin-top: 30px;
+      perspective: 1000px; /* Perspective for 3D effect */
     }
 
-    .member {
-      /* Застосовуємо стиль "матового скла" */
-      padding: 25px;
-      width: 240px;
-      text-align: center;
-    }
-
-    .placeholder {
-      width: 100px;
-      height: 100px;
-      background: #111;
-      border-radius: 50%;
-      margin: 0 auto 15px;
-      border: 3px solid #00b7ff;
-    }
-    
-    .member h4 {
-        margin-bottom: 5px;
-        font-size: 1.2em;
-    }
-    
-    /* CONTACT FORM */
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      margin: 30px auto 0;
-      gap: 15px;
-    }
-
-    .contact input, .contact textarea {
-      /* Застосовуємо стиль "матового скла" */
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      padding: 15px;
-      color: white;
-      font-size: 1em;
-      transition: border-color 0.3s;
-    }
-    .contact input::placeholder, .contact textarea::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-    }
-
-    .contact input:focus, .contact textarea:focus {
-        outline: none;
-        border-color: #00b7ff;
-    }
-    
-    .contact textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
+    .team-member {
+      width: 280px;
       padding: 30px;
-      background: #010409;
-      font-size: 0.9em;
-      opacity: 0.8;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.1s linear;
     }
+
+    /* Shine/Glare effect */
+    .team-member::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transform: skewX(-30deg);
+        transition: left 0.7s ease;
+    }
+    .team-member:hover::before {
+        left: 150%;
+    }
+
+    .team-member__photo {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(var(--primary-accent), var(--secondary-accent));
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 4px solid var(--bg-color);
+      box-shadow: 0 0 15px rgba(0, 183, 255, 0.5);
+    }
+    
+    .team-member h4 { font-size: 1.4em; margin-bottom: 5px; }
+
+    /* ---------------------------------- */
+    /* --- 8. CONTACT & FOOTER --- */
+    /* ---------------------------------- */
+    .contact form {
+      display: flex; flex-direction: column; max-width: 500px; margin: 30px auto 0; gap: 15px;
+    }
+    .contact input, .contact textarea {
+      background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; color: white; font-size: 1em; transition: border-color 0.3s;
+    }
+    .contact input::placeholder, .contact textarea::placeholder { color: rgba(255, 255, 255, 0.5); }
+    .contact input:focus, .contact textarea:focus { outline: none; border-color: var(--primary-accent); box-shadow: 0 0 15px rgba(0, 183, 255, 0.5); }
+    .contact textarea { resize: vertical; min-height: 120px; }
+    
+    footer {
+      text-align: center; padding: 30px; background: #010409; font-size: 0.9em; opacity: 0.8; border-top: 1px solid var(--border-color); z-index: 2; position: relative;
+    }
+
   </style>
 </head>
 <body>
+
+  <div id="particles-js"></div>
+
   <header>
     <h1 class="logo">MSFSoft</h1>
     <div class="lang-toggle">
       <button id="en-btn" class="active">EN</button>
       <button id="ua-btn">UA</button>
+    }
     </div>
   </header>
 
-  <section class="hero">
-    <div class="content">
-      <h2 id="slogan">Smart minds. Strong code.</h2>
-      <p id="desc">Innovative software solutions built by a team that values creativity, quality, and trust.</p>
-      <a href="#contact" class="btn">Contact us</a>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <h2 class="hero__title"><span class="typewriter" data-key="slogan"></span></h2>
+      <p class="hero__subtitle" data-key="desc">Innovative software solutions built by a team that values creativity, quality, and trust.</p>
+      <a href="#contact" class="btn" data-key="contactBtn">Contact us</a>
+    </section>
 
-  <section class="technologies">
-    <h3 id="tech-title" class="section-title">Technologies We Use</h3>
-    <div class="icons">
-      <div class="icon card-style">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-        <p>Python</p>
+    <section class="technologies reveal" id="technologies">
+      <h3 class="section-title" data-key="techTitle">Technologies We Use</h3>
+      <div class="tech-grid">
+        <div class="skill">
+          <div class="skill__name">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="30">
+            <span>Python</span>
+          </div>
+          <div class="skill__bar"><div class="skill__level" data-level="90"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill__name">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" width="30">
+            <span>C</span>
+          </div>
+          <div class="skill__bar"><div class="skill__level" data-level="75"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill__name">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" width="30">
+            <span>C++</span>
+          </div>
+          <div class="skill__bar"><div class="skill__level" data-level="80"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill__name">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" width="30">
+            <span>HTML & CSS</span>
+          </div>
+          <div class="skill__bar"><div class="skill__level" data-level="95"></div></div>
+        </div>
       </div>
-      <div class="icon card-style">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
-        <p>C</p>
-      </div>
-      <div class="icon card-style">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
-        <p>C++</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="team">
-    <h3 id="team-title" class="section-title">Our Team</h3>
-    <div class="members">
-      <div class="member card-style">
-        <div class="placeholder"></div>
-        <h4>Yura F.</h4>
-        <p>Founder / Developer</p>
+    <section class="team reveal" id="team">
+      <h3 class="section-title" data-key="teamTitle">Our Team</h3>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="team-member__photo"></div>
+          <h4>Yura F.</h4>
+          <p data-key="founder">Founder / Developer</p>
+        </div>
+        <div class="team-member">
+          <div class="team-member__photo"></div>
+          <h4>Дзюба Вероніка</h4>
+          <p data-key="developer">Developer</p>
+        </div>
       </div>
-      <div class="member card-style">
-        <div class="placeholder"></div>
-        <h4>Дзюба Вероніка</h4>
-        <p>Developer</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="contact">
-    <h3 id="contact-title" class="section-title">Contact Us</h3>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Message..." required></textarea>
-      <button type="submit" class="btn">Send</button> </form>
-  </section>
+    <section id="contact" class="contact reveal">
+      <h3 class="section-title" data-key="contactTitle">Contact Us</h3>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <textarea placeholder="Message..." required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </section>
+  </main>
 
   <footer>
     <p>© <span id="year"></span> MSFSoft. All rights reserved.</p>
   </footer>
 
+  
   <script>
-    // --- DYNAMIC YEAR IN FOOTER ---
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // --- Ваш скрипт перекладу залишається тут без змін ---
-    const en = {
-      slogan: "Smart minds. Strong code. Successful family.",
-      desc: "Innovative software solutions built by a team that values creativity, quality, and trust.",
-      tech: "Technologies We Use",
-      team: "Our Team",
-      contact: "Contact Us",
-      // ... інші переклади
-    };
+    /* ---------------------------------- */
+    /* --- PARTICLES.JS SCRIPT --- */
+    /* ---------------------------------- */
+    // Цей скрипт створює анімований фон з частинками. Він вбудований, щоб не вимагати окремих файлів.
+    var particlesJS=function(a,e){var t={};t.canvas={el:document.querySelector(a),w:document.querySelector(a).offsetWidth,h:document.querySelector(a).offsetHeight};t.particles={number:{value:80,density:{enable:!0,value_area:800}},color:{value:"#ffffff"},shape:{type:"circle",stroke:{width:0,color:"#000000"},polygon:{nb_sides:5},image:{src:"img/github.svg",width:100,height:100}},opacity:{value:.5,random:!1,anim:{enable:!1,speed:1,opacity_min:.1,sync:!1}},size:{value:3,random:!0,anim:{enable:!1,speed:40,size_min:.1,sync:!1}},line_linked:{enable:!0,distance:150,color:"#ffffff",opacity:.4,width:1},move:{enable:!0,speed:6,direction:"none",random:!1,straight:!1,out_mode:"out",bounce:!1,attract:{enable:!1,rotateX:600,rotateY:1200}},array:[]};t.interactivity={detect_on:"canvas",events:{onhover:{enable:!0,mode:"repulse"},onclick:{enable:!0,mode:"push"},resize:!0},modes:{grab:{distance:400,line_linked:{opacity:1}},bubble:{distance:400,size:40,duration:2,opacity:8,speed:3},repulse:{distance:200,duration:.4},push:{particles_nb:4},remove:{particles_nb:2}}};t.retina_detect=!1;t.fn={vendors:{interactivity:{modes:{grab:function(a){t.interactivity.modes.grab.distance=a},bubble:function(a,e,i,s,n){t.interactivity.modes.bubble.distance=a,t.interactivity.modes.bubble.size=e,t.interactivity.modes.bubble.duration=i,t.interactivity.modes.bubble.opacity=s,t.interactivity.modes.bubble.speed=n}}}},init:function(){t.fn.retinaInit(),t.fn.canvasInit(),t.fn.canvasSize(),t.fn.particlesCreate(),t.fn.particlesDraw(),t.fn.interact.linkParticles(),t.fn.interact.moveParticles(),t.fn.interact.init(),t.fn.vendors.init()},retinaInit:function(){t.retina_detect&&window.devicePixelRatio>1?(t.canvas.pxratio=window.devicePixelRatio,t.tmp.retina=!0):t.canvas.pxratio=1},canvasInit:function(){t.canvas.ctx=t.canvas.el.getContext("2d")},canvasSize:function(){t.canvas.el.width=t.canvas.w,t.canvas.el.height=t.canvas.h,window.addEventListener("resize",function(){t.canvas.w=t.canvas.el.offsetWidth,t.canvas.h=t.canvas.el.offsetHeight,t.canvas.el.width=t.canvas.w,t.canvas.el.height=t.canvas.h,t.fn.particlesRemove(),t.fn.particlesCreate(),t.fn.particlesDraw()})},particlesCreate:function(){for(var a=0;a<t.particles.number.value;a++)t.particles.array.push(new t.fn.particle(t.particles.color.value,t.particles.opacity.value))},particlesDraw:function(){t.canvas.ctx.clearRect(0,0,t.canvas.w,t.canvas.h);for(var a=0;a<t.particles.array.length;a++){var e=t.particles.array[a];e.draw()}},particlesRemove:function(){t.particles.array=[]},particle:function(a,e){var i=this;i.x=Math.random()*t.canvas.w,i.y=Math.random()*t.canvas.h,i.vx=t.particles.move.speed/2-Math.random(),i.vy=t.particles.move.speed/2-Math.random(),i.radius=t.particles.size.value,i.color={r:a.r,g:a.g,b:a.b},i.opacity=e,i.draw=function(){t.canvas.ctx.fillStyle="rgba("+i.color.r+","+i.color.g+","+i.color.b+","+i.opacity+")",t.canvas.ctx.beginPath(),t.canvas.ctx.arc(i.x,i.y,i.radius,0,2*Math.PI,!1),t.canvas.ctx.closePath(),t.canvas.ctx.fill()}},interact:{init:function(){t.interactivity.events.onhover.enable&&t.canvas.el.addEventListener("mousemove",function(a){t.interactivity.mouse.pos_x=a.offsetX||a.clientX,t.interactivity.mouse.pos_y=a.offsetY||a.clientY}),t.interactivity.events.onclick.enable&&t.canvas.el.addEventListener("click",function(){t.fn.interact.pushParticles()})},linkParticles:function(){for(var a=0;a<t.particles.array.length;a++)for(var e=a+1;e<t.particles.array.length;e++){var i=t.particles.array[a].x-t.particles.array[e].x,s=t.particles.array[a].y-t.particles.array[e].y,n=Math.sqrt(i*i+s*s);if(n<=t.particles.line_linked.distance){var r=t.particles.line_linked.opacity-n/t.particles.line_linked.distance;t.canvas.ctx.strokeStyle="rgba(255,255,255,"+r+")",t.canvas.ctx.lineWidth=t.particles.line_linked.width,t.canvas.ctx.beginPath(),t.canvas.ctx.moveTo(t.particles.array[a].x,t.particles.array[a].y),t.canvas.ctx.lineTo(t.particles.array[e].x,t.particles.array[e].y),t.canvas.ctx.stroke(),t.canvas.ctx.closePath()}}},moveParticles:function(){for(var a=0;a<t.particles.array.length;a++){var e=t.particles.array[a];e.x+=e.vx,e.y+=e.vy,e.x>t.canvas.w&&e.x<0&&(e.vx*=-1),e.y>t.canvas.h&&e.y<0&&(e.vy*=-1),t.interactivity.events.onhover.enable&&t.fn.interact.repulseParticle(e)}},repulseParticle:function(a){var e=Math.sqrt(Math.pow(t.interactivity.mouse.pos_x-a.x,2)+Math.pow(t.interactivity.mouse.pos_y-a.y,2));if(e<=t.interactivity.modes.repulse.distance){var i=Math.atan2(t.interactivity.mouse.pos_y-a.y,t.interactivity.mouse.pos_x-a.x);a.vx=-2*Math.cos(i),a.vy=-2*Math.sin(i)}},pushParticles:function(){for(var a=0;a<t.interactivity.modes.push.particles_nb;a++)t.particles.array.push(new t.fn.particle(t.particles.color.value,t.particles.opacity.value))}},tmp:{}};t.fn.init()};particlesJS("#particles-js");
 
-    const ua = {
-      slogan: "Розумні уми. Міцний код. Успішна сім'я.",
-      desc: "Інноваційні програмні рішення від команди, що цінує креативність, якість і довіру.",
-      tech: "Технології, які ми використовуємо",
-      team: "Наша команда",
-      contact: "Зв’яжіться з нами",
-      // ... інші переклади
-    };
+    document.addEventListener('DOMContentLoaded', () => {
 
-    document.getElementById("en-btn").addEventListener("click", () => {
-      document.getElementById("slogan").textContent = en.slogan;
-      document.getElementById("desc").textContent = en.desc;
-      document.getElementById("tech-title").textContent = en.tech;
-      document.getElementById("team-title").textContent = en.team;
-      document.getElementById("contact-title").textContent = en.contact;
-      document.getElementById("en-btn").classList.add("active");
-      document.getElementById("ua-btn").classList.remove("active");
-    });
+      // --- DYNAMIC YEAR IN FOOTER ---
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // ---------------------------------- */
+      // --- TYPEWRITER EFFECT SCRIPT --- */
+      // ---------------------------------- */
+      const typewriterElement = document.querySelector('.typewriter');
+      const slogans = ["Smart minds. Strong code.", "Code. Create. Innovate.", "Building the Future."];
+      let currentSloganIndex = 0;
+      let isDeleting = false;
+      let txt = '';
+      let typeSpeed = 120;
 
-    document.getElementById("ua-btn").addEventListener("click", () => {
-      document.getElementById("slogan").textContent = ua.slogan;
-      document.getElementById("desc").textContent = ua.desc;
-      document.getElementById("tech-title").textContent = ua.tech;
-      document.getElementById("team-title").textContent = ua.team;
-      document.getElementById("contact-title").textContent = ua.contact;
-      document.getElementById("ua-btn").classList.add("active");
-      document.getElementById("en-btn").classList.remove("active");
+      function type() {
+          const currentSlogan = slogans[currentSloganIndex];
+          if (isDeleting) {
+              txt = currentSlogan.substring(0, txt.length - 1);
+          } else {
+              txt = currentSlogan.substring(0, txt.length + 1);
+          }
+
+          typewriterElement.innerHTML = `<span>${txt}</span>`;
+          let delta = typeSpeed;
+
+          if (isDeleting) { delta /= 2; }
+
+          if (!isDeleting && txt === currentSlogan) {
+              delta = 2000; // Pause at end
+              isDeleting = true;
+          } else if (isDeleting && txt === '') {
+              isDeleting = false;
+              currentSloganIndex = (currentSloganIndex + 1) % slogans.length;
+              delta = 500; // Pause before new slogan
+          }
+          setTimeout(type, delta);
+      }
+      type();
+
+      // ---------------------------------- */
+      // --- SCROLL REVEAL & SKILL BARS --- */
+      // ---------------------------------- */
+      const revealElements = document.querySelectorAll('.reveal');
+      const skillLevels = document.querySelectorAll('.skill__level');
+
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('active');
+                  // If the revealed element is the technologies section, animate skill bars
+                  if(entry.target.id === 'technologies') {
+                      skillLevels.forEach(skill => {
+                          skill.style.width = skill.getAttribute('data-level') + '%';
+                      });
+                  }
+              }
+          });
+      }, { threshold: 0.15 });
+
+      revealElements.forEach(el => observer.observe(el));
+
+
+      // ---------------------------------- */
+      // --- 3D CARD MOUSE EFFECT --- */
+      // ---------------------------------- */
+      const cards = document.querySelectorAll('.team-member');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+
+          const rotateX = -y / 20; // Slower rotation
+          const rotateY = x / 20;
+
+          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+      });
+
+      // --- LANGUAGE SWITCHER (Simplified) ---
+      // This is a placeholder. For a real site, you'd expand this with more keys.
+      document.getElementById("en-btn").addEventListener("click", () => {
+          // Add EN logic here
+          document.getElementById("en-btn").classList.add("active");
+          document.getElementById("ua-btn").classList.remove("active");
+      });
+      document.getElementById("ua-btn").addEventListener("click", () => {
+          // Add UA logic here
+          document.getElementById("ua-btn").classList.add("active");
+          document.getElementById("en-btn").classList.remove("active");
+      });
+
     });
   </script>
+
 </body>
 </html>
