@@ -1,53 +1,70 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MSFSoft</title>
+  <title>MSFSoft — Smart minds. Strong code. Successful family.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="overlay"></div>
   <header>
     <h1 class="logo">MSFSoft</h1>
     <div class="lang-toggle">
-      <button id="lang-ua" class="active">🇺🇦</button>
-      <button id="lang-en">🇬🇧</button>
+      <button id="en-btn" class="active">EN</button>
+      <button id="ua-btn">UA</button>
     </div>
   </header>
 
-  <section class="home fade-in">
-    <h2 data-ua="Розумні розуми. Сильний код. Успішна сім'я." 
-        data-en="Smart minds. Strong code. Successful family.">
-      Розумні розуми. Сильний код. Успішна сім'я.
-    </h2>
-    <p data-ua="Ми — команда, яка створює технології майбутнього."
-       data-en="We are a team creating the technologies of the future.">
-       Ми — команда, яка створює технології майбутнього.
-    </p>
-    <a href="#about" class="btn" data-ua="Дізнатися більше" data-en="Learn more">Дізнатися більше</a>
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2 id="slogan">Smart minds. Strong code. Successful family.</h2>
+      <p id="desc">Innovative software solutions built by a team that values creativity, quality, and trust.</p>
+      <a href="#contact" class="btn">Contact us</a>
+    </div>
   </section>
 
-  <section id="about" class="fade-in">
-    <h3 data-ua="Про нас" data-en="About Us">Про нас</h3>
-    <p data-ua="MSFSoft — це сім'я молодих інженерів, які прагнуть створювати якісне програмне забезпечення та реальні рішення для людей."
-       data-en="MSFSoft is a family of young engineers striving to build high-quality software and real solutions for people.">
-       MSFSoft — це сім'я молодих інженерів, які прагнуть створювати якісне програмне забезпечення та реальні рішення для людей.
-    </p>
+  <section class="technologies">
+    <h3 id="tech-title">Technologies We Use</h3>
+    <div class="icons">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+    </div>
   </section>
 
-  <section id="services" class="fade-in">
-    <h3 data-ua="Послуги" data-en="Services">Послуги</h3>
-    <ul>
-      <li data-ua="Розробка сайтів" data-en="Web development">Розробка сайтів</li>
-      <li data-ua="AI-рішення" data-en="AI solutions">AI-рішення</li>
-      <li data-ua="Технічна підтримка" data-en="Tech support">Технічна підтримка</li>
-    </ul>
+  <section class="team">
+    <h3 id="team-title">Our Team</h3>
+    <div class="members">
+      <div class="member">
+        <img src="https://i.ibb.co/3Fqv0wM/profile1.png" alt="Founder">
+        <h4>Yura F.</h4>
+        <p>Founder / Developer</p>
+      </div>
+      <div class="member">
+        <img src="https://i.ibb.co/fGHKZ5z/profile2.png" alt="Designer">
+        <h4>Alex M.</h4>
+        <p>UI/UX Designer</p>
+      </div>
+      <div class="member">
+        <img src="https://i.ibb.co/BqQZ9Wm/profile3.png" alt="Engineer">
+        <h4>Chris L.</h4>
+        <p>Software Engineer</p>
+      </div>
+    </div>
   </section>
 
-  <section id="contact" class="fade-in">
-    <h3 data-ua="Контакти" data-en="Contact">Контакти</h3>
-    <p>Email: <a href="mailto:msfsoft.team@gmail.com">msfsoft.team@gmail.com</a></p>
+  <section id="contact" class="contact">
+    <h3 id="contact-title">Contact Us</h3>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Message..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
   </section>
 
   <footer>
@@ -55,30 +72,40 @@
   </footer>
 
   <script>
-    // Плавна поява елементів при скролі
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
+    const en = {
+      slogan: "Smart minds. Strong code. Successful family.",
+      desc: "Innovative software solutions built by a team that values creativity, quality, and trust.",
+      tech: "Technologies We Use",
+      team: "Our Team",
+      contact: "Contact Us"
+    };
+
+    const ua = {
+      slogan: "Розумні уми. Міцний код. Успішна сім'я.",
+      desc: "Інноваційні програмні рішення від команди, що цінує креативність, якість і довіру.",
+      tech: "Технології, які ми використовуємо",
+      team: "Наша команда",
+      contact: "Зв’яжіться з нами"
+    };
+
+    document.getElementById("en-btn").addEventListener("click", () => {
+      document.getElementById("slogan").textContent = en.slogan;
+      document.getElementById("desc").textContent = en.desc;
+      document.getElementById("tech-title").textContent = en.tech;
+      document.getElementById("team-title").textContent = en.team;
+      document.getElementById("contact-title").textContent = en.contact;
+      document.getElementById("en-btn").classList.add("active");
+      document.getElementById("ua-btn").classList.remove("active");
     });
-    fadeEls.forEach(el => observer.observe(el));
 
-    // Перемикання мов
-    const uaBtn = document.getElementById('lang-ua');
-    const enBtn = document.getElementById('lang-en');
-    const texts = document.querySelectorAll('[data-ua]');
-
-    uaBtn.addEventListener('click', () => {
-      uaBtn.classList.add('active');
-      enBtn.classList.remove('active');
-      texts.forEach(t => t.textContent = t.getAttribute('data-ua'));
-    });
-
-    enBtn.addEventListener('click', () => {
-      enBtn.classList.add('active');
-      uaBtn.classList.remove('active');
-      texts.forEach(t => t.textContent = t.getAttribute('data-en'));
+    document.getElementById("ua-btn").addEventListener("click", () => {
+      document.getElementById("slogan").textContent = ua.slogan;
+      document.getElementById("desc").textContent = ua.desc;
+      document.getElementById("tech-title").textContent = ua.tech;
+      document.getElementById("team-title").textContent = ua.team;
+      document.getElementById("contact-title").textContent = ua.contact;
+      document.getElementById("ua-btn").classList.add("active");
+      document.getElementById("en-btn").classList.remove("active");
     });
   </script>
 </body>
