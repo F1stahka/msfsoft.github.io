@@ -38,7 +38,9 @@
         overflow: hidden;
     }
 
-    /* (Фонові ефекти, хедер, hero і т.д. залишаються без змін) */
+    /* ---------------------------------- */
+    /* --- 2. CSS BACKGROUND EFFECTS --- */
+    /* ---------------------------------- */
     .aurora-background {
         position: fixed; top: 50%; left: 50%; width: 120vmax; height: 120vmax;
         background: radial-gradient(circle, var(--primary-accent), transparent 40%),
@@ -47,6 +49,7 @@
         animation: aurora-movement 20s linear infinite; z-index: 0;
     }
     @keyframes aurora-movement { 0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); } 50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); } 100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); } }
+    
     #stars1, #stars2, #stars3 {
         width: 1px; height: 1px; background: transparent;
         animation: animStar 50s linear infinite;
@@ -54,6 +57,7 @@
     }
     #stars2 { animation-duration: 100s; } #stars3 { animation-duration: 150s; }
     @keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
+    
     .background-logo {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background-image: url('https://msfsoft.team/logo.svg');
@@ -61,6 +65,11 @@
         background-size: 40vmax; opacity: 0.03;
         filter: grayscale(100%) blur(1px); z-index: 1; pointer-events: none;
     }
+
+
+    /* ---------------------------------- */
+    /* --- 3. HEADER & NAVIGATION --- */
+    /* ---------------------------------- */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 20px 8%; position: fixed; top: 0; left: 0;
@@ -68,6 +77,7 @@
       backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);
     }
     .logo { font-size: 1.8em; font-weight: 700; color: var(--text-color); text-decoration: none;}
+    
     .header__nav { display: flex; align-items: center; gap: 30px; }
     .header__nav-list { display: flex; gap: 35px; list-style: none; }
     .header__nav-link { color: var(--text-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; position: relative; }
@@ -76,131 +86,70 @@
     .lang-toggle { margin-left: 20px; }
     .lang-toggle button { background: transparent; border: none; color: white; margin: 0 5px; font-size: 1em; cursor: pointer; transition: 0.3s; }
     .lang-toggle button.active { color: var(--primary-accent); font-weight: 700; }
+    
+    /* ---------------------------------- */
+    /* --- 4. HERO SECTION --- */
+    /* ---------------------------------- */
     .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
     .hero__title { font-size: clamp(2.5em, 6vw, 4.5em); font-weight: 700; margin-bottom: 20px; background: linear-gradient(90deg, var(--text-color), var(--primary-accent), var(--text-color)); background-size: 200% auto; color: #000; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: text-shine 5s linear infinite; }
     @keyframes text-shine { to { background-position: 200% center; } }
     .hero__subtitle { max-width: 600px; margin: 0 auto 40px; font-weight: 300; font-size: 1.2em; opacity: 0.9; }
     .btn { padding: 14px 35px; border: 2px solid var(--primary-accent); color: var(--primary-accent); text-decoration: none; font-weight: 500; border-radius: 50px; transition: all 0.3s ease; }
     .btn:hover { color: #fff; background: var(--primary-accent); box-shadow: 0 0 30px rgba(0, 183, 255, 0.7); }
+    
+    /* ---------------------------------- */
+    /* --- 5. SECTIONS & SCROLL ANIMATION --- */
+    /* ---------------------------------- */
     .section-title { font-size: 2.5em; margin-bottom: 50px; position: relative; display: inline-block; }
     .section-title::after { content: ''; position: absolute; width: 80%; height: 3px; background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); left: 50%; transform: translateX(-50%); bottom: -15px; border-radius: 2px; }
     .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
+    
+    /* ---------------------------------- */
+    /* --- 6. ABOUT US & TEXT ANIMATION --- */
+    /* ---------------------------------- */
     .about__content { max-width: 800px; margin: 0 auto; font-size: 1.1em; line-height: 1.8; text-align: left; }
     .about__content p, .about__content h4 { margin-bottom: 20px; transition: opacity 0.5s ease; }
     .about__content h4 { margin-top: 30px; font-size: 1.5em; text-align: center; color: var(--primary-accent); }
     .animated-text span { display: inline-block; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .animated-text.activated span { opacity: 1; transform: translateY(0); }
+    
+    /* ---------------------------------- */
+    /* --- 7. CARDS (SPECIALIZATION & TEAM) --- */
+    /* ---------------------------------- */
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 50px auto 0; perspective: 1000px; }
     .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; backdrop-filter: blur(10px); padding: 30px; text-align: center; transition: transform 0.4s ease, box-shadow 0.4s ease; transform-style: preserve-3d; }
-    .tech-card:hover { transform: translateY(-10px) rotateY(15deg) rotateX(10deg); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); border-color: var(--primary-accent); }
-    .tech-card img { width: 50px; height: 50px; margin-bottom: 15px; } .tech-card h4 { font-size: 1.2em; }
+    .card:hover { transform: translateY(-10px) rotateY(10deg) rotateX(5deg); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); border-color: var(--primary-accent); }
+    
+    .spec-card .icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--primary-accent); }
+    .spec-card h4 { font-size: 1.3em; margin-bottom: 10px; }
+    .spec-card p { font-size: 0.95em; opacity: 0.8; line-height: 1.6; }
+
+    .team-member { cursor: pointer; }
     .team-member__photo { width: 120px; height: 120px; background: linear-gradient(var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 4px solid var(--bg-color); box-shadow: 0 0 15px rgba(0, 183, 255, 0.5); }
     .team-member h4 { font-size: 1.4em; margin-bottom: 5px; }
+    
+    /* ---------------------------------- */
+    /* --- 8. MODAL, CONTACT & FOOTER --- */
+    /* ---------------------------------- */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 18, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    .modal-overlay.visible { opacity: 1; visibility: visible; }
+    .modal-content { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; transform: scale(0.9); transition: transform 0.4s ease; }
+    .modal-overlay.visible .modal-content { transform: scale(1); }
+    .modal-close { position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--text-color); font-size: 2em; cursor: pointer; line-height: 1; transition: color 0.3s, transform 0.3s; }
+    .modal-close:hover { color: var(--primary-accent); transform: rotate(90deg); }
+    .modal-photo { width: 150px; height: 150px; background: linear-gradient(var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 5px solid var(--bg-color); box-shadow: 0 0 20px rgba(0, 183, 255, 0.6); }
+    .modal-name { font-size: 2em; margin-bottom: 10px; } .modal-role { font-size: 1.2em; color: var(--primary-accent); margin-bottom: 20px; } .modal-bio { line-height: 1.7; opacity: 0.9; }
+
     .contact { text-align: center; }
     .contact-email { display: inline-block; margin-top: 20px; font-size: clamp(1.2em, 4vw, 2em); font-weight: 500; color: var(--text-color); text-decoration: none; border: 2px solid var(--border-color); padding: 20px 40px; border-radius: 10px; background: var(--card-bg); backdrop-filter: blur(10px); transition: all 0.3s ease; }
     .contact-email:hover { color: #fff; border-color: var(--primary-accent); background: rgba(0, 183, 255, 0.1); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    
     footer { text-align: center; padding: 30px; background: #010209; border-top: 1px solid var(--border-color); z-index: 2; position: relative; }
-    
-    /* --- НОВИЙ СТИЛЬ --- */
-    /* Робимо картку команди клікабельною */
-    .team-member {
-        cursor: pointer;
-    }
-    .team-member:hover {
-        transform: translateY(-10px) rotateY(15deg) rotateX(10deg);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        border-color: var(--primary-accent);
-    }
-
-    /* ---------------------------------- */
-    /* --- 9. MODAL WINDOW STYLES --- */
-    /* ---------------------------------- */
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(2, 4, 18, 0.8);
-        backdrop-filter: blur(10px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-
-    .modal-overlay.visible {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .modal-content {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 15px;
-        padding: 40px;
-        width: 90%;
-        max-width: 500px;
-        text-align: center;
-        position: relative;
-        transform: scale(0.9);
-        transition: transform 0.4s ease;
-    }
-
-    .modal-overlay.visible .modal-content {
-        transform: scale(1);
-    }
-
-    .modal-close {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: transparent;
-        border: none;
-        color: var(--text-color);
-        font-size: 2em;
-        cursor: pointer;
-        line-height: 1;
-        transition: color 0.3s, transform 0.3s;
-    }
-    .modal-close:hover {
-        color: var(--primary-accent);
-        transform: rotate(90deg);
-    }
-    
-    .modal-photo {
-        width: 150px;
-        height: 150px;
-        background: linear-gradient(var(--primary-accent), var(--secondary-accent));
-        border-radius: 50%;
-        margin: 0 auto 20px;
-        border: 5px solid var(--bg-color);
-        box-shadow: 0 0 20px rgba(0, 183, 255, 0.6);
-    }
-
-    .modal-name {
-        font-size: 2em;
-        margin-bottom: 10px;
-    }
-    
-    .modal-role {
-        font-size: 1.2em;
-        color: var(--primary-accent);
-        margin-bottom: 20px;
-    }
-    
-    .modal-bio {
-        line-height: 1.7;
-        opacity: 0.9;
-    }
     
     @media (max-width: 768px) {
         .header__nav-list { display: none; }
-        .card:hover, .team-member:hover { transform: translateY(-10px); }
+        .card:hover { transform: translateY(-10px); }
     }
   </style>
 </head>
@@ -217,7 +166,7 @@
     <nav class="header__nav">
         <ul class="header__nav-list">
             <li><a href="#about" class="header__nav-link" data-key="navAbout">About</a></li>
-            <li><a href="#technologies" class="header__nav-link" data-key="navTech">Technologies</a></li>
+            <li><a href="#specialization" class="header__nav-link" data-key="navSpec">Specialization</a></li>
             <li><a href="#team" class="header__nav-link" data-key="navTeam">Team</a></li>
             <li><a href="#contact" class="header__nav-link" data-key="navContact">Contact</a></li>
         </ul>
@@ -245,28 +194,32 @@
         </div>
     </section>
 
-    <section class="technologies reveal" id="technologies">
-      <h3 class="section-title" data-key="techTitle">Our Technologies</h3>
+    <section class="specialization reveal" id="specialization">
+      <h3 class="section-title" data-key="specTitle">Our Specialization</h3>
       <div class="grid-container">
-        <div class="card tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><h4>Python</h4></div>
-        <div class="card tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"><h4>C</h4></div>
-        <div class="card tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"><h4>C++</h4></div>
+        <div class="card spec-card">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          <h4 data-key="spec1Title">Website Development</h4>
+          <p data-key="spec1Desc">From landing pages to complex platforms, we create modern, fast, and responsive websites.</p>
+        </div>
+        <div class="card spec-card">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          <h4 data-key="spec2Title">Software Development</h4>
+          <p data-key="spec2Desc">We develop custom desktop and server applications to automate processes and solve business tasks.</p>
+        </div>
+        <div class="card spec-card">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+          <h4 data-key="spec3Title">Coding & Optimization</h4>
+          <p data-key="spec3Desc">We write clean, efficient code and can analyze and refactor your existing codebase for better performance.</p>
+        </div>
       </div>
     </section>
 
     <section class="team reveal" id="team">
       <h3 class="section-title" data-key="teamTitle">Our Team</h3>
       <div class="grid-container">
-        <div class="card team-member" data-member="yura">
-          <div class="team-member__photo"></div>
-          <h4>Yura F.</h4>
-          <p data-key="founder">Founder / Developer</p>
-        </div>
-        <div class="card team-member" data-member="veronika">
-          <div class="team-member__photo"></div>
-          <h4>Дзюба Вероніка</h4>
-          <p data-key="developer">Developer</p>
-        </div>
+        <div class="card team-member" data-member="yura"><div class="team-member__photo"></div><h4>Yura F.</h4><p data-key="founder">Founder / Developer</p></div>
+        <div class="card team-member" data-member="veronika"><div class="team-member__photo"></div><h4>Дзюба Вероніка</h4><p data-key="developer">Developer</p></div>
       </div>
     </section>
 
@@ -308,11 +261,9 @@
           const animatedTextElements = section.querySelectorAll('.animated-text');
           animatedTextElements.forEach(element => {
               if (!element.dataset.animated) {
-                  const text = element.textContent;
-                  element.innerHTML = ''; 
+                  const text = element.textContent; element.innerHTML = ''; 
                   text.split(' ').forEach((word, index) => {
-                      const span = document.createElement('span');
-                      span.textContent = word + ' ';
+                      const span = document.createElement('span'); span.textContent = word + ' ';
                       span.style.transitionDelay = `${index * 40}ms`;
                       element.appendChild(span);
                   });
@@ -324,37 +275,51 @@
 
       const translations = {
         en: {
-          navAbout: "About Us", navTech: "Technologies", navTeam: "Team", navContact: "Contact",
+          navAbout: "About Us", navSpec: "Specialization", navTeam: "Team", navContact: "Contact",
           slogan: "Code & Innovation", desc: "We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.", contactBtn: "Contact Us",
           aboutTitle: "About Us", aboutP1: "MSFSoft is a fresh perspective on the world of software development. We are a young team, but full of enthusiasm and innovative ideas. Our passion for coding and solving complex problems unites us, allowing us to create effective and reliable IT solutions.", aboutP2: "We specialize in website development, from simple landing pages to more complex interactive platforms. Additionally, we successfully engage in writing small but functional programs, as well as optimizing and refactoring existing code. Our goal is to bring your ideas to life through clean, scalable, and efficient solutions.", aboutMission: "Our Mission:", aboutMissionDesc: "To make the world better through quality code. We strive to be a reliable partner for our clients, helping them achieve success through innovative and understandable technological solutions.",
-          techTitle: "Our Technologies", teamTitle: "Our Team",
-          founder: "Founder / Developer", developer: "Developer",
+          specTitle: "Our Specialization",
+          spec1Title: "Website Development", spec1Desc: "From landing pages to complex platforms, we create modern, fast, and responsive websites.",
+          spec2Title: "Software Development", spec2Desc: "We develop custom desktop and server applications to automate processes and solve business tasks.",
+          spec3Title: "Coding & Optimization", spec3Desc: "We write clean, efficient code and can analyze and refactor your existing codebase for better performance.",
+          teamTitle: "Our Team", founder: "Founder / Developer", developer: "Developer",
           contactTitle: "Get in Touch"
         },
         ua: {
-          navAbout: "Про нас", navTech: "Технології", navTeam: "Команда", navContact: "Контакти",
+          navAbout: "Про нас", navSpec: "Наша спеціалізація", navTeam: "Команда", navContact: "Контакти",
           slogan: "Код та Інновації", desc: "Ми створюємо стабільні та ефективні програмні рішення, перетворюючи складні ідеї на реальність за допомогою чистого та надійного коду.", contactBtn: "Зв'язатися з нами",
           aboutTitle: "Про нас", aboutP1: "MSFSoft — це свіжий погляд на світ розробки програмного забезпечення. Ми молода, але сповнена ентузіазму та інноваційних ідей команда програмістів. Наша пристрасть до кодування та вирішення складних задач об'єднує нас, дозволяючи створювати ефективні та надійні IT-рішення.", aboutP2: "Ми спеціалізуємося на розробці веб-сайтів, від простих візитівок до більш складних інтерактивних платформ. Крім того, ми успішно займаємося написанням невеликих, але функціональних програм, а також оптимізацією та рефакторингом існуючого коду. Наша мета — втілити ваші ідеї в життя за допомогою чистих, масштабованих та ефективних рішень.", aboutMission: "Наша місія:", aboutMissionDesc: "Робити світ кращим за допомогою якісного коду. Ми прагнемо бути надійним партнером для наших клієнтів, допомагаючи їм досягати успіху через інноваційні та зрозумілі технологічні рішення.",
-          techTitle: "Наші технології", teamTitle: "Наша команда",
-          founder: "Засновник / Розробник", developer: "Розробник",
+          specTitle: "Наша спеціалізація",
+          spec1Title: "Створення сайтів", spec1Desc: "Від лендингів до складних платформ, ми створюємо сучасні, швидкі та адаптивні сайти.",
+          spec2Title: "Розробка програм", spec2Desc: "Розробляємо кастомні десктопні та серверні програми для автоматизації процесів та вирішення бізнес-задач.",
+          spec3Title: "Кодинг та оптимізація", spec3Desc: "Пишемо чистий, ефективний код, а також можемо проаналізувати та провести рефакторинг вашого існуючого коду для кращої продуктивності.",
+          teamTitle: "Наша команда", founder: "Засновник / Розробник", developer: "Розробник",
           contactTitle: "Зв'яжіться з нами"
         }
       };
 
+      const teamData = {
+          en: {
+              yura: { name: "Yura F.", role: "Founder / Lead Developer", bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software." },
+              veronika: { name: "Veronika Dziuba", role: "Frontend Developer", bio: "Veronika brings ideas to life in the browser. With a keen eye for detail and a focus on user experience, she crafts intuitive and responsive interfaces that users love to interact with." }
+          },
+          ua: {
+              yura: { name: "Юра Ф.", role: "Засновник / Головний розробник", bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення." },
+              veronika: { name: "Дзюба Вероніка", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти." }
+          }
+      };
+      
+      let currentLang = 'en';
       const langButtons = document.querySelectorAll('.lang-btn');
       const translatableElements = document.querySelectorAll('[data-key]');
-      let currentLang = 'en'; // Зберігаємо поточну мову
-
       const setLanguage = (lang) => {
         currentLang = lang;
         translatableElements.forEach(element => {
           const key = element.dataset.key;
           if (translations[lang][key]) {
             if (element.classList.contains('animated-text')) {
-                element.dataset.originalText = translations[lang][key];
-                element.textContent = translations[lang][key];
-                element.classList.remove('activated');
-                element.dataset.animated = 'false';
+                element.dataset.originalText = translations[lang][key]; element.textContent = translations[lang][key];
+                element.classList.remove('activated'); element.dataset.animated = 'false';
                 if(element.closest('.reveal').classList.contains('active')) { animateText(element.closest('section')); }
             } else { element.textContent = translations[lang][key]; }
           }
@@ -362,10 +327,7 @@
         document.documentElement.lang = lang;
         langButtons.forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
       };
-
-      langButtons.forEach(button => {
-        button.addEventListener('click', (event) => { setLanguage(event.target.dataset.lang); });
-      });
+      langButtons.forEach(button => { button.addEventListener('click', (event) => { setLanguage(event.target.dataset.lang); }); });
       setLanguage('ua'); 
 
       function generateStarShadows(numStars) {
@@ -381,67 +343,25 @@
       document.getElementById('stars2').style.boxShadow = generateStarShadows(200);
       document.getElementById('stars3').style.boxShadow = generateStarShadows(100);
 
-      /* ---------------------------------- */
-      /* --- НОВИЙ JAVASCRIPT: MODAL LOGIC --- */
-      /* ---------------------------------- */
-      const teamData = {
-          en: {
-              yura: {
-                  name: "Yura F.",
-                  role: "Founder / Lead Developer",
-                  bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software."
-              },
-              veronika: {
-                  name: "Veronika Dziuba",
-                  role: "Frontend Developer",
-                  bio: "Veronika brings ideas to life in the browser. With a keen eye for detail and a focus on user experience, she crafts intuitive and responsive interfaces that users love to interact with."
-              }
-          },
-          ua: {
-              yura: {
-                  name: "Юра Ф.",
-                  role: "Засновник / Головний розробник",
-                  bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення."
-              },
-              veronika: {
-                  name: "Дзюба Вероніка",
-                  role: "Фронтенд-розробник",
-                  bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти."
-              }
-          }
-      };
-
       const teamCards = document.querySelectorAll('.team-member');
       const modal = document.getElementById('team-modal');
       const modalName = document.getElementById('modal-name');
       const modalRole = document.getElementById('modal-role');
       const modalBio = document.getElementById('modal-bio');
       const closeModalBtn = document.getElementById('modal-close-btn');
-
       teamCards.forEach(card => {
           card.addEventListener('click', () => {
               const memberId = card.dataset.member;
               const memberInfo = teamData[currentLang][memberId];
-
               modalName.textContent = memberInfo.name;
               modalRole.textContent = memberInfo.role;
               modalBio.textContent = memberInfo.bio;
-
               modal.classList.add('visible');
           });
       });
-
-      function closeModal() {
-          modal.classList.remove('visible');
-      }
-
+      function closeModal() { modal.classList.remove('visible'); }
       closeModalBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (event) => {
-          // Закриваємо модальне вікно, якщо клік був на оверлей, а не на контент
-          if (event.target === modal) {
-              closeModal();
-          }
-      });
+      modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } });
     });
   </script>
 
