@@ -41,7 +41,6 @@
     /* ---------------------------------- */
     /* --- 2. CSS BACKGROUND EFFECTS --- */
     /* ---------------------------------- */
-    /* Ефект "Аврора" (кольорове сяйво) */
     .aurora-background {
         position: fixed; top: 50%; left: 50%; width: 120vmax; height: 120vmax;
         background: radial-gradient(circle, var(--primary-accent), transparent 40%),
@@ -55,7 +54,6 @@
         100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
     }
     
-    /* Ефект "Зоряне небо" на CSS (буде згенеровано JS) */
     #stars1, #stars2, #stars3 {
         width: 1px; height: 1px; background: transparent;
         animation: animStar 50s linear infinite;
@@ -65,39 +63,66 @@
     #stars3 { animation-duration: 150s; }
     @keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
 
-    /* --- ЛОГОТИП НА ФОНІ --- */
     .background-logo {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('https://msfsoft.team/logo.svg'); /* <--- ВСТАВТЕ ШЛЯХ ДО ВАШОГО ЛОГО ТУТ */
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: 40vmax; /* Розмір логотипу, можна змінити (наприклад, contain, cover, 50%) */
-        opacity: 0.03; /* Прозорість логотипу */
-        filter: grayscale(100%) blur(1px); /* Зробимо його чорно-білим і трохи розмитим */
-        z-index: 1; /* Між зорями/авророю та контентом */
-        pointer-events: none; /* Щоб лого не блокувало взаємодію з іншими елементами */
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url('https://msfsoft.team/logo.svg');
+        background-repeat: no-repeat; background-position: center center;
+        background-size: 40vmax; opacity: 0.03;
+        filter: grayscale(100%) blur(1px); z-index: 1;
+        pointer-events: none;
     }
 
 
     /* ---------------------------------- */
-    /* --- 3. HEADER & HERO --- */
+    /* --- 3. HEADER & NAVIGATION --- */
     /* ---------------------------------- */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 25px 8%; position: fixed; top: 0; left: 0;
+      padding: 20px 8%; position: fixed; top: 0; left: 0;
       width: 100%; z-index: 100; background: rgba(2, 4, 18, 0.7);
       backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);
     }
-    .logo { font-size: 1.8em; font-weight: 700; color: var(--text-color); }
+    .logo { font-size: 1.8em; font-weight: 700; color: var(--text-color); text-decoration: none;}
+    
+    .header__nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .header__nav-list {
+        display: flex;
+        gap: 35px;
+        list-style: none;
+    }
+    
+    .header__nav-link {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+    .header__nav-link::after {
+        content: ''; position: absolute; width: 0; height: 2px;
+        background: var(--primary-accent); left: 50%;
+        transform: translateX(-50%); bottom: -5px;
+        transition: width 0.3s ease;
+    }
+    .header__nav-link:hover { color: var(--primary-accent); }
+    .header__nav-link:hover::after { width: 100%; }
+
+    .lang-toggle {
+        margin-left: 20px;
+    }
     .lang-toggle button {
       background: transparent; border: none; color: white; margin: 0 5px; font-size: 1em; cursor: pointer; transition: 0.3s;
     }
     .lang-toggle button.active { color: var(--primary-accent); font-weight: 700; }
 
+    /* ---------------------------------- */
+    /* --- 4. HERO SECTION --- */
+    /* ---------------------------------- */
     .hero {
       height: 100vh; display: flex; flex-direction: column;
       justify-content: center; align-items: center; text-align: center;
@@ -120,10 +145,8 @@
       color: #fff; background: var(--primary-accent);
       box-shadow: 0 0 30px rgba(0, 183, 255, 0.7);
     }
-
-    /* ---------------------------------- */
-    /* --- 5. GENERAL SECTION STYLING --- */
-    /* ---------------------------------- */
+    
+    /* (The rest of the CSS remains the same) */
     .section-title {
         font-size: 2.5em; margin-bottom: 50px; position: relative; display: inline-block;
     }
@@ -137,10 +160,6 @@
         transition: opacity 0.8s ease, transform 0.8s ease;
     }
     .reveal.active { opacity: 1; transform: translateY(0); }
-    
-    /* ---------------------------------- */
-    /* --- 6. ABOUT US SECTION --- */
-    /* ---------------------------------- */
     .about__content {
         max-width: 800px; margin: 0 auto; font-size: 1.1em;
         line-height: 1.8; text-align: left;
@@ -150,10 +169,6 @@
         margin-top: 30px; margin-bottom: 15px; font-size: 1.5em;
         text-align: center; color: var(--primary-accent);
     }
-    
-    /* ---------------------------------- */
-    /* --- 7. CARDS (TECH & TEAM) --- */
-    /* ---------------------------------- */
     .grid-container {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 30px; max-width: 1000px; margin: 50px auto 0;
@@ -178,37 +193,30 @@
       box-shadow: 0 0 15px rgba(0, 183, 255, 0.5);
     }
     .team-member h4 { font-size: 1.4em; margin-bottom: 5px; }
-
-    /* ---------------------------------- */
-    /* --- 8. CONTACT & FOOTER --- */
-    /* ---------------------------------- */
     .contact { text-align: center; }
     .contact-email {
-        display: inline-block;
-        margin-top: 20px;
-        font-size: clamp(1.2em, 4vw, 2em);
-        font-weight: 500;
-        color: var(--text-color);
-        text-decoration: none;
-        border: 2px solid var(--border-color);
-        padding: 20px 40px;
-        border-radius: 10px;
-        background: var(--card-bg);
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
+        display: inline-block; margin-top: 20px;
+        font-size: clamp(1.2em, 4vw, 2em); font-weight: 500;
+        color: var(--text-color); text-decoration: none;
+        border: 2px solid var(--border-color); padding: 20px 40px;
+        border-radius: 10px; background: var(--card-bg);
+        backdrop-filter: blur(10px); transition: all 0.3s ease;
     }
     .contact-email:hover {
-        color: #fff;
-        border-color: var(--primary-accent);
+        color: #fff; border-color: var(--primary-accent);
         background: rgba(0, 183, 255, 0.1);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
-    
     footer {
       text-align: center; padding: 30px; background: #010209;
       border-top: 1px solid var(--border-color);
       z-index: 2; position: relative;
+    }
+
+    @media (max-width: 768px) {
+        .header__nav-list {
+            display: none; /* Приховуємо меню на мобільних пристроях. Для мобільного меню потрібен складніший JS */
+        }
     }
 
   </style>
@@ -219,16 +227,26 @@
   <div id="stars1"></div>
   <div id="stars2"></div>
   <div id="stars3"></div>
-  <div class="background-logo"></div> <header>
-    <h1 class="logo">MSFSoft</h1>
-    <div class="lang-toggle">
-      <button data-lang="ua" class="lang-btn">UA</button>
-      <button data-lang="en" class="lang-btn active">EN</button>
-    </div>
+  <div class="background-logo"></div> 
+
+  <header>
+    <a href="#" class="logo">MSFSoft</a>
+    <nav class="header__nav">
+        <ul class="header__nav-list">
+            <li><a href="#about" class="header__nav-link" data-key="navAbout">About</a></li>
+            <li><a href="#technologies" class="header__nav-link" data-key="navTech">Technologies</a></li>
+            <li><a href="#team" class="header__nav-link" data-key="navTeam">Team</a></li>
+            <li><a href="#contact" class="header__nav-link" data-key="navContact">Contact</a></li>
+        </ul>
+        <div class="lang-toggle">
+          <button data-lang="ua" class="lang-btn">UA</button>
+          <button data-lang="en" class="lang-btn active">EN</button>
+        </div>
+    </nav>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="hero">
       <h2 class="hero__title" data-key="slogan">Code & Innovation</h2>
       <p class="hero__subtitle" data-key="desc">We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.</p>
       <a href="#contact" class="btn" data-key="contactBtn">Contact us</a>
@@ -309,6 +327,10 @@
       
       const translations = {
         en: {
+          navAbout: "About Us",
+          navTech: "Technologies",
+          navTeam: "Team",
+          navContact: "Contact",
           slogan: "Code & Innovation",
           desc: "We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.",
           contactBtn: "Contact Us",
@@ -324,6 +346,10 @@
           contactTitle: "Get in Touch"
         },
         ua: {
+          navAbout: "Про нас",
+          navTech: "Технології",
+          navTeam: "Команда",
+          navContact: "Контакти",
           slogan: "Код та Інновації",
           desc: "Ми створюємо стабільні та ефективні програмні рішення, перетворюючи складні ідеї на реальність за допомогою чистого та надійного коду.",
           contactBtn: "Зв'язатися з нами",
@@ -362,9 +388,8 @@
         });
       });
 
-      setLanguage('ua'); // Встановлюємо українську за замовчуванням
+      setLanguage('ua'); 
 
-      // --- GENERATE STARS (FIX FOR SASS ISSUE) ---
       function generateStarShadows(numStars) {
         let shadow = '';
         for (let i = 0; i < numStars; i++) {
