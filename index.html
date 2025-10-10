@@ -223,7 +223,9 @@
     <section class="hero" id="hero">
         <div class="hero-logo-container">
             <h1 class="hero-logo-main">MSFSoft</h1>
-            <p class="hero-logo-tagline" data-key="tagline"></p>
+            <p class="hero-logo-tagline">
+                <span>M</span>ost <span>S</span>uccessful <span>F</span>amily
+            </p>
         </div>
         <div class="hero-button-container">
             <a href="#about" class="btn" data-key="heroBtn">Дізнатись більше</a>
@@ -265,7 +267,7 @@
       <h3 class="section-title" data-key="teamTitle">Our Team</h3>
       <div class="grid-container">
         <div class="card team-member" data-member="yura"><div class="team-member__photo"></div><h4>Yura F.</h4><p data-key="founder">Founder / Developer</p></div>
-        <div class="card team-member" data-member="veronika"><div class="team-member__photo"></div><h4>Дзюба Вероніка</h4><p data-key="developer">Developer</p></div>
+        <div class="card team-member" data-member="veronika"><div class="team-member__photo"></div><h4>Veronika Dziuba</h4><p data-key="developer">Developer</p></div>
       </div>
     </section>
 
@@ -322,7 +324,6 @@
       const translations = {
         en: {
           navAbout: "About Us", navSpec: "Specialization", navTeam: "Team", navContact: "Contact",
-          tagline: "Most Successful Family",
           heroBtn: "Learn More",
           aboutTitle: "About Us", aboutP1: "MSFSoft is a fresh perspective on the world of software development. We are a young team, but full of enthusiasm and innovative ideas. Our passion for coding and solving complex problems unites us, allowing us to create effective and reliable IT solutions.", aboutP2: "We specialize in website development, from simple landing pages to more complex interactive platforms. Additionally, we successfully engage in writing small but functional programs, as well as optimizing and refactoring existing code. Our goal is to bring your ideas to life through clean, scalable, and efficient solutions.", aboutMission: "Our Mission:", aboutMissionDesc: "To make the world better through quality code. We strive to be a reliable partner for our clients, helping them achieve success through innovative and understandable technological solutions.",
           specTitle: "Our Specialization",
@@ -334,7 +335,6 @@
         },
         ua: {
           navAbout: "Про нас", navSpec: "Наша спеціалізація", navTeam: "Команда", navContact: "Контакти",
-          tagline: "Найуспішніша Сім'я",
           heroBtn: "Дізнатись більше",
           aboutTitle: "Про нас", aboutP1: "MSFSoft — це свіжий погляд на світ розробки програмного забезпечення. Ми молода, але сповнена ентузіазму та інноваційних ідей команда програмістів. Наша пристрасть до кодування та вирішення складних задач об'єднує нас, дозволяючи створювати ефективні та надійні IT-рішення.", aboutP2: "Ми спеціалізуємося на розробці веб-сайтів, від простих візитівок до більш складних інтерактивних платформ. Крім того, ми успішно займаємося написанням невеликих, але функціональних програм, а також оптимізацією та рефакторингом існуючого коду. Наша мета — втілити ваші ідеї в життя за допомогою чистих, масштабованих та ефективних рішень.", aboutMission: "Наша місія:", aboutMissionDesc: "Робити світ кращим за допомогою якісного коду. Ми прагнемо бути надійним партнером для наших клієнтів, допомагаючи їм досягати успіху через інноваційні та зрозумілі технологічні рішення.",
           specTitle: "Наша спеціалізація",
@@ -353,7 +353,7 @@
           },
           ua: {
               yura: { name: "Юра Ф.", role: "Засновник / Головний розробник", bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення." },
-              veronika: { name: "Дзюба Вероніка", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти." }
+              veronika: { name: "Veronika Dziuba", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти." }
           }
       };
       
@@ -365,15 +365,7 @@
         translatableElements.forEach(element => {
           const key = element.dataset.key;
           if (translations[lang][key]) {
-            /* --- ВИПРАВЛЕНО: Надійна логіка для перекладу теглайну --- */
-            if (key === 'tagline') {
-                const translatedText = translations[lang][key];
-                const words = translatedText.split(' ');
-                // Безпечно створюємо HTML, який працює для будь-якої кількості слів
-                element.innerHTML = words.map(word => 
-                    (word ? `<span>${word.charAt(0)}</span>${word.substring(1)}` : '')
-                ).join(' ');
-            } else if (element.classList.contains('animated-text')) {
+            if (element.classList.contains('animated-text')) {
                 element.dataset.originalText = translations[lang][key]; element.textContent = translations[lang][key];
                 element.classList.remove('activated'); element.dataset.animated = 'false';
                 if(element.closest('.reveal').classList.contains('active')) { animateText(element.closest('section')); }
