@@ -88,15 +88,13 @@
     .lang-toggle button.active { color: var(--primary-accent); font-weight: 700; }
     
     /* ---------------------------------- */
-    /* --- 4. HERO SECTION (REWORKED) --- */
+    /* --- 4. HERO SECTION --- */
     /* ---------------------------------- */
     .hero {
       height: 100vh; display: flex; flex-direction: column;
       justify-content: center; align-items: center; text-align: center;
     }
-    .hero-logo-container {
-        animation: fadeIn 1.5s ease-out;
-    }
+    .hero-logo-container { animation: fadeIn 1.5s ease-out; }
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
@@ -112,7 +110,7 @@
     .hero-logo-tagline {
         font-weight: 300;
         font-size: clamp(1em, 2.5vw, 1.5em);
-        letter-spacing: 0.2em; /* Розріджений текст */
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         opacity: 0.8;
         margin-top: 10px;
@@ -225,9 +223,7 @@
     <section class="hero" id="hero">
         <div class="hero-logo-container">
             <h1 class="hero-logo-main">MSFSoft</h1>
-            <p class="hero-logo-tagline" data-key="tagline">
-                <span>M</span>ost <span>S</span>uccessful <span>F</span>amily
-            </p>
+            <p class="hero-logo-tagline" data-key="tagline"></p>
         </div>
         <div class="hero-button-container">
             <a href="#about" class="btn" data-key="heroBtn">Дізнатись більше</a>
@@ -253,7 +249,7 @@
           <p data-key="spec1Desc">From landing pages to complex platforms, we create modern, fast, and responsive websites.</p>
         </div>
         <div class="card spec-card">
-          <svg class="icon" xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
           <h4 data-key="spec2Title">Software Development</h4>
           <p data-key="spec2Desc">We develop custom desktop and server applications to automate processes and solve business tasks.</p>
         </div>
@@ -369,9 +365,14 @@
         translatableElements.forEach(element => {
           const key = element.dataset.key;
           if (translations[lang][key]) {
+            /* --- ВИПРАВЛЕНО: Надійна логіка для перекладу теглайну --- */
             if (key === 'tagline') {
-                const words = translations[lang][key].split(' ');
-                element.innerHTML = `<span>${words[0][0]}</span>${words[0].substring(1)} <span>${words[1][0]}</span>${words[1].substring(1)} <span>${words[2][0]}</span>${words[2].substring(1)}`;
+                const translatedText = translations[lang][key];
+                const words = translatedText.split(' ');
+                // Безпечно створюємо HTML, який працює для будь-якої кількості слів
+                element.innerHTML = words.map(word => 
+                    (word ? `<span>${word.charAt(0)}</span>${word.substring(1)}` : '')
+                ).join(' ');
             } else if (element.classList.contains('animated-text')) {
                 element.dataset.originalText = translations[lang][key]; element.textContent = translations[lang][key];
                 element.classList.remove('activated'); element.dataset.animated = 'false';
