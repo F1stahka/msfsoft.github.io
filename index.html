@@ -10,172 +10,195 @@
   
   <style>
     /* ---------------------------------- */
-    /* --- 1. SETUP & GLOBAL STYLES --- */
+    /* --- 1. ОСНОВНІ НАЛАШТУВАННЯ ТА ГЛОБАЛЬНІ СТИЛІ --- */
     /* ---------------------------------- */
     :root {
-      --bg-color: #020412;
-      --primary-accent: #00b7ff;
-      --secondary-accent: #8e44ad;
-      --text-color: #e2e8f0;
-      --card-bg: rgba(13, 18, 32, 0.6);
-      --border-color: rgba(0, 183, 255, 0.2);
+      /* --root дозволяє створити змінні, які можна використовувати по всьому CSS. Дуже зручно для зміни кольорової схеми. */
+      --bg-color: #020412; /* Основний колір фону */
+      --primary-accent: #00b7ff; /* Головний акцентний колір (блакитний) */
+      --secondary-accent: #8e44ad; /* Другорядний акцентний колір (фіолетовий) */
+      --text-color: #e2e8f0; /* Основний колір тексту */
+      --card-bg: rgba(13, 18, 32, 0.6); /* Колір фону для карток (напівпрозорий) */
+      --border-color: rgba(0, 183, 255, 0.2); /* Колір рамок (напівпрозорий) */
     }
 
+    /* Скидання стилів браузера за замовчуванням */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; /* Плавна прокрутка при кліку на посилання-якорі */ }
 
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: "Poppins", sans-serif;
-      overflow-x: hidden;
+      font-family: "Poppins", sans-serif; /* Встановлення основного шрифту */
+      overflow-x: hidden; /* Запобігання горизонтальному скролу */
     }
     
     section {
-        padding: 100px 8%;
-        position: relative;
-        z-index: 2;
-        overflow: hidden;
+        padding: 100px 8%; /* Внутрішні відступи для всіх секцій */
+        position: relative; /* Необхідно для роботи z-index */
+        z-index: 2; /* Розміщує контент секцій вище фонових ефектів */
+        overflow: hidden; /* Ховає все, що виходить за межі секції (для анімацій) */
     }
 
     /* ---------------------------------- */
-    /* --- 2. CSS BACKGROUND EFFECTS --- */
+    /* --- 2. ФОНОВІ ЕФЕКТИ НА CSS --- */
     /* ---------------------------------- */
+    /* Ефект "Аврора" (кольорове сяйво, що рухається) */
     .aurora-background {
-        position: fixed; top: 50%; left: 50%; width: 120vmax; height: 120vmax;
+        position: fixed; /* Фіксована позиція, щоб сяйво було на фоні і не рухалось при скролі */
+        top: 50%; left: 50%;
+        width: 120vmax; height: 120vmax; /* Великий розмір, щоб покрити весь екран */
         background: radial-gradient(circle, var(--primary-accent), transparent 40%),
                     radial-gradient(circle, var(--secondary-accent), transparent 40%);
-        opacity: 0.15; filter: blur(100px);
-        animation: aurora-movement 20s linear infinite; z-index: 0;
+        opacity: 0.15; /* Дуже низька прозорість, щоб не заважати */
+        filter: blur(100px); /* Сильне розмиття для м'якості */
+        animation: aurora-movement 20s linear infinite; /* Зациклена анімація руху */
+        z-index: 0; /* Найнижчий шар, під усім контентом */
     }
-    @keyframes aurora-movement { 0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); } 50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); } 100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); } }
+    @keyframes aurora-movement { 
+        0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+        50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); }
+        100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+    }
     
+    /* Ефект "Зоряне небо". Створюється за допомогою JS, тут лише стилі */
     #stars1, #stars2, #stars3 {
         width: 1px; height: 1px; background: transparent;
-        animation: animStar 50s linear infinite;
+        animation: animStar 50s linear infinite; /* Анімація руху зірок */
         position: fixed; top: 0; left: 0; z-index: 0;
     }
-    #stars2 { animation-duration: 100s; } #stars3 { animation-duration: 150s; }
+    /* Різна тривалість анімації для створення ефекту паралаксу (різної швидкості руху) */
+    #stars2 { animation-duration: 100s; }
+    #stars3 { animation-duration: 150s; }
     @keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
     
+    /* Логотип на фоні */
     .background-logo {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background-image: url('https://msfsoft.team/logo.svg');
-        background-repeat: no-repeat; background-position: center center;
-        background-size: 40vmax; opacity: 0.03;
-        filter: grayscale(100%) blur(1px); z-index: 1; pointer-events: none;
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: url('https://msfsoft.team/logo.svg'); /* Шлях до вашого логотипу */
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 40vmax; /* Розмір лого */
+        opacity: 0.03; /* Дуже низька прозорість */
+        filter: grayscale(100%) blur(1px); /* Чорно-білий та трохи розмитий */
+        z-index: 1; /* Між зорями/авророю та контентом */
+        pointer-events: none; /* Лого не реагує на кліки миші */
     }
 
-
     /* ---------------------------------- */
-    /* --- 3. HEADER & NAVIGATION --- */
+    /* --- 3. ХЕДЕР (ШАПКА) ТА НАВІГАЦІЯ --- */
     /* ---------------------------------- */
     header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 8%; position: fixed; top: 0; left: 0;
-      width: 100%; z-index: 100; background: rgba(2, 4, 18, 0.7);
-      backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: center; /* Розташування елементів по краях */
+      padding: 20px 8%; position: fixed; top: 0; left: 0; /* "Приклеює" хедер до верху сторінки */
+      width: 100%; z-index: 100; /* Вищий шар, щоб бути над усім */
+      background: rgba(2, 4, 18, 0.7); /* Напівпрозорий фон */
+      backdrop-filter: blur(10px); /* Ефект "матового скла" */
+      border-bottom: 1px solid var(--border-color);
     }
-    .logo { font-size: 1.8em; font-weight: 700; color: var(--text-color); text-decoration: none;}
+    .logo { font-size: 1.8em; font-weight: 700; color: var(--text-color); text-decoration: none; }
     
+    /* Навігаційне меню */
     .header__nav { display: flex; align-items: center; gap: 30px; }
     .header__nav-list { display: flex; gap: 35px; list-style: none; }
     .header__nav-link { color: var(--text-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; position: relative; }
+    /* Анімація підкреслення при наведенні */
     .header__nav-link::after { content: ''; position: absolute; width: 0; height: 2px; background: var(--primary-accent); left: 50%; transform: translateX(-50%); bottom: -5px; transition: width 0.3s ease; }
-    .header__nav-link:hover { color: var(--primary-accent); } .header__nav-link:hover::after { width: 100%; }
+    .header__nav-link:hover { color: var(--primary-accent); }
+    .header__nav-link:hover::after { width: 100%; }
+    
+    /* Перемикач мов */
     .lang-toggle { margin-left: 20px; }
     .lang-toggle button { background: transparent; border: none; color: white; margin: 0 5px; font-size: 1em; cursor: pointer; transition: 0.3s; }
     .lang-toggle button.active { color: var(--primary-accent); font-weight: 700; }
     
     /* ---------------------------------- */
-    /* --- 4. HERO SECTION --- */
+    /* --- 4. ГОЛОВНИЙ ЕКРАН (HERO) --- */
     /* ---------------------------------- */
-    .hero {
-      height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-    }
+    .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    /* Анімація появи головного блоку */
     .hero-logo-container { animation: fadeIn 1.5s ease-out; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    
+    /* Стиль для назви компанії "MSFSoft" */
     .hero-logo-main {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 900;
-        font-size: clamp(3em, 10vw, 7em);
-        letter-spacing: 0.05em;
-        color: var(--text-color);
-        text-shadow: 0 0 30px rgba(0, 183, 255, 0.3);
+        font-family: 'Poppins', sans-serif; font-weight: 900; /* Дуже жирний шрифт */
+        font-size: clamp(3em, 10vw, 7em); /* Адаптивний розмір шрифту */
+        letter-spacing: 0.05em; color: var(--text-color);
+        text-shadow: 0 0 30px rgba(0, 183, 255, 0.3); /* Ефект легкого світіння */
     }
+    /* Стиль для розшифровки "Most Successful Family" */
     .hero-logo-tagline {
-        font-weight: 300;
-        font-size: clamp(1em, 2.5vw, 1.5em);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        opacity: 0.8;
-        margin-top: 10px;
+        font-weight: 300; font-size: clamp(1em, 2.5vw, 1.5em);
+        letter-spacing: 0.2em; /* Збільшена відстань між літерами */
+        text-transform: uppercase; /* Всі літери великі */
+        opacity: 0.8; margin-top: 10px;
     }
-    .hero-logo-tagline span {
-        font-weight: 700;
-        color: var(--primary-accent);
-    }
+    /* Стиль для перших літер розшифровки (M, S, F) */
+    .hero-logo-tagline span { font-weight: 700; color: var(--primary-accent); }
 
+    /* Контейнер для кнопки "Дізнатись більше" */
     .hero-button-container {
         margin-top: 50px;
-        animation: fadeInUp 1s ease-out 0.5s;
+        animation: fadeInUp 1s ease-out 0.5s; /* Анімація появи з затримкою */
         animation-fill-mode: both;
     }
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .btn {
-      padding: 14px 35px; border: 2px solid var(--primary-accent);
-      color: var(--primary-accent); text-decoration: none;
-      font-weight: 500; border-radius: 50px; transition: all 0.3s ease;
-    }
-    .btn:hover {
-      color: #fff; background: var(--primary-accent);
-      box-shadow: 0 0 30px rgba(0, 183, 255, 0.7);
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Загальний стиль для кнопок */
+    .btn { padding: 14px 35px; border: 2px solid var(--primary-accent); color: var(--primary-accent); text-decoration: none; font-weight: 500; border-radius: 50px; transition: all 0.3s ease; }
+    .btn:hover { color: #fff; background: var(--primary-accent); box-shadow: 0 0 30px rgba(0, 183, 255, 0.7); }
     
     /* ---------------------------------- */
-    /* --- 5. SECTIONS & SCROLL ANIMATION --- */
+    /* --- 5. ЗАГАЛЬНІ СТИЛІ СЕКЦІЙ --- */
     /* ---------------------------------- */
+    /* Заголовки секцій (Про нас, Команда і т.д.) */
     .section-title { font-size: 2.5em; margin-bottom: 50px; position: relative; display: inline-block; }
     .section-title::after { content: ''; position: absolute; width: 80%; height: 3px; background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); left: 50%; transform: translateX(-50%); bottom: -15px; border-radius: 2px; }
+    
+    /* Анімація появи секцій при скролі */
     .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
     
     /* ---------------------------------- */
-    /* --- 6. ABOUT US & TEXT ANIMATION --- */
+    /* --- 6. СЕКЦІЯ "ПРО НАС" ТА АНІМАЦІЯ ТЕКСТУ --- */
     /* ---------------------------------- */
     .about__content { max-width: 800px; margin: 0 auto; font-size: 1.1em; line-height: 1.8; text-align: left; }
     .about__content p, .about__content h4 { margin-bottom: 20px; transition: opacity 0.5s ease; }
     .about__content h4 { margin-top: 30px; font-size: 1.5em; text-align: center; color: var(--primary-accent); }
+    
+    /* Початковий стан для слів, які будуть анімуватись */
     .animated-text span { display: inline-block; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    /* Кінцевий стан (видимий), який додає JS */
     .animated-text.activated span { opacity: 1; transform: translateY(0); }
     
     /* ---------------------------------- */
-    /* --- 7. CARDS (SPECIALIZATION & TEAM) --- */
+    /* --- 7. КАРТКИ (СПЕЦІАЛІЗАЦІЯ ТА КОМАНДА) --- */
     /* ---------------------------------- */
-    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 50px auto 0; perspective: 1000px; }
+    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 50px auto 0; perspective: 1000px; /* Вмикає 3D-простір для дочірніх елементів */ }
+    
+    /* Загальний стиль для всіх карток */
     .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; backdrop-filter: blur(10px); padding: 30px; text-align: center; transition: transform 0.4s ease, box-shadow 0.4s ease; transform-style: preserve-3d; }
+    /* 3D-ефект при наведенні */
     .card:hover { transform: translateY(-10px) rotateY(10deg) rotateX(5deg); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); border-color: var(--primary-accent); }
     
+    /* Стилі для карток спеціалізації */
     .spec-card .icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--primary-accent); }
     .spec-card h4 { font-size: 1.3em; margin-bottom: 10px; }
     .spec-card p { font-size: 0.95em; opacity: 0.8; line-height: 1.6; }
 
-    .team-member { cursor: pointer; }
+    /* Стилі для карток команди */
+    .team-member { cursor: pointer; /* Показує, що картка клікабельна */ }
     .team-member__photo { width: 120px; height: 120px; background: linear-gradient(var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 4px solid var(--bg-color); box-shadow: 0 0 15px rgba(0, 183, 255, 0.5); }
     .team-member h4 { font-size: 1.4em; margin-bottom: 5px; }
     
     /* ---------------------------------- */
-    /* --- 8. MODAL, CONTACT & FOOTER --- */
+    /* --- 8. МОДАЛЬНЕ ВІКНО, КОНТАКТИ, ФУТЕР --- */
     /* ---------------------------------- */
+    /* Стилі для модального вікна (pop-up) */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 18, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
-    .modal-overlay.visible { opacity: 1; visibility: visible; }
+    .modal-overlay.visible { opacity: 1; visibility: visible; } /* Клас для показу вікна */
     .modal-content { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; transform: scale(0.9); transition: transform 0.4s ease; }
     .modal-overlay.visible .modal-content { transform: scale(1); }
     .modal-close { position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--text-color); font-size: 2em; cursor: pointer; line-height: 1; transition: color 0.3s, transform 0.3s; }
@@ -183,15 +206,18 @@
     .modal-photo { width: 150px; height: 150px; background: linear-gradient(var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 5px solid var(--bg-color); box-shadow: 0 0 20px rgba(0, 183, 255, 0.6); }
     .modal-name { font-size: 2em; margin-bottom: 10px; } .modal-role { font-size: 1.2em; color: var(--primary-accent); margin-bottom: 20px; } .modal-bio { line-height: 1.7; opacity: 0.9; }
 
+    /* Секція контактів */
     .contact { text-align: center; }
     .contact-email { display: inline-block; margin-top: 20px; font-size: clamp(1.2em, 4vw, 2em); font-weight: 500; color: var(--text-color); text-decoration: none; border: 2px solid var(--border-color); padding: 20px 40px; border-radius: 10px; background: var(--card-bg); backdrop-filter: blur(10px); transition: all 0.3s ease; }
     .contact-email:hover { color: #fff; border-color: var(--primary-accent); background: rgba(0, 183, 255, 0.1); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
     
+    /* Футер (підвал) */
     footer { text-align: center; padding: 30px; background: #010209; border-top: 1px solid var(--border-color); z-index: 2; position: relative; }
     
+    /* Адаптивність для мобільних пристроїв */
     @media (max-width: 768px) {
-        .header__nav-list { display: none; }
-        .card:hover { transform: translateY(-10px); }
+        .header__nav-list { display: none; } /* Ховаємо меню на мобільних */
+        .card:hover { transform: translateY(-10px); } /* Вимикаємо 3D, залишаємо простий підйом */
     }
   </style>
 </head>
@@ -223,9 +249,7 @@
     <section class="hero" id="hero">
         <div class="hero-logo-container">
             <h1 class="hero-logo-main">MSFSoft</h1>
-            <p class="hero-logo-tagline">
-                <span>M</span>ost <span>S</span>uccessful <span>F</span>amily
-            </p>
+            <p class="hero-logo-tagline"><span>M</span>ost <span>S</span>uccessful <span>F</span>amily</p>
         </div>
         <div class="hero-button-container">
             <a href="#about" class="btn" data-key="heroBtn">Дізнатись більше</a>
@@ -292,35 +316,49 @@
   </div>
   
   <script>
+    // Весь JavaScript код починає виконуватись після повного завантаження сторінки
     document.addEventListener('DOMContentLoaded', () => {
+      // --- ДИНАМІЧНИЙ РІК У ФУТЕРІ ---
+      // Автоматично встановлює поточний рік
       document.getElementById('year').textContent = new Date().getFullYear();
       
+      // --- АНІМАЦІЯ ПОЯВИ ЕЛЕМЕНТІВ ПРИ СКРОЛІ ---
+      // Створюємо "спостерігача", який слідкує за появою елементів на екрані
       const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
+              // Якщо елемент з'явився у полі зору
               if (entry.isIntersecting) { 
-                  entry.target.classList.add('active');
+                  entry.target.classList.add('active'); // Додаємо клас, який робить його видимим
+                  // Якщо це секція "Про нас", запускаємо анімацію тексту
                   if (entry.target.id === 'about') { animateText(entry.target); }
               }
           });
-      }, { threshold: 0.15 });
+      }, { threshold: 0.15 }); // Анімація спрацює, коли 15% елемента видно
+      // Запускаємо спостереження за всіма елементами з класом .reveal
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       
+      // --- ФУНКЦІЯ АНІМАЦІЇ ТЕКСТУ ПО СЛОВАХ ---
       function animateText(section) {
           const animatedTextElements = section.querySelectorAll('.animated-text');
           animatedTextElements.forEach(element => {
+              // Перевіряємо, чи текст ще не був анімований, щоб не робити це повторно
               if (!element.dataset.animated) {
-                  const text = element.textContent; element.innerHTML = ''; 
+                  const text = element.textContent; element.innerHTML = ''; // Очищуємо елемент
+                  // Розбиваємо текст на слова, кожне слово обгортаємо в <span>
                   text.split(' ').forEach((word, index) => {
                       const span = document.createElement('span'); span.textContent = word + ' ';
-                      span.style.transitionDelay = `${index * 40}ms`;
+                      span.style.transitionDelay = `${index * 40}ms`; // Додаємо затримку для кожного слова
                       element.appendChild(span);
                   });
-                  element.dataset.animated = 'true';
+                  element.dataset.animated = 'true'; // Позначаємо, що анімація відбулася
+                  // З невеликою затримкою додаємо клас, що робить слова видимими
                   setTimeout(() => { element.classList.add('activated'); }, 100);
               }
           });
       }
 
+      // --- СИСТЕМА ПЕРЕКЛАДУ ---
+      // Об'єкт з усіма текстами для кожної мови
       const translations = {
         en: {
           navAbout: "About Us", navSpec: "Specialization", navTeam: "Team", navContact: "Contact",
@@ -345,7 +383,8 @@
           contactTitle: "Зв'яжіться з нами"
         }
       };
-
+      
+      // Об'єкт з даними для модальних вікон команди (щоб не тримати багато тексту в HTML)
       const teamData = {
           en: {
               yura: { name: "Yura F.", role: "Founder / Lead Developer", bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software." },
@@ -357,27 +396,35 @@
           }
       };
       
-      let currentLang = 'en';
+      let currentLang = 'ua'; // Зберігаємо поточну мову
       const langButtons = document.querySelectorAll('.lang-btn');
       const translatableElements = document.querySelectorAll('[data-key]');
+      
+      // Функція, що змінює мову на сайті
       const setLanguage = (lang) => {
         currentLang = lang;
+        // Проходимо по всіх елементах, які потрібно перекласти
         translatableElements.forEach(element => {
-          const key = element.dataset.key;
-          if (translations[lang][key]) {
+          const key = element.dataset.key; // Беремо ключ (напр., 'aboutTitle')
+          if (translations[lang][key]) { // Якщо переклад для цього ключа існує
             if (element.classList.contains('animated-text')) {
+                // Спеціальна логіка для тексту, що анімується, щоб анімація спрацювала знову
                 element.dataset.originalText = translations[lang][key]; element.textContent = translations[lang][key];
                 element.classList.remove('activated'); element.dataset.animated = 'false';
                 if(element.closest('.reveal').classList.contains('active')) { animateText(element.closest('section')); }
-            } else { element.textContent = translations[lang][key]; }
+            } else { element.textContent = translations[lang][key]; } // Просто змінюємо текст
           }
         });
-        document.documentElement.lang = lang;
-        langButtons.forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
+        document.documentElement.lang = lang; // Встановлюємо атрибут lang для всієї сторінки
+        langButtons.forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); }); // Оновлюємо активну кнопку
       };
+      // Додаємо обробник кліків для кнопок мови
       langButtons.forEach(button => { button.addEventListener('click', (event) => { setLanguage(event.target.dataset.lang); }); });
-      setLanguage('ua'); 
-
+      
+      setLanguage('ua'); // Встановлюємо українську мову за замовчуванням при завантаженні
+      
+      // --- ГЕНЕРАЦІЯ ЗІРОК НА ФОНІ ---
+      // Виправлення для SASS-функції: генеруємо CSS-властивість box-shadow за допомогою JS
       function generateStarShadows(numStars) {
         let shadow = '';
         for (let i = 0; i < numStars; i++) {
@@ -391,25 +438,30 @@
       document.getElementById('stars2').style.boxShadow = generateStarShadows(200);
       document.getElementById('stars3').style.boxShadow = generateStarShadows(100);
 
+      // --- ЛОГІКА МОДАЛЬНОГО ВІКНА ---
       const teamCards = document.querySelectorAll('.team-member');
       const modal = document.getElementById('team-modal');
       const modalName = document.getElementById('modal-name');
       const modalRole = document.getElementById('modal-role');
       const modalBio = document.getElementById('modal-bio');
       const closeModalBtn = document.getElementById('modal-close-btn');
+      
+      // Додаємо обробник кліків для кожної картки команди
       teamCards.forEach(card => {
           card.addEventListener('click', () => {
-              const memberId = card.dataset.member;
-              const memberInfo = teamData[currentLang][memberId];
+              const memberId = card.dataset.member; // Отримуємо ID члена команди (yura або veronika)
+              const memberInfo = teamData[currentLang][memberId]; // Знаходимо інформацію про нього для поточної мови
+              // Заповнюємо модальне вікно даними
               modalName.textContent = memberInfo.name;
               modalRole.textContent = memberInfo.role;
               modalBio.textContent = memberInfo.bio;
-              modal.classList.add('visible');
+              modal.classList.add('visible'); // Показуємо вікно
           });
       });
+      // Функція для закриття модального вікна
       function closeModal() { modal.classList.remove('visible'); }
-      closeModalBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } });
+      closeModalBtn.addEventListener('click', closeModal); // Закриття по кліку на хрестик
+      modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } }); // Закриття по кліку на фон
     });
   </script>
   
