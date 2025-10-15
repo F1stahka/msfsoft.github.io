@@ -1,171 +1,195 @@
-/* ===========================
+/* =========================================
    MSFSoft — script.js
-   =========================== */
+   Handles theme, language, animations, modals, nav
+   ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-  /* ===== Elements ===== */
-  const themeToggle = document.getElementById("themeToggle");
-  const langToggle = document.getElementById("langToggle");
-  const modal = document.getElementById("portfolioModal");
-  const modalClose = document.querySelector(".modal-close");
-  const contactForm = document.getElementById("contactForm");
+// ============ THEME SWITCHER ============
+const themeToggle = document.querySelector('#theme-toggle');
+const body = document.body;
+const currentTheme = localStorage.getItem('theme');
 
-  /* ===== Theme Handling ===== */
-  const currentTheme = localStorage.getItem("theme") || "light";
-  document.documentElement.setAttribute("data-theme", currentTheme);
-  updateThemeIcon(currentTheme);
+if (currentTheme === 'dark') {
+  body.setAttribute('data-theme', 'dark');
+}
 
-  themeToggle.addEventListener("click", () => {
-    const newTheme =
-      document.documentElement.getAttribute("data-theme") === "light"
-        ? "dark"
-        : "light";
-    document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-    updateThemeIcon(newTheme);
+themeToggle?.addEventListener('click', () => {
+  const theme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  themeToggle.innerHTML = theme === 'dark' ? '🌙' : '☀️';
+});
+
+// ============ LANGUAGE SWITCHER ============
+const langToggle = document.querySelector('#lang-toggle');
+const allTextNodes = document.querySelectorAll('[data-en][data-ua]');
+let currentLang = localStorage.getItem('lang') || 'en';
+updateLanguage(currentLang);
+
+langToggle?.addEventListener('click', () => {
+  currentLang = currentLang === 'en' ? 'ua' : 'en';
+  localStorage.setItem('lang', currentLang);
+  updateLanguage(currentLang);
+  langToggle.innerText = currentLang.toUpperCase();
+});
+
+function updateLanguage(lang) {
+  allTextNodes.forEach(node => {
+    node.textContent = node.getAttribute(`data-${lang}`);
   });
+}
 
-  function updateThemeIcon(theme) {
-    themeToggle.textContent = theme === "light" ? "🌙" : "☀️";
-  }
+// ============ BURGER MENU (mobile nav) ============
+const nav = document.querySelector('.nav');
+const navClone = nav.cloneNode(true);
+const burger = document.createElement('button');
+burger.className = 'burger';
+burger.innerHTML = `<span></span><span></span><span></span>`;
+document.querySelector('.nav-wrap').appendChild(burger);
 
-  /* ===== Language Handling ===== */
-  const texts = {
-    en: {
-      home: "Home",
-      about: "About",
-      portfolio: "Portfolio",
-      contact: "Contact",
-      startNow: "Start Now",
-      learnMore: "Learn More",
-      heroTitle: "Innovative Digital Solutions by MSFSoft",
-      heroSub:
-        "We create web platforms, apps, and modern IT systems that move the world forward. Founded by Y. F., MSFSoft leads in creative technology.",
-      stats: { projects: "Projects", partners: "Partners", countries: "Countries" },
-      tech: "Tech Stack",
-      aboutText:
-        "At MSFSoft, we combine innovation and simplicity to build products that improve everyday digital experiences.",
-      portfolioText:
-        "Our team works on projects in AI, web apps, and design systems. Each product reflects quality and modern aesthetics.",
-      contactTitle: "Contact Us",
-      contactInfo:
-        "Got an idea or question? Reach out and we’ll reply soon!",
-      send: "Send Message",
-      rights: "All rights reserved.",
-      modalTitle: "Project Details",
-    },
-    ua: {
-      home: "Головна",
-      about: "Про нас",
-      portfolio: "Портфоліо",
-      contact: "Контакти",
-      startNow: "Розпочати",
-      learnMore: "Детальніше",
-      heroTitle: "Інноваційні цифрові рішення від MSFSoft",
-      heroSub:
-        "Ми створюємо вебплатформи, додатки та сучасні ІТ-системи. Засновник — Ю. Ф., MSFSoft веде у світі креативних технологій.",
-      stats: { projects: "Проєктів", partners: "Партнерів", countries: "Країн" },
-      tech: "Технології",
-      aboutText:
-        "У MSFSoft ми поєднуємо інновації та простоту, створюючи продукти, які покращують цифрове життя.",
-      portfolioText:
-        "Команда працює над проєктами у сфері ШІ, вебдодатків і дизайн-систем. Кожен продукт — це якість і сучасність.",
-      contactTitle: "Зв’язок з нами",
-      contactInfo:
-        "Є ідея чи питання? Напишіть нам — ми відповімо найближчим часом!",
-      send: "Відправити",
-      rights: "Всі права захищено.",
-      modalTitle: "Деталі проєкту",
-    },
-  };
+const mobileMenu = document.createElement('div');
+mobileMenu.className = 'mobile-menu';
+mobileMenu.appendChild(navClone);
+document.body.appendChild(mobileMenu);
 
-  const currentLang = localStorage.getItem("lang") || "en";
-  setLanguage(currentLang);
-  updateLangIcon(currentLang);
+burger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+  burger.classList.toggle('active');
+});
 
-  langToggle.addEventListener("click", () => {
-    const newLang = currentLang === "en" ? "ua" : "en";
-    setLanguage(newLang);
-    updateLangIcon(newLang);
-    localStorage.setItem("lang", newLang);
-    location.reload(); // просте перезавантаження для оновлення текстів
+// close mobile menu on link click
+mobileMenu.querySelectorAll('a').forEach(link =>
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    burger.classList.remove('active');
+  })
+);
+
+// ============ SCROLL REVEAL ============
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+  const trigger = window.innerHeight * 0.85;
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < trigger) el.classList.add('visible');
   });
+}
 
-  function updateLangIcon(lang) {
-    langToggle.textContent = lang === "en" ? "🇺🇸" : "🇺🇦";
-  }
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 
-  function setLanguage(lang) {
-    const t = texts[lang];
-
-    document.querySelectorAll("nav a")[0].textContent = t.home;
-    document.querySelectorAll("nav a")[1].textContent = t.about;
-    document.querySelectorAll("nav a")[2].textContent = t.portfolio;
-    document.querySelectorAll("nav a")[3].textContent = t.contact;
-
-    document.querySelector(".hero-title").textContent = t.heroTitle;
-    document.querySelector(".hero-sub").textContent = t.heroSub;
-
-    document.querySelector(".kpis").children[0].querySelector("span").textContent =
-      t.stats.projects;
-    document.querySelector(".kpis").children[1].querySelector("span").textContent =
-      t.stats.partners;
-    document.querySelector(".kpis").children[2].querySelector("span").textContent =
-      t.stats.countries;
-
-    document.querySelector(".section-title").textContent = t.tech;
-    document.querySelector("#about p").textContent = t.aboutText;
-    document.querySelector("#portfolio p").textContent = t.portfolioText;
-    document.querySelector("#contact h2").textContent = t.contactTitle;
-    document.querySelector("#contact p").textContent = t.contactInfo;
-
-    document.querySelector("footer p").textContent = t.rights;
-  }
-
-  /* ===== Reveal Animation ===== */
-  const reveals = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    },
-    { threshold: 0.1 }
-  );
-  reveals.forEach((el) => observer.observe(el));
-
-  /* ===== Modal Portfolio ===== */
-  const portfolioCards = document.querySelectorAll("#portfolio .card");
-  portfolioCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      modal.classList.add("open");
-      modal.querySelector("h3").textContent =
-        localStorage.getItem("lang") === "ua"
-          ? "Деталі проєкту"
-          : "Project Details";
-      modal.querySelector("p").textContent = card.querySelector("p").textContent;
-    });
-  });
-  modalClose.addEventListener("click", () => modal.classList.remove("open"));
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.classList.remove("open");
-  });
-
-  /* ===== Contact Form Handling ===== */
-  contactForm.addEventListener("submit", (e) => {
+// ============ SMOOTH SCROLL ============
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
     e.preventDefault();
-
-    const data = Object.fromEntries(new FormData(contactForm).entries());
-    console.log("Form Data:", data);
-
-    contactForm.reset();
-
-    const lang = localStorage.getItem("lang") || "en";
-    const msg =
-      lang === "ua"
-        ? "Дякуємо! Ваше повідомлення відправлено."
-        : "Thank you! Your message has been sent.";
-    alert(msg);
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
 
+// ============ MODAL SYSTEM ============
+const modals = document.querySelectorAll('.modal');
+const modalTriggers = document.querySelectorAll('[data-modal]');
+const modalCloseBtns = document.querySelectorAll('.modal-close');
+
+modalTriggers.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-modal');
+    const modal = document.getElementById(id);
+    modal.classList.add('open');
+  });
+});
+
+modalCloseBtns.forEach(btn =>
+  btn.addEventListener('click', e => {
+    e.target.closest('.modal').classList.remove('open');
+  })
+);
+
+window.addEventListener('click', e => {
+  if (e.target.classList.contains('modal')) {
+    e.target.classList.remove('open');
+  }
+});
+
+// ============ CONTACT FORM (dummy send) ============
+const contactForm = document.querySelector('#contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Thank you for contacting MSFSoft! We’ll reply soon.');
+    contactForm.reset();
+  });
+}
+
+// ============ BURGER & MOBILE MENU STYLES ============
+const style = document.createElement('style');
+style.textContent = `
+.burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 0.4rem;
+}
+.burger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--text);
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+.burger.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+.burger.active span:nth-child(2) { opacity: 0; }
+.burger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+  box-shadow: 0 8px 20px var(--shadow);
+  z-index: 999;
+}
+.mobile-menu.open { transform: translateY(0); }
+.mobile-menu .nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1.2rem;
+}
+@media (max-width: 900px) {
+  .burger { display: flex; }
+}
+`;
+document.head.appendChild(style);
+
+// ============ ANIMATED BACKGROUND MOVEMENT ============
+const heroBG = document.querySelector('.hero-bg');
+if (heroBG) {
+  let pos = 0;
+  setInterval(() => {
+    pos += 0.5;
+    heroBG.style.backgroundPosition = `${pos}px ${pos / 2}px`;
+  }, 100);
+}
+
+// ============ FOOTER YEAR ============
+const year = new Date().getFullYear();
+const footer = document.querySelector('.site-footer');
+if (footer) {
+  footer.innerHTML = `© ${year} MSFSoft. All rights reserved.`;
+}
+
+// ============ INIT COMPLETE ============
+console.log("✅ MSFSoft Frontend Loaded Successfully");
