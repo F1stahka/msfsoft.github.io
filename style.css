@@ -1,22 +1,23 @@
-/* ===========================
-   MSFSoft — Global Stylesheet
-   =========================== */
+/* =========================================
+   MSFSoft — styles.css
+   Clean, adaptive, animated, responsive
+   ========================================= */
 
+/* ===== Root Variables ===== */
 :root {
-  /* colors */
   --accent: #6366f1;
   --accent-hover: #4f46e5;
-  --bg: #f9fafb;
+  --bg: #f8fafc;
   --bg-card: #ffffff;
-  --text: #1e293b;
+  --text: #0f172a;
   --muted: #64748b;
   --border: #e2e8f0;
-  --shadow: rgba(0, 0, 0, 0.06);
   --radius: 12px;
-  --transition: 0.35s ease;
+  --shadow: rgba(0, 0, 0, 0.06);
+  --transition: 0.3s ease;
 }
 
-/* Dark theme */
+/* ===== Dark Mode ===== */
 [data-theme='dark'] {
   --bg: #0f172a;
   --bg-card: #1e293b;
@@ -26,7 +27,7 @@
   --shadow: rgba(0, 0, 0, 0.4);
 }
 
-/* Reset and base */
+/* ===== Reset and Base ===== */
 * {
   margin: 0;
   padding: 0;
@@ -46,23 +47,21 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== Container ===== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* ===========================
-   Header / Navigation
-   =========================== */
+/* ===== Header ===== */
 header {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   transition: background var(--transition);
 }
@@ -77,112 +76,80 @@ header {
   height: 70px;
 }
 
+/* ===== Brand ===== */
 .brand {
   display: flex;
   align-items: center;
-  gap: 6px;
   font-weight: 800;
-  text-decoration: none;
-  color: var(--accent);
   font-size: 1.4rem;
+  color: var(--accent);
+  text-decoration: none;
+  gap: 6px;
 }
-
 .brand-mark {
   background: var(--accent);
-  color: white;
-  border-radius: 8px;
+  color: #fff;
   padding: 4px 8px;
-  font-weight: 700;
+  border-radius: 8px;
 }
 
+/* ===== Navigation ===== */
 .nav {
   display: flex;
-  align-items: center;
   gap: 1.6rem;
 }
-
 .nav a {
+  color: var(--text);
   text-decoration: none;
   font-weight: 500;
-  color: var(--text);
   transition: color var(--transition);
 }
 .nav a:hover {
   color: var(--accent);
 }
 
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  border-radius: var(--radius);
-  transition: background var(--transition), color var(--transition), transform var(--transition);
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: white;
-  padding: 0.7rem 1.4rem;
-}
-.btn-primary:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-}
-
-.btn-ghost {
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 0.7rem 1.4rem;
-  background: transparent;
-}
-.btn-ghost:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.icon-btn {
-  padding: 0.4rem 0.7rem;
-  background: var(--bg-card);
-  color: var(--text);
-  font-size: 1rem;
-  border: 1px solid var(--border);
-}
-.icon-btn:hover {
-  background: var(--accent);
-  color: white;
-}
-
+/* ===== Action Buttons (Theme / Lang) ===== */
 .actions {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
-/* ===========================
-   Hero
-   =========================== */
+.icon-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.7rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+}
+.icon-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ===== Hero ===== */
 .hero {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 3rem;
-  padding: 6rem 0;
+  padding: 8rem 0 5rem;
+  position: relative;
 }
 
 .hero-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(120deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
-  opacity: 0.1;
-  animation: hero-move 12s infinite alternate ease-in-out;
+  background: linear-gradient(120deg, #6366f1, #a855f7, #06b6d4);
+  opacity: 0.15;
+  animation: bg-move 10s infinite alternate ease-in-out;
 }
-@keyframes hero-move {
+@keyframes bg-move {
   from { transform: translateX(-10%); }
   to { transform: translateX(10%); }
 }
@@ -190,20 +157,52 @@ header {
 .hero-left {
   flex: 1 1 500px;
 }
-
 .hero-title {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
 }
-
 .hero-sub {
   font-size: 1.1rem;
+  color: var(--muted);
   line-height: 1.7;
   max-width: 600px;
   margin-bottom: 1.5rem;
 }
 
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1.4rem;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.7rem 1.4rem;
+  background: transparent;
+}
+.btn-ghost:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ===== Hero Card ===== */
 .hero-card {
   flex: 1 1 300px;
   background: var(--bg-card);
@@ -218,15 +217,23 @@ header {
 }
 .kpi strong {
   display: block;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+.kpi span {
+  color: var(--muted);
 }
 
 .divider {
   border: none;
   border-top: 1px solid var(--border);
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
+.tech-stack h4 {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
 .tech-list {
   display: flex;
   flex-wrap: wrap;
@@ -234,15 +241,13 @@ header {
 }
 .pill {
   background: var(--accent);
-  color: white;
+  color: #fff;
   border-radius: 20px;
   padding: 0.3rem 0.9rem;
   font-size: 0.9rem;
 }
 
-/* ===========================
-   Sections
-   =========================== */
+/* ===== Sections ===== */
 section {
   margin: 5rem 0;
 }
@@ -250,20 +255,14 @@ section {
 .section-title {
   text-align: center;
   font-size: 2rem;
+  font-weight: 700;
   color: var(--accent);
   margin-bottom: 2rem;
 }
-
-.card {
-  background: var(--bg-card);
-  padding: 2rem;
-  border-radius: var(--radius);
-  box-shadow: 0 6px 20px var(--shadow);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 25px var(--shadow);
+.section-intro {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 2rem;
 }
 
 .grid {
@@ -274,20 +273,44 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+/* ===== Cards ===== */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px var(--shadow);
+  padding: 2rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px var(--shadow);
+}
 .icon {
+  font-size: 1.8rem;
   margin-bottom: 1rem;
   color: var(--accent);
 }
 
-/* ===========================
-   Contact
-   =========================== */
+/* ===== Team ===== */
+.team-photo {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 15px var(--shadow);
+}
+
+/* ===== Contact ===== */
 .contact-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
 }
-
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
 input, textarea {
   width: 100%;
   border: 1px solid var(--border);
@@ -297,6 +320,7 @@ input, textarea {
   color: var(--text);
   font-family: inherit;
   font-size: 1rem;
+  margin-bottom: 1rem;
   transition: border var(--transition), box-shadow var(--transition);
 }
 input:focus, textarea:focus {
@@ -306,15 +330,9 @@ input:focus, textarea:focus {
 }
 
 .form-actions {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  text-align: right;
 }
 
-.small {
-  font-size: 0.85rem;
-}
 .accent-link {
   color: var(--accent);
   text-decoration: none;
@@ -323,43 +341,45 @@ input:focus, textarea:focus {
   text-decoration: underline;
 }
 
-/* ===========================
-   Footer
-   =========================== */
+/* ===== Footer ===== */
 .site-footer {
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 0;
   color: var(--muted);
   border-top: 1px solid var(--border);
+  font-size: 0.9rem;
 }
 
-/* ===========================
-   Modal
-   =========================== */
+/* ===== Modal ===== */
 .modal {
   position: fixed;
   inset: 0;
+  background: rgba(0,0,0,0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.5);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition);
+  z-index: 2000;
 }
 .modal.open {
   opacity: 1;
   pointer-events: all;
 }
-
 .modal-card {
   background: var(--bg-card);
-  border-radius: var(--radius);
   padding: 2rem;
+  border-radius: var(--radius);
   max-width: 600px;
   width: 90%;
-  box-shadow: 0 10px 40px var(--shadow);
   position: relative;
+  box-shadow: 0 10px 30px var(--shadow);
+  animation: modal-in 0.3s ease forwards;
+}
+@keyframes modal-in {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 .modal-close {
   position: absolute;
@@ -368,16 +388,15 @@ input:focus, textarea:focus {
   border: none;
   background: none;
   font-size: 1.4rem;
-  cursor: pointer;
   color: var(--muted);
+  cursor: pointer;
+  transition: color var(--transition);
 }
 .modal-close:hover {
   color: var(--accent);
 }
 
-/* ===========================
-   Reveal Animation
-   =========================== */
+/* ===== Animations: Reveal on Scroll ===== */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -388,39 +407,42 @@ input:focus, textarea:focus {
   transform: translateY(0);
 }
 
-/* ===========================
-   Responsive Design
-   =========================== */
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  .nav {
-    display: none; /* later replaced by burger if needed */
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  .btn-primary, .btn-ghost {
-    padding: 0.6rem 1.2rem;
-  }
-}
-
-/* ===========================
-   Misc
-   =========================== */
+/* ===== Noscript ===== */
 .noscript-banner {
   background: #dc2626;
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 1rem;
   font-weight: 600;
 }
 
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-card {
+    width: 100%;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .nav {
+    display: none; /* можна додати burger через JS */
+  }
+  .hero-title {
+    font-size: 2.3rem;
+  }
+}
+@media (max-width: 600px) {
+  .btn-primary, .btn-ghost {
+    padding: 0.6rem 1.1rem;
+  }
+  .section-title {
+    font-size: 1.7rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+}
