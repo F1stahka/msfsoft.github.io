@@ -17,8 +17,9 @@
       --primary-accent: #00b7ff;
       --secondary-accent: #8e44ad;
       --text-color: #e2e8f0;
-      --card-bg: rgba(13, 18, 32, 0.6);
-      --border-color: rgba(0, 183, 255, 0.2);
+      --card-bg: rgba(13, 18, 32, 0.7);
+      --border-color: rgba(0, 183, 255, 0.15);
+      --glow-color: rgba(0, 183, 255, 0.5);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,43 +33,32 @@
     }
     
     section {
-        padding: 100px 8%;
+        padding: 120px 8%;
         position: relative;
         z-index: 2;
         overflow: hidden;
     }
+    
+    /* Кастомний скролбар */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-color); }
+    ::-webkit-scrollbar-thumb { background-color: var(--primary-accent); border-radius: 10px; border: 2px solid var(--bg-color); }
+    ::-webkit-scrollbar-thumb:hover { background-color: var(--secondary-accent); }
 
     /* ---------------------------------- */
     /* --- 2. CSS BACKGROUND EFFECTS --- */
     /* ---------------------------------- */
-    .aurora-background {
-        position: fixed; top: 50%; left: 50%; width: 120vmax; height: 120vmax;
-        background: radial-gradient(circle, var(--primary-accent), transparent 40%),
-                    radial-gradient(circle, var(--secondary-accent), transparent 40%);
-        opacity: 0.15; filter: blur(100px);
-        animation: aurora-movement 20s linear infinite; z-index: 0;
-    }
+    .aurora-background { position: fixed; top: 50%; left: 50%; width: 120vmax; height: 120vmax; background: radial-gradient(circle, var(--primary-accent), transparent 40%), radial-gradient(circle, var(--secondary-accent), transparent 40%); opacity: 0.1; filter: blur(120px); animation: aurora-movement 20s linear infinite; z-index: 0; }
     @keyframes aurora-movement { 0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); } 50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); } 100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); } }
-    
-    #stars1, #stars2, #stars3 {
-        width: 1px; height: 1px; background: transparent;
-        animation: animStar 50s linear infinite;
-        position: fixed; top: 0; left: 0; z-index: 0;
-    }
+    #stars1, #stars2, #stars3 { width: 1px; height: 1px; background: transparent; animation: animStar 50s linear infinite; position: fixed; top: 0; left: 0; z-index: 0; }
     #stars2 { animation-duration: 100s; } #stars3 { animation-duration: 150s; }
     @keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
     
     /* ---------------------------------- */
     /* --- 3. HEADER & NAVIGATION --- */
     /* ---------------------------------- */
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 8%; position: fixed; top: 0; left: 0;
-      width: 100%; z-index: 100; background: rgba(2, 4, 18, 0.7);
-      backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);
-    }
-    .logo { font-size: 1.8em; font-weight: 700; color: var(--text-color); text-decoration: none;}
-    
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(2, 4, 18, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); }
+    .logo { font-size: 1.8em; font-weight: 700; color: var(--text-color); text-decoration: none; }
     .header__nav { display: flex; align-items: center; gap: 30px; }
     .header__nav-list { display: flex; gap: 35px; list-style: none; }
     .header__nav-link { color: var(--text-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; position: relative; }
@@ -79,97 +69,67 @@
     .lang-toggle button.active { color: var(--primary-accent); font-weight: 700; }
     
     /* ---------------------------------- */
-    /* --- 4. HERO SECTION (FIXED) --- */
+    /* --- 4. HERO SECTION (NEW DESIGN) --- */
     /* ---------------------------------- */
-    .hero {
-      height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      position: relative;
-      overflow: hidden;
-      /* ЗАМІНІТЬ ЦЕ ПОСИЛАННЯ НА СВОЄ З GITHUB */
-      background-image: url('msfsoft.github.io/Hailuo_Image_Create a modern, minimalist lo_431178414658379786.png');
-      background-size: cover;
-      background-position: center;
-    }
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(2, 4, 18, 0.7);
-        backdrop-filter: blur(5px);
-        z-index: 1;
-    }
-    
-    .hero-logo-container, .hero-button-container {
-        position: relative;
-        z-index: 2;
-    }
-
+    .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
     .hero-logo-container { animation: fadeIn 1.5s ease-out; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .hero-logo-main {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 900;
-        font-size: clamp(3em, 10vw, 7em);
-        letter-spacing: 0.05em;
-        color: var(--text-color);
-        text-shadow: 0 0 30px rgba(0, 183, 255, 0.3);
-    }
-    .hero-logo-tagline {
-        font-weight: 300;
-        font-size: clamp(1em, 2.5vw, 1.5em);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        opacity: 0.8;
-        margin-top: 10px;
-    }
-    .hero-logo-tagline span {
-        font-weight: 700;
-        color: var(--primary-accent);
-    }
-
-    .hero-button-container {
-        margin-top: 50px;
-        animation: fadeInUp 1s ease-out 0.5s;
-        animation-fill-mode: both;
-    }
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .btn {
-      padding: 14px 35px; border: 2px solid var(--primary-accent);
-      color: var(--primary-accent); text-decoration: none;
-      font-weight: 500; border-radius: 50px; transition: all 0.3s ease;
-    }
-    .btn:hover {
-      color: #fff; background: var(--primary-accent);
-      box-shadow: 0 0 30px rgba(0, 183, 255, 0.7);
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .hero-logo-main { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: clamp(3em, 10vw, 7em); letter-spacing: 0.05em; color: var(--text-color); text-shadow: 0 0 30px rgba(0, 183, 255, 0.3); }
+    .hero-logo-tagline { font-weight: 300; font-size: clamp(1em, 2.5vw, 1.5em); letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; margin-top: 10px; }
+    .hero-logo-tagline span { font-weight: 700; color: var(--primary-accent); }
+    .hero-button-container { margin-top: 50px; animation: fadeInUp 1s ease-out 0.5s; animation-fill-mode: both; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .btn { padding: 14px 35px; border: 2px solid var(--primary-accent); color: var(--primary-accent); text-decoration: none; font-weight: 500; border-radius: 50px; transition: all 0.3s ease; }
+    .btn:hover { color: #fff; background: var(--primary-accent); box-shadow: 0 0 30px var(--glow-color); }
     
-    /* (Решта CSS без змін) */
-    .section-title { font-size: 2.5em; margin-bottom: 50px; position: relative; display: inline-block; }
+    /* ---------------------------------- */
+    /* --- 5. SECTIONS & SCROLL ANIMATION --- */
+    /* ---------------------------------- */
+    .section-title { font-size: 2.5em; margin-bottom: 60px; position: relative; display: inline-block; }
     .section-title::after { content: ''; position: absolute; width: 80%; height: 3px; background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); left: 50%; transform: translateX(-50%); bottom: -15px; border-radius: 2px; }
     .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
+    
+    /* ---------------------------------- */
+    /* --- 6. ABOUT US & TEXT ANIMATION --- */
+    /* ---------------------------------- */
     .about__content { max-width: 800px; margin: 0 auto; font-size: 1.1em; line-height: 1.8; text-align: left; }
     .about__content p, .about__content h4 { margin-bottom: 20px; transition: opacity 0.5s ease; }
     .about__content h4 { margin-top: 30px; font-size: 1.5em; text-align: center; color: var(--primary-accent); }
     .animated-text span { display: inline-block; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .animated-text.activated span { opacity: 1; transform: translateY(0); }
-    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 50px auto 0; perspective: 1000px; }
-    .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; backdrop-filter: blur(10px); padding: 30px; text-align: center; transition: transform 0.4s ease, box-shadow 0.4s ease; transform-style: preserve-3d; }
-    .card:hover { transform: translateY(-10px) rotateY(10deg) rotateX(5deg); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); border-color: var(--primary-accent); }
-    .spec-card .icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--primary-accent); }
+    
+    /* ---------------------------------- */
+    /* --- 7. CARDS (BENTO & TEAM SPOTLIGHT) --- */
+    /* ---------------------------------- */
+    .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; backdrop-filter: blur(10px); padding: 30px; text-align: center; transition: background 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+    
+    /* Bento Grid для Спеціалізації */
+    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .spec-card-1 { grid-column: 1 / 3; } .spec-card-2 { grid-column: 3 / 4; } .spec-card-3 { grid-column: 1 / 4; }
+    .spec-card .icon { width: 40px; height: 40px; margin-bottom: 20px; color: var(--primary-accent); }
     .spec-card h4 { font-size: 1.3em; margin-bottom: 10px; }
     .spec-card p { font-size: 0.95em; opacity: 0.8; line-height: 1.6; }
+    .spec-card:hover { border-color: var(--primary-accent); }
+
+    /* Spotlight Effect для команди */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 50px auto 0; }
     .team-member { cursor: pointer; }
+    .team-member::before {
+        content: ''; position: absolute; left: var(--mouse-x, 50%); top: var(--mouse-y, 50%);
+        width: 150px; height: 150px;
+        background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+        transform: translate(-50%, -50%); opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    .team-member:hover::before { opacity: 1; }
+    .team-member-content { position: relative; z-index: 2; } /* Щоб контент був поверх "прожектора" */
     .team-member__photo { width: 120px; height: 120px; background: linear-gradient(var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 4px solid var(--bg-color); box-shadow: 0 0 15px rgba(0, 183, 255, 0.5); }
     .team-member h4 { font-size: 1.4em; margin-bottom: 5px; }
+    
+    /* ---------------------------------- */
+    /* --- 8. MODAL, CONTACT & FOOTER --- */
+    /* ---------------------------------- */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 18, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
     .modal-overlay.visible { opacity: 1; visibility: visible; }
     .modal-content { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; transform: scale(0.9); transition: transform 0.4s ease; }
@@ -178,11 +138,18 @@
     .modal-close:hover { color: var(--primary-accent); transform: rotate(90deg); }
     .modal-photo { width: 150px; height: 150px; background: linear-gradient(var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 5px solid var(--bg-color); box-shadow: 0 0 20px rgba(0, 183, 255, 0.6); }
     .modal-name { font-size: 2em; margin-bottom: 10px; } .modal-role { font-size: 1.2em; color: var(--primary-accent); margin-bottom: 20px; } .modal-bio { line-height: 1.7; opacity: 0.9; }
+
     .contact { text-align: center; }
     .contact-email { display: inline-block; margin-top: 20px; font-size: clamp(1.2em, 4vw, 2em); font-weight: 500; color: var(--text-color); text-decoration: none; border: 2px solid var(--border-color); padding: 20px 40px; border-radius: 10px; background: var(--card-bg); backdrop-filter: blur(10px); transition: all 0.3s ease; }
     .contact-email:hover { color: #fff; border-color: var(--primary-accent); background: rgba(0, 183, 255, 0.1); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    
     footer { text-align: center; padding: 30px; background: #010209; border-top: 1px solid var(--border-color); z-index: 2; position: relative; }
-    @media (max-width: 768px) { .header__nav-list { display: none; } .card:hover { transform: translateY(-10px); } }
+    
+    @media (max-width: 768px) {
+        .header__nav-list { display: none; }
+        .bento-grid { grid-template-columns: 1fr; }
+        .spec-card-1, .spec-card-2, .spec-card-3 { grid-column: auto; }
+    }
   </style>
 </head>
 <body>
@@ -231,30 +198,38 @@
 
     <section class="specialization reveal" id="specialization">
       <h3 class="section-title" data-key="specTitle">Our Specialization</h3>
-      <div class="grid-container">
-        <div class="card spec-card">
+      <div class="bento-grid">
+        <div class="card spec-card spec-card-1">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
           <h4 data-key="spec1Title">Website Development</h4>
           <p data-key="spec1Desc">From landing pages to complex platforms, we create modern, fast, and responsive websites.</p>
         </div>
-        <div class="card spec-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-          <h4 data-key="spec2Title">Software Development</h4>
-          <p data-key="spec2Desc">We develop custom desktop and server applications to automate processes and solve business tasks.</p>
-        </div>
-        <div class="card spec-card">
+        <div class="card spec-card spec-card-2">
           <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
           <h4 data-key="spec3Title">Coding & Optimization</h4>
-          <p data-key="spec3Desc">We write clean, efficient code and can analyze and refactor your existing codebase for better performance.</p>
+          <p data-key="spec3Desc">We write clean, efficient code and can analyze your existing codebase for better performance.</p>
+        </div>
+        <div class="card spec-card spec-card-3">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          <h4 data-key="spec2Title">Software Development</h4>
+          <p data-key="spec2Desc">We develop custom desktop and server applications to automate processes and solve business tasks using Python, C++, and C.</p>
         </div>
       </div>
     </section>
 
     <section class="team reveal" id="team">
       <h3 class="section-title" data-key="teamTitle">Our Team</h3>
-      <div class="grid-container">
-        <div class="card team-member" data-member="yura"><div class="team-member__photo"></div><h4>Yura F.</h4><p data-key="founder">Founder / Developer</p></div>
-        <div class="card team-member" data-member="veronika"><div class="team-member__photo"></div><h4>Veronika Dziuba</h4><p data-key="developer">Developer</p></div>
+      <div class="team-grid">
+        <div class="card team-member" data-member="yura">
+          <div class="team-member-content">
+            <div class="team-member__photo"></div><h4>Yura F.</h4><p data-key="founder">Founder / Developer</p>
+          </div>
+        </div>
+        <div class="card team-member" data-member="veronika">
+          <div class="team-member-content">
+            <div class="team-member__photo"></div><h4>Veronika Dziuba</h4><p data-key="developer">Developer</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -310,38 +285,22 @@
 
       const translations = {
         en: {
-          navAbout: "About Us", navSpec: "Specialization", navTeam: "Team", navContact: "Contact",
-          heroBtn: "Learn More",
+          navAbout: "About Us", navSpec: "Specialization", navTeam: "Team", navContact: "Contact", heroBtn: "Learn More",
           aboutTitle: "About Us", aboutP1: "MSFSoft is a fresh perspective on the world of software development. We are a young team, but full of enthusiasm and innovative ideas. Our passion for coding and solving complex problems unites us, allowing us to create effective and reliable IT solutions.", aboutP2: "We specialize in website development, from simple landing pages to more complex interactive platforms. Additionally, we successfully engage in writing small but functional programs, as well as optimizing and refactoring existing code. Our goal is to bring your ideas to life through clean, scalable, and efficient solutions.", aboutMission: "Our Mission:", aboutMissionDesc: "To make the world better through quality code. We strive to be a reliable partner for our clients, helping them achieve success through innovative and understandable technological solutions.",
-          specTitle: "Our Specialization",
-          spec1Title: "Website Development", spec1Desc: "From landing pages to complex platforms, we create modern, fast, and responsive websites.",
-          spec2Title: "Software Development", spec2Desc: "We develop custom desktop and server applications to automate processes and solve business tasks.",
-          spec3Title: "Coding & Optimization", spec3Desc: "We write clean, efficient code and can analyze and refactor your existing codebase for better performance.",
-          teamTitle: "Our Team", founder: "Founder / Developer", developer: "Developer",
-          contactTitle: "Get in Touch"
+          specTitle: "Our Specialization", spec1Title: "Website Development", spec1Desc: "From landing pages to complex platforms, we create modern, fast, and responsive websites.", spec2Title: "Software Development", spec2Desc: "We develop custom desktop and server applications to automate processes and solve business tasks using Python, C++, and C.", spec3Title: "Coding & Optimization", spec3Desc: "We write clean, efficient code and can analyze your existing codebase for better performance.",
+          teamTitle: "Our Team", founder: "Founder / Developer", developer: "Developer", contactTitle: "Get in Touch"
         },
         ua: {
-          navAbout: "Про нас", navSpec: "Наша спеціалізація", navTeam: "Команда", navContact: "Контакти",
-          heroBtn: "Дізнатись більше",
+          navAbout: "Про нас", navSpec: "Наша спеціалізація", navTeam: "Команда", navContact: "Контакти", heroBtn: "Дізнатись більше",
           aboutTitle: "Про нас", aboutP1: "MSFSoft — це свіжий погляд на світ розробки програмного забезпечення. Ми молода, але сповнена ентузіазму та інноваційних ідей команда програмістів. Наша пристрасть до кодування та вирішення складних задач об'єднує нас, дозволяючи створювати ефективні та надійні IT-рішення.", aboutP2: "Ми спеціалізуємося на розробці веб-сайтів, від простих візитівок до більш складних інтерактивних платформ. Крім того, ми успішно займаємося написанням невеликих, але функціональних програм, а також оптимізацією та рефакторингом існуючого коду. Наша мета — втілити ваші ідеї в життя за допомогою чистих, масштабованих та ефективних рішень.", aboutMission: "Наша місія:", aboutMissionDesc: "Робити світ кращим за допомогою якісного коду. Ми прагнемо бути надійним партнером для наших клієнтів, допомагаючи їм досягати успіху через інноваційні та зрозумілі технологічні рішення.",
-          specTitle: "Наша спеціалізація",
-          spec1Title: "Створення сайтів", spec1Desc: "Від лендингів до складних платформ, ми створюємо сучасні, швидкі та адаптивні сайти.",
-          spec2Title: "Розробка програм", spec2Desc: "Розробляємо кастомні десктопні та серверні програми для автоматизації процесів та вирішення бізнес-задач.",
-          spec3Title: "Кодинг та оптимізація", spec3Desc: "Пишемо чистий, ефективний код, а також можемо проаналізувати та провести рефакторинг вашого існуючого коду для кращої продуктивності.",
-          teamTitle: "Наша команда", founder: "Засновник / Розробник", developer: "Розробник",
-          contactTitle: "Зв'яжіться з нами"
+          specTitle: "Наша спеціалізація", spec1Title: "Створення сайтів", spec1Desc: "Від лендингів до складних платформ, ми створюємо сучасні, швидкі та адаптивні сайти.", spec2Title: "Розробка програм", spec2Desc: "Розробляємо кастомні десктопні та серверні програми для автоматизації процесів та вирішення бізнес-задач на Python, C++ та C.", spec3Title: "Кодинг та оптимізація", spec3Desc: "Пишемо чистий, ефективний код, а також можемо проаналізувати та провести рефакторинг вашого існуючого коду для кращої продуктивності.",
+          teamTitle: "Наша команда", founder: "Засновник / Розробник", developer: "Розробник", contactTitle: "Зв'яжіться з нами"
         }
       };
 
       const teamData = {
-          en: {
-              yura: { name: "Yura F.", role: "Founder / Lead Developer", bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software." },
-              veronika: { name: "Veronika Dziuba", role: "Frontend Developer", bio: "Veronika brings ideas to life in the browser. With a keen eye for detail and a focus on user experience, she crafts intuitive and responsive interfaces that users love to interact with." }
-          },
-          ua: {
-              yura: { name: "Юра Ф.", role: "Засновник / Головний розробник", bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення." },
-              veronika: { name: "Veronika Dziuba", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти." }
-          }
+          en: { yura: { name: "Yura F.", role: "Founder / Lead Developer", bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software." }, veronika: { name: "Veronika Dziuba", role: "Frontend Developer", bio: "Veronika brings ideas to life in the browser. With a keen eye for detail and a focus on user experience, she crafts intuitive and responsive interfaces that users love to interact with." } },
+          ua: { yura: { name: "Юра Ф.", role: "Засновник / Головний розробник", bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення." }, veronika: { name: "Veronika Dziuba", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти." } }
       };
       
       let currentLang = 'en';
@@ -397,6 +356,17 @@
       function closeModal() { modal.classList.remove('visible'); }
       closeModalBtn.addEventListener('click', closeModal);
       modal.addEventListener('click', (event) => { if (event.target === modal) { closeModal(); } });
+      
+      // Spotlight Effect Logic
+      document.querySelectorAll('.team-member').forEach(card => {
+          card.addEventListener('mousemove', e => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              card.style.setProperty('--mouse-x', `${x}px`);
+              card.style.setProperty('--mouse-y', `${y}px`);
+          });
+      });
     });
   </script>
   
