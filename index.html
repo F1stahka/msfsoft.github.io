@@ -87,14 +87,49 @@
     .lang-toggle button { background: transparent; border: none; color: white; margin: 0 5px; font-size: 1em; cursor: pointer; transition: 0.3s; }
     .lang-toggle button.active { color: var(--primary-accent); font-weight: 700; }
     
+    
     /* ---------------------------------- */
-    /* --- 4. HERO SECTION --- */
+    /* --- 4. ГОЛОВНИЙ ЕКРАН (HERO) --- */
     /* ---------------------------------- */
     .hero {
-      height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      /* НОВИЙ ФОН: */
+      background-image: url('https://i.imgur.com/your_new_logo_url.png'); /* Вставте сюди URL вашого нового логотипу */
+      background-size: 150%; /* Збільшуємо лого, щоб воно було дуже великим на фоні */
+      background-position: center center;
+      background-repeat: no-repeat;
+      animation: heroBackgroundZoom 30s ease-out infinite alternate; /* Анімація легкого зуму */
+      position: relative; /* Щоб на ньому коректно відображався контент */
+      overflow: hidden; /* Обрізаємо все, що виходить за межі */
     }
-    .hero-logo-container { animation: fadeIn 1.5s ease-out; }
+
+    /* Анімація для фонового лого */
+    @keyframes heroBackgroundZoom {
+        0% { background-size: 150%; opacity: 0.2; }
+        100% { background-size: 160%; opacity: 0.25; }
+    }
+
+    /* Додатковий шар з градієнтом поверх фонового лого, щоб зробити його темнішим */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: radial-gradient(circle at center, rgba(2,4,18, 0.2) 0%, var(--bg-color) 70%); /* Темний градієнт */
+        z-index: 1;
+    }
+    
+    /* Додаткові стилі для контейнера з логотипом, щоб він був поверх фону hero */
+    .hero-logo-container {
+      animation: fadeIn 1.5s ease-out;
+      position: relative;
+      z-index: 2; /* Забезпечуємо, що контент буде поверх нового фону */
+    }
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
@@ -124,11 +159,14 @@
         margin-top: 50px;
         animation: fadeInUp 1s ease-out 0.5s;
         animation-fill-mode: both;
+        position: relative; /* Забезпечуємо, що кнопка буде поверх нового фону */
+        z-index: 2;
     }
     @keyframes fadeInUp {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
     }
+    /* Решта кнопок без змін */
     .btn {
       padding: 14px 35px; border: 2px solid var(--primary-accent);
       color: var(--primary-accent); text-decoration: none;
@@ -138,7 +176,6 @@
       color: #fff; background: var(--primary-accent);
       box-shadow: 0 0 30px rgba(0, 183, 255, 0.7);
     }
-    
     /* ---------------------------------- */
     /* --- 5. SECTIONS & SCROLL ANIMATION --- */
     /* ---------------------------------- */
