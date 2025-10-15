@@ -6,25 +6,27 @@
   <title>MSFSoft — Digital Engineering</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
     /* =====================================
-       NEW DESIGN SYSTEM: PROFESSIONAL DARK
+       NEW DESIGN SYSTEM: PROFESSIONAL DARK WITH ANIMATIONS
        ===================================== */
     :root {
       --bg: #0D1117; /* Глибокий темно-синій, як у GitHub */
       --panel: #161B22;
       --text: #F0F2F5;
       --muted: #8B949E;
-      --accent: #00A3FF;
+      --accent: #00A3FF; /* Яскраво-синій */
       --border-color: rgba(255, 255, 255, 0.1);
-      --glow-color: rgba(0, 163, 255, 0.5);
+      --glow-color: rgba(0, 163, 255, 0.4); /* М'яке сяйво */
       --radius: 12px;
       --maxw: 1100px;
     }
 
     /* --- Global Styles --- */
     *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; } /* Плавний скрол */
     body {
       margin: 0;
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -43,7 +45,7 @@
       position: sticky; top: 0;
       padding: 16px 0;
       z-index: 100;
-      background: rgba(13, 17, 23, 0.7);
+      background: rgba(13, 17, 23, 0.8); /* Більш виражений фон для хедера */
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-color);
     }
@@ -52,7 +54,7 @@
     .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; background: var(--accent); color: #000; font-weight: 800; font-size: 1.1rem; border-radius: 8px; }
     .brand-title { font-weight: 700; font-size: 1.1rem; }
     .nav { display: flex; align-items: center; gap: 12px; margin-left: 24px; }
-    .nav a { color: var(--muted); font-weight: 600; padding: 8px 12px; transition: color 0.2s; border-radius: 8px; }
+    .nav a { color: var(--muted); font-weight: 600; padding: 8px 12px; transition: color 0.2s, background 0.2s; border-radius: 8px; }
     .nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
     .actions { margin-left: auto; display: flex; gap: 12px; align-items: center; }
 
@@ -63,14 +65,15 @@
         font-weight: 600; font-size: 0.95rem;
         cursor: pointer;
         border-radius: var(--radius);
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
     }
     .btn:active { transform: scale(0.98); }
     .btn-primary { background: var(--accent); color: #000; border: none; }
-    .btn-primary:hover { box-shadow: 0 0 20px var(--glow-color); }
+    .btn-primary:hover { box-shadow: 0 0 20px var(--glow-color); transform: translateY(-3px); }
     .btn-secondary { border: 1px solid var(--border-color); background: transparent; color: var(--text); }
-    .btn-secondary:hover { background: rgba(255,255,255,0.05); border-color: var(--text); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: var(--text); transform: translateY(-3px); }
     .icon-btn { padding: 10px; width: 44px; height: 44px; justify-content: center; border-radius: 8px; border: 1px solid var(--border-color); }
+    .icon-btn:hover { background: rgba(255,255,255,0.08); }
 
     /* --- Hero Section --- */
     .hero {
@@ -79,13 +82,18 @@
         text-align: center;
         position: relative;
         overflow: hidden;
+    }
+    .hero-bg-image {
+        position: absolute; inset: 0;
         background-image: url('https://images.unsplash.com/photo-1544256718-3bcf237f3974?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
         background-size: cover;
         background-position: center;
+        transition: transform 0.1s ease-out; /* Для паралаксу */
+        z-index: 0;
     }
     .hero::before {
         content: ''; position: absolute; inset: 0;
-        background: radial-gradient(circle at center, rgba(13,17,23,0.5) 0%, var(--bg) 80%);
+        background: radial-gradient(circle at center, rgba(13,17,23,0.3) 0%, var(--bg) 90%); /* Легший градієнт */
         z-index: 1;
     }
     .hero-content { position: relative; z-index: 2; }
@@ -102,8 +110,8 @@
 
     /* --- Sections & Cards --- */
     section { padding: 88px 0; }
-    .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 48px; }
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
+    .section-title { font-size: clamp(2rem, 5vw, 2.5rem); text-align: center; margin-bottom: 48px; }
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.show { opacity: 1; transform: none; }
     
     .grid { display: grid; gap: 24px; }
@@ -114,12 +122,16 @@
         padding: 24px;
         border: 1px solid var(--border-color);
         border-radius: var(--radius);
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        border-color: var(--accent); /* Підсвічування рамки */
+    }
     .card h4 { font-size: 1.25rem; margin-top: 16px; margin-bottom: 8px; }
     .card p { color: var(--muted); line-height: 1.6; }
-    .card-icon { width: 40px; height: 40px; color: var(--accent); }
+    .card-icon { width: 40px; height: 40px; color: var(--accent); stroke-width: 1.8; } /* Стиль для Lucide іконок */
 
     .team-member { cursor: pointer; text-align: center; }
     .team-member__photo {
@@ -129,9 +141,9 @@
         object-fit: cover;
         object-position: center;
         border: 2px solid var(--border-color);
-        transition: border-color 0.3s;
+        transition: border-color 0.3s, transform 0.3s;
     }
-    .team-member:hover .team-member__photo { border-color: var(--accent); }
+    .team-member:hover .team-member__photo { border-color: var(--accent); transform: scale(1.05); }
     
     /* --- Modal --- */
     .modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(13,17,23,0.8); backdrop-filter: blur(8px); z-index: 200; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
@@ -144,7 +156,12 @@
     /* --- Footer --- */
     footer { padding: 40px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border-color); margin-top: 40px;}
 
-    @media (max-width: 800px) { .nav { display: none; } }
+    @media (max-width: 800px) {
+        .nav { display: none; }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); }
+        .hero-sub { font-size: 1rem; }
+        .hero-cta { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -170,38 +187,39 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title" aria-hidden>
-              <span class="char" style="animation-delay:.04s">D</span>
-              <span class="char" style="animation-delay:.08s">i</span>
-              <span class="char" style="animation-delay:.12s">g</span>
-              <span class="char" style="animation-delay:.16s">i</span>
-              <span class="char" style="animation-delay:.20s">t</span>
-              <span class="char" style="animation-delay:.24s">a</span>
-              <span class="char" style="animation-delay:.28s">l</span>
-              <span style="display:inline-block; width:0.25em"></span>
-              <span class="char" style="animation-delay:.32s">E</span>
-              <span class="char" style="animation-delay:.36s">n</span>
-              <span class="char" style="animation-delay:.40s">g</span>
-              <span class="char" style="animation-delay:.44s">i</span>
-              <span class="char" style="animation-delay:.48s">n</span>
-              <span class="char" style="animation-delay:.52s">e</span>
-              <span class="char" style="animation-delay:.56s">e</span>
-              <span class="char" style="animation-delay:.60s">r</span>
-              <span class="char" style="animation-delay:.64s">i</span>
-              <span class="char" style="animation-delay:.68s">n</span>
-              <span class="char" style="animation-delay:.72s">g</span>
-            </h1>
-            <p class="hero-sub" data-key="heroSubtitle">We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.</p>
-            <div class="hero-cta">
-              <a href="#specialization" class="btn btn-primary" data-key="heroBtnSpec">Our Specialization</a>
-              <a href="#contact" class="btn btn-secondary" data-key="navContact">Contact</a>
-            </div>
-        </div>
-    </section>
+  <section class="hero" id="hero">
+      <div class="hero-bg-image"></div>
+      <div class="hero-content">
+          <h1 class="hero-title" aria-hidden>
+            <span class="char" style="animation-delay:.04s">D</span>
+            <span class="char" style="animation-delay:.08s">i</span>
+            <span class="char" style="animation-delay:.12s">g</span>
+            <span class="char" style="animation-delay:.16s">i</span>
+            <span class="char" style="animation-delay:.20s">t</span>
+            <span class="char" style="animation-delay:.24s">a</span>
+            <span class="char" style="animation-delay:.28s">l</span>
+            <span style="display:inline-block; width:0.25em"></span>
+            <span class="char" style="animation-delay:.32s">E</span>
+            <span class="char" style="animation-delay:.36s">n</span>
+            <span class="char" style="animation-delay:.40s">g</span>
+            <span class="char" style="animation-delay:.44s">i</span>
+            <span class="char" style="animation-delay:.48s">n</span>
+            <span class="char" style="animation-delay:.52s">e</span>
+            <span class="char" style="animation-delay:.56s">e</span>
+            <span class="char" style="animation-delay:.60s">r</span>
+            <span class="char" style="animation-delay:.64s">i</span>
+            <span class="char" style="animation-delay:.68s">n</span>
+            <span class="char" style="animation-delay:.72s">g</span>
+          </h1>
+          <p class="hero-sub" data-key="heroSubtitle">We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.</p>
+          <div class="hero-cta">
+            <a href="#specialization" class="btn btn-primary" data-key="heroBtnSpec">Our Specialization</a>
+            <a href="#contact" class="btn btn-secondary" data-key="navContact">Contact</a>
+          </div>
+      </div>
+  </section>
 
+  <main class="container">
     <section id="about" class="reveal">
         <h2 class="section-title" data-key="aboutTitle">Who We Are</h2>
         <div class="card">
@@ -213,17 +231,17 @@
       <h2 class="section-title" data-key="specTitle">Our Specialization</h2>
       <div class="grid grid-responsive">
         <div class="card spec-card">
-          <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid"><rect width="7" height="7" x="3" y="3"/><rect width="7" height="7" x="14" y="3"/><rect width="7" height="7" x="14" y="14"/><rect width="7" height="7" x="3" y="14"/></svg>
           <h4 data-key="spec1Title">Website Development</h4>
           <p data-key="spec1Desc">From landing pages to complex platforms, we create modern, fast, and responsive websites.</p>
         </div>
         <div class="card spec-card">
-          <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
           <h4 data-key="spec2Title">Software Development</h4>
           <p data-key="spec2Desc">We develop custom desktop and server applications to automate processes and solve business tasks.</p>
         </div>
         <div class="card spec-card">
-          <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+          <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2"><polyline points="18 16 22 12 18 8"/><polyline points="6 8 2 12 6 16"/><line x1="14" x2="10" y1="4" y2="20"/></svg>
           <h4 data-key="spec3Title">Coding & Optimization</h4>
           <p data-key="spec3Desc">We write clean, efficient code and can analyze and refactor your existing codebase for better performance.</p>
         </div>
@@ -235,7 +253,7 @@
       <div class="grid grid-responsive">
         <div class="card team-member" data-member="yura">
             <img class="team-member__photo" src="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg" alt="Yura F." />
-            <h4>Yura Fostiak.</h4>
+            <h4>Yura F.</h4>
             <p data-key="founder">Founder / Developer</p>
         </div>
         <div class="card team-member" data-member="veronika">
@@ -273,11 +291,24 @@
       // --- CORE UTILITIES ---
       document.getElementById('year').textContent = new Date().getFullYear();
 
+      // Lucide Icons (рендеринг SVG)
+      lucide.createIcons();
+
+      // Reveal animation observer
       const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('show'); } });
       }, { threshold: 0.1 });
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       
+      // Hero parallax effect
+      const heroBg = document.querySelector('.hero-bg-image');
+      if (heroBg) {
+        window.addEventListener('scroll', () => {
+          const scrollPosition = window.pageYOffset;
+          heroBg.style.transform = `translateY(${scrollPosition * 0.3}px)`; // Змініть 0.3 для різної швидкості
+        });
+      }
+
       // --- DATA & TRANSLATIONS ---
       const translations = {
         en: {
@@ -300,12 +331,12 @@
       
       const teamData = {
           en: {
-            yura: { name: "Yura Fostiak.", role: "Founder / Lead Developer", bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software.", photo: "https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg" },
+            yura: { name: "Yura F.", role: "Founder / Lead Developer", bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software.", photo: "https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg" },
             veronika: { name: "Veronika Dziuba", role: "Frontend Developer", bio: "Veronika brings ideas to life in the browser. With a keen eye for detail and a focus on user experience, she crafts intuitive and responsive interfaces that users love to interact with.", photo: "https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg" }
           },
           ua: {
-            yura: { name: "Юра Фостяк.", role: "Засновник / Головний розробник", bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення.", photo: "https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg" },
-            veronika: { name: "Вероніка Дзюба", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти.", photo: "https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg" }
+            yura: { name: "Юра Ф.", role: "Засновник / Головний розробник", bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення.", photo: "https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg" },
+            veronika: { name: "Veronika Dziuba", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти.", photo: "https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg" }
           }
       };
 
@@ -326,6 +357,17 @@
           }
         });
         document.documentElement.lang = lang;
+
+        // Update modal content if it's open
+        if (modal.classList.contains('visible')) {
+            const memberId = modal.dataset.memberId; // Отримаємо ID відкритого члена команди
+            if (memberId && teamData[currentLang][memberId]) {
+                const memberInfo = teamData[currentLang][memberId];
+                modalName.textContent = memberInfo.name;
+                modalRole.textContent = memberInfo.role;
+                modalBio.textContent = memberInfo.bio;
+            }
+        }
       };
       
       langToggleBtn.addEventListener('click', () => {
@@ -345,6 +387,7 @@
       document.querySelectorAll('.team-member').forEach(card => {
           card.addEventListener('click', () => {
               const memberId = card.dataset.member;
+              modal.dataset.memberId = memberId; // Зберігаємо ID члена команди у модальному вікні
               const memberInfo = teamData[currentLang][memberId];
               modalPhoto.src = memberInfo.photo;
               modalPhoto.alt = memberInfo.name;
