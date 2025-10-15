@@ -86,24 +86,23 @@
       justify-content: center; align-items: center; text-align: center;
       position: relative;
       overflow: hidden;
-      /* ВИПРАВЛЕНО: Встановлюємо надійне посилання на ваш логотип */
-      background-image: url('https://i.imgur.com/uN1m2pW.png');
+      /* ЗАМІНІТЬ ЦЕ ПОСИЛАННЯ НА СВОЄ З GITHUB */
+      background-image: url('https://github.com/F1stahka/msfsoft.github.io/blob/main/Hailuo_Image_Create%20a%20modern%2C%20minimalist%20lo_431178414658379786.png');
       background-size: cover;
       background-position: center;
     }
-    /* Затемнюючий шар поверх фону для кращої читабельності тексту */
     .hero::before {
         content: '';
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background: rgba(2, 4, 18, 0.7); /* Напівпрозорий темний колір */
-        backdrop-filter: blur(5px); /* Розмиття фонового логотипу */
+        background: rgba(2, 4, 18, 0.7);
+        backdrop-filter: blur(5px);
         z-index: 1;
     }
     
     .hero-logo-container, .hero-button-container {
-        position: relative; /* Розміщуємо контент поверх затемнюючого шару */
+        position: relative;
         z-index: 2;
     }
 
@@ -152,41 +151,25 @@
       box-shadow: 0 0 30px rgba(0, 183, 255, 0.7);
     }
     
-    /* ---------------------------------- */
-    /* --- 5. SECTIONS & SCROLL ANIMATION --- */
-    /* ---------------------------------- */
+    /* (Решта CSS без змін) */
     .section-title { font-size: 2.5em; margin-bottom: 50px; position: relative; display: inline-block; }
     .section-title::after { content: ''; position: absolute; width: 80%; height: 3px; background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); left: 50%; transform: translateX(-50%); bottom: -15px; border-radius: 2px; }
     .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
-    
-    /* ---------------------------------- */
-    /* --- 6. ABOUT US & TEXT ANIMATION --- */
-    /* ---------------------------------- */
     .about__content { max-width: 800px; margin: 0 auto; font-size: 1.1em; line-height: 1.8; text-align: left; }
     .about__content p, .about__content h4 { margin-bottom: 20px; transition: opacity 0.5s ease; }
     .about__content h4 { margin-top: 30px; font-size: 1.5em; text-align: center; color: var(--primary-accent); }
     .animated-text span { display: inline-block; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .animated-text.activated span { opacity: 1; transform: translateY(0); }
-    
-    /* ---------------------------------- */
-    /* --- 7. CARDS (SPECIALIZATION & TEAM) --- */
-    /* ---------------------------------- */
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 50px auto 0; perspective: 1000px; }
     .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; backdrop-filter: blur(10px); padding: 30px; text-align: center; transition: transform 0.4s ease, box-shadow 0.4s ease; transform-style: preserve-3d; }
     .card:hover { transform: translateY(-10px) rotateY(10deg) rotateX(5deg); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); border-color: var(--primary-accent); }
-    
     .spec-card .icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--primary-accent); }
     .spec-card h4 { font-size: 1.3em; margin-bottom: 10px; }
     .spec-card p { font-size: 0.95em; opacity: 0.8; line-height: 1.6; }
-
     .team-member { cursor: pointer; }
     .team-member__photo { width: 120px; height: 120px; background: linear-gradient(var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 4px solid var(--bg-color); box-shadow: 0 0 15px rgba(0, 183, 255, 0.5); }
     .team-member h4 { font-size: 1.4em; margin-bottom: 5px; }
-    
-    /* ---------------------------------- */
-    /* --- 8. MODAL, CONTACT & FOOTER --- */
-    /* ---------------------------------- */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 18, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
     .modal-overlay.visible { opacity: 1; visibility: visible; }
     .modal-content { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; transform: scale(0.9); transition: transform 0.4s ease; }
@@ -195,17 +178,11 @@
     .modal-close:hover { color: var(--primary-accent); transform: rotate(90deg); }
     .modal-photo { width: 150px; height: 150px; background: linear-gradient(var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 5px solid var(--bg-color); box-shadow: 0 0 20px rgba(0, 183, 255, 0.6); }
     .modal-name { font-size: 2em; margin-bottom: 10px; } .modal-role { font-size: 1.2em; color: var(--primary-accent); margin-bottom: 20px; } .modal-bio { line-height: 1.7; opacity: 0.9; }
-
     .contact { text-align: center; }
     .contact-email { display: inline-block; margin-top: 20px; font-size: clamp(1.2em, 4vw, 2em); font-weight: 500; color: var(--text-color); text-decoration: none; border: 2px solid var(--border-color); padding: 20px 40px; border-radius: 10px; background: var(--card-bg); backdrop-filter: blur(10px); transition: all 0.3s ease; }
     .contact-email:hover { color: #fff; border-color: var(--primary-accent); background: rgba(0, 183, 255, 0.1); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-    
     footer { text-align: center; padding: 30px; background: #010209; border-top: 1px solid var(--border-color); z-index: 2; position: relative; }
-    
-    @media (max-width: 768px) {
-        .header__nav-list { display: none; }
-        .card:hover { transform: translateY(-10px); }
-    }
+    @media (max-width: 768px) { .header__nav-list { display: none; } .card:hover { transform: translateY(-10px); } }
   </style>
 </head>
 <body>
@@ -235,9 +212,7 @@
     <section class="hero" id="hero">
         <div class="hero-logo-container">
             <h1 class="hero-logo-main">MSFSoft</h1>
-            <p class="hero-logo-tagline">
-                <span>M</span>ost <span>S</span>uccessful <span>F</span>amily
-            </p>
+            <p class="hero-logo-tagline"><span>M</span>ost <span>S</span>uccessful <span>F</span>amily</p>
         </div>
         <div class="hero-button-container">
             <a href="#about" class="btn" data-key="heroBtn">Дізнатись більше</a>
