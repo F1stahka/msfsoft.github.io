@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MSFSoft — Next-Gen Software</title>
-  <meta name="description" content="Innovative software solutions built by MSFSoft. Designed by Y.F." />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSFSoft — Intelligent Software Solutions</title>
+  <meta name="description" content="Empowering innovation through modern and adaptive software, crafted by Y.F. and MSFSoft.">
   <style>
     :root {
-      --accent: #4f46e5;
-      --accent-hover: #4338ca;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
       --bg-light: #f9fafb;
       --bg-dark: #0f172a;
       --text-light: #1e293b;
       --text-dark: #f8fafc;
-      --transition: 0.3s ease;
+      --transition: 0.4s ease;
     }
     [data-theme="dark"] {
       --bg-light: var(--bg-dark);
       --text-light: var(--text-dark);
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif;}
     body {
       background: var(--bg-light);
       color: var(--text-light);
@@ -33,105 +27,56 @@
       overflow-x: hidden;
     }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(10px);
-      z-index: 10;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 2rem; position:sticky; top:0; background:rgba(255,255,255,0.7);
+      backdrop-filter:blur(12px); z-index:20;
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--accent);
+    .logo {font-size:1.5rem; font-weight:700; color:var(--accent);}
+    nav ul {display:flex; gap:1.5rem; list-style:none;}
+    nav a {text-decoration:none; color:var(--text-light); font-weight:500; transition:color var(--transition);}
+    nav a:hover {color:var(--accent);}
+    .controls {display:flex; gap:0.5rem;}
+    .btn-small {
+      border:none; border-radius:8px; padding:0.4rem 0.8rem; cursor:pointer; font-weight:500;
+      background:var(--accent); color:#fff; transition:background var(--transition), transform var(--transition);
     }
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--text-light);
-      transition: color var(--transition);
-    }
-    nav a:hover {
-      color: var(--accent);
-    }
-    .lang-toggle, .theme-toggle {
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 0.4rem 0.8rem;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background var(--transition), transform var(--transition);
-    }
-    .lang-toggle:hover, .theme-toggle:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .btn-small:hover {background:var(--accent-hover); transform:translateY(-2px);}
+
+    /* Hero */
     .hero {
-      text-align: center;
-      padding-top: 6rem;
+      text-align:center; padding:7rem 2rem; position:relative; overflow:hidden;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    .hero::before {
+      content:""; position:absolute; inset:0; background:linear-gradient(120deg,#6366f1 0%,#a855f7 50%,#06b6d4 100%);
+      opacity:0.2; animation:moveBg 12s infinite alternate ease-in-out;
     }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+    @keyframes moveBg {from{transform:translateX(-10%);} to{transform:translateX(10%);}}
+    .hero h1 {font-size:3rem; font-weight:800; margin-bottom:1rem; position:relative;}
+    .hero p {font-size:1.2rem; margin-bottom:2rem; position:relative;}
+    .hero .btn-main {
+      background:var(--accent); color:#fff; border:none; border-radius:10px; padding:0.9rem 1.8rem;
+      font-size:1rem; font-weight:600; cursor:pointer; transition:background var(--transition), transform var(--transition);
+      position:relative;
     }
-    .hero button {
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 0.8rem 1.6rem;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
+    .hero .btn-main:hover {background:var(--accent-hover); transform:scale(1.05);}
+
+    /* Sections */
+    section {max-width:1000px; margin:auto; padding:4rem 2rem; opacity:0; transform:translateY(40px); transition:opacity 0.8s ease, transform 0.8s ease;}
+    section.visible {opacity:1; transform:translateY(0);}
+    h2 {font-size:2rem; margin-bottom:1rem; text-align:center; color:var(--accent);}
+    p {line-height:1.7; text-align:center; max-width:800px; margin:auto;}
+
+    .services-grid, .portfolio-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; margin-top:2rem;}
+    .card {
+      background:rgba(255,255,255,0.8); padding:1.5rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      text-align:center; transition:transform var(--transition), box-shadow var(--transition);
     }
-    .hero button:hover {
-      background: var(--accent-hover);
-      transform: scale(1.05);
-    }
-    .team {
-      text-align: center;
-    }
-    .team p {
-      font-size: 1.1rem;
-      color: var(--text-light);
-      margin-top: 1rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #94a3b8;
-    }
-    svg {
-      width: 24px;
-      height: 24px;
-      vertical-align: middle;
-    }
+    .card:hover {transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.1);}
+
+    .team {text-align:center;}
+    .team p {font-size:1.1rem; margin-top:1rem;}
+
+    footer {text-align:center; padding:2rem; color:#94a3b8; font-size:0.9rem;}
   </style>
 </head>
 <body>
@@ -142,47 +87,66 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div style="display: flex; gap: 0.5rem;">
-      <button class="lang-toggle" id="langBtn">EN</button>
-      <button class="theme-toggle" id="themeBtn">☀️</button>
+    <div class="controls">
+      <button id="langBtn" class="btn-small">EN</button>
+      <button id="themeBtn" class="btn-small">☀️</button>
     </div>
   </header>
 
   <section id="home" class="hero">
-    <h1>Empowering Digital Innovation</h1>
-    <p>We create modern software for the future, designed to be fast, elegant, and scalable.</p>
-    <button>Get Started</button>
+    <h1>Building the Future of Software</h1>
+    <p>Smart, scalable, and human-focused solutions — crafted with precision by MSFSoft.</p>
+    <button class="btn-main">Get Started</button>
   </section>
 
   <section id="about">
     <h2>About Us</h2>
-    <p>MSFSoft is a next-gen software company focused on building human-centered, high-performance digital solutions that inspire progress and creativity.</p>
+    <p>MSFSoft is a forward-thinking software company founded by Y.F., dedicated to developing reliable, fast, and intuitive digital experiences that empower innovation.</p>
   </section>
 
   <section id="services">
     <h2>Our Services</h2>
-    <p>We deliver apps, systems, and web platforms that redefine reliability and design quality.</p>
+    <div class="services-grid">
+      <div class="card">Web Development</div>
+      <div class="card">AI Integration</div>
+      <div class="card">Cloud Solutions</div>
+      <div class="card">UI/UX Design</div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="card">Project Aurora</div>
+      <div class="card">VisionOS Platform</div>
+      <div class="card">Flow CRM</div>
+    </div>
   </section>
 
   <section id="team" class="team">
-    <h2>Our Team</h2>
+    <h2>Team</h2>
     <p>Team created by <strong>Y.F.</strong></p>
   </section>
 
-  <footer>
-    © 2025 MSFSoft. All rights reserved.
-  </footer>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Get in touch at <a href="mailto:info@msfsoft.com">info@msfsoft.com</a></p>
+  </section>
+
+  <footer>© 2025 MSFSoft. All rights reserved.</footer>
 
   <script>
     const themeBtn = document.getElementById('themeBtn');
     const langBtn = document.getElementById('langBtn');
 
     themeBtn.addEventListener('click', () => {
-      const currentTheme = document.body.getAttribute('data-theme');
-      if (currentTheme === 'dark') {
+      const dark = document.body.getAttribute('data-theme') === 'dark';
+      if (dark) {
         document.body.removeAttribute('data-theme');
         themeBtn.textContent = '☀️';
       } else {
@@ -195,21 +159,20 @@
       const current = langBtn.textContent;
       if (current === 'EN') {
         langBtn.textContent = 'UA';
-        document.querySelectorAll('h1, h2, p, a, button').forEach(el => {
-          if (el.textContent.includes('About')) el.textContent = 'Про нас';
-          if (el.textContent.includes('Home')) el.textContent = 'Головна';
-          if (el.textContent.includes('Services')) el.textContent = 'Послуги';
-          if (el.textContent.includes('Team')) el.textContent = 'Команда';
-          if (el.textContent.includes('Empowering')) el.textContent = 'Ми створюємо сучасні рішення для майбутнього';
-          if (el.textContent.includes('Get Started')) el.textContent = 'Почати';
-        });
+        document.querySelector('#home h1').textContent = 'Створюємо майбутнє програмного забезпечення';
+        document.querySelector('#home p').textContent = 'Розумні, масштабовані та людяні рішення — створені з точністю MSFSoft.';
+        document.querySelector('#about h2').textContent = 'Про нас';
+        document.querySelector('#services h2').textContent = 'Послуги';
+        document.querySelector('#portfolio h2').textContent = 'Портфоліо';
+        document.querySelector('#team h2').textContent = 'Команда';
+        document.querySelector('#contact h2').textContent = 'Контакти';
       } else {
         langBtn.textContent = 'EN';
-        location.reload(); // simple refresh for English reset
+        location.reload();
       }
     });
 
-    // Scroll animations
+    // Reveal on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
