@@ -9,7 +9,7 @@
 
   <style>
     /* =====================================
-       NEW DESIGN SYSTEM: NEO-BRUTALISM
+       NEW DESIGN SYSTEM: NEO-BRUTALISM WITH IMAGES
        ===================================== */
     :root {
       --bg: #000000;
@@ -20,8 +20,9 @@
       --border-color: #333333;
       --radius: 6px;
       --maxw: 1100px;
-      --shadow-offset: 4px;
-      --shadow: var(--shadow-offset) var(--shadow-offset) 0px #000;
+      --shadow-offset: 6px; /* Збільшений офсет тіні */
+      --shadow: var(--shadow-offset) var(--shadow-offset) 0px #000; /* Жорстка тінь */
+      --torn-shadow-color: #00ff99; /* Колір "рваної" тіні */
     }
 
     /* --- Global Styles --- */
@@ -72,25 +73,51 @@
         border: 1px solid var(--text);
         background: transparent;
         color: var(--text);
+        position: relative;
         transition: transform 0.2s, box-shadow 0.2s;
-        box-shadow: var(--shadow);
     }
-    .btn:hover { transform: translate(calc(var(--shadow-offset) * -1), calc(var(--shadow-offset) * -1)); box-shadow: calc(var(--shadow-offset) * 2) calc(var(--shadow-offset) * 2) 0px #000; }
-    .btn:active { transform: translate(0, 0); box-shadow: var(--shadow); }
+    .btn::after { /* "Рвана" тінь */
+        content: ''; position: absolute;
+        width: 100%; height: 100%;
+        top: var(--shadow-offset); left: var(--shadow-offset);
+        background: var(--torn-shadow-color);
+        z-index: -1;
+        transition: transform 0.2s;
+    }
+    .btn:hover { transform: translate(-4px, -4px); }
+    .btn:hover::after { transform: translate(4px, 4px); }
+    .btn:active { transform: translate(0, 0); }
+    .btn:active::after { transform: translate(var(--shadow-offset), var(--shadow-offset)); }
+
     .btn-primary { background: var(--accent); color: #000; border-color: var(--accent); }
+    .btn-primary::after { background: #000; } /* Чорна тінь для зеленої кнопки */
+    .btn-primary:hover::after { background: #000; }
+
     .icon-btn { padding: 10px; width: 44px; height: 44px; justify-content: center; }
+    .icon-btn::after { border-radius: 50%; } /* Кругла тінь для круглих кнопок */
 
     /* --- Hero Section --- */
-    .hero { min-height: 80vh; display: grid; align-content: center; padding: 100px 0; }
+    .hero { min-height: 80vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 100px 0; }
+    .hero-content { animation: slideInLeft 0.8s ease forwards; }
+    .hero-image-wrap { display: flex; justify-content: flex-end; align-items: center; }
+    .hero-image {
+        max-width: 100%; height: auto;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--accent); /* Тінь з акцентним кольором */
+        animation: slideInRight 0.8s ease forwards;
+    }
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+
     .hero-title {
-        font-size: clamp(3rem, 10vw, 7rem);
+        font-size: clamp(2.5rem, 8vw, 5.5rem); /* Зменшив розмір для кращого вигляду з зображенням */
         line-height: 1;
         font-weight: 800;
         letter-spacing: -0.04em;
     }
     .hero-title .char { display: inline-block; opacity: 0; transform: translateY(100%); animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     @keyframes reveal { to { opacity: 1; transform: none; } }
-    .hero-sub { color: var(--muted); font-size: 1.25rem; max-width: 60ch; margin: 24px 0 32px; }
+    .hero-sub { color: var(--muted); font-size: 1.1rem; max-width: 50ch; margin: 24px 0 32px; }
     .hero-cta { display: flex; gap: 16px; align-items: center; }
 
     /* --- Sections & Cards --- */
@@ -106,19 +133,34 @@
         background: var(--panel);
         padding: 24px;
         border: 1px solid var(--border-color);
-        box-shadow: var(--shadow);
-        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+        transition: transform 0.2s;
     }
-    .card:hover {
-        transform: translate(calc(var(--shadow-offset) * -1), calc(var(--shadow-offset) * -1));
-        box-shadow: calc(var(--shadow-offset) * 2) calc(var(--shadow-offset) * 2) 0px #000;
+    .card::after { /* "Рвана" тінь для карток */
+        content: ''; position: absolute;
+        width: 100%; height: 100%;
+        top: var(--shadow-offset); left: var(--shadow-offset);
+        background: var(--torn-shadow-color);
+        z-index: -1;
+        transition: transform 0.2s;
     }
+    .card:hover { transform: translate(-4px, -4px); }
+    .card:hover::after { transform: translate(4px, 4px); }
     .card h4 { font-size: 1.25rem; margin-top: 16px; margin-bottom: 8px; }
     .card p { color: var(--muted); line-height: 1.6; }
     .card-icon { width: 40px; height: 40px; color: var(--accent); }
 
     .team-member { cursor: pointer; text-align: center; }
-    .team-member__photo { width: 100px; height: 100px; background: var(--border-color); border-radius: 50%; margin: 0 auto 16px; }
+    .team-member__photo {
+        width: 100px; height: 100px;
+        background: var(--border-color);
+        border: 2px solid var(--accent); /* Яскрава обводка */
+        border-radius: 50%; margin: 0 auto 16px;
+        object-fit: cover; /* Щоб зображення добре вписувалось */
+        object-position: center;
+        transition: transform 0.2s;
+    }
+    .team-member:hover .team-member__photo { transform: scale(1.05); } /* Анімація при наведенні */
     
     /* --- Modal --- */
     .modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 200; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
@@ -130,7 +172,13 @@
     /* --- Footer --- */
     footer { padding: 40px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border-color); margin-top: 40px;}
 
-    @media (max-width: 800px) { .nav { display: none; } }
+    @media (max-width: 800px) {
+        .nav { display: none; }
+        .hero { grid-template-columns: 1fr; gap: 60px; } /* Вкладка hero-image буде нижче */
+        .hero-content { text-align: center; animation: none; }
+        .hero-image-wrap { justify-content: center; animation: none; }
+        .hero-cta { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -158,30 +206,35 @@
 
   <main class="container">
     <section class="hero" id="hero">
-        <h1 class="hero-title" aria-hidden>
-          <span class="char" style="animation-delay:.04s">D</span>
-          <span class="char" style="animation-delay:.08s">i</span>
-          <span class="char" style="animation-delay:.12s">g</span>
-          <span class="char" style="animation-delay:.16s">i</span>
-          <span class="char" style="animation-delay:.20s">t</span>
-          <span class="char" style="animation-delay:.24s">a</span>
-          <span class="char" style="animation-delay:.28s">l</span>
-          <span style="display:inline-block; width:0.25em"></span>
-          <span class="char" style="animation-delay:.32s">E</span>
-          <span class="char" style="animation-delay:.36s">n</span>
-          <span class="char" style="animation-delay:.40s">g</span>
-          <span class="char" style="animation-delay:.44s">i</span>
-          <span class="char" style="animation-delay:.48s">n</span>
-          <span class="char" style="animation-delay:.52s">e</span>
-          <span class="char" style="animation-delay:.56s">e</span>
-          <span class="char" style="animation-delay:.60s">r</span>
-          <span class="char" style="animation-delay:.64s">i</span>
-          <span class="char" style="animation-delay:.68s">n</span>
-          <span class="char" style="animation-delay:.72s">g</span>
-        </h1>
-        <p class="hero-sub" data-key="heroSubtitle">We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.</p>
-        <div class="hero-cta">
-          <a href="#specialization" class="btn btn-primary" data-key="heroBtnSpec">Our Specialization</a>
+        <div class="hero-content">
+            <h1 class="hero-title" aria-hidden>
+              <span class="char" style="animation-delay:.04s">D</span>
+              <span class="char" style="animation-delay:.08s">i</span>
+              <span class="char" style="animation-delay:.12s">g</span>
+              <span class="char" style="animation-delay:.16s">i</span>
+              <span class="char" style="animation-delay:.20s">t</span>
+              <span class="char" style="animation-delay:.24s">a</span>
+              <span class="char" style="animation-delay:.28s">l</span>
+              <span style="display:inline-block; width:0.25em"></span>
+              <span class="char" style="animation-delay:.32s">E</span>
+              <span class="char" style="animation-delay:.36s">n</span>
+              <span class="char" style="animation-delay:.40s">g</span>
+              <span class="char" style="animation-delay:.44s">i</span>
+              <span class="char" style="animation-delay:.48s">n</span>
+              <span class="char" style="animation-delay:.52s">e</span>
+              <span class="char" style="animation-delay:.56s">e</span>
+              <span class="char" style="animation-delay:.60s">r</span>
+              <span class="char" style="animation-delay:.64s">i</span>
+              <span class="char" style="animation-delay:.68s">n</span>
+              <span class="char" style="animation-delay:.72s">g</span>
+            </h1>
+            <p class="hero-sub" data-key="heroSubtitle">We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.</p>
+            <div class="hero-cta">
+              <a href="#specialization" class="btn btn-primary" data-key="heroBtnSpec">Our Specialization</a>
+            </div>
+        </div>
+        <div class="hero-image-wrap">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1593574744274-0f2c002c91ba?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Abstract digital circuit board" />
         </div>
     </section>
 
@@ -216,8 +269,16 @@
     <section id="team" class="reveal">
       <h2 class="section-title" data-key="teamTitle">Our Team</h2>
       <div class="grid grid-responsive">
-        <div class="card team-member" data-member="yura"><div class="team-member__photo"></div><h4>Yura F.</h4><p data-key="founder">Founder / Developer</p></div>
-        <div class="card team-member" data-member="veronika"><div class="team-member__photo"></div><h4>Veronika Dziuba</h4><p data-key="developer">Developer</p></div>
+        <div class="card team-member" data-member="yura">
+            <img class="team-member__photo" src="https://via.placeholder.com/100x100.png?text=Yura" alt="Yura F." />
+            <h4>Yura F.</h4>
+            <p data-key="founder">Founder / Developer</p>
+        </div>
+        <div class="card team-member" data-member="veronika">
+            <img class="team-member__photo" src="https://via.placeholder.com/100x100.png?text=Veronika" alt="Veronika Dziuba" />
+            <h4>Veronika Dziuba</h4>
+            <p data-key="developer">Developer</p>
+        </div>
       </div>
     </section>
 
@@ -236,7 +297,7 @@
   <div class="modal-overlay" id="team-modal">
     <div class="modal-content">
       <button class="modal-close" id="modal-close-btn">&times;</button>
-      <div class="modal-photo"></div>
+      <img class="modal-photo" src="" alt="" id="modal-photo" />
       <h3 class="modal-name" id="modal-name"></h3>
       <p class="modal-role" id="modal-role"></p>
       <p class="modal-bio" id="modal-bio"></p>
@@ -274,11 +335,17 @@
       };
       
       const teamData = {
-          en: { yura: { name: "Yura F.", role: "Founder / Lead Developer", bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software." }, veronika: { name: "Veronika Dziuba", role: "Frontend Developer", bio: "Veronika brings ideas to life in the browser. With a keen eye for detail and a focus on user experience, she crafts intuitive and responsive interfaces that users love to interact with." } },
-          ua: { yura: { name: "Юра Ф.", role: "Засновник / Головний розробник", bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення." }, veronika: { name: "Veronika Dziuba", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти." } }
+          en: {
+            yura: { name: "Yura F.", role: "Founder / Lead Developer", bio: "A passionate programmer with a love for clean code and elegant solutions. Yura specializes in backend development and system architecture, turning complex challenges into robust software.", photo: "https://via.placeholder.com/100x100.png?text=Yura" },
+            veronika: { name: "Veronika Dziuba", role: "Frontend Developer", bio: "Veronika brings ideas to life in the browser. With a keen eye for detail and a focus on user experience, she crafts intuitive and responsive interfaces that users love to interact with.", photo: "https://via.placeholder.com/100x100.png?text=Veronika" }
+          },
+          ua: {
+            yura: { name: "Юра Ф.", role: "Засновник / Головний розробник", bio: "Пристрасний програміст, що обожнює чистий код та елегантні рішення. Юра спеціалізується на бекенд-розробці та архітектурі систем, перетворюючи складні виклики на надійне програмне забезпечення.", photo: "https://via.placeholder.com/100x100.png?text=Юра" },
+            veronika: { name: "Veronika Dziuba", role: "Фронтенд-розробник", bio: "Вероніка втілює ідеї в життя у браузері. З гострим поглядом на деталі та фокусом на досвіді користувача, вона створює інтуїтивні та адаптивні інтерфейси, з якими приємно взаємодіяти.", photo: "https://via.placeholder.com/100x100.png?text=Вероніка" }
+          }
       };
 
-      // --- LANGUAGE TOGGLER (REFACTORED) ---
+      // --- LANGUAGE TOGGLER ---
       let currentLang = 'en';
       const langToggleBtn = document.getElementById('lang-toggle');
       const translatableElements = document.querySelectorAll('[data-key]');
@@ -301,10 +368,11 @@
         const nextLang = currentLang === 'en' ? 'ua' : 'en';
         setLanguage(nextLang);
       });
-      setLanguage('ua'); // Set default language
+      setLanguage('ua'); // Set default language to Ukrainian
 
       // --- MODAL LOGIC ---
       const modal = document.getElementById('team-modal');
+      const modalPhoto = document.getElementById('modal-photo');
       const modalName = document.getElementById('modal-name');
       const modalRole = document.getElementById('modal-role');
       const modalBio = document.getElementById('modal-bio');
@@ -314,6 +382,8 @@
           card.addEventListener('click', () => {
               const memberId = card.dataset.member;
               const memberInfo = teamData[currentLang][memberId];
+              modalPhoto.src = memberInfo.photo;
+              modalPhoto.alt = memberInfo.name;
               modalName.textContent = memberInfo.name;
               modalRole.textContent = memberInfo.role;
               modalBio.textContent = memberInfo.bio;
