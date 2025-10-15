@@ -5,27 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MSFSoft — Intelligent Software Solutions</title>
   <meta name="description" content="MSFSoft — smart, reliable, and scalable software crafted with care. Founded by Y.F." />
-
-  <!-- Fonts (kept minimal) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- External stylesheet (you will provide) -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-theme="dark">
-  <!-- animated subtle background element (styled in CSS) -->
   <div class="hero-bg" aria-hidden="true"></div>
 
-  <!-- Header / Navigation -->
   <header>
     <div class="nav-wrap container" role="navigation" aria-label="Main navigation">
       <a href="#hero" class="brand" aria-label="MSFSoft home">
-        <div class="brand-mark" aria-hidden>MS</div>
+        <div class="brand-mark">MS</div>
         <div class="brand-title">MSFSoft</div>
       </a>
 
-      <nav class="nav" role="menu" aria-label="Primary">
+      <nav class="nav" role="menu" aria-label="Primary navigation">
         <a href="#hero" role="menuitem">Home</a>
         <a href="#about" role="menuitem">About</a>
         <a href="#specialization" role="menuitem">Specialization</a>
@@ -37,19 +31,16 @@
       <div class="actions">
         <button id="lang-toggle" class="btn icon-btn" aria-pressed="false" title="Toggle language">EN</button>
         <button id="theme-toggle" class="btn icon-btn" aria-pressed="true" title="Toggle theme">🌙</button>
-        <a href="#contact" class="btn btn-primary">Let's Collaborate</a>
+        <a href="#contact" class="btn btn-primary">Start a Project</a>
       </div>
     </div>
   </header>
 
-  <!-- Main -->
   <main class="container" id="hero" style="padding-top:120px;">
-    <!-- HERO -->
     <section class="hero" aria-label="Hero">
       <div class="hero-left">
         <span class="eyebrow">Digital Craftsmanship</span>
 
-        <!-- hero title with per-letter spans for animation -->
         <h1 class="hero-title" aria-hidden>
           <span class="char" style="animation-delay:.04s">M</span>
           <span class="char" style="animation-delay:.08s">S</span>
@@ -68,9 +59,7 @@
           <button class="btn btn-ghost" id="btn-portfolio">See Portfolio</button>
         </div>
 
-        <div class="process-note" aria-hidden style="margin-top:22px; color:var(--muted);">
-          Process: <strong style="color:var(--text)">Discover → Plan → Build → Test → Maintain</strong>
-        </div>
+        <div style="margin-top:22px; color:var(--muted);">Process: <strong style="color:var(--text)">Discover → Plan → Build → Test → Maintain</strong></div>
       </div>
 
       <aside class="hero-card" aria-hidden="true">
@@ -81,12 +70,15 @@
 
         <hr class="divider">
 
-        <div class="stacked-tech">
-          <div class="muted">Tech stack</div>
-          <div class="tech-list-inline">React • Node • Postgres • Docker</div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div class="muted">Tech stack</div>
+            <div style="font-weight:700">React • Node • Postgres • Docker</div>
+          </div>
+          <div style="text-align:right;color:var(--muted);font-size:13px">QA & CI</div>
         </div>
 
-        <div class="tech-list">
+        <div class="tech-list" style="margin-top:12px">
           <div class="pill">React</div>
           <div class="pill">Node.js</div>
           <div class="pill">Postgres</div>
@@ -96,84 +88,71 @@
       </aside>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="reveal" data-section="about">
+    <section id="about" class="reveal">
       <h2 class="section-title">Who We Are</h2>
       <div class="card">
         <p><strong>MSFSoft is a fresh perspective on the world of software development.</strong> We are a young, energetic team driven by quality engineering and pragmatic product thinking. Our goal is to deliver reliable systems that scale and are easy to maintain.</p>
       </div>
     </section>
 
-    <!-- SPECIALIZATION / SERVICES -->
-    <section id="specialization" class="reveal" data-section="specialization">
+    <section id="specialization" class="reveal">
       <h2 class="section-title">Our Specialization</h2>
       <div class="grid grid-responsive">
         <article class="card">
-          <!-- Clean SVG icon -->
-          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M3 7a2 2 0 012-2h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <h4>Website Development</h4>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M3 7a2 2 0 012-2h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4 style="margin-top:8px">Website Development</h4>
           <p class="muted">From landing pages to complex platforms — modern, performant, and responsive web solutions.</p>
         </article>
 
         <article class="card">
-          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-          <h4>Software & Backend</h4>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h4 style="margin-top:8px">Software & Backend</h4>
           <p class="muted">Custom desktop and server applications, APIs, integrations and automation for business-critical needs.</p>
         </article>
 
         <article class="card">
-          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-          <h4>Optimization & Refactor</h4>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h4 style="margin-top:8px">Optimization & Refactor</h4>
           <p class="muted">Code audits, profiling, and refactoring to improve performance and reduce maintenance costs.</p>
         </article>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="reveal" data-section="portfolio">
+    <section id="portfolio" class="reveal">
       <h2 class="section-title">Portfolio</h2>
       <div class="grid grid-responsive">
-        <div class="card">
+        <div class="card" data-project="logistics">
           <div class="thumb">Platform for Logistics</div>
-          <h4>Logistics Platform</h4>
+          <h4 style="margin-top:12px">Logistics Platform</h4>
           <p class="muted">Complex routing, integrations with carriers, and dashboarding for operations.</p>
-          <div class="card-actions"><button class="btn" data-project="logistics">View</button></div>
+          <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end"><button class="btn" data-project="logistics">View</button></div>
         </div>
 
-        <div class="card">
+        <div class="card" data-project="booking">
           <div class="thumb">Booking Service</div>
-          <h4>Booking System</h4>
+          <h4 style="margin-top:12px">Booking System</h4>
           <p class="muted">High availability reservation system with transactional integrity and analytics.</p>
-          <div class="card-actions"><button class="btn" data-project="booking">View</button></div>
+          <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end"><button class="btn" data-project="booking">View</button></div>
         </div>
 
-        <div class="card">
+        <div class="card" data-project="analytics">
           <div class="thumb">Analytics Dashboard</div>
-          <h4>Analytics Dashboard</h4>
+          <h4 style="margin-top:12px">Analytics Dashboard</h4>
           <p class="muted">Real-time KPIs and customizable visualizations for decision making.</p>
-          <div class="card-actions"><button class="btn" data-project="analytics">View</button></div>
+          <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end"><button class="btn" data-project="analytics">View</button></div>
         </div>
       </div>
     </section>
 
-    <!-- TEAM -->
-    <section id="team" class="reveal" data-section="team">
+    <section id="team" class="reveal">
       <h2 class="section-title">Team</h2>
       <div class="card team">Team created by <strong>Y.F.</strong></div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="reveal" data-section="contact">
+    <section id="contact" class="reveal">
       <h2 class="section-title">Let's Build Something Together</h2>
-
       <div class="card contact-grid">
-        <div class="contact-left">
+        <div>
           <p class="muted">Write a few lines about your project and we'll respond within 24 hours. For quick contact: <a href="mailto:msfsoft.team@gmail.com" class="accent-link">msfsoft.team@gmail.com</a></p>
 
           <form id="contact-form" novalidate>
@@ -186,39 +165,36 @@
             <label class="sr-only" for="message">Message</label>
             <textarea id="message" name="message" rows="6" placeholder="Briefly describe your project *" required></textarea>
 
-            <div class="form-actions">
+            <div style="display:flex; gap:12px; align-items:center; margin-top:8px">
               <button type="submit" class="btn btn-primary">Send</button>
               <div class="muted small">or email: <a href="mailto:msfsoft.team@gmail.com" class="accent-link">msfsoft.team@gmail.com</a></div>
             </div>
           </form>
         </div>
 
-        <aside class="contact-aside">
+        <aside style="padding-left:16px">
           <h4>Quick contacts</h4>
           <p class="muted"><strong>Email:</strong> msfsoft.team@gmail.com<br><strong>Phone:</strong> +380 99 000 0000</p>
-          <hr class="divider">
+          <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:12px 0">
           <p class="muted">We work with Agile processes, have CI pipelines and automated testing. Clear deliverables and transparent reporting.</p>
         </aside>
       </div>
     </section>
 
-    <footer class="site-footer">© <span id="year">2025</span> MSFSoft — All rights reserved</footer>
+    <footer style="margin-top:36px;">© <span id="year">2025</span> MSFSoft — All rights reserved</footer>
   </main>
 
-  <!-- Modal for project previews -->
   <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-card" role="document">
+    <div class="modal-card">
       <button id="modal-close" aria-label="Close" class="modal-close">✕</button>
       <div id="modal-body"></div>
     </div>
   </div>
 
-  <!-- No-JS hint (styled by CSS) -->
   <noscript>
     <div class="noscript-banner">This site works best with JavaScript enabled.</div>
   </noscript>
 
-  <!-- External script (you will request JS later) -->
-  <script defer src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
