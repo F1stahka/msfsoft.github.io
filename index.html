@@ -1,185 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MSFSoft — Intelligent Software Solutions</title>
-  <meta name="description" content="Empowering innovation through modern and adaptive software, crafted by Y.F. and MSFSoft.">
-  <style>
-    :root {
-      --accent: #6366f1;
-      --accent-hover: #4f46e5;
-      --bg-light: #f9fafb;
-      --bg-dark: #0f172a;
-      --text-light: #1e293b;
-      --text-dark: #f8fafc;
-      --transition: 0.4s ease;
-    }
-    [data-theme="dark"] {
-      --bg-light: var(--bg-dark);
-      --text-light: var(--text-dark);
-    }
-    * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif;}
-    body {
-      background: var(--bg-light);
-      color: var(--text-light);
-      transition: background var(--transition), color var(--transition);
-      overflow-x: hidden;
-    }
-    header {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:1rem 2rem; position:sticky; top:0; background:rgba(255,255,255,0.7);
-      backdrop-filter:blur(12px); z-index:20;
-    }
-    .logo {font-size:1.5rem; font-weight:700; color:var(--accent);}
-    nav ul {display:flex; gap:1.5rem; list-style:none;}
-    nav a {text-decoration:none; color:var(--text-light); font-weight:500; transition:color var(--transition);}
-    nav a:hover {color:var(--accent);}
-    .controls {display:flex; gap:0.5rem;}
-    .btn-small {
-      border:none; border-radius:8px; padding:0.4rem 0.8rem; cursor:pointer; font-weight:500;
-      background:var(--accent); color:#fff; transition:background var(--transition), transform var(--transition);
-    }
-    .btn-small:hover {background:var(--accent-hover); transform:translateY(-2px);}
+  <meta name="description" content="MSFSoft — smart, reliable, and scalable software crafted with care. Founded by Y.F." />
 
-    /* Hero */
-    .hero {
-      text-align:center; padding:7rem 2rem; position:relative; overflow:hidden;
-    }
-    .hero::before {
-      content:""; position:absolute; inset:0; background:linear-gradient(120deg,#6366f1 0%,#a855f7 50%,#06b6d4 100%);
-      opacity:0.2; animation:moveBg 12s infinite alternate ease-in-out;
-    }
-    @keyframes moveBg {from{transform:translateX(-10%);} to{transform:translateX(10%);}}
-    .hero h1 {font-size:3rem; font-weight:800; margin-bottom:1rem; position:relative;}
-    .hero p {font-size:1.2rem; margin-bottom:2rem; position:relative;}
-    .hero .btn-main {
-      background:var(--accent); color:#fff; border:none; border-radius:10px; padding:0.9rem 1.8rem;
-      font-size:1rem; font-weight:600; cursor:pointer; transition:background var(--transition), transform var(--transition);
-      position:relative;
-    }
-    .hero .btn-main:hover {background:var(--accent-hover); transform:scale(1.05);}
+  <!-- Fonts (kept minimal) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-    /* Sections */
-    section {max-width:1000px; margin:auto; padding:4rem 2rem; opacity:0; transform:translateY(40px); transition:opacity 0.8s ease, transform 0.8s ease;}
-    section.visible {opacity:1; transform:translateY(0);}
-    h2 {font-size:2rem; margin-bottom:1rem; text-align:center; color:var(--accent);}
-    p {line-height:1.7; text-align:center; max-width:800px; margin:auto;}
-
-    .services-grid, .portfolio-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; margin-top:2rem;}
-    .card {
-      background:rgba(255,255,255,0.8); padding:1.5rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05);
-      text-align:center; transition:transform var(--transition), box-shadow var(--transition);
-    }
-    .card:hover {transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.1);}
-
-    .team {text-align:center;}
-    .team p {font-size:1.1rem; margin-top:1rem;}
-
-    footer {text-align:center; padding:2rem; color:#94a3b8; font-size:0.9rem;}
-  </style>
+  <!-- External stylesheet (you will provide) -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-theme="dark">
+  <!-- animated subtle background element (styled in CSS) -->
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
   <header>
-    <div class="logo">MSFSoft</div>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="controls">
-      <button id="langBtn" class="btn-small">EN</button>
-      <button id="themeBtn" class="btn-small">☀️</button>
+    <div class="nav-wrap container" role="navigation" aria-label="Main navigation">
+      <a href="#hero" class="brand" aria-label="MSFSoft home">
+        <div class="brand-mark" aria-hidden>MS</div>
+        <div class="brand-title">MSFSoft</div>
+      </a>
+
+      <nav class="nav" role="menu" aria-label="Primary">
+        <a href="#hero" role="menuitem">Home</a>
+        <a href="#about" role="menuitem">About</a>
+        <a href="#specialization" role="menuitem">Specialization</a>
+        <a href="#portfolio" role="menuitem">Portfolio</a>
+        <a href="#team" role="menuitem">Team</a>
+        <a href="#contact" role="menuitem">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button id="lang-toggle" class="btn icon-btn" aria-pressed="false" title="Toggle language">EN</button>
+        <button id="theme-toggle" class="btn icon-btn" aria-pressed="true" title="Toggle theme">🌙</button>
+        <a href="#contact" class="btn btn-primary">Let's Collaborate</a>
+      </div>
     </div>
   </header>
 
-  <section id="home" class="hero">
-    <h1>Building the Future of Software</h1>
-    <p>Smart, scalable, and human-focused solutions — crafted with precision by MSFSoft.</p>
-    <button class="btn-main">Get Started</button>
-  </section>
+  <!-- Main -->
+  <main class="container" id="hero" style="padding-top:120px;">
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-left">
+        <span class="eyebrow">Digital Craftsmanship</span>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>MSFSoft is a forward-thinking software company founded by Y.F., dedicated to developing reliable, fast, and intuitive digital experiences that empower innovation.</p>
-  </section>
+        <!-- hero title with per-letter spans for animation -->
+        <h1 class="hero-title" aria-hidden>
+          <span class="char" style="animation-delay:.04s">M</span>
+          <span class="char" style="animation-delay:.08s">S</span>
+          <span class="char" style="animation-delay:.12s">F</span>
+          <span style="display:inline-block; width:8px"></span>
+          <span class="char" style="animation-delay:.16s">S</span>
+          <span class="char" style="animation-delay:.20s">o</span>
+          <span class="char" style="animation-delay:.24s">f</span>
+          <span class="char" style="animation-delay:.28s">t</span>
+        </h1>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="card">Web Development</div>
-      <div class="card">AI Integration</div>
-      <div class="card">Cloud Solutions</div>
-      <div class="card">UI/UX Design</div>
+        <p class="hero-sub">We build stable, efficient software solutions — turning complex ideas into reality with clean and reliable code. Product-focused engineering, test-driven development, and transparent delivery.</p>
+
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Start a Project</a>
+          <button class="btn btn-ghost" id="btn-portfolio">See Portfolio</button>
+        </div>
+
+        <div class="process-note" aria-hidden style="margin-top:22px; color:var(--muted);">
+          Process: <strong style="color:var(--text)">Discover → Plan → Build → Test → Maintain</strong>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-hidden="true">
+        <div class="kpis">
+          <div class="kpi"><div class="muted">Projects</div><strong>+58</strong></div>
+          <div class="kpi"><div class="muted">Avg Delivery</div><strong>6 weeks</strong></div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="stacked-tech">
+          <div class="muted">Tech stack</div>
+          <div class="tech-list-inline">React • Node • Postgres • Docker</div>
+        </div>
+
+        <div class="tech-list">
+          <div class="pill">React</div>
+          <div class="pill">Node.js</div>
+          <div class="pill">Postgres</div>
+          <div class="pill">Docker</div>
+          <div class="pill">CI</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="reveal" data-section="about">
+      <h2 class="section-title">Who We Are</h2>
+      <div class="card">
+        <p><strong>MSFSoft is a fresh perspective on the world of software development.</strong> We are a young, energetic team driven by quality engineering and pragmatic product thinking. Our goal is to deliver reliable systems that scale and are easy to maintain.</p>
+      </div>
+    </section>
+
+    <!-- SPECIALIZATION / SERVICES -->
+    <section id="specialization" class="reveal" data-section="specialization">
+      <h2 class="section-title">Our Specialization</h2>
+      <div class="grid grid-responsive">
+        <article class="card">
+          <!-- Clean SVG icon -->
+          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M3 7a2 2 0 012-2h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h4>Website Development</h4>
+          <p class="muted">From landing pages to complex platforms — modern, performant, and responsive web solutions.</p>
+        </article>
+
+        <article class="card">
+          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h4>Software & Backend</h4>
+          <p class="muted">Custom desktop and server applications, APIs, integrations and automation for business-critical needs.</p>
+        </article>
+
+        <article class="card">
+          <svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h4>Optimization & Refactor</h4>
+          <p class="muted">Code audits, profiling, and refactoring to improve performance and reduce maintenance costs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="reveal" data-section="portfolio">
+      <h2 class="section-title">Portfolio</h2>
+      <div class="grid grid-responsive">
+        <div class="card">
+          <div class="thumb">Platform for Logistics</div>
+          <h4>Logistics Platform</h4>
+          <p class="muted">Complex routing, integrations with carriers, and dashboarding for operations.</p>
+          <div class="card-actions"><button class="btn" data-project="logistics">View</button></div>
+        </div>
+
+        <div class="card">
+          <div class="thumb">Booking Service</div>
+          <h4>Booking System</h4>
+          <p class="muted">High availability reservation system with transactional integrity and analytics.</p>
+          <div class="card-actions"><button class="btn" data-project="booking">View</button></div>
+        </div>
+
+        <div class="card">
+          <div class="thumb">Analytics Dashboard</div>
+          <h4>Analytics Dashboard</h4>
+          <p class="muted">Real-time KPIs and customizable visualizations for decision making.</p>
+          <div class="card-actions"><button class="btn" data-project="analytics">View</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="reveal" data-section="team">
+      <h2 class="section-title">Team</h2>
+      <div class="card team">Team created by <strong>Y.F.</strong></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal" data-section="contact">
+      <h2 class="section-title">Let's Build Something Together</h2>
+
+      <div class="card contact-grid">
+        <div class="contact-left">
+          <p class="muted">Write a few lines about your project and we'll respond within 24 hours. For quick contact: <a href="mailto:msfsoft.team@gmail.com" class="accent-link">msfsoft.team@gmail.com</a></p>
+
+          <form id="contact-form" novalidate>
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name *" required>
+
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email *" required>
+
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Briefly describe your project *" required></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Send</button>
+              <div class="muted small">or email: <a href="mailto:msfsoft.team@gmail.com" class="accent-link">msfsoft.team@gmail.com</a></div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="contact-aside">
+          <h4>Quick contacts</h4>
+          <p class="muted"><strong>Email:</strong> msfsoft.team@gmail.com<br><strong>Phone:</strong> +380 99 000 0000</p>
+          <hr class="divider">
+          <p class="muted">We work with Agile processes, have CI pipelines and automated testing. Clear deliverables and transparent reporting.</p>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="site-footer">© <span id="year">2025</span> MSFSoft — All rights reserved</footer>
+  </main>
+
+  <!-- Modal for project previews -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card" role="document">
+      <button id="modal-close" aria-label="Close" class="modal-close">✕</button>
+      <div id="modal-body"></div>
     </div>
-  </section>
+  </div>
 
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="portfolio-grid">
-      <div class="card">Project Aurora</div>
-      <div class="card">VisionOS Platform</div>
-      <div class="card">Flow CRM</div>
-    </div>
-  </section>
+  <!-- No-JS hint (styled by CSS) -->
+  <noscript>
+    <div class="noscript-banner">This site works best with JavaScript enabled.</div>
+  </noscript>
 
-  <section id="team" class="team">
-    <h2>Team</h2>
-    <p>Team created by <strong>Y.F.</strong></p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Get in touch at <a href="mailto:info@msfsoft.com">info@msfsoft.com</a></p>
-  </section>
-
-  <footer>© 2025 MSFSoft. All rights reserved.</footer>
-
-  <script>
-    const themeBtn = document.getElementById('themeBtn');
-    const langBtn = document.getElementById('langBtn');
-
-    themeBtn.addEventListener('click', () => {
-      const dark = document.body.getAttribute('data-theme') === 'dark';
-      if (dark) {
-        document.body.removeAttribute('data-theme');
-        themeBtn.textContent = '☀️';
-      } else {
-        document.body.setAttribute('data-theme', 'dark');
-        themeBtn.textContent = '🌙';
-      }
-    });
-
-    langBtn.addEventListener('click', () => {
-      const current = langBtn.textContent;
-      if (current === 'EN') {
-        langBtn.textContent = 'UA';
-        document.querySelector('#home h1').textContent = 'Створюємо майбутнє програмного забезпечення';
-        document.querySelector('#home p').textContent = 'Розумні, масштабовані та людяні рішення — створені з точністю MSFSoft.';
-        document.querySelector('#about h2').textContent = 'Про нас';
-        document.querySelector('#services h2').textContent = 'Послуги';
-        document.querySelector('#portfolio h2').textContent = 'Портфоліо';
-        document.querySelector('#team h2').textContent = 'Команда';
-        document.querySelector('#contact h2').textContent = 'Контакти';
-      } else {
-        langBtn.textContent = 'EN';
-        location.reload();
-      }
-    });
-
-    // Reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
-  </script>
+  <!-- External script (you will request JS later) -->
+  <script defer src="script.js"></script>
 </body>
 </html>
