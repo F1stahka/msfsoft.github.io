@@ -6,20 +6,21 @@
   <title>MSFSoft — Digital Craftsmanship</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     /* ---------------------------------- */
-    /* --- 1. NEW DESIGN SYSTEM (LIGHT) --- */
+    /* --- 1. NEW DESIGN SYSTEM (PREMIUM DARK) --- */
     /* ---------------------------------- */
     :root {
-      --bg-color: #f4f4f5; /* Світло-сірий фон */
-      --primary-accent: #007aff; /* Професійний синій */
-      --secondary-accent: #5856d6; /* Фіолетовий для градієнтів */
-      --text-color: #1d1d1f; /* Майже чорний текст */
-      --secondary-text: #6e6e73; /* Сірий для описів */
-      --card-bg: #ffffff;
-      --border-color: #e5e5ea;
+      --bg-color: #0D0D12;
+      --primary-accent: #00A3FF;
+      --secondary-accent: #8E44AD;
+      --text-color: #F0F2F5;
+      --secondary-text: #A0AEC0;
+      --card-bg: #1A1A21;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --glow-color: rgba(0, 163, 255, 0.5);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,8 +31,10 @@
       color: var(--text-color);
       font-family: "Poppins", sans-serif;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased; /* Робить текст більш чітким */
+      -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      /* Додаємо ледь помітну текстуру "шуму" на фон */
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
     
     section { padding: 120px 8%; position: relative; z-index: 2; }
@@ -42,7 +45,7 @@
     header {
       padding: 20px 8%; position: fixed; top: 0; left: 0;
       width: 100%; z-index: 100;
-      background: rgba(244, 244, 245, 0.7);
+      background: rgba(13, 13, 18, 0.7);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-color);
       display: flex; justify-content: space-between; align-items: center;
@@ -57,54 +60,45 @@
     .lang-toggle button.active { color: var(--primary-accent); font-weight: 700; }
     
     /* ---------------------------------- */
-    /* --- 3. HERO SECTION (NEW TYPOGRAPHY) --- */
+    /* --- 3. HERO SECTION (TYPOGRAPHIC) --- */
     /* ---------------------------------- */
-    .hero {
-      height: 100vh; display: flex;
-      justify-content: center; align-items: center; text-align: center;
-    }
+    .hero { height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; }
     .hero-title {
-        font-size: clamp(2.5em, 8vw, 6em);
-        font-weight: 900;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
+        font-size: clamp(3em, 12vw, 9em);
+        font-weight: 700; line-height: 1; letter-spacing: -0.04em;
+        position: relative;
     }
-    /* Анімація появи слів */
-    .hero-title .word {
+    /* Анімація появи літер */
+    .hero-title .char {
         display: inline-block;
-        opacity: 0;
-        transform: translateY(50px);
-        animation: slide-up 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        opacity: 0; transform: translateY(100%);
+        animation: reveal-letter 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .hero-title .word:nth-child(2) { animation-delay: 0.1s; }
-    .hero-title .word:nth-child(3) { animation-delay: 0.2s; }
-    .hero-title .gradient-text {
-        background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-        color: transparent; background-clip: text; -webkit-background-clip: text;
-    }
-    @keyframes slide-up {
-        to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes reveal-letter { to { opacity: 1; transform: translateY(0); } }
+    .hero-title-container { overflow: hidden; }
 
     .hero-subtitle {
-        max-width: 550px; margin: 30px auto 40px;
+        max-width: 550px; margin: 30px auto 0;
         font-size: 1.2em; color: var(--secondary-text); line-height: 1.6;
-        opacity: 0; animation: fade-in 1s ease 0.5s forwards;
+        opacity: 0; animation: fade-in 1s ease 0.8s forwards;
     }
     @keyframes fade-in { to { opacity: 1; } }
 
     .btn {
-      padding: 16px 40px; border: none; background: var(--primary-accent);
-      color: white; text-decoration: none; font-weight: 500; border-radius: 50px;
-      transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+      display: inline-block;
+      margin-top: 40px; padding: 16px 40px; border: 1px solid var(--primary-accent);
+      background: transparent; color: var(--primary-accent); text-decoration: none;
+      font-weight: 500; border-radius: 50px;
+      transition: all 0.3s ease;
+      opacity: 0; animation: fade-in 1s ease 1s forwards;
     }
-    .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 122, 255, 0.3); }
+    .btn:hover { background: var(--primary-accent); color: var(--bg-color); box-shadow: 0 0 30px var(--glow-color); }
     
     /* ---------------------------------- */
     /* --- 4. SECTIONS & CARDS --- */
     /* ---------------------------------- */
     .section-title { font-size: 2.5em; margin-bottom: 60px; text-align: center; }
-    .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s ease, transform 1s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
     
     .about__content { max-width: 800px; margin: 0 auto; font-size: 1.1em; line-height: 1.8; text-align: center; color: var(--secondary-text); }
@@ -115,63 +109,55 @@
         background: var(--card-bg);
         border-radius: 20px; padding: 40px;
         border: 1px solid var(--border-color);
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        transition: all 0.4s ease;
+        position: relative; overflow: hidden;
     }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-    
+    .card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
+
+    /* Ефект "сяйва" на картках */
+    .card::before {
+        content: ""; position: absolute; top: 0; left: -100%;
+        width: 70%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+        transform: skewX(-30deg); transition: left 0.8s ease;
+    }
+    .card:hover::before { left: 150%; }
+
+    /* Картки спеціалізації */
     .spec-card { text-align: left; }
-    .spec-card .icon-number {
-        font-size: 1.5em; font-weight: 700; color: var(--primary-accent);
-        margin-bottom: 20px; display: block;
-    }
+    .spec-card .icon { width: 40px; height: 40px; margin-bottom: 20px; color: var(--primary-accent); }
     .spec-card h4 { font-size: 1.3em; margin-bottom: 10px; color: var(--text-color); }
     .spec-card p { font-size: 0.95em; color: var(--secondary-text); line-height: 1.6; }
 
-    /* Horizontal Track Scroll for Team */
+    /* Горизонтальний скрол для команди */
     .team-track-container { width: 100%; overflow-x: auto; padding-bottom: 30px; -ms-overflow-style: none; scrollbar-width: none; }
     .team-track-container::-webkit-scrollbar { display: none; }
     .team-track { display: flex; gap: 30px; width: max-content; }
 
-    .team-member {
-        cursor: pointer; text-align: center; width: 300px; flex-shrink: 0;
-        position: relative;
-    }
-    .team-member::before { /* Ефект сяйва по контуру */
-        content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-        border-radius: 20px; border: 2px solid transparent;
-        background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)) border-box;
-        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: destination-out;
-        mask-composite: exclude;
-        opacity: 0; transition: opacity 0.4s ease;
-    }
-    .team-member:hover::before { opacity: 1; }
-    .team-member__photo { width: 120px; height: 120px; background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; }
+    .team-member { cursor: pointer; text-align: center; width: 300px; flex-shrink: 0; }
+    .team-member__photo { width: 120px; height: 120px; background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; border: 4px solid var(--bg-color); }
     .team-member h4 { font-size: 1.4em; margin-bottom: 5px; color: var(--text-color); }
     .team-member p { color: var(--secondary-text); }
     
     /* ---------------------------------- */
     /* --- 5. MODAL, CONTACT & FOOTER --- */
     /* ---------------------------------- */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(244, 244, 245, 0.7); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(13, 13, 18, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
     .modal-overlay.visible { opacity: 1; visibility: visible; }
-    .modal-content { background: var(--card-bg); border-radius: 15px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; transform: scale(0.9); transition: transform 0.4s ease; box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
+    .modal-content { background: var(--card-bg); border-radius: 15px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; transform: scale(0.9); transition: transform 0.4s ease; box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
     .modal-overlay.visible .modal-content { transform: scale(1); }
     .modal-close { position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--secondary-text); font-size: 2em; cursor: pointer; line-height: 1; transition: color 0.3s, transform 0.3s; }
     .modal-close:hover { color: var(--primary-accent); transform: rotate(90deg); }
     .modal-photo { width: 150px; height: 150px; background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; }
     .modal-name { font-size: 2em; margin-bottom: 10px; color: var(--text-color); } .modal-role { font-size: 1.2em; color: var(--primary-accent); margin-bottom: 20px; } .modal-bio { line-height: 1.7; color: var(--secondary-text); }
 
-    .contact { text-align: center; background: white; padding: 120px 8%; border-radius: 40px; margin: 0 20px; }
+    .contact { text-align: center; }
     .contact-email { display: inline-block; margin-top: 20px; font-size: clamp(1.2em, 4vw, 2em); font-weight: 500; color: var(--text-color); text-decoration: none; transition: all 0.3s ease; }
     .contact-email:hover { color: var(--primary-accent); transform: scale(1.05); }
     
     footer { text-align: center; padding: 50px; color: var(--secondary-text); font-size: 0.9em; z-index: 2; position: relative; }
     
-    @media (max-width: 768px) {
-        .header__nav-list { display: none; }
-    }
+    @media (max-width: 768px) { .header__nav-list { display: none; } }
   </style>
 </head>
 <body>
@@ -194,13 +180,9 @@
 
   <main>
     <section class="hero" id="hero">
-        <h1 class="hero-title">
-            <span class="word" data-key="heroWord1">We</span>
-            <span class="word" data-key="heroWord2">Build</span>
-            <span class="word gradient-text" data-key="heroWord3">Future.</span>
-        </h1>
-        <p class="hero-subtitle" data-key="heroSubtitle">We are MSFSoft, a team of young programmers dedicated to building clean, efficient, and innovative software.</p>
-        <a href="#contact" class="btn" data-key="heroBtn">Get in Touch</a>
+        <h1 class="hero-title" data-key="heroTitle">MSFSoft</h1>
+        <p class="hero-subtitle" data-key="heroSubtitle">We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.</p>
+        <a href="#about" class="btn">Learn More</a>
     </section>
 
     <section class="about reveal" id="about">
@@ -214,17 +196,17 @@
       <h2 class="section-title" data-key="specTitle">Our Specialization</h2>
       <div class="grid-container">
         <div class="card spec-card">
-          <span class="icon-number">01</span>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
           <h4 data-key="spec1Title">Website Development</h4>
           <p data-key="spec1Desc">From landing pages to complex platforms, we create modern, fast, and responsive websites.</p>
         </div>
         <div class="card spec-card">
-          <span class="icon-number">02</span>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
           <h4 data-key="spec2Title">Software Development</h4>
           <p data-key="spec2Desc">We develop custom desktop and server applications to automate processes and solve business tasks.</p>
         </div>
         <div class="card spec-card">
-          <span class="icon-number">03</span>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
           <h4 data-key="spec3Title">Coding & Optimization</h4>
           <p data-key="spec3Desc">We write clean, efficient code and can analyze and refactor your existing codebase for better performance.</p>
         </div>
@@ -237,7 +219,7 @@
         <div class="team-track">
           <div class="card team-member" data-member="yura"><div class="team-member__photo"></div><h4>Yura F.</h4><p data-key="founder">Founder / Developer</p></div>
           <div class="card team-member" data-member="veronika"><div class="team-member__photo"></div><h4>Veronika Dziuba</h4><p data-key="developer">Developer</p></div>
-          </div>
+        </div>
       </div>
     </section>
 
@@ -272,11 +254,40 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       
+      // --- HERO TITLE ANIMATION ---
+      const heroTitle = document.querySelector('.hero-title');
+      if (heroTitle) {
+          const text = heroTitle.textContent;
+          heroTitle.innerHTML = '';
+          const container = document.createElement('div');
+          container.classList.add('hero-title-container');
+          text.split('').forEach((char, index) => {
+              const span = document.createElement('span');
+              span.textContent = char;
+              span.classList.add('char');
+              span.style.animationDelay = `${index * 0.05}s`;
+              container.appendChild(span);
+          });
+          heroTitle.appendChild(container);
+      }
+
+      // --- MAGNETIC BUTTONS/LINKS ---
+      document.querySelectorAll('a, button').forEach(el => {
+          el.addEventListener('mousemove', e => {
+              const rect = el.getBoundingClientRect();
+              const x = e.clientX - rect.left - rect.width / 2;
+              const y = e.clientY - rect.top - rect.height / 2;
+              el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+          });
+          el.addEventListener('mouseleave', () => {
+              el.style.transform = 'translate(0,0)';
+          });
+      });
+
       const translations = {
         en: {
           navAbout: "About", navSpec: "Specialization", navTeam: "Team", navContact: "Contact",
-          heroWord1: "We", heroWord2: "Build", heroWord3: "Future.",
-          heroSubtitle: "We are MSFSoft, a team of young programmers dedicated to building clean, efficient, and innovative software.", heroBtn: "Get in Touch",
+          heroTitle: "MSFSoft", heroSubtitle: "We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.",
           aboutTitle: "Who We Are", aboutP1: "<strong>MSFSoft is a fresh perspective on the world of software development.</strong> We are a young team, but full of enthusiasm and innovative ideas. Our passion for coding and solving complex problems unites us, allowing us to create effective and reliable IT solutions for a modern digital landscape.",
           specTitle: "Our Specialization", spec1Title: "Website Development", spec1Desc: "From landing pages to complex platforms, we create modern, fast, and responsive websites.", spec2Title: "Software Development", spec2Desc: "We develop custom desktop and server applications to automate processes and solve business tasks.", spec3Title: "Coding & Optimization", spec3Desc: "We write clean, efficient code and can analyze and refactor your existing codebase for better performance.",
           teamTitle: "Our Team", founder: "Founder / Developer", developer: "Developer",
@@ -284,8 +295,7 @@
         },
         ua: {
           navAbout: "Про нас", navSpec: "Спеціалізація", navTeam: "Команда", navContact: "Контакти",
-          heroWord1: "Ми", heroWord2: "Будуємо", heroWord3: "Майбутнє.",
-          heroSubtitle: "Ми — MSFSoft, команда молодих програмістів, що присвятила себе створенню чистого, ефективного та інноваційного програмного забезпечення.", heroBtn: "Зв'язатися",
+          heroTitle: "MSFSoft", heroSubtitle: "Ми створюємо стабільні та ефективні програмні рішення, перетворюючи складні ідеї на реальність за допомогою чистого та надійного коду.",
           aboutTitle: "Хто ми є", aboutP1: "<strong>MSFSoft — це свіжий погляд на світ розробки програмного забезпечення.</strong> Ми молода, але сповнена ентузіазму та інноваційних ідей команда. Наша пристрасть до кодування та вирішення складних задач об'єднує нас, дозволяючи створювати ефективні та надійні IT-рішення для сучасного цифрового світу.",
           specTitle: "Наша спеціалізація", spec1Title: "Розробка сайтів", spec1Desc: "Від лендингів до складних платформ, ми створюємо сучасні, швидкі та адаптивні сайти.", spec2Title: "Розробка програм", spec2Desc: "Розробляємо кастомні десктопні та серверні програми для автоматизації процесів та вирішення бізнес-задач.", spec3Title: "Кодинг та оптимізація", spec3Desc: "Пишемо чистий, ефективний код, а також можемо проаналізувати та провести рефакторинг вашого існуючого коду для кращої продуктивності.",
           teamTitle: "Наша команда", founder: "Засновник / Розробник", developer: "Розробник",
@@ -306,9 +316,9 @@
         translatableElements.forEach(element => {
           const key = element.dataset.key;
           if (translations[lang][key]) {
-            if (element.innerHTML.includes('<br>') || element.innerHTML.includes('<span>')) {
+            if (key === 'contactTitle') {
                 element.innerHTML = translations[lang][key];
-            } else {
+            } else if (key !== 'heroTitle') { // heroTitle анімується, тому його не чіпаємо
                 element.textContent = translations[lang][key];
             }
           }
