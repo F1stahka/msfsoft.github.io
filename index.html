@@ -6,23 +6,23 @@
   <title>MSFSoft — Digital Craftsmanship</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
   
   <style>
     /* ---------------------------------- */
-    /* --- 1. SETUP & NEW DESIGN SYSTEM --- */
+    /* --- 1. NEW DESIGN SYSTEM (LIGHT) --- */
     /* ---------------------------------- */
     :root {
-      --bg-color: #f0f2f5; /* Світлий фон */
-      --primary-accent: #007aff; /* Новий, більш "корпоративний" синій */
+      --bg-color: #f4f4f5; /* Світло-сірий фон */
+      --primary-accent: #007aff; /* Професійний синій */
       --secondary-accent: #5856d6; /* Фіолетовий для градієнтів */
-      --text-color: #1d1d1f; /* Темний текст для читабельності */
-      --secondary-text: #6e6e73;
+      --text-color: #1d1d1f; /* Майже чорний текст */
+      --secondary-text: #6e6e73; /* Сірий для описів */
       --card-bg: #ffffff;
       --border-color: #e5e5ea;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
@@ -30,42 +30,19 @@
       color: var(--text-color);
       font-family: "Poppins", sans-serif;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased; /* Робить текст більш чітким */
+      -moz-osx-font-smoothing: grayscale;
     }
     
     section { padding: 120px 8%; position: relative; z-index: 2; }
 
     /* ---------------------------------- */
-    /* --- 2. CUSTOM CURSOR --- */
-    /* ---------------------------------- */
-    .cursor {
-        width: 40px; height: 40px;
-        border: 2px solid var(--primary-accent);
-        border-radius: 50%;
-        position: fixed;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        transition: all 0.1s ease;
-        z-index: 9999;
-    }
-    .cursor-dot {
-        width: 8px; height: 8px;
-        background-color: var(--primary-accent);
-        border-radius: 50%;
-        position: fixed;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        transition: all 0.2s ease;
-        z-index: 9999;
-    }
-    .cursor.hovered { transform: translate(-50%, -50%) scale(1.5); opacity: 0.5; }
-
-    /* ---------------------------------- */
-    /* --- 3. HEADER & NAVIGATION --- */
+    /* --- 2. HEADER & NAVIGATION --- */
     /* ---------------------------------- */
     header {
       padding: 20px 8%; position: fixed; top: 0; left: 0;
       width: 100%; z-index: 100;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(244, 244, 245, 0.7);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-color);
       display: flex; justify-content: space-between; align-items: center;
@@ -76,109 +53,115 @@
     .header__nav-link { color: var(--secondary-text); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
     .header__nav-link:hover { color: var(--primary-accent); }
     .lang-toggle { margin-left: 20px; }
-    .lang-toggle button { background: transparent; border: none; color: var(--secondary-text); margin: 0 5px; font-size: 1em; font-weight: 500; transition: color 0.3s; }
+    .lang-toggle button { background: transparent; border: none; color: var(--secondary-text); margin: 0 5px; font-size: 1em; font-weight: 500; cursor: pointer; transition: color 0.3s; }
     .lang-toggle button.active { color: var(--primary-accent); font-weight: 700; }
     
     /* ---------------------------------- */
-    /* --- 4. HERO SECTION WITH 3D CUBE --- */
+    /* --- 3. HERO SECTION (NEW TYPOGRAPHY) --- */
     /* ---------------------------------- */
     .hero {
-      height: 100vh; display: flex; flex-direction: column;
+      height: 100vh; display: flex;
       justify-content: center; align-items: center; text-align: center;
-      position: relative; overflow: hidden;
     }
-    .hero-content {
-        display: flex; align-items: center; gap: 50px;
+    .hero-title {
+        font-size: clamp(2.5em, 8vw, 6em);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
     }
-    .hero-text { text-align: left; }
-    .hero-title { font-size: clamp(2.5em, 5vw, 4em); font-weight: 900; line-height: 1.2; margin-bottom: 20px; }
-    .hero-title span { background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); color: transparent; background-clip: text; -webkit-background-clip: text; }
-    .hero-subtitle { max-width: 450px; font-size: 1.1em; color: var(--secondary-text); line-height: 1.6; margin-bottom: 30px; }
+    /* Анімація появи слів */
+    .hero-title .word {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(50px);
+        animation: slide-up 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    }
+    .hero-title .word:nth-child(2) { animation-delay: 0.1s; }
+    .hero-title .word:nth-child(3) { animation-delay: 0.2s; }
+    .hero-title .gradient-text {
+        background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+        color: transparent; background-clip: text; -webkit-background-clip: text;
+    }
+    @keyframes slide-up {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-subtitle {
+        max-width: 550px; margin: 30px auto 40px;
+        font-size: 1.2em; color: var(--secondary-text); line-height: 1.6;
+        opacity: 0; animation: fade-in 1s ease 0.5s forwards;
+    }
+    @keyframes fade-in { to { opacity: 1; } }
+
     .btn {
-      padding: 14px 35px; border: none; background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+      padding: 16px 40px; border: none; background: var(--primary-accent);
       color: white; text-decoration: none; font-weight: 500; border-radius: 50px;
       transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
     }
     .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 122, 255, 0.3); }
-
-    /* 3D Cube */
-    .cube-container { perspective: 800px; }
-    .cube { width: 200px; height: 200px; position: relative; transform-style: preserve-3d; transition: transform 0.2s linear; }
-    .face {
-        position: absolute; width: 200px; height: 200px;
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid var(--border-color);
-        display: flex; justify-content: center; align-items: center;
-        font-size: 2em; color: var(--primary-accent); font-weight: 700;
-    }
-    .front  { transform: rotateY(0deg) translateZ(100px); }
-    .back   { transform: rotateY(180deg) translateZ(100px); }
-    .right  { transform: rotateY(90deg) translateZ(100px); }
-    .left   { transform: rotateY(-90deg) translateZ(100px); }
-    .top    { transform: rotateX(90deg) translateZ(100px); }
-    .bottom { transform: rotateX(-90deg) translateZ(100px); }
     
     /* ---------------------------------- */
-    /* --- 5. SECTIONS & SCROLL ANIMATION --- */
+    /* --- 4. SECTIONS & CARDS --- */
     /* ---------------------------------- */
     .section-title { font-size: 2.5em; margin-bottom: 60px; text-align: center; }
     .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
     
-    /* ---------------------------------- */
-    /* --- 6. ABOUT US --- */
-    /* ---------------------------------- */
     .about__content { max-width: 800px; margin: 0 auto; font-size: 1.1em; line-height: 1.8; text-align: center; color: var(--secondary-text); }
     .about__content strong { color: var(--text-color); }
     
-    /* ---------------------------------- */
-    /* --- 7. CARDS (SPECIALIZATION & TEAM) --- */
-    /* ---------------------------------- */
+    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
     .card {
         background: var(--card-bg);
-        border-radius: 20px;
-        padding: 40px;
+        border-radius: 20px; padding: 40px;
         border: 1px solid var(--border-color);
         transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.04);
     }
     .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
     
-    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-    
     .spec-card { text-align: left; }
-    .spec-card .icon { width: 40px; height: 40px; margin-bottom: 20px; color: var(--primary-accent); }
+    .spec-card .icon-number {
+        font-size: 1.5em; font-weight: 700; color: var(--primary-accent);
+        margin-bottom: 20px; display: block;
+    }
     .spec-card h4 { font-size: 1.3em; margin-bottom: 10px; color: var(--text-color); }
     .spec-card p { font-size: 0.95em; color: var(--secondary-text); line-height: 1.6; }
 
     /* Horizontal Track Scroll for Team */
-    .team-track-container {
-        width: 100%;
-        overflow-x: auto;
-        padding-bottom: 30px;
-        -ms-overflow-style: none; scrollbar-width: none;
-    }
+    .team-track-container { width: 100%; overflow-x: auto; padding-bottom: 30px; -ms-overflow-style: none; scrollbar-width: none; }
     .team-track-container::-webkit-scrollbar { display: none; }
     .team-track { display: flex; gap: 30px; width: max-content; }
 
-    .team-member { cursor: pointer; text-align: center; width: 300px; flex-shrink: 0; }
+    .team-member {
+        cursor: pointer; text-align: center; width: 300px; flex-shrink: 0;
+        position: relative;
+    }
+    .team-member::before { /* Ефект сяйва по контуру */
+        content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: 20px; border: 2px solid transparent;
+        background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        opacity: 0; transition: opacity 0.4s ease;
+    }
+    .team-member:hover::before { opacity: 1; }
     .team-member__photo { width: 120px; height: 120px; background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; }
     .team-member h4 { font-size: 1.4em; margin-bottom: 5px; color: var(--text-color); }
     .team-member p { color: var(--secondary-text); }
     
     /* ---------------------------------- */
-    /* --- 8. MODAL, CONTACT & FOOTER --- */
+    /* --- 5. MODAL, CONTACT & FOOTER --- */
     /* ---------------------------------- */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(240, 242, 245, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(244, 244, 245, 0.7); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
     .modal-overlay.visible { opacity: 1; visibility: visible; }
     .modal-content { background: var(--card-bg); border-radius: 15px; padding: 40px; width: 90%; max-width: 500px; text-align: center; position: relative; transform: scale(0.9); transition: transform 0.4s ease; box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
     .modal-overlay.visible .modal-content { transform: scale(1); }
     .modal-close { position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--secondary-text); font-size: 2em; cursor: pointer; line-height: 1; transition: color 0.3s, transform 0.3s; }
     .modal-close:hover { color: var(--primary-accent); transform: rotate(90deg); }
     .modal-photo { width: 150px; height: 150px; background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)); border-radius: 50%; margin: 0 auto 20px; }
-    .modal-name { font-size: 2em; margin-bottom: 10px; color: var(--text-color); }
-    .modal-role { font-size: 1.2em; color: var(--primary-accent); margin-bottom: 20px; }
-    .modal-bio { line-height: 1.7; color: var(--secondary-text); }
+    .modal-name { font-size: 2em; margin-bottom: 10px; color: var(--text-color); } .modal-role { font-size: 1.2em; color: var(--primary-accent); margin-bottom: 20px; } .modal-bio { line-height: 1.7; color: var(--secondary-text); }
 
     .contact { text-align: center; background: white; padding: 120px 8%; border-radius: 40px; margin: 0 20px; }
     .contact-email { display: inline-block; margin-top: 20px; font-size: clamp(1.2em, 4vw, 2em); font-weight: 500; color: var(--text-color); text-decoration: none; transition: all 0.3s ease; }
@@ -188,16 +171,10 @@
     
     @media (max-width: 768px) {
         .header__nav-list { display: none; }
-        .hero-content { flex-direction: column-reverse; }
-        .cube-container { display: none; }
-        .hero-text { text-align: center; }
     }
   </style>
 </head>
 <body>
-
-  <div class="cursor"></div>
-  <div class="cursor-dot"></div>
 
   <header>
     <a href="#" class="logo">MSFSoft</a>
@@ -217,23 +194,13 @@
 
   <main>
     <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title" data-key="heroTitle">Crafting Digital <br><span>Solutions</span></h1>
-                <p class="hero-subtitle" data-key="heroSubtitle">We are MSFSoft, a team of young programmers dedicated to building clean, efficient, and innovative software.</p>
-                <a href="#contact" class="btn" data-key="heroBtn">Get in Touch</a>
-            </div>
-            <div class="cube-container">
-                <div class="cube">
-                    <div class="face front">&lt;/&gt;</div>
-                    <div class="face back"></div>
-                    <div class="face right"></div>
-                    <div class="face left"></div>
-                    <div class="face top"></div>
-                    <div class="face bottom"></div>
-                </div>
-            </div>
-        </div>
+        <h1 class="hero-title">
+            <span class="word" data-key="heroWord1">We</span>
+            <span class="word" data-key="heroWord2">Build</span>
+            <span class="word gradient-text" data-key="heroWord3">Future.</span>
+        </h1>
+        <p class="hero-subtitle" data-key="heroSubtitle">We are MSFSoft, a team of young programmers dedicated to building clean, efficient, and innovative software.</p>
+        <a href="#contact" class="btn" data-key="heroBtn">Get in Touch</a>
     </section>
 
     <section class="about reveal" id="about">
@@ -247,17 +214,17 @@
       <h2 class="section-title" data-key="specTitle">Our Specialization</h2>
       <div class="grid-container">
         <div class="card spec-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          <span class="icon-number">01</span>
           <h4 data-key="spec1Title">Website Development</h4>
           <p data-key="spec1Desc">From landing pages to complex platforms, we create modern, fast, and responsive websites.</p>
         </div>
         <div class="card spec-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          <span class="icon-number">02</span>
           <h4 data-key="spec2Title">Software Development</h4>
           <p data-key="spec2Desc">We develop custom desktop and server applications to automate processes and solve business tasks.</p>
         </div>
         <div class="card spec-card">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+          <span class="icon-number">03</span>
           <h4 data-key="spec3Title">Coding & Optimization</h4>
           <p data-key="spec3Desc">We write clean, efficient code and can analyze and refactor your existing codebase for better performance.</p>
         </div>
@@ -270,7 +237,7 @@
         <div class="team-track">
           <div class="card team-member" data-member="yura"><div class="team-member__photo"></div><h4>Yura F.</h4><p data-key="founder">Founder / Developer</p></div>
           <div class="card team-member" data-member="veronika"><div class="team-member__photo"></div><h4>Veronika Dziuba</h4><p data-key="developer">Developer</p></div>
-        </div>
+          </div>
       </div>
     </section>
 
@@ -298,34 +265,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('year').textContent = new Date().getFullYear();
       
-      // --- CURSOR FOLLOWER ---
-      const cursor = document.querySelector('.cursor');
-      const cursorDot = document.querySelector('.cursor-dot');
-      document.addEventListener('mousemove', e => {
-          cursor.style.left = e.clientX + 'px';
-          cursor.style.top = e.clientY + 'px';
-          cursorDot.style.left = e.clientX + 'px';
-          cursorDot.style.top = e.clientY + 'px';
-      });
-      document.querySelectorAll('a, button, .team-member').forEach(el => {
-          el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-          el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-      });
-
-      // --- 3D CUBE INTERACTION ---
-      const cube = document.querySelector('.cube');
-      if(cube) {
-        const hero = document.querySelector('.hero');
-        hero.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const { innerWidth, innerHeight } = window;
-            const rotateY = (clientX / innerWidth - 0.5) * 40;
-            const rotateX = -(clientY / innerHeight - 0.5) * 40;
-            cube.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-        });
-      }
-      
-      // --- REVEAL ON SCROLL ---
       const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
               if (entry.isIntersecting) { entry.target.classList.add('active'); }
@@ -333,11 +272,11 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       
-      // --- TRANSLATION LOGIC ---
       const translations = {
         en: {
           navAbout: "About", navSpec: "Specialization", navTeam: "Team", navContact: "Contact",
-          heroTitle: "Crafting Digital <br><span>Solutions</span>", heroSubtitle: "We are MSFSoft, a team of young programmers dedicated to building clean, efficient, and innovative software.", heroBtn: "Get in Touch",
+          heroWord1: "We", heroWord2: "Build", heroWord3: "Future.",
+          heroSubtitle: "We are MSFSoft, a team of young programmers dedicated to building clean, efficient, and innovative software.", heroBtn: "Get in Touch",
           aboutTitle: "Who We Are", aboutP1: "<strong>MSFSoft is a fresh perspective on the world of software development.</strong> We are a young team, but full of enthusiasm and innovative ideas. Our passion for coding and solving complex problems unites us, allowing us to create effective and reliable IT solutions for a modern digital landscape.",
           specTitle: "Our Specialization", spec1Title: "Website Development", spec1Desc: "From landing pages to complex platforms, we create modern, fast, and responsive websites.", spec2Title: "Software Development", spec2Desc: "We develop custom desktop and server applications to automate processes and solve business tasks.", spec3Title: "Coding & Optimization", spec3Desc: "We write clean, efficient code and can analyze and refactor your existing codebase for better performance.",
           teamTitle: "Our Team", founder: "Founder / Developer", developer: "Developer",
@@ -345,7 +284,8 @@
         },
         ua: {
           navAbout: "Про нас", navSpec: "Спеціалізація", navTeam: "Команда", navContact: "Контакти",
-          heroTitle: "Створюємо цифрові <br><span>рішення</span>", heroSubtitle: "Ми — MSFSoft, команда молодих програмістів, що присвятила себе створенню чистого, ефективного та інноваційного програмного забезпечення.", heroBtn: "Зв'язатися",
+          heroWord1: "Ми", heroWord2: "Будуємо", heroWord3: "Майбутнє.",
+          heroSubtitle: "Ми — MSFSoft, команда молодих програмістів, що присвятила себе створенню чистого, ефективного та інноваційного програмного забезпечення.", heroBtn: "Зв'язатися",
           aboutTitle: "Хто ми є", aboutP1: "<strong>MSFSoft — це свіжий погляд на світ розробки програмного забезпечення.</strong> Ми молода, але сповнена ентузіазму та інноваційних ідей команда. Наша пристрасть до кодування та вирішення складних задач об'єднує нас, дозволяючи створювати ефективні та надійні IT-рішення для сучасного цифрового світу.",
           specTitle: "Наша спеціалізація", spec1Title: "Розробка сайтів", spec1Desc: "Від лендингів до складних платформ, ми створюємо сучасні, швидкі та адаптивні сайти.", spec2Title: "Розробка програм", spec2Desc: "Розробляємо кастомні десктопні та серверні програми для автоматизації процесів та вирішення бізнес-задач.", spec3Title: "Кодинг та оптимізація", spec3Desc: "Пишемо чистий, ефективний код, а також можемо проаналізувати та провести рефакторинг вашого існуючого коду для кращої продуктивності.",
           teamTitle: "Наша команда", founder: "Засновник / Розробник", developer: "Розробник",
@@ -366,8 +306,7 @@
         translatableElements.forEach(element => {
           const key = element.dataset.key;
           if (translations[lang][key]) {
-            // Використовуємо innerHTML для елементів, які містять теги (напр., <br> або <span>)
-            if (key === 'heroTitle' || key === 'contactTitle') {
+            if (element.innerHTML.includes('<br>') || element.innerHTML.includes('<span>')) {
                 element.innerHTML = translations[lang][key];
             } else {
                 element.textContent = translations[lang][key];
@@ -380,14 +319,12 @@
       langButtons.forEach(button => { button.addEventListener('click', (event) => { setLanguage(event.target.dataset.lang); }); });
       setLanguage('ua');
 
-      // --- MODAL LOGIC ---
-      const teamCards = document.querySelectorAll('.team-member');
       const modal = document.getElementById('team-modal');
       const modalName = document.getElementById('modal-name');
       const modalRole = document.getElementById('modal-role');
       const modalBio = document.getElementById('modal-bio');
       const closeModalBtn = document.getElementById('modal-close-btn');
-      teamCards.forEach(card => {
+      document.querySelectorAll('.team-member').forEach(card => {
           card.addEventListener('click', () => {
               const memberId = card.dataset.member;
               const memberInfo = teamData[currentLang][memberId];
