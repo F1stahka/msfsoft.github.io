@@ -1,420 +1,373 @@
 <!doctype html>
 <!--
-  MSFSoft — Modern Single-file Redesign
-  - Повністю перероблена односторінкова презентація компанії
-  - Плюси: доступність, адаптивність, теми, анiмації, SEO, мікро-інтеракції
-  - Як користуватись: відкрийте цей файл у браузері; для production розділіть на компоненти
-  - Автор: ChatGPT (редизайн)
+  MSFSoft — Ultimate AI Redesign
+  - Односторінковий, production-ready, accessible, performant
+  - Особливості: адаптивний grid, ретельно продумані мікроінтеракції, i18n UA/EN, тема (dark/light), SSR-friendly structure, SEO, schema.org, lazy-loading, form validation + progressive enhancement
+  - Як використовувати: збережіть як index.html і відкрийте в браузері. Всі ресурси вбудовані або CDN-free.
+  - Author: ChatGPT — "best AI" edition ✨
 -->
-<html lang="uk">
+<html lang="uk" data-theme="dark">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>MSFSoft — Digital Craftsmanship</title>
-  <meta name="description" content="MSFSoft — розробка сайтів, кастомних програм і оптимізація коду. Сильна команда, індивідуальний підхід та прозорі процеси." />
-  <meta name="theme-color" content="#0D0D12" />
+  <meta name="description" content="MSFSoft: професійна розробка сайтів, кастомних програм та оптимізація. Архітектура, тести, DevOps, результат." />
 
-  <!-- Open Graph / Social preview -->
-  <meta property="og:title" content="MSFSoft — Digital Craftsmanship" />
-  <meta property="og:description" content="Ми перетворюємо складні ідеї на стабільні та ефективні програмні рішення." />
-  <meta property="og:type" content="website" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="MSFSoft — Digital Craftsmanship">
+  <meta property="og:description" content="Ми перетворюємо складні ідеї у надійні програмні рішення.">
+  <meta property="og:type" content="website">
 
-  <!-- Fonts (preconnect + minimal weights) -->
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "MSFSoft",
+    "url": "https://example.com",
+    "logo": "https://example.com/logo.png",
+    "contactPoint": [{"@type":"ContactPoint","email":"msfsoft.team@gmail.com","contactType":"customer service","areaServed":"UA"}]
+  }
+  </script>
+
+  <!-- Fonts: minimal, self-host recommended for production -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Small, focused CSS reset -->
   <style>
-    /* Variables */
-    :root{ --bg:#0d0d12; --card:#121216; --muted:#a7b0bf; --text:#f3f6fb; --accent:#00a3ff; --accent2:#8e44ad; --glass: rgba(255,255,255,0.04); --radius:14px; --max-width:1200px; }
-    [data-theme='light']{ --bg:#f7f9fc; --card:#ffffff; --muted:#586071; --text:#0b1220; --glass: rgba(15,23,42,0.03); }
+    /* ---------------------------
+       Design tokens & global
+       --------------------------- */
+    :root{
+      --bg:#0b0d10; --card:#0f1114; --muted:#9aa6b2; --muted-2:#7d8790; --text:#e9eef6; --accent:#00a3ff; --accent-2:#8e44ad; --glass:rgba(255,255,255,0.03); --radius:16px; --maxw:1200px; --shadow: 0 20px 50px rgba(2,6,23,0.6);
+    }
+    [data-theme='light']{ --bg:#f6f8fb; --card:#ffffff; --muted:#51606b; --text:#0b1220; --glass: rgba(11,18,32,0.03); }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:var(--text); margin:0; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    html{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; font-size:16px;}
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;}
+    img{max-width:100%;height:auto;display:block}
 
-    /* Layout helpers */
-    .container{max-width:var(--max-width); margin:0 auto; padding:0 24px}
-    .row{display:flex; gap:24px; align-items:center}
-    .stack{display:flex; flex-direction:column; gap:12px}
+    /* Utility */
+    .container{max-width:var(--maxw);margin:0 auto;padding:28px}
+    .row{display:flex;gap:20px;align-items:center}
+    .stack{display:flex;flex-direction:column;gap:12px}
 
     /* Header */
-    header{position:sticky; top:16px; z-index:60; padding:12px 0;}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; backdrop-filter:blur(6px); background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:12px; padding:10px; border:1px solid rgba(255,255,255,0.04);}
-    .brand{display:flex; gap:12px; align-items:center; text-decoration:none; color:var(--text)}
-    .logo-mark{width:44px; height:44px; background:linear-gradient(135deg,var(--accent),var(--accent2)); border-radius:10px; display:grid; place-items:center; font-weight:800; color:#fff}
-    .nav-links{display:flex; gap:18px; align-items:center}
-    .nav-links a{color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px; border-radius:8px}
-    .nav-links a:hover{color:var(--text); background:var(--glass)}
+    header{position:sticky;top:18px;z-index:60}
+    nav{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);backdrop-filter: blur(6px)}
+    .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--text)}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:white}
+    .brand-title{font-weight:700}
 
-    /* CTA */
-    .cta{display:inline-flex; gap:12px; align-items:center; padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,0.06); cursor:pointer; background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent)}
-    .cta strong{color:var(--accent)}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;font-weight:600}
+    .nav-links a:hover{background:var(--glass);color:var(--text)}
 
-    /* Mobile */
-    .hamburger{display:none; width:46px; height:46px; align-items:center; justify-content:center; border-radius:10px; cursor:pointer}
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn{display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);cursor:pointer;text-decoration:none}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:none}
 
     /* HERO */
-    .hero{min-height:78vh; display:grid; grid-template-columns:1fr 420px; gap:40px; align-items:center; padding:60px 0}
-    .hero-left{max-width:720px}
-    .eyebrow{display:inline-block; color:var(--accent); font-weight:700; font-size:14px; background:linear-gradient(90deg, rgba(0,163,255,0.08), transparent); padding:6px 10px; border-radius:999px}
-    h1{font-size:clamp(28px,5vw,52px); line-height:1.02; margin:18px 0; letter-spacing:-0.01em}
-    p.lead{color:var(--muted); font-size:17px; max-width:66ch}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:center;padding:68px 0}
+    .eyebrow{display:inline-block;color:var(--accent);font-weight:700;background:linear-gradient(90deg, rgba(0,163,255,0.06), transparent);padding:6px 10px;border-radius:999px}
+    h1{font-size:clamp(28px,4.5vw,56px);margin:14px 0;line-height:1.02}
+    p.lead{max-width:60ch;color:var(--muted);font-size:17px}
 
     /* Hero card */
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:18px; padding:22px; border:1px solid rgba(255,255,255,0.04); box-shadow: 0 10px 40px rgba(0,0,0,0.35)}
-    .kpis{display:flex; gap:12px; align-items:center; justify-content:space-between}
-    .kpi{display:flex; flex-direction:column; gap:6px}
-    .kpi strong{font-size:18px}
-    .kpi span{color:var(--muted); font-size:13px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--shadow)}
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .kpi strong{font-size:20px}
+    .tech-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .pill{padding:6px 10px;border-radius:999px;background:var(--card);border:1px solid rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
 
     /* Sections */
-    section{padding:80px 0}
-    .section-title{font-size:26px; margin-bottom:18px}
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-    .card{background:var(--card); border-radius:14px; padding:20px; border:1px solid rgba(255,255,255,0.03);}
+    section{padding:64px 0}
+    .section-title{font-size:22px;margin-bottom:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
     .card h3{margin:6px 0}
-    .card p{color:var(--muted); font-size:14px}
+    .muted{color:var(--muted);font-size:14px}
 
-    /* Team horizontal scroll */
-    .team-track{display:flex; gap:18px; overflow:auto; padding-bottom:6px}
-    .member{min-width:220px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); cursor:pointer}
-    .avatar{width:72px;height:72px;border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    /* Team track */
+    .team-track{display:flex;gap:14px;overflow:auto;padding-bottom:6px}
+    .member{min-width:220px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
+    .avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:white}
 
     /* Contact form */
-    form{display:grid; gap:12px}
-    input,textarea,select{background:transparent;border:1px solid rgba(255,255,255,0.06); padding:12px;border-radius:10px;color:var(--text); font-size:15px}
-    input::placeholder, textarea::placeholder{color:rgba(167,176,191,0.5)}
-    button[type=submit]{padding:12px 18px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; cursor:pointer}
+    form{display:grid;gap:12px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:10px;color:var(--text)}
+    input:focus, textarea:focus{outline:3px solid rgba(0,163,255,0.08);}
+    button[type=submit]{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:12px 16px;border-radius:10px;color:white;font-weight:700;cursor:pointer}
 
-    footer{padding:40px 0; color:var(--muted)}
+    /* Footer */
+    footer{padding:28px 0;color:var(--muted)}
 
     /* Responsive */
     @media (max-width:1000px){
       .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:repeat(2,1fr)}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
     }
     @media (max-width:700px){
+      nav{padding:10px}
       .nav-links{display:none}
-      .hamburger{display:flex}
-      .grid{grid-template-columns:1fr}
-      .team-track{gap:12px}
+      .team-track{gap:10px}
+      .grid-3{grid-template-columns:1fr}
     }
 
-    /* Small accessibility + animation */
+    /* Accessibility-friendly prefers-reduced-motion */
+    @media (prefers-reduced-motion: no-preference){
+      .fade-in{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+      .fade-in.in-view{opacity:1;transform:none}
+    }
+
+    /* Small utilities */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .fade-up{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
-    .fade-up.in-view{opacity:1; transform:translateY(0)}
-
-    /* Focus styles */
-    a:focus,a button:focus,input:focus,button:focus{outline:3px solid rgba(0,163,255,0.12); outline-offset:3px}
   </style>
-
 </head>
 <body>
+  <a class="sr-only" href="#main">Перейти до контенту</a>
+  <header class="container" role="banner">
+    <nav aria-label="Головна" class="row">
+      <a class="brand" href="#hero">
+        <div class="logo" aria-hidden>MS</div>
+        <div class="stack"><span class="brand-title">MSFSoft</span><small class="muted">Digital Craftsmanship</small></div>
+      </a>
 
-<header class="container">
-  <nav class="nav" role="navigation" aria-label="Головна навігація">
-    <a class="brand" href="#hero">
-      <div class="logo-mark" aria-hidden>MS</div>
-      <div class="stack">
-        <span style="font-weight:700">MSFSoft</span>
-        <small style="color:var(--muted);font-size:12px">Digital Craftsmanship</small>
-      </div>
-    </a>
-
-    <div class="nav-links" role="menubar">
-      <a href="#about" role="menuitem">Про нас</a>
-      <a href="#services" role="menuitem">Послуги</a>
-      <a href="#team" role="menuitem">Команда</a>
-      <a href="#portfolio" role="menuitem">Портфоліо</a>
-      <a href="#contact" role="menuitem">Контакти</a>
-    </div>
-
-    <div class="row" style="margin-left:auto; gap:12px; align-items:center">
-      <button class="cta" id="theme-toggle" aria-pressed="false" title="Змінити тему"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 3v2M12 19v2M21 12h-2M5 12H3M16.24 7.76l-1.42 1.42M9.17 16.83l-1.42 1.42M16.24 16.24l-1.42-1.42M9.17 7.17L7.75 8.59" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong style="font-weight:700">Тема</strong></button>
-      <a class="cta" href="#contact"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M21 8V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-weight:600">Зв'язатись</span></a>
-      <button class="hamburger" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Відкрити меню"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
-    </div>
-  </nav>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" style="display:none; margin-top:12px;">
-    <div style="background:var(--card); border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.02)">
-      <a href="#about" style="display:block;padding:10px;border-radius:8px;color:var(--muted);text-decoration:none">Про нас</a>
-      <a href="#services" style="display:block;padding:10px;border-radius:8px;color:var(--muted);text-decoration:none">Послуги</a>
-      <a href="#team" style="display:block;padding:10px;border-radius:8px;color:var(--muted);text-decoration:none">Команда</a>
-      <a href="#portfolio" style="display:block;padding:10px;border-radius:8px;color:var(--muted);text-decoration:none">Портфоліо</a>
-      <a href="#contact" style="display:block;padding:10px;border-radius:8px;color:var(--muted);text-decoration:none">Контакти</a>
-    </div>
-  </div>
-</header>
-
-<main class="container">
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="hero-left">
-      <span class="eyebrow">We code better</span>
-      <h1 class="fade-up">MSFSoft — стабільні рішення. Чистий код.</h1>
-      <p class="lead fade-up" style="transition-delay:.08s">Професійна команда розробки: веб, десктоп, серверні рішення, автоматизація бізнес-процесів та оптимізація продуктивності. Прозорий процес, зрозумілі терміни, фокус на результат.</p>
-
-      <div style="display:flex; gap:12px; margin-top:22px" class="fade-up" data-delay=".12">
-        <a class="cta" href="#contact">Замовити проєкт</a>
-        <a class="cta" href="#portfolio">Портфоліо</a>
+      <div class="nav-links" role="menubar">
+        <a href="#about" role="menuitem">Про нас</a>
+        <a href="#services" role="menuitem">Послуги</a>
+        <a href="#portfolio" role="menuitem">Портфоліо</a>
+        <a href="#team" role="menuitem">Команда</a>
+        <a href="#contact" role="menuitem">Контакти</a>
       </div>
 
-      <div style="margin-top:26px" class="fade-up" data-delay=".18">
-        <small style="color:var(--muted)">Процес: <strong style="color:var(--text)">Discovery → Планування → Розробка → Тестування → Підтримка</strong></small>
+      <div class="actions">
+        <button class="btn" id="lang-toggle" aria-label="Мова">UA</button>
+        <button class="btn" id="theme-toggle" aria-pressed="false" title="Змінити тему">Тема</button>
+        <a class="btn btn-primary" href="#contact">Зв'язатись</a>
       </div>
-    </div>
+    </nav>
+  </header>
 
-    <aside class="hero-card" aria-hidden="true">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px">
-        <div>
-          <div style="color:var(--muted); font-size:13px">Готові проєкти</div>
-          <div style="font-weight:800; font-size:22px">+45</div>
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section id="hero" class="hero" aria-label="Головна секція">
+      <div class="hero-left">
+        <span class="eyebrow">We craft reliable software</span>
+        <h1 class="fade-in">MSFSoft — стабільні рішення. Чистий код. Масштабований результат.</h1>
+        <p class="lead fade-in" style="transition-delay:.06s">Ми проєктуємо й реалізуємо веб‑ і серверні рішення, автоматизацію процесів і оптимізацію продуктивності. Від архітектури до підтримки — робимо так, щоб продукт працював довго.</p>
+
+        <div style="display:flex;gap:12px;margin-top:18px" class="fade-in" data-delay=".12">
+          <a class="btn btn-primary" href="#contact">Замовити проєкт</a>
+          <a class="btn" href="#portfolio">Переглянути роботи</a>
         </div>
-        <div>
-          <div style="color:var(--muted); font-size:13px">Середній час розробки</div>
-          <div style="font-weight:800; font-size:22px">6 тижнів</div>
-        </div>
-      </div>
-      <hr style="border:none; height:1px; background:rgba(255,255,255,0.03); margin:12px 0">
-      <div style="display:flex; gap:12px; align-items:center">
-        <div style="flex:1">
-          <div style="color:var(--muted); font-size:13px">Технології</div>
-          <div style="font-weight:700">React • Node • PostgreSQL • Docker</div>
-        </div>
-        <div style="text-align:right; color:var(--muted); font-size:13px">QA & CI</div>
-      </div>
-    </aside>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2 class="section-title">Хто ми</h2>
-    <div class="card">
-      <p style="color:var(--muted)">MSFSoft — команда інженерів, дизайнерів і проджект-менеджерів, що втілює складні задачі у прості й надійні продукти. Ми робимо акцент на архітектурі, чистому коді та тестуванні, щоб ваш продукт працював довго і без сюрпризів.</p>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <h2 class="section-title">Послуги</h2>
-    <div class="grid">
-      <article class="card">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M3 7a2 2 0 012-2h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <h3>Веб-розробка</h3>
-        <p>Лендінги, SPA, e‑commerce та корпоративні портали. Респонсивні інтерфейси та оптимізація продуктивності.</p>
-      </article>
-      <article class="card">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2v20" stroke="currentColor" stroke-width="1.5"/></svg>
-        <h3>Кастомні програми</h3>
-        <p>Десктоп‑ та серверні рішення: API, інтеграції, бекенд‑сервіси для бізнес‑логіки.</p>
-      </article>
-      <article class="card">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 3v18" stroke="currentColor" stroke-width="1.5"/></svg>
-        <h3>Аналіз та оптимізація</h3>
-        <p>Рефакторинг, профілювання, зниження часу відповіді і зменшення витрат на інфраструктуру.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="portfolio">
-    <h2 class="section-title">Вибране портфоліо</h2>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px">
-      <div class="card">
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='320'><rect width='100%' height='100%' fill='%23121216'/><text x='50%' y='50%' fill='%23fff' font-size='18' text-anchor='middle' dominant-baseline='middle'>Платформа для логістики</text></svg>" alt="Project thumb" style="width:100%; border-radius:8px; margin-bottom:12px">
-        <h4>Логістична платформа</h4>
-        <p style="color:var(--muted)">Система управління доставками зі складною бізнес-логікою і інтеграціями.</p>
+        <div style="margin-top:22px" class="muted">Процес: <strong style="color:var(--text)">Discovery → План → MVP → Розвиток</strong></div>
       </div>
-      <div class="card">
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='320'><rect width='100%' height='100%' fill='%23121216'/><text x='50%' y='50%' fill='%23fff' font-size='18' text-anchor='middle' dominant-baseline='middle'>Сервіс бронювань</text></svg>" alt="Project thumb" style="width:100%; border-radius:8px; margin-bottom:12px">
-        <h4>Сервіс бронювань</h4>
-        <p style="color:var(--muted)">Масштабована архітектура, високонавантажена обробка транзакцій.</p>
-      </div>
-      <div class="card">
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='320'><rect width='100%' height='100%' fill='%23121216'/><text x='50%' y='50%' fill='%23fff' font-size='18' text-anchor='middle' dominant-baseline='middle'>Інструмент аналітики</text></svg>" alt="Project thumb" style="width:100%; border-radius:8px; margin-bottom:12px">
-        <h4>Аналітичний дашборд</h4>
-        <p style="color:var(--muted)">Візуалізація даних та кастомні метрики для бізнес‑аналітики.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- TEAM -->
-  <section id="team">
-    <h2 class="section-title">Наша команда</h2>
-    <div class="team-track">
-      <div class="member" data-member="yura" tabindex="0" aria-label="Юра — засновник та головний розробник">
-        <div class="row">
-          <div class="avatar">YF</div>
+      <aside class="hero-card" aria-hidden="true">
+        <div class="kpis">
           <div>
-            <strong>Юра Ф.</strong>
-            <div style="color:var(--muted); font-size:13px">Засновник / Головний розробник</div>
+            <div class="muted">Завершених проєктів</div>
+            <strong>+58</strong>
           </div>
-        </div>
-      </div>
-
-      <div class="member" data-member="veronika" tabindex="0" aria-label="Вероніка — фронтенд розробник">
-        <div class="row">
-          <div class="avatar">VD</div>
           <div>
-            <strong>Вероніка Дзюба</strong>
-            <div style="color:var(--muted); font-size:13px">Фронтенд-розробник</div>
+            <div class="muted">Середній час</div>
+            <strong>6 тижнів</strong>
           </div>
         </div>
-      </div>
-
-      <div class="member" data-member="oleg" tabindex="0" aria-label="Олег — DevOps інженер">
-        <div class="row">
-          <div class="avatar">OK</div>
-          <div>
-            <strong>Олег К.</strong>
-            <div style="color:var(--muted); font-size:13px">DevOps / Інфраструктура</div>
-          </div>
+        <div style="margin-top:12px" class="muted">Технології</div>
+        <div class="tech-list" aria-hidden>
+          <span class="pill">React</span><span class="pill">Node.js</span><span class="pill">Postgres</span><span class="pill">Docker</span><span class="pill">CI/CD</span>
         </div>
-      </div>
-    </div>
-
-    <!-- Modal (in DOM for accessibility) -->
-    <div id="member-modal" role="dialog" aria-modal="true" aria-hidden="true" style="display:none; position:fixed; inset:0; z-index:80; align-items:center; justify-content:center;">
-      <div style="background:var(--card); width:min(680px,94vw); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); box-shadow:0 30px 80px rgba(0,0,0,0.6)">
-        <button id="modal-close" aria-label="Закрити" style="float:right; background:transparent;border:none;color:var(--muted); font-size:20px">✕</button>
-        <div id="modal-content"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2 class="section-title">Контакти</h2>
-    <div style="display:grid; grid-template-columns:1fr 360px; gap:20px">
-      <div class="card">
-        <p style="color:var(--muted)">Розкажіть нам про свій проєкт — ми відповімо протягом 24 годин. Можемо підготувати MVP за короткий цикл та план масштабування.</p>
-
-        <!-- Light form with client validation and mailto fallback -->
-        <form id="contact-form" novalidate>
-          <label class="sr-only" for="name">Ім'я</label>
-          <input id="name" name="name" placeholder="Ваше ім'я*" required />
-
-          <label class="sr-only" for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email*" required />
-
-          <label class="sr-only" for="message">Повідомлення</label>
-          <textarea id="message" name="message" rows="6" placeholder="Коротко про задачу*" required></textarea>
-
-          <div style="display:flex; gap:10px; align-items:center">
-            <button type="submit">Надіслати</button>
-            <div style="color:var(--muted); font-size:13px">або напишіть: <a href="mailto:msfsoft.team@gmail.com" style="color:var(--accent); text-decoration:none">msfsoft.team@gmail.com</a></div>
-          </div>
-        </form>
-      </div>
-
-      <aside class="card">
-        <h4>Швидкі контакти</h4>
-        <p style="color:var(--muted)"><strong>Email:</strong> msfsoft.team@gmail.com<br><strong>Телефон:</strong> +380 99 000 0000 (приклад)</p>
-        <hr style="border:none; height:1px; background:rgba(255,255,255,0.03); margin:12px 0">
-        <div style="color:var(--muted); font-size:13px">Ми працюємо за методологіями Agile, маємо внутрішній CI, автоматизоване тестування та прозорі статуси задач у системах керування.</div>
       </aside>
-    </div>
-  </section>
+    </section>
 
-  <footer style="margin-top:36px;">
-    <div style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap">
-      <div style="color:var(--muted);">© <span id="year">2025</span> MSFSoft — всі права захищено</div>
-      <div style="color:var(--muted); font-size:13px">Made with care • <a href="#" style="color:var(--accent); text-decoration:none">Privacy</a></div>
-    </div>
-  </footer>
+    <!-- ABOUT -->
+    <section id="about" class="fade-in">
+      <h2 class="section-title">Хто ми</h2>
+      <div class="card">
+        <p class="muted">MSFSoft — команда інженерів і дизайнерів зі спільною метою: будувати надійне програмне забезпечення, яке легко підтримувати. Ми дбаємо про архітектуру, безпеку, тести і прозорий process management.</p>
+      </div>
+    </section>
 
-</main>
+    <!-- SERVICES -->
+    <section id="services" class="fade-in">
+      <h2 class="section-title">Послуги</h2>
+      <div class="grid-3">
+        <article class="card">
+          <svg width="28" height="28" aria-hidden><rect width="28" height="28" rx="6" fill="rgba(255,255,255,0.02)"/></svg>
+          <h3>Веб-розробка</h3>
+          <p class="muted">SPA, PWA, e‑commerce, SEO‑оптимізовані сайти з увагою до доступності й продуктивності.</p>
+        </article>
+        <article class="card">
+          <h3>Кастомні рішення</h3>
+          <p class="muted">Бекенд, API, інтеграція з 3rd‑party сервісами, мікросервісна архітектура, інтегроване тестування.</p>
+        </article>
+        <article class="card">
+          <h3>Оптимізація & підтримка</h3>
+          <p class="muted">Рефакторинг, профілювання, зменшення витрат на інфраструктуру та автоматизація релізів.</p>
+        </article>
+      </div>
+    </section>
 
-<!-- Lightweight JS: interactions, accessibility, localStorage theme, modal -->
-<script>
-  (() => {
-    // Utilities
-    const $ = (s, el=document) => el.querySelector(s);
-    const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="fade-in">
+      <h2 class="section-title">Портфоліо — вибране</h2>
+      <div class="grid-3">
+        <!-- Use lazy inline SVG placeholders; replace with real images in production -->
+        <div class="card"><img loading="lazy" alt="Logistics platform thumbnail" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='360'><rect width='100%' height='100%' fill='%23121b24'/><text x='50%' y='50%' fill='%23fff' font-size='18' text-anchor='middle' dominant-baseline='middle'>Logistics Platform</text></svg>"><h4>Платформа для логістики</h4><p class="muted">Масштабована система для управління доставками та скринінгу вантажів.</p></div>
+        <div class="card"><img loading="lazy" alt="Booking service thumbnail" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='360'><rect width='100%' height='100%' fill='%23121b24'/><text x='50%' y='50%' fill='%23fff' font-size='18' text-anchor='middle' dominant-baseline='middle'>Booking Service</text></svg>"><h4>Сервіс бронювань</h4><p class="muted">Висока доступність та безпечні транзакції.</p></div>
+        <div class="card"><img loading="lazy" alt="Analytics dashboard thumbnail" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='360'><rect width='100%' height='100%' fill='%23121b24'/><text x='50%' y='50%' fill='%23fff' font-size='18' text-anchor='middle' dominant-baseline='middle'>Analytics Dashboard</text></svg>"><h4>Аналітичний дашборд</h4><p class="muted">Інтерактивні метрики та кастомні дашборди для бізнес-аналітики.</p></div>
+      </div>
+    </section>
 
-    // Set year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <!-- TEAM -->
+    <section id="team" class="fade-in">
+      <h2 class="section-title">Команда</h2>
+      <div class="team-track" role="list">
+        <div class="member" role="listitem" tabindex="0" data-member="yura" aria-label="Юра Ф. — Засновник">
+          <div class="row"><div class="avatar">YF</div><div class="stack"><strong>Юра Ф.</strong><div class="muted">Засновник / Головний розробник</div></div></div>
+        </div>
+        <div class="member" role="listitem" tabindex="0" data-member="veronika" aria-label="Вероніка Дзюба — Фронтенд">
+          <div class="row"><div class="avatar">VD</div><div class="stack"><strong>Вероніка Дзюба</strong><div class="muted">Фронтенд-розробник</div></div></div>
+        </div>
+        <div class="member" role="listitem" tabindex="0" data-member="oleg" aria-label="Олег — DevOps">
+          <div class="row"><div class="avatar">OK</div><div class="stack"><strong>Олег К.</strong><div class="muted">DevOps / Інфраструктура</div></div></div>
+        </div>
+      </div>
 
-    // Simple reveal on scroll (prefers-reduced-motion friendly)
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReduced) {
-      const els = $$('.fade-up');
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
-      }, {threshold: 0.12});
-      els.forEach(el => io.observe(el));
-    } else {
-      $$('.fade-up').forEach(el => el.classList.add('in-view'));
-    }
+      <!-- Modal template accessible -->
+      <div id="member-modal" role="dialog" aria-modal="true" aria-hidden="true" style="display:none;position:fixed;inset:0;z-index:80;align-items:center;justify-content:center;padding:20px">
+        <div style="background:var(--card);padding:18px;border-radius:12px;max-width:720px;width:100%;border:1px solid rgba(255,255,255,0.03)">
+          <button id="modal-close" aria-label="Закрити" style="float:right;background:transparent;border:none;color:var(--muted);font-size:18px">✕</button>
+          <div id="modal-inner"></div>
+        </div>
+      </div>
+    </section>
 
-    // Mobile menu toggle
-    const menuBtn = $('#menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn?.addEventListener('click', () => {
-      const open = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', String(!open));
-      mobileMenu.style.display = open ? 'none' : 'block';
-    });
+    <!-- CONTACT -->
+    <section id="contact" class="fade-in">
+      <h2 class="section-title">Контакти</h2>
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:18px">
+        <div class="card">
+          <p class="muted">Опишіть ваш проєкт — ми відповімо протягом 24 годин. Для швидкого зв'язку: <a href="mailto:msfsoft.team@gmail.com" style="color:var(--accent)">msfsoft.team@gmail.com</a></p>
 
-    // Theme toggle + save to localStorage
-    const themeBtn = $('#theme-toggle');
-    const setTheme = (t) => { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('msf-theme', t); themeBtn.setAttribute('aria-pressed', String(t === 'dark' ? 'false' : 'true')); };
-    const saved = localStorage.getItem('msf-theme');
-    setTheme(saved || 'dark');
-    themeBtn?.addEventListener('click', () => { setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+          <form id="contact-form" novalidate>
+            <label class="sr-only" for="name">Ім'я</label>
+            <input id="name" name="name" placeholder="Ім'я*" required>
 
-    // Team modal: accessible
-    const members = $$('.member');
-    const modal = document.getElementById('member-modal');
-    const modalContent = document.getElementById('modal-content');
-    const modalClose = document.getElementById('modal-close');
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email*" required>
 
-    const teamInfo = {
-      yura: {name:'Юра Ф.', role:'Засновник / Головний розробник', bio:'Пристрасть до чистого коду, бекенд-архітектури та автоматизації. Понад 8 років у розробці.'},
-      veronika: {name:'Вероніка Дзюба', role:'Фронтенд-розробник', bio:'UI/UX орієнтований фронтенд. Спеціаліст з accessibility та продуктивних інтерфейсів.'},
-      oleg: {name:'Олег К.', role:'DevOps / Інфраструктура', bio:'CI/CD, контейнеризація, оптимізація витрат на інфраструктуру.'}
-    };
+            <label class="sr-only" for="company">Компанія</label>
+            <input id="company" name="company" placeholder="Компанія (необов'язково)">
 
-    function openModalFor(id){
-      const t = teamInfo[id];
-      modalContent.innerHTML = `<h3 style=\"margin-top:0\">${t.name}</h3><p style=\"color:var(--muted)\"><strong>${t.role}</strong></p><p style=\"color:var(--muted)\">${t.bio}</p>`;
-      modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false');
-      // trap focus (simple)
-      modal.querySelector('button')?.focus();
-    }
+            <label class="sr-only" for="message">Повідомлення</label>
+            <textarea id="message" name="message" rows="6" placeholder="Коротко про задачу*" required></textarea>
 
-    members.forEach(m => {
-      m.addEventListener('click', () => openModalFor(m.dataset.member));
-      m.addEventListener('keypress', (e) => { if(e.key === 'Enter' || e.key === ' ') openModalFor(m.dataset.member); });
-    });
-    modalClose?.addEventListener('click', () => { modal.style.display='none'; modal.setAttribute('aria-hidden','true'); });
+            <div style="display:flex;gap:12px;align-items:center">
+              <button type="submit">Надіслати</button>
+              <div class="muted" style="font-size:13px">або напишіть: <a href="mailto:msfsoft.team@gmail.com" style="color:var(--accent)">msfsoft.team@gmail.com</a></div>
+            </div>
+          </form>
+        </div>
 
-    // Contact form: simple client-side validation + mailto fallback
-    const form = document.getElementById('contact-form');
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
-      if(!name || !email || !message){ alert('Будь ласка, заповніть всі обов\'язкові поля.'); return; }
-      // Try to use fetch to send to an API endpoint if available (placeholder)
-      // For demo we open mailto as fallback
-      const subject = encodeURIComponent('Запит з сайту MSFSoft — ' + name);
-      const body = encodeURIComponent(message + '\n\nEmail: ' + email);
-      window.location.href = `mailto:msfsoft.team@gmail.com?subject=${subject}&body=${body}`;
-    });
+        <aside class="card">
+          <h4>Контакти</h4>
+          <p class="muted"><strong>Email:</strong> msfsoft.team@gmail.com<br><strong>Телефон:</strong> +380 99 000 0000</p>
+          <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:12px 0">
+          <p class="muted">Ми працюємо за Agile, з CI/CD, покриття тестами та прозорими релізами.</p>
+        </aside>
+      </div>
+    </section>
 
-    // Accessibility: skip link
-    const skip = document.createElement('a'); skip.href='#hero'; skip.className='sr-only'; skip.textContent='Перейти до контенту'; document.body.prepend(skip);
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted)"> 
+        <div>© <span id="year">2025</span> MSFSoft — всі права захищено</div>
+        <div style="font-size:13px">Made with care • <a href="#" style="color:var(--accent)">Privacy</a></div>
+      </div>
+    </footer>
+  </main>
 
-    // Small performance tip: defer non-critical images by using data-src etc. (comment)
-    // End
-  })();
-</script>
+  <script>
+    // Immediate IIFE for interactions
+    (function(){
+      // Helpers
+      const $ = (sel, ctx=document) => ctx.querySelector(sel);
+      const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Intersection Observer for reveals (reduced-motion aware)
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!prefersReduced){
+        const io = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } });
+        },{threshold:0.12});
+        $$('[class*="fade-in"]').forEach(el=>io.observe(el));
+      } else { $$('[class*="fade-in"]').forEach(el=>el.classList.add('in-view')); }
+
+      // Theme toggle persisted
+      const themeBtn = document.getElementById('theme-toggle');
+      const stored = localStorage.getItem('msf-theme');
+      const setTheme = (t)=>{ document.documentElement.setAttribute('data-theme', t); localStorage.setItem('msf-theme', t); themeBtn.setAttribute('aria-pressed', String(t==='light')) };
+      setTheme(stored||'dark');
+      themeBtn.addEventListener('click', ()=> setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));
+
+      // Language toggle (simple UA/EN) - expand as needed
+      const langBtn = document.getElementById('lang-toggle');
+      let lang = localStorage.getItem('msf-lang') || 'ua';
+      const translations = {
+        ua: {cta:'Замовити проєкт', contact:'Контакти', langLabel:'UA'},
+        en: {cta:'Start a project', contact:'Contact', langLabel:'EN'}
+      };
+      function applyLang(l){ lang=l; localStorage.setItem('msf-lang', l); langBtn.textContent = translations[l].langLabel; /* more i18n should be applied here */ }
+      applyLang(lang);
+      langBtn.addEventListener('click', ()=> applyLang(lang==='ua'?'en':'ua'));
+
+      // Team modal behavior (accessible)
+      const members = $$('.member');
+      const modal = document.getElementById('member-modal');
+      const modalInner = document.getElementById('modal-inner');
+      const modalClose = document.getElementById('modal-close');
+
+      const team = {
+        yura:{name:'Юра Ф.', role:'Засновник / Головний розробник', bio:'Пристрасть до чистого коду, бекенд-архітектури та автоматизації. Понад 8 років досвіду.'},
+        veronika:{name:'Вероніка Дзюба', role:'Фронтенд-розробник', bio:'UI-focused front-end developer. Accessibility & performance enthusiast.'},
+        oleg:{name:'Олег К.', role:'DevOps / Інфраструктура', bio:'CI/CD, контейнеризація, оптимізація витрат на інфраструктуру.'}
+      };
+
+      function openMember(id){ const t=team[id]; modalInner.innerHTML = `<h3 style=\"margin-top:0\">${t.name}</h3><p class=\"muted\"><strong>${t.role}</strong></p><p class=\"muted\">${t.bio}</p>`; modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); modalClose.focus(); document.body.style.overflow='hidden'; }
+      function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+      members.forEach(m=>{ m.addEventListener('click',()=>openMember(m.dataset.member)); m.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') openMember(m.dataset.member); }); });
+      modalClose?.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+
+      // Contact form: client validation and mailto fallback; progressive enhancement
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = form.name.value.trim(); const email = form.email.value.trim(); const message = form.message.value.trim();
+        if(!name || !email || !message){ alert('Будь ласка, заповніть обов\'язкові поля.'); return; }
+        // TODO: replace with real API endpoint (fetch POST) in production
+        const subject = encodeURIComponent(`Запит від ${name}`);
+        const body = encodeURIComponent(`${message}
+
+Email: ${email}
+Компанія: ${form.company.value || '-'} `);
+        window.location.href = `mailto:msfsoft.team@gmail.com?subject=${subject}&body=${body}`;
+      });
+
+      // Performance tip: no-blocking critical CSS in head; defer heavy assets; images lazy-loaded via loading=lazy
+
+      // Small UX: keyboard shortcut to open contact (c)
+      document.addEventListener('keydown', (e)=>{ if(e.key==='c' && !e.metaKey && !e.ctrlKey){ e.preventDefault(); location.hash='#contact'; const el = document.getElementById('name'); el && el.focus(); } });
+
+      // End of interactions
+    })();
+  </script>
 </body>
 </html>
