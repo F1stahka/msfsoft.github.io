@@ -6,7 +6,85 @@
 <title>MSFSoft — Digital Engineering</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<script defer src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // --- CORE UTILITIES ---
+  document.getElementById('year').textContent = new Date().getFullYear();
+  lucide.createIcons();
+
+  // Reveal animation observer
+  const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Hero parallax
+  const heroBg = document.querySelector('.hero-bg-image');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      heroBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+    });
+  }
+
+  // --- Language System ---
+  const translations = { /* твій об’єкт з мовами тут залишається без змін */ };
+
+  let currentLang = "en";
+  const langToggle = document.getElementById("lang-toggle");
+
+  function updateLanguage(lang) {
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
+      if (!translations[lang][key]) return;
+      if (el.tagName === "P" || el.tagName === "H2" || el.tagName === "A" || el.tagName === "H4") {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    currentLang = lang;
+    langToggle.textContent = lang === "en" ? "UA" : "EN";
+  }
+
+  langToggle.addEventListener("click", () => {
+    updateLanguage(currentLang === "en" ? "ua" : "en");
+  });
+
+  // Load default language
+  updateLanguage("en");
+
+  // --- TEAM MODAL SYSTEM ---
+  const teamData = { /* твій об’єкт з даними тут */ };
+  const modal = document.getElementById("team-modal");
+  const modalPhoto = document.getElementById("modal-photo");
+  const modalName = document.getElementById("modal-name");
+  const modalRole = document.getElementById("modal-role");
+  const modalBio = document.getElementById("modal-bio");
+  const modalClose = document.getElementById("modal-close-btn");
+
+  function openModal(memberKey) {
+    const data = teamData[currentLang][memberKey];
+    modalPhoto.src = data.photo;
+    modalName.textContent = data.name;
+    modalRole.textContent = data.role;
+    modalBio.textContent = data.bio;
+    modal.classList.add("visible");
+  }
+
+  modalClose.addEventListener("click", () => modal.classList.remove("visible"));
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.remove("visible");
+  });
+
+  document.querySelectorAll(".team-member").forEach(memberCard => {
+    memberCard.addEventListener("click", () => {
+      const memberKey = memberCard.getAttribute("data-member");
+      openModal(memberKey);
+    });
+  });
+
+});
+</script>
 
 <style>
   /* ========================
