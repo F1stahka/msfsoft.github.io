@@ -2,144 +2,284 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MSFSoft — Digital Engineering</title>
-  <meta name="description" content="MSFSoft — engineering team building stable and efficient software solutions. Web, backend, optimization and product engineering." />
-  <meta property="og:title" content="MSFSoft — Digital Engineering" />
-  <meta property="og:description" content="Engineering team building stable and efficient software solutions." />
-  <meta property="og:url" content="https://www.msf-soft.com" />
+  <meta name="description" content="MSFSoft — engineering team building stable and efficient software solutions." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <script defer src="https://unpkg.com/lucide@latest/dist/lucide.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --bg:#FAFBFC; --card:#FFFFFF; --muted:#6B7280; --text:#0F1724;
+      --accent:#0EA5E9; --accent-darker:#0284c7; --glass:rgba(15,23,36,0.04);
+      --radius:14px; --maxw:1180px; --shadow-1:0 6px 18px rgba(16,24,40,0.06);
+      --shadow-2:0 10px 30px rgba(16,24,40,0.08);
+    }
+    *{box-sizing:border-box} html{font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.5}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+    a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
+    header{position:sticky;top:0;z-index:60;backdrop-filter:blur(8px);
+      background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
+      border-bottom:1px solid rgba(15,23,36,0.04)}
+    .nav-row{display:flex;align-items:center;gap:20px;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand-mark{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-weight:800;
+      background:linear-gradient(135deg,var(--accent),#06b6d4);color:#fff;box-shadow:var(--shadow-1);font-size:1.05rem}
+    .brand-title{font-weight:700;font-size:1.05rem}
+    nav.primary{margin-left:28px;display:flex;gap:14px}
+    nav.primary a{padding:10px 12px;border-radius:10px;color:var(--muted);font-weight:600;transition:color .2s,background .2s}
+    nav.primary a:hover{color:var(--text);background:var(--glass)}
+    .actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;font-weight:600;cursor:pointer;border:none;transition:transform .18s,box-shadow .18s,background .18s}
+    .btn-ghost{background:transparent;border:1px solid rgba(15,23,36,0.1);color:var(--text)}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-1)}
+    .btn-primary:hover{background:var(--accent-darker);box-shadow:var(--shadow-2);transform:translateY(-2px)}
+    .icon-btn{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;border:1px solid rgba(15,23,36,0.1);background:#fff}
+    .hero{display:grid;grid-template-columns:1fr 480px;gap:48px;align-items:center;padding:72px 0 96px;min-height:80vh}
+    .hero-left{max-width:680px}
+    .kicker{display:inline-block;background:#E0F2FE;color:var(--accent-darker);padding:8px 12px;border-radius:999px;font-weight:700;font-size:.85rem;margin-bottom:18px}
+    .title{font-size:clamp(2.1rem,4.5vw,3.6rem);line-height:1.05;font-weight:800;margin:0 0 18px}
+    .lead{color:var(--muted);font-size:1.1rem;margin-bottom:30px;line-height:1.6}
+    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-card{border-radius:var(--radius);box-shadow:var(--shadow-2);padding:0}
+    .hero-card img{border-radius:var(--radius);display:block}
+    section{padding:64px 0}
+    .section-head{text-align:center;margin-bottom:40px}
+    .section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800}
+    .grid{display:grid;gap:20px}
+    .grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:var(--card);padding:24px;border-radius:var(--radius);border:1px solid rgba(15,23,36,0.06);box-shadow:var(--shadow-1);transition:transform .28s ease,box-shadow .28s ease}
+    .card:hover{transform:translateY(-8px);box-shadow:var(--shadow-2)}
+    .card h4{margin:12px 0 8px;font-size:1.15rem;font-weight:600}
+    .card p{margin:0;color:var(--muted);font-size:.95rem}
+    .card-icon{width:32px;height:32px;color:var(--accent);stroke-width:1.8;margin-bottom:8px}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .member{background:linear-gradient(180deg,#fff,#fcfdff);padding:18px;border-radius:12px;display:flex;flex-direction:column;align-items:center;border:1px solid rgba(15,23,36,0.04);box-shadow:var(--shadow-1);transition:transform .28s ease;cursor:pointer}
+    .member:hover{transform:translateY(-8px);box-shadow:var(--shadow-2)}
+    .avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 1px rgba(15,23,36,0.08);margin-bottom:12px}
+    .contact-card{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:24px;border-radius:var(--radius);background:linear-gradient(180deg,#fff,#fbfeff);border:1px solid rgba(15,23,36,0.04);box-shadow:var(--shadow-1)}
+    footer{padding:34px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(15,23,36,0.06);font-size:.9rem}
+
+    .modal-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(250,251,252,0.7);backdrop-filter:blur(8px);z-index:80;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+    .modal-overlay.visible{opacity:1;visibility:visible}
+    .modal-content{background:var(--card);border-radius:var(--radius);padding:32px;width:min(500px,90vw);box-shadow:var(--shadow-2);position:relative;text-align:center}
+    .modal-close{position:absolute;top:16px;right:16px;background:transparent;border:0;font-size:20px;cursor:pointer;color:var(--muted)}
+    .modal-photo{width:100px;height:100px;border-radius:50%;margin:0 auto 16px;object-fit:cover}
+    .modal-name{margin:0 0 6px;font-size:1.5rem}
+    .modal-role{color:var(--accent);font-weight:600;margin-bottom:12px}
+    .modal-bio{margin:0;color:var(--muted)}
+
+    .hidden{display:none !important}
+    .center{text-align:center}
+
+    @media (max-width:1024px){ .hero{grid-template-columns:1fr 360px;gap:28px;padding:56px 0} }
+    @media (max-width:760px){ .nav-primary{display:none} .hero{grid-template-columns:1fr;gap:30px;padding:44px 0} .hero-left{text-align:center} .hero-ctas{justify-content:center} }
+  </style>
 </head>
 <body>
   <header>
-    <div class="nav-wrap container" role="navigation" aria-label="Main navigation">
+    <div class="container nav-row" role="navigation" aria-label="Main menu">
       <a href="#hero" class="brand" aria-label="MSFSoft home">
         <div class="brand-mark">MS</div>
         <div class="brand-title">MSFSoft</div>
       </a>
 
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a href="#about" data-key="navAbout">About</a>
-        <a href="#specialization" data-key="navSpec">Specialization</a>
-        <a href="#team" data-key="navTeam">Team</a>
-        <a href="#contact" data-key="navContact">Contact</a>
+      <nav class="primary" aria-hidden="false">
+        <a href="#about" data-key="navAbout">Про нас</a>
+        <a href="#services" data-key="navSpec">Послуги</a>
+        <a href="#team" data-key="navTeam">Команда</a>
+        <a href="#contact" data-key="navContact">Контакти</a>
       </nav>
 
       <div class="actions">
-        <button id="mobile-open" class="icon-btn mobile-open" aria-label="Open menu" aria-expanded="false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        </button>
-
-        <button id="lang-toggle" class="btn icon-btn" aria-label="Toggle language">UA</button>
-        <a href="mailto:msfsoft.team@gmail.com" class="btn btn-primary" data-key="heroBtn">Contact</a>
-      </div>
-    </div>
-
-    <div id="mobile-menu" class="mobile-menu hidden" aria-hidden="true">
-      <div class="mobile-inner container">
-        <div class="mobile-top">
-          <a href="#hero" class="brand-mobile" aria-label="Home"><div class="brand-mark">MS</div><div class="brand-title">MSFSoft</div></a>
-          <button id="mobile-close" class="icon-btn" aria-label="Close menu">&times;</button>
-        </div>
-        <nav class="mobile-nav">
-          <a href="#about" class="mobile-link" data-key="navAbout">About</a>
-          <a href="#specialization" class="mobile-link" data-key="navSpec">Specialization</a>
-          <a href="#team" class="mobile-link" data-key="navTeam">Team</a>
-          <a href="#contact" class="mobile-link" data-key="navContact">Contact</a>
-        </nav>
+        <button id="lang-toggle" class="btn btn-ghost" aria-label="Toggle language">EN</button>
+        <a class="btn btn-primary" href="mailto:msfsoft.team@gmail.com" data-key="heroBtnContact">Зв'язатися</a>
       </div>
     </div>
   </header>
 
-  <section class="hero" id="hero">
-    <div class="hero-bg-image" aria-hidden="true"></div>
-    <div class="hero-content container">
-      <h1 class="hero-title" aria-hidden="false">
-        <!-- per-letter animated title -->
-        <span class="char" style="animation-delay:.04s">D</span><span class="char" style="animation-delay:.08s">i</span><span class="char" style="animation-delay:.12s">g</span><span class="char" style="animation-delay:.16s">i</span><span class="char" style="animation-delay:.20s">t</span><span class="char" style="animation-delay:.24s">a</span><span class="char" style="animation-delay:.28s">l</span>
-        <span class="spacer"></span>
-        <span class="char" style="animation-delay:.32s">E</span><span class="char" style="animation-delay:.36s">n</span><span class="char" style="animation-delay:.40s">g</span><span class="char" style="animation-delay:.44s">i</span><span class="char" style="animation-delay:.48s">n</span><span class="char" style="animation-delay:.52s">e</span><span class="char" style="animation-delay:.56s">e</span><span class="char" style="animation-delay:.60s">r</span><span class="char" style="animation-delay:.64s">i</span><span class="char" style="animation-delay:.68s">n</span><span class="char" style="animation-delay:.72s">g</span>
-      </h1>
-      <p class="hero-sub" data-key="heroSubtitle">We build stable and efficient software solutions, turning complex ideas into reality with clean and reliable code.</p>
-      <div class="hero-cta">
-        <a href="#specialization" class="btn btn-primary" data-key="heroBtnSpec">Our Specialization</a>
-        <a href="#contact" class="btn btn-secondary" data-key="navContact">Contact</a>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section id="hero" class="container hero" aria-labelledby="hero-title">
+      <div class="hero-left">
+        <div class="kicker" data-key="kicker">Digital Engineering</div>
+        <h1 id="hero-title" class="title" data-key="heroTitle">We design reliable software. Fast. Accurate. Secure.</h1>
+        <p class="lead" data-key="heroSubtitle">MSFSoft — an engineering team helping businesses grow through smart automation, scalable web systems, and clean code architecture.</p>
 
-  <main class="container">
-    <section id="about" class="reveal">
-      <h2 class="section-title" data-key="aboutTitle">Who We Are</h2>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact" data-key="heroBtnEstimate">Get an Estimate</a>
+          <a class="btn btn-ghost" href="#services" data-key="navSpec">Our Services</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" alt="Laptop with code editor" style="border-radius:var(--radius);margin-bottom:20px;aspect-ratio:16/10;object-fit:cover"/>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div class="brand-mark">MS</div>
+          <div>
+            <div style="font-weight:800">MSFSoft</div>
+            <div style="color:var(--muted);font-size:.95rem">Engineering & Product</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about" class="container" aria-labelledby="about-title">
+      <div class="section-head">
+        <h2 id="about-title" class="section-title" data-key="aboutTitle">Who We Are</h2>
+      </div>
       <div class="card">
         <p data-key="aboutP1"><strong>MSFSoft is a fresh perspective on the world of software development.</strong> We are a young team, but full of enthusiasm and innovative ideas. Our passion for coding and solving complex problems unites us, allowing us to create effective and reliable IT solutions for a modern digital landscape.</p>
       </div>
     </section>
 
-    <section id="specialization" class="reveal">
-      <h2 class="section-title" data-key="specTitle">Our Specialization</h2>
-      <div class="grid grid-responsive">
-        <div class="card spec-card">
-          <i data-lucide="layout-grid" class="card-icon" aria-hidden="true"></i>
+    <section id="services" class="container" aria-labelledby="services-title">
+      <div class="section-head">
+        <h2 id="services-title" class="section-title" data-key="specTitle">Our Services</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <svg class="card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h4 data-key="spec1Title">Website Development</h4>
           <p data-key="spec1Desc">From landing pages to complex platforms, we create modern, fast, and responsive websites.</p>
         </div>
-        <div class="card spec-card">
-          <i data-lucide="server" class="card-icon" aria-hidden="true"></i>
+        <div class="card">
+          <svg class="card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h4 data-key="spec2Title">Software Development</h4>
           <p data-key="spec2Desc">We develop custom desktop and server applications to automate processes and solve business tasks.</p>
         </div>
-        <div class="card spec-card">
-          <i data-lucide="code-2" class="card-icon" aria-hidden="true"></i>
+        <div class="card">
+          <svg class="card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h4 data-key="spec3Title">Coding & Optimization</h4>
           <p data-key="spec3Desc">We write clean, efficient code and can analyze and refactor your existing codebase for better performance.</p>
         </div>
       </div>
     </section>
 
-    <section id="team" class="reveal">
-      <h2 class="section-title" data-key="teamTitle">Our Team</h2>
-      <div class="grid grid-responsive team-grid">
-        <div class="card team-member" data-member="yura" tabindex="0" role="button" aria-pressed="false">
-          <img class="team-member__photo" src="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg" alt="Yura F." />
-          <h4>Yura F.</h4>
-          <p data-key="founder">Founder / Developer</p>
-        </div>
-        <div class="card team-member" data-member="veronika" tabindex="0" role="button" aria-pressed="false">
-          <img class="team-member__photo" src="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg" alt="Veronika Dziuba" />
-          <h4>Veronika Dziuba</h4>
-          <p data-key="developer">Developer</p>
-        </div>
+    <section id="team" class="container" aria-labelledby="team-title">
+      <div class="section-head">
+        <h2 id="team-title" class="section-title" data-key="teamTitle">Our Team</h2>
+      </div>
+      <div class="team-grid">
+        <button class="member" data-member="yura" aria-label="Yura - Founder">
+          <img class="avatar" src="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg" alt="Yura F.">
+          <div>
+            <h5>Yura F.</h5>
+            <small data-key="founder">Founder / Developer</small>
+          </div>
+        </button>
+        <button class="member" data-member="veronika" aria-label="Veronika - Developer">
+          <img class="avatar" src="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg" alt="Veronika Dziuba">
+          <div>
+            <h5>Veronika Dziuba</h5>
+            <small data-key="developer">Developer</small>
+          </div>
+        </button>
       </div>
     </section>
 
-    <section id="contact" class="reveal">
-      <h2 class="section-title" data-key="contactTitle">Let's Build Something Together</h2>
-      <div style="text-align:center;">
-        <a href="mailto:msfsoft.team@gmail.com" class="btn btn-primary" style="font-size: 1.1rem; padding: 14px 32px;">msfsoft.team@gmail.com</a>
+    <section id="contact" class="container" aria-labelledby="contact-title">
+      <div class="section-head">
+        <h2 id="contact-title" class="section-title" data-key="contactTitle">Let's Build Something Together</h2>
+      </div>
+      <div class="contact-card">
+        <div>
+          <h4 style="margin:0 0 6px" data-key="contactSub">Need a consultation or estimate?</h4>
+          <p style="margin:0;color:var(--muted)" data-key="contactDesc">Write us — we'll prepare a solution plan with an approximate estimate.</p>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <a class="btn btn-ghost" href="mailto:msfsoft.team@gmail.com">msfsoft.team@gmail.com</a>
+          <a class="btn btn-primary" href="mailto:msfsoft.team@gmail.com?subject=Service%20Request" data-key="contactBtnAction">Write Us</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container center">
-      <p>© <span id="year"></span> MSFSoft. All rights reserved.</p>
+      <p style="margin:0">© <span id="year"></span> MSFSoft — All rights reserved</p>
     </div>
   </footer>
 
-  <div class="modal-overlay" id="team-modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-content" role="document">
-      <button class="modal-close" id="modal-close-btn" aria-label="Close">&times;</button>
-      <img class="modal-photo" id="modal-photo" src="" alt="" />
-      <h3 class="modal-name" id="modal-name"></h3>
-      <p class="modal-role" id="modal-role"></p>
-      <p class="modal-bio" id="modal-bio"></p>
+  <div id="member-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button id="modal-close" aria-label="Close" class="modal-close">&times;</button>
+      <img id="modal-img" src="" alt="" class="modal-photo">
+      <h3 id="modal-name" class="modal-name"></h3>
+      <p id="modal-role" class="modal-role"></p>
+      <p id="modal-bio" class="modal-bio"></p>
     </div>
   </div>
 
-  <script src="main.js" defer></script>
+  <script>
+    // Inline JS: language toggle (default EN), modal, year
+    (function(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Translations: hero and some labels (EN default)
+      const translations = {
+        en:{
+          navAbout: "Про нас", navSpec: "Послуги", navTeam: "Команда", navContact: "Контакти",
+          kicker: "Digital Engineering", heroTitle: "We design reliable software. Fast. Accurate. Secure.",
+          heroSubtitle: "MSFSoft — an engineering team helping businesses grow through smart automation, scalable web systems, and clean code architecture.",
+          heroBtnEstimate: "Get an Estimate", heroBtnContact: "Contact Us",
+          aboutTitle: "Who We Are", aboutP1: "<strong>MSFSoft is a fresh perspective on the world of software development.</strong> We are a young team, but full of enthusiasm and innovative ideas.",
+          specTitle: "Our Services", spec1Title: "Website Development", spec1Desc: "From landing pages to complex platforms, we create modern, fast, and responsive websites.",
+          teamTitle: "Our Team", founder: "Founder / Developer", developer: "Developer",
+          contactTitle: "Let's Build Something Together", contactSub: "Need a consultation or estimate?", contactDesc: "Write us — we'll prepare a solution plan with an approximate estimate."
+        },
+        ua:{
+          navAbout: "Про нас", navSpec: "Послуги", navTeam: "Команда", navContact: "Контакти",
+          kicker: "Цифрова Інженерія", heroTitle: "Ми проектуємо надійне ПЗ. Швидко. Точно. Надійно.",
+          heroSubtitle: "MSFSoft — команда інженерів, яка допомагає бізнесам зростати через розумну автоматизацію, масштабовані веб-системи та чисту архітектуру коду.",
+          heroBtnEstimate: "Отримати кошторис", heroBtnContact: "Зв'язатися",
+          aboutTitle: "Хто ми є", aboutP1: "<strong>MSFSoft — це свіжий погляд на світ розробки програмного забезпечення.</strong> Ми молода команда, але сповнена ентузіазму й інноваційних ідей.",
+          specTitle: "Наші послуги", spec1Title: "Розробка сайтів", spec1Desc: "Від лендингів до складних платформ, ми створюємо сучасні, швидкі та адаптивні сайти.",
+          teamTitle: "Наша команда", founder: "Засновник / Розробник", developer: "Розробник",
+          contactTitle: "Створімо щось разом", contactSub: "Потрібна консультація або оцінка?", contactDesc: "Напишіть нам — ми підготуємо план рішення з орієнтовною оцінкою."
+        }
+      };
+
+      let current = 'en'; // user chose EN default
+      const btn = document.getElementById('lang-toggle');
+      const keys = document.querySelectorAll('[data-key]');
+      function applyLang(lang){
+        current = lang;
+        btn.textContent = (lang === 'en') ? 'UA' : 'EN';
+        keys.forEach(el => {
+          const k = el.dataset.key;
+          if (!k) return;
+          const txt = translations[lang][k];
+          if (!txt) return;
+          if (el.tagName === 'P' || el.tagName === 'DIV' || el.tagName === 'H2' || el.tagName === 'H4' || el.tagName === 'A') el.innerHTML = txt; else el.textContent = txt;
+        });
+      }
+      btn.addEventListener('click', ()=> applyLang(current === 'en' ? 'ua' : 'en'));
+      applyLang(current);
+
+      // Modal logic for team members
+      const modal = document.getElementById('member-modal');
+      const modalImg = document.getElementById('modal-img');
+      const modalName = document.getElementById('modal-name');
+      const modalRole = document.getElementById('modal-role');
+      const modalBio = document.getElementById('modal-bio');
+      const team = {
+        en:{ yura:{name:'Yura F.',role:'Founder / Lead Developer',bio:'Passionate engineer focused on backend and architecture.',photo:'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg'}, veronika:{name:'Veronika D.',role:'Frontend Developer',bio:'Frontend specialist creating elegant interfaces.',photo:'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg'} },
+        ua:{ yura:{name:'Юра Ф.',role:'Засновник / Головний розробник',bio:'Пристрасний інженер, що фокусується на бекенді та архітектурі.',photo:'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg'}, veronika:{name:'Veronika D.',role:'Фронтенд-розробник',bio:'Фронтенд-спеціаліст, що створює елегантні інтерфейси.',photo:'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg'} }
+      };
+      document.querySelectorAll('.member').forEach(btnm => {
+        btnm.addEventListener('click', ()=>{
+          const id = btnm.dataset.member;
+          const info = team[current][id] || team['en'][id];
+          modalImg.src = info.photo; modalImg.alt = info.name;
+          modalName.textContent = info.name; modalRole.textContent = info.role; modalBio.textContent = info.bio;
+          modal.classList.remove('hidden'); modal.classList.add('visible'); modal.setAttribute('aria-hidden','false');
+        });
+      });
+      document.getElementById('modal-close').addEventListener('click', ()=>{ modal.classList.add('hidden'); modal.classList.remove('visible'); modal.setAttribute('aria-hidden','true'); });
+      modal.addEventListener('click', (e)=>{ if (e.target === modal) { modal.classList.add('hidden'); modal.classList.remove('visible'); modal.setAttribute('aria-hidden','true'); }});
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') { modal.classList.add('hidden'); modal.classList.remove('visible'); modal.setAttribute('aria-hidden','true'); }});
+
+    })();
+  </script>
 </body>
 </html>
