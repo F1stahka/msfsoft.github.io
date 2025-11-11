@@ -90,7 +90,7 @@
     .grid { display: grid; gap: 28px; }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
     .card { background: var(--card); padding: 36px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; overflow: hidden; }
-    .card img { margin-bottom: 20px; border-radius: var(--radius); width: 100%; height: auto; object-fit: contain; }
+    .card img { margin-bottom: 20px; border-radius: var(--radius); width: 100%; height: auto; object-fit: cover; }
     .card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-md); border-color: var(--accent); }
     .card h4 { margin: 20px 0 12px; font-size: 1.3rem; font-weight: 700; }
     .card p { margin: 0; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
@@ -105,7 +105,7 @@
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     .img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
-    .img-grid img { height: auto; object-fit: contain; }
+    .img-grid img { height: auto; object-fit: cover; }
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; gap: 60px; text-align: center; padding: 120px 0 100px; }
       .hero-ctas { justify-content: center; }
@@ -168,24 +168,24 @@
     <section id="about" class="container fade-in" aria-labelledby="about-title">
       <div class="section-head">
         <h2 id="about-title" class="section-title" data-key="aboutTitle">Who We Are</h2>
-        <p class="section-subtitle" data-key="aboutSubtitle">A fresh, innovative approach to software development in 2025.</p>
+        <p class="section-subtitle" data-key="aboutSubtitle">Discover the passion and expertise driving MSFSoft forward in the world of digital innovation.</p>
       </div>
       <div class="grid grid-3">
         <div class="card">
-          <img src="https://thumbs.dreamstime.com/b/creative-development-team-office-high-angle-view-diverse-software-using-computers-writing-code-collaborating-213336091.jpg" alt="Diverse software development team collaborating in office">
-          <p data-key="aboutP1"><strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we're driven by innovation and problem-solving, creating robust, AI-ready solutions for today's digital world.</p>
+          <img src="https://img.freepik.com/premium-photo/spacious-it-office-room-with-computers-young-professionals_901408-28093.jpg" alt="Young software development team collaborating in a modern office environment">
+          <p data-key="aboutP1"><strong>At MSFSoft, we embody a fresh vision in software engineering.</strong> Our dynamic, youthful team thrives on enthusiasm and cutting-edge ideas, fueled by a love for coding and tackling intricate challenges to deliver top-tier IT solutions in today's fast-evolving digital realm.</p>
         </div>
         <div class="card">
-          <img src="https://www.shutterstock.com/image-photo/diverse-team-software-engineers-data-600nw-2656070207.jpg" alt="Collaborative software team discussing code">
-          <p data-key="aboutP2">We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.</p>
+          <img src="https://img.freepik.com/premium-photo/african-american-team-people-looking-cad-software-pc-analyzing-manufacturing-interface-with-3d-infographics-man-woman-working-industry-development-creative-agency_482257-62335.jpg" alt="Diverse professionals discussing software projects with advanced tools">
+          <p data-key="aboutP2">Quality, efficiency, and scalability are at the heart of everything we do. By harnessing the latest technologies, including AI, we craft software that's not just reliable today but ready to scale seamlessly with your business tomorrow.</p>
         </div>
         <div class="card">
-          <img src="https://imagedelivery.net/tHCeBATkJee_a9kRU-9Tgw/salesforcedevops.net/2024/07/softwareengineering-ai.jpg/w=1200,h=673" alt="AI in software engineering futuristic office">
-          <p data-key="aboutP3">Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.</p>
+          <img src="https://img.freepik.com/premium-photo/portrait-two-young-people-talking-male-manager-while-discussing-software-development-project-modern-office-copy-space_236854-29530.jpg" alt="Team members in discussion during a software development meeting">
+          <p data-key="aboutP3">Collaboration is our cornerstone. We tailor every project to your unique goals, fostering enduring partnerships through clear communication, innovative problem-solving, and a commitment to exceeding expectations.</p>
         </div>
       </div>
       <div class="img-grid">
-        <img src="https://thumbs.dreamstime.com/b/abstract-digital-circuit-board-glowing-blue-purple-lines-binary-code-data-visualizations-against-dark-background-407443918.jpg" alt="Abstract digital engineering background">
+        <img src="https://thumbs.dreamstime.com/b/abstract-blue-network-technology-background-digital-circuit-board-glowing-lines-nodes-388128535.jpg" alt="Abstract blue technology background with glowing circuit board elements">
       </div>
     </section>
     <section id="services" class="container fade-in" aria-labelledby="services-title">
@@ -248,10 +248,10 @@
           kicker: 'Innovative Digital Engineering', heroTitle: 'Crafting Reliable Software. Fast. Accurate. AI-Enhanced.',
           heroSubtitle: 'MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025\'s digital landscape.',
           heroBtnEstimate: 'Get Estimate', heroBtnContact: 'Contact Us', heroBtnServices: 'Explore Services',
-          aboutTitle: 'Who We Are', aboutSubtitle: 'A fresh, innovative approach to software development in 2025.',
-          aboutP1: '<strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we\'re driven by innovation and problem-solving, creating robust, AI-ready solutions for today\'s digital world.',
-          aboutP2: 'We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.',
-          aboutP3: 'Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.',
+          aboutTitle: 'Who We Are', aboutSubtitle: 'Discover the passion and expertise driving MSFSoft forward in the world of digital innovation.',
+          aboutP1: '<strong>At MSFSoft, we embody a fresh vision in software engineering.</strong> Our dynamic, youthful team thrives on enthusiasm and cutting-edge ideas, fueled by a love for coding and tackling intricate challenges to deliver top-tier IT solutions in today\'s fast-evolving digital realm.',
+          aboutP2: 'Quality, efficiency, and scalability are at the heart of everything we do. By harnessing the latest technologies, including AI, we craft software that\'s not just reliable today but ready to scale seamlessly with your business tomorrow.',
+          aboutP3: 'Collaboration is our cornerstone. We tailor every project to your unique goals, fostering enduring partnerships through clear communication, innovative problem-solving, and a commitment to exceeding expectations.',
           servicesTitle: 'Our Services', servicesSubtitle: 'Custom solutions powered by 2025\'s latest tech trends.',
           service1Title: 'Web Development', service1Desc: 'Modern, responsive websites from simple landings to AI-integrated platforms, optimized for performance, SEO, and user engagement.',
           service2Title: 'Software Development', service2Desc: 'Bespoke applications for desktop, mobile, and cloud, incorporating AI for automation and intelligent business solutions.',
@@ -265,10 +265,10 @@
           kicker: 'Інноваційна Цифрова Інженерія', heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
           heroSubtitle: 'MSFSoft — команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем, чистої архітектури та інтеграцій AI для цифрового ландшафту 2025 року.',
           heroBtnEstimate: 'Отримати Кошторис', heroBtnContact: 'Зв\'язатися', heroBtnServices: 'Оглянути Послуги',
-          aboutTitle: 'Хто Ми', aboutSubtitle: 'Свіжий, інноваційний підхід до розробки ПЗ у 2025.',
-          aboutP1: '<strong>MSFSoft приносить сучасний погляд на програмну інженерію.</strong> Як молода, ентузіастична команда, ми керовані інноваціями та розв\'язанням проблем, створюючи міцні, готові до AI рішення для сучасного цифрового світу.',
-          aboutP2: 'Ми пріоритезуємо якість, ефективність та масштабованість, використовуючи передові технології, включаючи AI, для доставки стійкого до майбутнього ПЗ, яке росте разом з вашим бізнесом.',
-          aboutP3: 'Наш спільний етос забезпечує адаптовані проекти, будуючи тривалі партнерства через прозору комунікацію та виняткові результати.',
+          aboutTitle: 'Хто Ми', aboutSubtitle: 'Відкрийте пристрасть та експертизу, що рухають MSFSoft вперед у світі цифрових інновацій.',
+          aboutP1: '<strong>У MSFSoft ми втілюємо свіжий погляд на програмну інженерію.</strong> Наша динамічна, молода команда процвітає на ентузіазмі та передових ідеях, підживлювана любов\'ю до кодингу та розв\'язання складних завдань для надання найвищого рівня IT-рішень у сучасному швидкозмінному цифровому світі.',
+          aboutP2: 'Якість, ефективність та масштабованість лежать в основі всього, що ми робимо. Використовуючи найновіші технології, включаючи AI, ми створюємо програмне забезпечення, яке не тільки надійне сьогодні, але й готове до безшовного масштабування з вашим бізнесом завтра.',
+          aboutP3: 'Співпраця — наш наріжний камінь. Ми адаптуємо кожен проект до ваших унікальних цілей, сприяючи тривалим партнерствам через чітку комунікацію, інноваційне розв\'язання проблем та прагнення перевершити очікування.',
           servicesTitle: 'Наші Послуги', servicesSubtitle: 'Індивідуальні рішення, посилені останніми трендами технологій 2025.',
           service1Title: 'Розробка Веб', service1Desc: 'Сучасні, адаптивні веб-сайти від простих лендингів до платформ з інтеграцією AI, оптимізовані для продуктивності, SEO та залучення користувачів.',
           service2Title: 'Розробка ПЗ', service2Desc: 'Індивідуальні додатки для десктопу, мобільних та хмари, з включенням AI для автоматизації та інтелектуальних бізнес-рішень.',
