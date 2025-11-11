@@ -77,7 +77,7 @@
     .title { font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1.05; font-weight: 900; margin: 0 0 28px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .lead { color: var(--muted); font-size: 1.2rem; margin-bottom: 36px; line-height: 1.7; }
     .hero-ctas { display: flex; gap: 20px; flex-wrap: wrap; }
-    .hero-card { border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; position: relative; animation: float 6s ease-in-out infinite; }
+    .hero-card { border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; position: relative; animation: float 6s ease-in-out infinite; max-width: 90%; margin: 0 auto; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     .hero-card img { aspect-ratio: 16/9; object-fit: cover; }
     .hero-card:hover img { transform: scale(1.08); }
@@ -90,38 +90,22 @@
     .grid { display: grid; gap: 28px; }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
     .card { background: var(--card); padding: 36px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; overflow: hidden; }
-    .card img { margin-bottom: 20px; border-radius: var(--radius); }
+    .card img { margin-bottom: 20px; border-radius: var(--radius); max-height: 200px; object-fit: cover; }
     .card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-md); border-color: var(--accent); }
     .card h4 { margin: 20px 0 12px; font-size: 1.3rem; font-weight: 700; }
-    .card p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
     .card-icon { width: 48px; height: 48px; color: var(--accent); stroke-width: 1.4; margin-bottom: 20px; transition: transform 0.3s; }
     .card:hover .card-icon { transform: rotate(15deg); }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
-    .member { background: var(--card); padding: 28px; border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); cursor: pointer; }
-    .member:hover { transform: translateY(-10px); box-shadow: var(--shadow-md), 0 0 20px rgba(14,165,233,0.2); }
-    .avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 5px solid var(--card); box-shadow: 0 0 0 3px var(--border); margin-bottom: 20px; transition: border-color 0.3s; }
-    .member:hover .avatar { border-color: var(--accent); }
-    .member h5 { margin: 0 0 6px; font-size: 1.3rem; font-weight: 700; }
-    .member small { color: var(--muted); font-size: 1rem; }
     .contact-card { display: flex; justify-content: space-between; align-items: center; gap: 40px; padding: 48px; border-radius: var(--radius); background: var(--gradient); color: #fff; box-shadow: var(--shadow-md); }
     .contact-card h4 { margin: 0 0 10px; font-size: 1.5rem; }
     .contact-card p { margin: 0; opacity: 0.9; }
     .contact-card .btn-ghost { border-color: #fff; color: #fff; }
     .contact-card .btn-ghost:hover { background: #fff; color: var(--accent-dark); }
     footer { padding: 48px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.95rem; }
-    .modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; }
-    .modal-overlay.visible { opacity: 1; visibility: visible; }
-    .modal-content { background: var(--card); border-radius: var(--radius); padding: 48px; width: min(650px, 95vw); box-shadow: var(--shadow-md); position: relative; text-align: center; transform: scale(0.9); transition: transform 0.4s ease; }
-    .modal-overlay.visible .modal-content { transform: scale(1); }
-    .modal-close { position: absolute; top: 20px; right: 20px; background: transparent; border: 0; font-size: 28px; cursor: pointer; color: var(--muted); transition: var(--transition); }
-    .modal-close:hover { color: var(--text); transform: rotate(90deg); }
-    .modal-photo { width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 24px; object-fit: cover; box-shadow: var(--shadow-md); }
-    .modal-name { margin: 0 0 10px; font-size: 2rem; font-weight: 800; }
-    .modal-role { color: var(--accent); font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; }
-    .modal-bio { margin: 0; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     .img-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
+    .img-grid img { max-height: 300px; object-fit: cover; }
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; gap: 60px; text-align: center; padding: 120px 0 100px; }
       .hero-ctas { justify-content: center; }
@@ -133,6 +117,8 @@
       .container { padding: 0 28px; }
       section { padding: 80px 0; }
       .title { font-size: 2.8rem; }
+      .card img { max-height: 150px; }
+      .card p { font-size: 1rem; }
     }
   </style>
 </head>
@@ -146,7 +132,6 @@
       <nav class="primary" aria-hidden="false">
         <a href="#about" data-key="navAbout">About</a>
         <a href="#services" data-key="navServices">Services</a>
-        <a href="#team" data-key="navTeam">Team</a>
         <a href="#contact" data-key="navContact">Contact</a>
       </nav>
       <div class="actions">
@@ -230,24 +215,6 @@
         </div>
       </div>
     </section>
-    <section id="team" class="container fade-in" aria-labelledby="team-title">
-      <div class="section-head">
-        <h2 id="team-title" class="section-title" data-key="teamTitle">Our Team</h2>
-        <p class="section-subtitle" data-key="teamSubtitle">Passionate experts driving innovation.</p>
-      </div>
-      <div class="team-grid">
-        <button class="member" data-member="yura" aria-label="View Yura's profile">
-          <img class="avatar" src="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg" alt="Yura F., Founder and Lead Developer">
-          <h5>Yura F.</h5>
-          <small data-key="founder">Founder / Lead Developer</small>
-        </button>
-        <button class="member" data-member="veronika" aria-label="View Veronika's profile">
-          <img class="avatar" src="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg" alt="Veronika Dziuba, Frontend Developer">
-          <h5>Veronika Dziuba</h5>
-          <small data-key="developer">Frontend Developer</small>
-        </button>
-      </div>
-    </section>
     <section id="contact" class="container fade-in" aria-labelledby="contact-title">
       <div class="section-head">
         <h2 id="contact-title" class="section-title" data-key="contactTitle">Let's Innovate Together</h2>
@@ -268,17 +235,9 @@
   <footer>
     <div class="container">
       <p>© <span id="year"></span> MSFSoft — Pioneering Digital Solutions</p>
+      <p>Created by Yurii Fostiak</p>
     </div>
   </footer>
-  <div id="member-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-content">
-      <button id="modal-close" aria-label="Close modal">&times;</button>
-      <img id="modal-img" src="" alt="" class="modal-photo">
-      <h3 id="modal-name" class="modal-name"></h3>
-      <p id="modal-role" class="modal-role"></p>
-      <p id="modal-bio" class="modal-bio"></p>
-    </div>
-  </div>
   <script>
     (function() {
       const year = document.getElementById('year');
@@ -286,7 +245,7 @@
 
       const translations = {
         en: {
-          navAbout: 'About', navServices: 'Services', navTeam: 'Team', navContact: 'Contact',
+          navAbout: 'About', navServices: 'Services', navContact: 'Contact',
           kicker: 'Innovative Digital Engineering', heroTitle: 'Crafting Reliable Software. Fast. Accurate. AI-Enhanced.',
           heroSubtitle: 'MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025\'s digital landscape.',
           heroBtnEstimate: 'Get Estimate', heroBtnContact: 'Contact Us', heroBtnServices: 'Explore Services',
@@ -298,14 +257,12 @@
           service1Title: 'Web Development', service1Desc: 'Modern, responsive websites from simple landings to AI-integrated platforms, optimized for performance, SEO, and user engagement.',
           service2Title: 'Software Development', service2Desc: 'Bespoke applications for desktop, mobile, and cloud, incorporating AI for automation and intelligent business solutions.',
           service3Title: 'Optimization & AI Consulting', service3Desc: 'Refactor codebases, enhance performance, and integrate AI for smarter, more efficient systems.',
-          teamTitle: 'Our Team', teamSubtitle: 'Passionate experts driving innovation.',
-          founder: 'Founder / Lead Developer', developer: 'Frontend Developer',
           contactTitle: 'Let\'s Innovate Together', contactSubtitle: 'Start your project with AI-powered insights today.',
           contactSub: 'Consultation or Estimate?', contactDesc: 'Contact us for a tailored plan with precise estimates and AI recommendations.',
           contactBtn: 'Get in Touch'
         },
         ua: {
-          navAbout: 'Про нас', navServices: 'Послуги', navTeam: 'Команда', navContact: 'Контакти',
+          navAbout: 'Про нас', navServices: 'Послуги', navContact: 'Контакти',
           kicker: 'Інноваційна Цифрова Інженерія', heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
           heroSubtitle: 'MSFSoft — команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем, чистої архітектури та інтеграцій AI для цифрового ландшафту 2025 року.',
           heroBtnEstimate: 'Отримати Кошторис', heroBtnContact: 'Зв\'язатися', heroBtnServices: 'Оглянути Послуги',
@@ -317,8 +274,6 @@
           service1Title: 'Розробка Веб', service1Desc: 'Сучасні, адаптивні веб-сайти від простих лендингів до платформ з інтеграцією AI, оптимізовані для продуктивності, SEO та залучення користувачів.',
           service2Title: 'Розробка ПЗ', service2Desc: 'Індивідуальні додатки для десктопу, мобільних та хмари, з включенням AI для автоматизації та інтелектуальних бізнес-рішень.',
           service3Title: 'Оптимізація та Консалтинг AI', service3Desc: 'Рефакторинг кодових баз, покращення продуктивності та інтеграція AI для розумніших, ефективніших систем.',
-          teamTitle: 'Наша Команда', teamSubtitle: 'Пристрасні експерти, що рухають інновації.',
-          founder: 'Засновник / Головний Розробник', developer: 'Фронтенд Розробник',
           contactTitle: 'Інновуємо Разом', contactSubtitle: 'Почніть свій проект з інсайтів на базі AI сьогодні.',
           contactSub: 'Консультація чи Кошторис?', contactDesc: 'Зв\'яжіться з нами для адаптованого плану з точними кошторисами та рекомендаціями AI.',
           contactBtn: 'Зв\'язатися'
@@ -348,49 +303,6 @@
         document.body.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
         themeToggle.textContent = currentTheme === 'light' ? '☀️' : '🌙';
       });
-
-      // Modal
-      const modal = document.getElementById('member-modal');
-      const modalImg = document.getElementById('modal-img');
-      const modalName = document.getElementById('modal-name');
-      const modalRole = document.getElementById('modal-role');
-      const modalBio = document.getElementById('modal-bio');
-      const modalClose = document.getElementById('modal-close');
-
-      const teamData = {
-        en: {
-          yura: { name: 'Yura F.', role: 'Founder / Lead Developer', bio: 'Visionary engineer specializing in backend, AI integration, and scalable architectures. Leading innovative projects since 2020.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg' },
-          veronika: { name: 'Veronika Dziuba', role: 'Frontend Developer', bio: 'Creative frontend expert crafting intuitive, AI-enhanced interfaces with modern frameworks and UX best practices.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg' }
-        },
-        ua: {
-          yura: { name: 'Юра Ф.', role: 'Засновник / Головний Розробник', bio: 'Візіонерський інженер, спеціаліст з бекенду, інтеграції AI та масштабованих архітектур. Веду інноваційні проекти з 2020.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg' },
-          veronika: { name: 'Вероніка Дзюба', role: 'Фронтенд Розробник', bio: 'Креативний експерт фронтенду, що створює інтуїтивні інтерфейси з AI за допомогою сучасних фреймворків та найкращих практик UX.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg' }
-        }
-      };
-
-      function openModal(memberId) {
-        const info = teamData[currentLang][memberId];
-        modalImg.src = info.photo;
-        modalImg.alt = `${info.name}, ${info.role}`;
-        modalName.textContent = info.name;
-        modalRole.textContent = info.role;
-        modalBio.textContent = info.bio;
-        modal.classList.add('visible');
-        modal.setAttribute('aria-hidden', 'false');
-      }
-
-      function closeModal() {
-        modal.classList.remove('visible');
-        modal.setAttribute('aria-hidden', 'true');
-      }
-
-      document.querySelectorAll('.member').forEach(member => {
-        member.addEventListener('click', () => openModal(member.dataset.member));
-      });
-
-      modalClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
       // Scroll effects and fade-in
       const header = document.getElementById('header');
