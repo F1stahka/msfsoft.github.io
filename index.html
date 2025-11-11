@@ -3,115 +3,138 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MSFSoft — Digital Engineering Solutions</title>
-  <meta name="description" content="MSFSoft: Innovative engineering team delivering stable, efficient software solutions for business growth." />
-  <meta name="keywords" content="software development, web development, custom software, automation, Ukraine IT" />
-  <meta property="og:title" content="MSFSoft — Digital Engineering" />
-  <meta property="og:description" content="Building reliable software: Fast, Accurate, Secure." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" />
+  <title>MSFSoft — Innovative Digital Engineering</title>
+  <meta name="description" content="MSFSoft: Cutting-edge engineering team crafting stable, efficient software solutions to propel business growth in 2025 and beyond." />
+  <meta name="keywords" content="software development, web development, custom software, automation, AI integration, Ukraine IT, digital engineering" />
+  <meta property="og:title" content="MSFSoft — Innovative Digital Engineering" />
+  <meta property="og:description" content="Building reliable, AI-enhanced software: Fast, Accurate, Secure, and Future-Proof." />
+  <meta property="og:image" content="https://cdn.dribbble.com/userupload/19418510/file/original-c1a74c833beba6abcaa66ba5a7e9afd6.png?resize=400x0" />
   <meta property="og:url" content="https://msfsoft.github.io/" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/favicon.ico" type="image/x-icon">
   <style>
     :root {
-      --bg: #F9FAFB; /* Softer background */
+      --bg: #F8FAFC; /* Soft light background */
       --card: #FFFFFF;
-      --text: #111827;
-      --muted: #6B7280;
+      --text: #0F172A;
+      --muted: #64748B;
       --accent: #0EA5E9;
       --accent-dark: #0369A1;
       --accent-light: #E0F2FE;
-      --border: rgba(107, 114, 128, 0.1);
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --radius: 16px; /* Slightly larger for modern feel */
-      --maxw: 1280px; /* Wider for better content spread */
-      --transition: all 0.3s ease;
+      --border: rgba(100, 116, 139, 0.1);
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --radius: 20px; /* Rounded for 2025 trends */
+      --maxw: 1320px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --gradient: linear-gradient(135deg, var(--accent), #06b6d4);
+    }
+    [data-theme="dark"] {
+      --bg: #0F172A;
+      --card: #1E293B;
+      --text: #F1F5F9;
+      --muted: #94A3B8;
+      --accent-light: #1E40AF;
+      --border: rgba(148, 163, 184, 0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; font-size: 16px; }
-    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; font-size: 16px; transition: background 0.3s; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
     a { color: inherit; text-decoration: none; transition: var(--transition); }
-    img { max-width: 100%; display: block; border-radius: var(--radius); }
+    img { max-width: 100%; display: block; border-radius: var(--radius); transition: transform 0.4s ease; }
     header {
-      position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border); transition: var(--transition);
     }
-    header.scrolled { box-shadow: var(--shadow-sm); }
-    .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-mark { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 1.2rem;
-      background: linear-gradient(135deg, var(--accent), #06b6d4); color: #fff; box-shadow: var(--shadow-sm); }
-    .brand-title { font-weight: 700; font-size: 1.2rem; }
-    nav.primary { display: flex; gap: 24px; }
-    nav.primary a { padding: 10px 16px; border-radius: 8px; font-weight: 500; color: var(--muted); transition: var(--transition); }
-    nav.primary a:hover, nav.primary a.active { color: var(--text); background: var(--accent-light); }
-    .actions { display: flex; gap: 12px; align-items: center; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; border: none; transition: var(--transition); }
+    [data-theme="dark"] header { background: rgba(15,23,42,0.8); }
+    header.scrolled { background: rgba(255,255,255,0.95); box-shadow: var(--shadow-sm); }
+    [data-theme="dark"] header.scrolled { background: rgba(15,23,42,0.95); }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .brand { display: flex; align-items: center; gap: 16px; }
+    .brand-mark { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font-weight: 900; font-size: 1.4rem;
+      background: var(--gradient); color: #fff; box-shadow: var(--shadow-sm); transition: transform 0.3s; }
+    .brand:hover .brand-mark { transform: rotate(360deg); }
+    .brand-title { font-weight: 800; font-size: 1.3rem; }
+    nav.primary { display: flex; gap: 28px; }
+    nav.primary a { padding: 12px 18px; border-radius: 10px; font-weight: 500; color: var(--muted); position: relative; }
+    nav.primary a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
+    nav.primary a:hover { color: var(--text); }
+    nav.primary a:hover::after { width: 100%; }
+    .actions { display: flex; gap: 16px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 14px; font-weight: 600; cursor: pointer; border: none; transition: var(--transition); }
     .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .btn-ghost:hover { background: var(--accent-light); border-color: var(--accent); }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow-sm); }
-    .btn-primary:hover { background: var(--accent-dark); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 120px 0 100px; min-height: 80vh; }
-    .hero-left { max-width: 700px; }
-    .kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-light); color: var(--accent-dark); padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; margin-bottom: 24px; }
-    .title { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; font-weight: 800; margin: 0 0 24px; }
-    .lead { color: var(--muted); font-size: 1.15rem; margin-bottom: 32px; line-height: 1.7; }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-card { border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; position: relative; }
-    .hero-card img { aspect-ratio: 16/10; object-fit: cover; transition: transform 0.5s ease; }
-    .hero-card:hover img { transform: scale(1.05); }
-    .hero-card-info { position: absolute; bottom: 24px; left: 24px; display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.9); padding: 12px 20px; border-radius: 12px; box-shadow: var(--shadow-sm); }
-    section { padding: 80px 0; }
-    .section-head { text-align: center; margin-bottom: 48px; }
-    .section-title { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; margin-bottom: 12px; }
-    .section-subtitle { color: var(--muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
-    .grid { display: grid; gap: 24px; }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    .card { background: var(--card); padding: 32px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); }
-    .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--accent-light); }
-    .card h4 { margin: 16px 0 12px; font-size: 1.25rem; font-weight: 600; }
-    .card p { margin: 0; color: var(--muted); font-size: 1rem; }
-    .card-icon { width: 40px; height: 40px; color: var(--accent); stroke-width: 1.5; margin-bottom: 16px; }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-    .member { background: var(--card); padding: 24px; border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); cursor: pointer; }
-    .member:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
-    .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 0 0 2px var(--border); margin-bottom: 16px; transition: var(--transition); }
+    .btn-ghost:hover { background: var(--accent-light); border-color: var(--accent); transform: scale(1.05); }
+    .btn-primary { background: var(--gradient); color: #fff; box-shadow: var(--shadow-md); }
+    .btn-primary:hover { box-shadow: var(--shadow-md), 0 0 20px rgba(14,165,233,0.3); transform: translateY(-3px); }
+    .theme-toggle { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--border); background: var(--card); cursor: pointer; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 140px 0 120px; min-height: 90vh; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--gradient); opacity: 0.05; border-radius: var(--radius); }
+    .hero-left { max-width: 720px; }
+    .kicker { display: inline-flex; align-items: center; gap: 10px; background: var(--accent-light); color: var(--accent-dark); padding: 10px 20px; border-radius: 999px; font-weight: 700; font-size: 1rem; margin-bottom: 28px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    .title { font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1.05; font-weight: 900; margin: 0 0 28px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .lead { color: var(--muted); font-size: 1.2rem; margin-bottom: 36px; line-height: 1.7; }
+    .hero-ctas { display: flex; gap: 20px; flex-wrap: wrap; }
+    .hero-card { border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; position: relative; animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .hero-card img { aspect-ratio: 16/9; object-fit: cover; }
+    .hero-card:hover img { transform: scale(1.08); }
+    .hero-card-info { position: absolute; bottom: 28px; left: 28px; display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.85); padding: 14px 24px; border-radius: 14px; box-shadow: var(--shadow-sm); }
+    [data-theme="dark"] .hero-card-info { background: rgba(15,23,42,0.85); color: #fff; }
+    section { padding: 100px 0; position: relative; }
+    .section-head { text-align: center; margin-bottom: 60px; }
+    .section-title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 16px; }
+    .section-subtitle { color: var(--muted); font-size: 1.15rem; max-width: 900px; margin: 0 auto; }
+    .grid { display: grid; gap: 28px; }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .card { background: var(--card); padding: 36px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-md); border-color: var(--accent); }
+    .card h4 { margin: 20px 0 12px; font-size: 1.3rem; font-weight: 700; }
+    .card p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+    .card-icon { width: 48px; height: 48px; color: var(--accent); stroke-width: 1.4; margin-bottom: 20px; transition: transform 0.3s; }
+    .card:hover .card-icon { transform: rotate(15deg); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .member { background: var(--card); padding: 28px; border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); cursor: pointer; }
+    .member:hover { transform: translateY(-10px); box-shadow: var(--shadow-md), 0 0 20px rgba(14,165,233,0.2); }
+    .avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 5px solid var(--card); box-shadow: 0 0 0 3px var(--border); margin-bottom: 20px; transition: border-color 0.3s; }
     .member:hover .avatar { border-color: var(--accent); }
-    .member h5 { margin: 0 0 4px; font-size: 1.2rem; font-weight: 600; }
-    .member small { color: var(--muted); font-size: 0.95rem; }
-    .contact-card { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding: 40px; border-radius: var(--radius); background: linear-gradient(180deg, #fff, #f9fafb); border: 1px solid var(--border); box-shadow: var(--shadow-md); }
-    .contact-card h4 { margin: 0 0 8px; font-size: 1.4rem; }
-    .contact-card p { margin: 0; color: var(--muted); }
-    footer { padding: 40px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.95rem; }
-    .modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+    .member h5 { margin: 0 0 6px; font-size: 1.3rem; font-weight: 700; }
+    .member small { color: var(--muted); font-size: 1rem; }
+    .contact-card { display: flex; justify-content: space-between; align-items: center; gap: 40px; padding: 48px; border-radius: var(--radius); background: var(--gradient); color: #fff; box-shadow: var(--shadow-md); }
+    .contact-card h4 { margin: 0 0 10px; font-size: 1.5rem; }
+    .contact-card p { margin: 0; opacity: 0.9; }
+    .contact-card .btn-ghost { border-color: #fff; color: #fff; }
+    .contact-card .btn-ghost:hover { background: #fff; color: var(--accent-dark); }
+    footer { padding: 48px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.95rem; }
+    .modal-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; }
     .modal-overlay.visible { opacity: 1; visibility: visible; }
-    .modal-content { background: var(--card); border-radius: var(--radius); padding: 40px; width: min(600px, 90vw); box-shadow: var(--shadow-md); position: relative; text-align: center; transform: scale(0.95); transition: transform 0.3s ease; }
+    .modal-content { background: var(--card); border-radius: var(--radius); padding: 48px; width: min(650px, 95vw); box-shadow: var(--shadow-md); position: relative; text-align: center; transform: scale(0.9); transition: transform 0.4s ease; }
     .modal-overlay.visible .modal-content { transform: scale(1); }
-    .modal-close { position: absolute; top: 16px; right: 16px; background: transparent; border: 0; font-size: 24px; cursor: pointer; color: var(--muted); transition: var(--transition); }
-    .modal-close:hover { color: var(--text); }
-    .modal-photo { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; box-shadow: var(--shadow-sm); }
-    .modal-name { margin: 0 0 8px; font-size: 1.8rem; font-weight: 700; }
-    .modal-role { color: var(--accent); font-weight: 600; margin-bottom: 16px; }
-    .modal-bio { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.6; }
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .modal-close { position: absolute; top: 20px; right: 20px; background: transparent; border: 0; font-size: 28px; cursor: pointer; color: var(--muted); transition: var(--transition); }
+    .modal-close:hover { color: var(--text); transform: rotate(90deg); }
+    .modal-photo { width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 24px; object-fit: cover; box-shadow: var(--shadow-md); }
+    .modal-name { margin: 0 0 10px; font-size: 2rem; font-weight: 800; }
+    .modal-role { color: var(--accent); font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; }
+    .modal-bio { margin: 0; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero { grid-template-columns: 1fr; gap: 60px; text-align: center; padding: 120px 0 100px; }
       .hero-ctas { justify-content: center; }
-      .contact-card { flex-direction: column; text-align: center; gap: 24px; }
+      .contact-card { flex-direction: column; text-align: center; gap: 28px; }
     }
     @media (max-width: 768px) {
-      .nav-row { flex-wrap: wrap; justify-content: center; gap: 16px; }
-      nav.primary { order: 3; width: 100%; justify-content: center; gap: 12px; flex-wrap: wrap; }
-      .container { padding: 0 24px; }
-      section { padding: 60px 0; }
+      .nav-row { flex-wrap: wrap; justify-content: center; gap: 20px; }
+      nav.primary { order: 3; width: 100%; justify-content: center; gap: 16px; flex-wrap: wrap; }
+      .container { padding: 0 28px; }
+      section { padding: 80px 0; }
+      .title { font-size: 2.8rem; }
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
   <header id="header">
     <div class="container nav-row" role="navigation" aria-label="Main menu">
       <a href="#hero" class="brand" aria-label="MSFSoft home">
@@ -119,13 +142,14 @@
         <div class="brand-title">MSFSoft</div>
       </a>
       <nav class="primary" aria-hidden="false">
-        <a href="#about" data-key="navAbout">About Us</a>
+        <a href="#about" data-key="navAbout">About</a>
         <a href="#services" data-key="navServices">Services</a>
         <a href="#team" data-key="navTeam">Team</a>
         <a href="#contact" data-key="navContact">Contact</a>
       </nav>
       <div class="actions">
         <button id="lang-toggle" class="btn btn-ghost" aria-label="Toggle language">UA</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
         <a class="btn btn-primary" href="mailto:msfsoft.team@gmail.com" data-key="heroBtnContact">Contact Us</a>
       </div>
     </div>
@@ -134,23 +158,23 @@
     <section id="hero" class="container hero fade-in" aria-labelledby="hero-title">
       <div class="hero-left">
         <div class="kicker" data-key="kicker">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2"/></svg>
-          Digital Engineering
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2"/></svg>
+          Innovative Digital Engineering
         </div>
-        <h1 id="hero-title" class="title" data-key="heroTitle">We design reliable software. Fast. Accurate. Secure.</h1>
-        <p class="lead" data-key="heroSubtitle">MSFSoft — an engineering team helping businesses grow through smart automation, scalable web systems, and clean code architecture.</p>
+        <h1 id="hero-title" class="title" data-key="heroTitle">Crafting Reliable Software. Fast. Accurate. AI-Enhanced.</h1>
+        <p class="lead" data-key="heroSubtitle">MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025's digital landscape.</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#contact" data-key="heroBtnEstimate">Get an Estimate</a>
-          <a class="btn btn-ghost" href="#services" data-key="heroBtnServices">Our Services</a>
+          <a class="btn btn-primary" href="#contact" data-key="heroBtnEstimate">Get Estimate</a>
+          <a class="btn btn-ghost" href="#services" data-key="heroBtnServices">Explore Services</a>
         </div>
       </div>
       <aside class="hero-card" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" alt="Modern code editor on laptop screen illustrating software development">
+        <img src="https://cdn.dribbble.com/userupload/19418510/file/original-c1a74c833beba6abcaa66ba5a7e9afd6.png?resize=400x0" alt="Modern software development interface showcasing custom solutions">
         <div class="hero-card-info">
           <div class="brand-mark">MS</div>
           <div>
-            <div style="font-weight: 700;">MSFSoft</div>
-            <div style="color: var(--muted); font-size: 0.9rem;">Engineering & Innovation</div>
+            <div style="font-weight: 800;">MSFSoft</div>
+            <div style="color: var(--muted); font-size: 0.95rem;">Engineering Excellence</div>
           </div>
         </div>
       </aside>
@@ -158,47 +182,47 @@
     <section id="about" class="container fade-in" aria-labelledby="about-title">
       <div class="section-head">
         <h2 id="about-title" class="section-title" data-key="aboutTitle">Who We Are</h2>
-        <p class="section-subtitle" data-key="aboutSubtitle">Discover our passion for innovation and commitment to excellence.</p>
+        <p class="section-subtitle" data-key="aboutSubtitle">A fresh, innovative approach to software development in 2025.</p>
       </div>
       <div class="grid grid-3">
         <div class="card">
-          <p data-key="aboutP1"><strong>MSFSoft is a fresh perspective on the world of software development.</strong> We are a young team, but full of enthusiasm and innovative ideas. Our passion for coding and solving complex problems unites us, allowing us to create effective and reliable IT solutions for a modern digital landscape.</p>
+          <p data-key="aboutP1"><strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we're driven by innovation and problem-solving, creating robust, AI-ready solutions for today's digital world.</p>
         </div>
         <div class="card">
-          <p data-key="aboutP2">With a focus on quality and efficiency, we leverage the latest technologies to deliver solutions that scale with your business needs.</p>
+          <p data-key="aboutP2">We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.</p>
         </div>
         <div class="card">
-          <p data-key="aboutP3">Our collaborative approach ensures that every project is tailored to client goals, fostering long-term partnerships.</p>
+          <p data-key="aboutP3">Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.</p>
         </div>
       </div>
     </section>
     <section id="services" class="container fade-in" aria-labelledby="services-title">
       <div class="section-head">
         <h2 id="services-title" class="section-title" data-key="servicesTitle">Our Services</h2>
-        <p class="section-subtitle" data-key="servicesSubtitle">Tailored solutions to meet your digital needs.</p>
+        <p class="section-subtitle" data-key="servicesSubtitle">Custom solutions powered by 2025's latest tech trends.</p>
       </div>
       <div class="grid grid-3">
         <div class="card">
-          <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h4 data-key="service1Title">Website Development</h4>
-          <p data-key="service1Desc">From landing pages to complex platforms, we create modern, fast, and responsive websites optimized for performance and SEO.</p>
+          <svg class="card-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4 data-key="service1Title">Web Development</h4>
+          <p data-key="service1Desc">Modern, responsive websites from simple landings to AI-integrated platforms, optimized for performance, SEO, and user engagement.</p>
         </div>
         <div class="card">
-          <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="card-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h4 data-key="service2Title">Software Development</h4>
-          <p data-key="service2Desc">Custom desktop, mobile, and server applications to automate processes and solve unique business challenges.</p>
+          <p data-key="service2Desc">Bespoke applications for desktop, mobile, and cloud, incorporating AI for automation and intelligent business solutions.</p>
         </div>
         <div class="card">
-          <svg class="card-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h4 data-key="service3Title">Code Optimization & Consulting</h4>
-          <p data-key="service3Desc">Analyze, refactor, and optimize existing codebases for better performance, security, and maintainability.</p>
+          <svg class="card-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4 data-key="service3Title">Optimization & AI Consulting</h4>
+          <p data-key="service3Desc">Refactor codebases, enhance performance, and integrate AI for smarter, more efficient systems.</p>
         </div>
       </div>
     </section>
     <section id="team" class="container fade-in" aria-labelledby="team-title">
       <div class="section-head">
         <h2 id="team-title" class="section-title" data-key="teamTitle">Our Team</h2>
-        <p class="section-subtitle" data-key="teamSubtitle">Meet the experts driving our success.</p>
+        <p class="section-subtitle" data-key="teamSubtitle">Passionate experts driving innovation.</p>
       </div>
       <div class="team-grid">
         <button class="member" data-member="yura" aria-label="View Yura's profile">
@@ -215,24 +239,24 @@
     </section>
     <section id="contact" class="container fade-in" aria-labelledby="contact-title">
       <div class="section-head">
-        <h2 id="contact-title" class="section-title" data-key="contactTitle">Let's Build Something Together</h2>
-        <p class="section-subtitle" data-key="contactSubtitle">Ready to start your project? Get in touch today.</p>
+        <h2 id="contact-title" class="section-title" data-key="contactTitle">Let's Innovate Together</h2>
+        <p class="section-subtitle" data-key="contactSubtitle">Start your project with AI-powered insights today.</p>
       </div>
       <div class="contact-card">
         <div>
-          <h4 data-key="contactSub">Need a consultation or estimate?</h4>
-          <p data-key="contactDesc">Write us — we'll prepare a detailed solution plan with an accurate estimate.</p>
+          <h4 data-key="contactSub">Consultation or Estimate?</h4>
+          <p data-key="contactDesc">Contact us for a tailored plan with precise estimates and AI recommendations.</p>
         </div>
-        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
           <a class="btn btn-ghost" href="mailto:msfsoft.team@gmail.com" aria-label="Email us">msfsoft.team@gmail.com</a>
-          <a class="btn btn-primary" href="mailto:msfsoft.team@gmail.com?subject=Service%20Request" data-key="contactBtn">Write Us</a>
+          <a class="btn btn-primary" href="mailto:msfsoft.team@gmail.com?subject=Project%20Inquiry" data-key="contactBtn">Get in Touch</a>
         </div>
       </div>
     </section>
   </main>
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> MSFSoft — All rights reserved</p>
+      <p>© <span id="year"></span> MSFSoft — Pioneering Digital Solutions</p>
     </div>
   </footer>
   <div id="member-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
@@ -245,49 +269,48 @@
     </div>
   </div>
   <script>
-    // Enhanced JS: Language toggle, modal, animations, scroll effects
     (function() {
       const year = document.getElementById('year');
       year.textContent = new Date().getFullYear();
 
       const translations = {
         en: {
-          navAbout: 'About Us', navServices: 'Services', navTeam: 'Team', navContact: 'Contact',
-          kicker: 'Digital Engineering', heroTitle: 'We design reliable software. Fast. Accurate. Secure.',
-          heroSubtitle: 'MSFSoft — an engineering team helping businesses grow through smart automation, scalable web systems, and clean code architecture.',
-          heroBtnEstimate: 'Get an Estimate', heroBtnContact: 'Contact Us', heroBtnServices: 'Our Services',
-          aboutTitle: 'Who We Are', aboutSubtitle: 'Discover our passion for innovation and commitment to excellence.',
-          aboutP1: '<strong>MSFSoft is a fresh perspective on the world of software development.</strong> We are a young team, but full of enthusiasm and innovative ideas. Our passion for coding and solving complex problems unites us, allowing us to create effective and reliable IT solutions for a modern digital landscape.',
-          aboutP2: 'With a focus on quality and efficiency, we leverage the latest technologies to deliver solutions that scale with your business needs.',
-          aboutP3: 'Our collaborative approach ensures that every project is tailored to client goals, fostering long-term partnerships.',
-          servicesTitle: 'Our Services', servicesSubtitle: 'Tailored solutions to meet your digital needs.',
-          service1Title: 'Website Development', service1Desc: 'From landing pages to complex platforms, we create modern, fast, and responsive websites optimized for performance and SEO.',
-          service2Title: 'Software Development', service2Desc: 'Custom desktop, mobile, and server applications to automate processes and solve unique business challenges.',
-          service3Title: 'Code Optimization & Consulting', service3Desc: 'Analyze, refactor, and optimize existing codebases for better performance, security, and maintainability.',
-          teamTitle: 'Our Team', teamSubtitle: 'Meet the experts driving our success.',
+          navAbout: 'About', navServices: 'Services', navTeam: 'Team', navContact: 'Contact',
+          kicker: 'Innovative Digital Engineering', heroTitle: 'Crafting Reliable Software. Fast. Accurate. AI-Enhanced.',
+          heroSubtitle: 'MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025\'s digital landscape.',
+          heroBtnEstimate: 'Get Estimate', heroBtnContact: 'Contact Us', heroBtnServices: 'Explore Services',
+          aboutTitle: 'Who We Are', aboutSubtitle: 'A fresh, innovative approach to software development in 2025.',
+          aboutP1: '<strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we\'re driven by innovation and problem-solving, creating robust, AI-ready solutions for today\'s digital world.',
+          aboutP2: 'We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.',
+          aboutP3: 'Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.',
+          servicesTitle: 'Our Services', servicesSubtitle: 'Custom solutions powered by 2025\'s latest tech trends.',
+          service1Title: 'Web Development', service1Desc: 'Modern, responsive websites from simple landings to AI-integrated platforms, optimized for performance, SEO, and user engagement.',
+          service2Title: 'Software Development', service2Desc: 'Bespoke applications for desktop, mobile, and cloud, incorporating AI for automation and intelligent business solutions.',
+          service3Title: 'Optimization & AI Consulting', service3Desc: 'Refactor codebases, enhance performance, and integrate AI for smarter, more efficient systems.',
+          teamTitle: 'Our Team', teamSubtitle: 'Passionate experts driving innovation.',
           founder: 'Founder / Lead Developer', developer: 'Frontend Developer',
-          contactTitle: "Let's Build Something Together", contactSubtitle: 'Ready to start your project? Get in touch today.',
-          contactSub: 'Need a consultation or estimate?', contactDesc: "Write us — we'll prepare a detailed solution plan with an accurate estimate.",
-          contactBtn: 'Write Us'
+          contactTitle: 'Let\'s Innovate Together', contactSubtitle: 'Start your project with AI-powered insights today.',
+          contactSub: 'Consultation or Estimate?', contactDesc: 'Contact us for a tailored plan with precise estimates and AI recommendations.',
+          contactBtn: 'Get in Touch'
         },
         ua: {
           navAbout: 'Про нас', navServices: 'Послуги', navTeam: 'Команда', navContact: 'Контакти',
-          kicker: 'Цифрова Інженерія', heroTitle: 'Ми проектуємо надійне ПЗ. Швидко. Точно. Надійно.',
-          heroSubtitle: 'MSFSoft — команда інженерів, яка допомагає бізнесам зростати через розумну автоматизацію, масштабовані веб-системи та чисту архітектуру коду.',
-          heroBtnEstimate: 'Отримати кошторис', heroBtnContact: "Зв'язатися", heroBtnServices: 'Наші послуги',
-          aboutTitle: 'Хто ми є', aboutSubtitle: 'Дізнайтеся про нашу пристрасть до інновацій та прагнення до досконалості.',
-          aboutP1: '<strong>MSFSoft — це свіжий погляд на світ розробки програмного забезпечення.</strong> Ми молода команда, але сповнена ентузіазму й інноваційних ідей. Наша пристрасть до кодингу та розв’язання складних проблем об’єднує нас, дозволяючи створювати ефективні та надійні ІТ-рішення для сучасного цифрового ландшафту.',
-          aboutP2: 'З фокусом на якості та ефективності, ми використовуємо найновіші технології для доставки рішень, які масштауються разом з потребами вашого бізнесу.',
-          aboutP3: 'Наш спільний підхід забезпечує, що кожен проект адаптовано до цілей клієнта, сприяючи довгостроковим партнерствам.',
-          servicesTitle: 'Наші послуги', servicesSubtitle: 'Індивідуальні рішення для ваших цифрових потреб.',
-          service1Title: 'Розробка сайтів', service1Desc: 'Від лендингів до складних платформ, ми створюємо сучасні, швидкі та адаптивні сайти, оптимізовані для продуктивності та SEO.',
-          service2Title: 'Розробка ПЗ', service2Desc: 'Кастомні десктопні, мобільні та серверні додатки для автоматизації процесів та розв’язання унікальних бізнес-завдань.',
-          service3Title: 'Оптимізація коду та консультації', service3Desc: 'Аналіз, рефакторинг та оптимізація існуючих кодових баз для кращої продуктивності, безпеки та підтримки.',
-          teamTitle: 'Наша команда', teamSubtitle: 'Зустріньте експертів, які рухають наш успіх.',
-          founder: 'Засновник / Головний розробник', developer: 'Фронтенд-розробник',
-          contactTitle: 'Створімо щось разом', contactSubtitle: 'Готові почати свій проект? Зв’яжіться з нами сьогодні.',
-          contactSub: 'Потрібна консультація або оцінка?', contactDesc: 'Напишіть нам — ми підготуємо детальний план рішення з точною оцінкою.',
-          contactBtn: 'Написати нам'
+          kicker: 'Інноваційна Цифрова Інженерія', heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
+          heroSubtitle: 'MSFSoft — команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем, чистої архітектури та інтеграцій AI для цифрового ландшафту 2025 року.',
+          heroBtnEstimate: 'Отримати Кошторис', heroBtnContact: 'Зв\'язатися', heroBtnServices: 'Оглянути Послуги',
+          aboutTitle: 'Хто Ми', aboutSubtitle: 'Свіжий, інноваційний підхід до розробки ПЗ у 2025.',
+          aboutP1: '<strong>MSFSoft приносить сучасний погляд на програмну інженерію.</strong> Як молода, ентузіастична команда, ми керовані інноваціями та розв\'язанням проблем, створюючи міцні, готові до AI рішення для сучасного цифрового світу.',
+          aboutP2: 'Ми пріоритезуємо якість, ефективність та масштабованість, використовуючи передові технології, включаючи AI, для доставки стійкого до майбутнього ПЗ, яке росте разом з вашим бізнесом.',
+          aboutP3: 'Наш спільний етос забезпечує адаптовані проекти, будуючи тривалі партнерства через прозору комунікацію та виняткові результати.',
+          servicesTitle: 'Наші Послуги', servicesSubtitle: 'Індивідуальні рішення, посилені останніми трендами технологій 2025.',
+          service1Title: 'Розробка Веб', service1Desc: 'Сучасні, адаптивні веб-сайти від простих лендингів до платформ з інтеграцією AI, оптимізовані для продуктивності, SEO та залучення користувачів.',
+          service2Title: 'Розробка ПЗ', service2Desc: 'Індивідуальні додатки для десктопу, мобільних та хмари, з включенням AI для автоматизації та інтелектуальних бізнес-рішень.',
+          service3Title: 'Оптимізація та Консалтинг AI', service3Desc: 'Рефакторинг кодових баз, покращення продуктивності та інтеграція AI для розумніших, ефективніших систем.',
+          teamTitle: 'Наша Команда', teamSubtitle: 'Пристрасні експерти, що рухають інновації.',
+          founder: 'Засновник / Головний Розробник', developer: 'Фронтенд Розробник',
+          contactTitle: 'Інновуємо Разом', contactSubtitle: 'Почніть свій проект з інсайтів на базі AI сьогодні.',
+          contactSub: 'Консультація чи Кошторис?', contactDesc: 'Зв\'яжіться з нами для адаптованого плану з точними кошторисами та рекомендаціями AI.',
+          contactBtn: 'Зв\'язатися'
         }
       };
 
@@ -303,30 +326,36 @@
           const text = translations[lang][key];
           if (text) el.innerHTML = text;
         });
-        // Update modal data based on lang
-        updateModalData();
       }
 
       langToggle.addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'ua' : 'en'));
 
-      // Team modal data
-      const teamData = {
-        en: {
-          yura: { name: 'Yura F.', role: 'Founder / Lead Developer', bio: 'Passionate engineer focused on backend and architecture. Experienced in building scalable systems and leading innovative projects.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg' },
-          veronika: { name: 'Veronika Dziuba', role: 'Frontend Developer', bio: 'Frontend specialist creating elegant, user-friendly interfaces. Skilled in modern frameworks and UX design principles.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg' }
-        },
-        ua: {
-          yura: { name: 'Юра Ф.', role: 'Засновник / Головний розробник', bio: 'Пристрасний інженер, що фокусується на бекенді та архітектурі. Досвідчений у побудові масштабованих систем та керівництві інноваційними проектами.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg' },
-          veronika: { name: 'Вероніка Дзюба', role: 'Фронтенд-розробник', bio: 'Фронтенд-спеціаліст, що створює елегантні, зручні інтерфейси. Вмілий у сучасних фреймворках та принципах UX-дизайну.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg' }
-        }
-      };
+      // Theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.dataset.theme;
+        document.body.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
+        themeToggle.textContent = currentTheme === 'light' ? '☀️' : '🌙';
+      });
 
+      // Modal
       const modal = document.getElementById('member-modal');
       const modalImg = document.getElementById('modal-img');
       const modalName = document.getElementById('modal-name');
       const modalRole = document.getElementById('modal-role');
       const modalBio = document.getElementById('modal-bio');
       const modalClose = document.getElementById('modal-close');
+
+      const teamData = {
+        en: {
+          yura: { name: 'Yura F.', role: 'Founder / Lead Developer', bio: 'Visionary engineer specializing in backend, AI integration, and scalable architectures. Leading innovative projects since 2020.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg' },
+          veronika: { name: 'Veronika Dziuba', role: 'Frontend Developer', bio: 'Creative frontend expert crafting intuitive, AI-enhanced interfaces with modern frameworks and UX best practices.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg' }
+        },
+        ua: {
+          yura: { name: 'Юра Ф.', role: 'Засновник / Головний Розробник', bio: 'Візіонерський інженер, спеціаліст з бекенду, інтеграції AI та масштабованих архітектур. Веду інноваційні проекти з 2020.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Yura.jpg' },
+          veronika: { name: 'Вероніка Дзюба', role: 'Фронтенд Розробник', bio: 'Креативний експерт фронтенду, що створює інтуїтивні інтерфейси з AI за допомогою сучасних фреймворків та найкращих практик UX.', photo: 'https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/Veronika.jpg' }
+        }
+      };
 
       function openModal(memberId) {
         const info = teamData[currentLang][memberId];
@@ -344,43 +373,27 @@
         modal.setAttribute('aria-hidden', 'true');
       }
 
-      function updateModalData() {
-        // If modal is open, refresh content
-        if (modal.classList.contains('visible')) {
-          const activeMember = document.querySelector('.member.active');
-          if (activeMember) openModal(activeMember.dataset.member);
-        }
-      }
-
       document.querySelectorAll('.member').forEach(member => {
-        member.addEventListener('click', () => {
-          document.querySelectorAll('.member').forEach(m => m.classList.remove('active'));
-          member.classList.add('active');
-          openModal(member.dataset.member);
-        });
+        member.addEventListener('click', () => openModal(member.dataset.member));
       });
 
       modalClose.addEventListener('click', closeModal);
       modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-      // Scroll effects
+      // Scroll effects and fade-in
       const header = document.getElementById('header');
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
+        header.classList.toggle('scrolled', window.scrollY > 100);
       });
 
-      // Fade-in animations
-      const fadeElements = document.querySelectorAll('.fade-in');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-      }, { threshold: 0.1 });
-      fadeElements.forEach(el => observer.observe(el));
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-      // Initial apply
       applyLanguage(currentLang);
     })();
   </script>
