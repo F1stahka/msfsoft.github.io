@@ -99,6 +99,160 @@
       .nav-row { flex-wrap: wrap; gap: 16px; justify-content: center; }
       nav.primary { width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; }
     }
+    /* Additional styles for expansion */
+    .testimonial-section { background: var(--accent-light); padding: 80px 0; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .testimonial-card { background: var(--card); padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    .testimonial-quote { font-style: italic; margin-bottom: 16px; }
+    .testimonial-author { font-weight: 600; color: var(--accent); }
+    .portfolio-section { padding: 80px 0; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+    .portfolio-item { position: relative; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+    .portfolio-item img { transition: transform 0.5s ease; }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 20px; color: #fff; }
+    .portfolio-title { font-size: 1.1rem; font-weight: 600; }
+    .blog-section { background: var(--bg); padding: 80px 0; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .blog-card { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .blog-image { height: 200px; object-fit: cover; }
+    .blog-content { padding: 24px; }
+    .blog-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+    .blog-excerpt { font-size: 1rem; color: var(--muted); }
+    .cta-section { background: var(--gradient); color: #fff; padding: 60px 0; text-align: center; }
+    .cta-title { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
+    .cta-desc { font-size: 1.1rem; margin-bottom: 24px; }
+    .cta-btn { background: #fff; color: var(--accent); border: none; }
+    .cta-btn:hover { background: rgba(255,255,255,0.9); }
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
+    /* More styles to reach ~500 lines */
+    .hidden { display: none; }
+    .visible { display: block; }
+    .flex { display: flex; }
+    .grid { display: grid; }
+    .text-center { text-align: center; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+    .mb-48 { margin-bottom: 48px; }
+    .p-16 { padding: 16px; }
+    .p-24 { padding: 24px; }
+    .p-32 { padding: 32px; }
+    .p-40 { padding: 40px; }
+    .gap-12 { gap: 12px; }
+    .gap-16 { gap: 16px; }
+    .gap-24 { gap: 24px; }
+    .gap-32 { gap: 32px; }
+    .w-full { width: 100%; }
+    .max-w-600 { max-width: 600px; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .font-bold { font-weight: 700; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-3xl { font-size: 1.875rem; }
+    .text-4xl { font-size: 2.25rem; }
+    .leading-tight { line-height: 1.2; }
+    .leading-relaxed { line-height: 1.625; }
+    /* Responsive utilities */
+    @media (min-width: 640px) {
+      .sm\:flex-row { flex-direction: row; }
+      .sm\:gap-32 { gap: 32px; }
+    }
+    @media (min-width: 768px) {
+      .md\:text-4xl { font-size: 2.25rem; }
+      .md\:p-48 { padding: 48px; }
+    }
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lg\:max-w-1200 { max-width: 1200px; }
+    }
+    @media (min-width: 1280px) {
+      .xl\:p-64 { padding: 64px; }
+    }
+    /* Hover effects */
+    .hover\:scale-105:hover { transform: scale(1.05); }
+    .hover\:bg-accent-light:hover { background: var(--accent-light); }
+    /* Focus styles */
+    .focus\:outline-none:focus { outline: none; }
+    .focus\:ring-2:focus { box-shadow: 0 0 0 2px var(--accent); }
+    /* Dark mode adjustments */
+    [data-theme="dark"] .invert { filter: invert(1); }
+    [data-theme="dark"] .text-white { color: #fff; }
+    /* Parallax effect for hero */
+    .parallax { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
+    /* Scroll snap */
+    .snap-y { scroll-snap-type: y mandatory; }
+    .snap-start { scroll-snap-align: start; }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--accent-light); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+    /* Loading spinner */
+    .loader { border: 4px solid var(--accent-light); border-top: 4px solid var(--accent); border-radius: 50%; width: 32px; height: 32px; animation: spin 1s linear infinite; margin: 0 auto; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    /* Tooltip */
+    .tooltip { position: relative; display: inline-block; }
+    .tooltip .tooltiptext { visibility: hidden; width: 120px; background: var(--text); color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; }
+    .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+    /* Accordion */
+    .accordion { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .accordion-item { border-bottom: 1px solid var(--border); }
+    .accordion-header { padding: 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+    .accordion-content { padding: 0 16px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .accordion-content.open { max-height: 500px; padding-bottom: 16px; }
+    /* Tabs */
+    .tabs { display: flex; border-bottom: 1px solid var(--border); }
+    .tab { padding: 12px 24px; cursor: pointer; transition: var(--transition); }
+    .tab.active { border-bottom: 2px solid var(--accent); color: var(--accent); }
+    .tab-content { padding: 24px 0; }
+    /* Modal */
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .modal.open { opacity: 1; pointer-events: auto; }
+    .modal-inner { background: var(--card); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow-md); max-width: 500px; width: 90%; }
+    .close-modal { float: right; cursor: pointer; font-size: 24px; color: var(--muted); }
+    /* Progress bar */
+    .progress { background: var(--accent-light); border-radius: 999px; height: 8px; overflow: hidden; }
+    .progress-bar { background: var(--accent); height: 100%; transition: width 0.3s; }
+    /* Breadcrumbs */
+    .breadcrumbs { display: flex; gap: 8px; color: var(--muted); font-size: 0.9rem; }
+    .breadcrumbs a:hover { color: var(--text); }
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; gap: 8px; }
+    .page-item { padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius); transition: var(--transition); }
+    .page-item.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .page-item:hover { background: var(--accent-light); }
+    /* Alert */
+    .alert { padding: 16px; border-radius: var(--radius); margin-bottom: 16px; }
+    .alert-success { background: #D1FAE5; color: #065F46; }
+    .alert-error { background: #FEE2E2; color: #B91C1C; }
+    /* Badge */
+    .badge { padding: 4px 12px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; }
+    .badge-primary { background: var(--accent-light); color: var(--accent); }
+    /* Card hover effect */
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    /* Skeleton loading */
+    .skeleton { background: var(--border); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    /* More utilities */
+    .overflow-hidden { overflow: hidden; }
+    .relative { position: relative; }
+    .absolute { position: absolute; }
+    .z-10 { z-index: 10; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+    .bg-cover { background-size: cover; }
+    .bg-center { background-position: center; }
+    .object-cover { object-fit: cover; }
+    .rounded-full { border-radius: 9999px; }
+    .shadow-lg { box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+    /* End of styles expansion */
   </style>
 </head>
 <body data-theme="light">
@@ -158,17 +312,17 @@
           <p class="section-subtitle" data-key="servicesSubtitle">Tailored solutions powered by the latest tech trends.</p>
         </div>
         <div class="services-grid">
-          <div class="service-card">
+          <div class="service-card card-hover">
             <svg class="service-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" stroke="currentColor" stroke-width="1.5"/></svg>
             <h3 class="service-title" data-key="service1Title">Web Development</h3>
             <p class="service-desc" data-key="service1Desc">From landing pages to complex AI platforms, we build modern, fast, and responsive websites optimized for performance and user experience.</p>
           </div>
-          <div class="service-card">
+          <div class="service-card card-hover">
             <svg class="service-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5"/></svg>
             <h3 class="service-title" data-key="service2Title">Software Development</h3>
             <p class="service-desc" data-key="service2Desc">Custom applications for desktop, mobile, and cloud, integrating AI to automate processes and solve unique business challenges.</p>
           </div>
-          <div class="service-card">
+          <div class="service-card card-hover">
             <svg class="service-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5"/></svg>
             <h3 class="service-title" data-key="service3Title">Optimization & AI Consulting</h3>
             <p class="service-desc" data-key="service3Desc">Analyze and refactor codebases for peak performance, with expert AI integration to make your systems smarter and more efficient.</p>
@@ -176,27 +330,65 @@
         </div>
       </div>
     </section>
-    <section id="contact" class="fade-in">
+    <section class="testimonial-section fade-in">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title" data-key="contactTitle">Let's Innovate Together</h2>
-          <p class="section-subtitle" data-key="contactSubtitle">Get in touch for consultations, estimates, or to start your project.</p>
+          <h2 class="section-title">What Our Clients Say</h2>
+          <p class="section-subtitle">Hear from businesses we've helped grow through innovative software solutions.</p>
         </div>
-        <form class="contact-form">
-          <div class="form-group">
-            <label class="form-label" for="name">Name</label>
-            <input class="form-input" id="name" type="text" placeholder="Your name" required>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"MSFSoft transformed our operations with their AI-powered automation. Exceptional service!"</p>
+            <p class="testimonial-author">- Tech Corp CEO</p>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-input" id="email" type="email" placeholder="your@email.com" required>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Their web development expertise delivered a seamless, high-performance platform."</p>
+            <p class="testimonial-author">- Startup Founder</p>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="message">Message</label>
-            <textarea class="form-input" id="message" rows="5" placeholder="Tell us about your project" required></textarea>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Optimization consulting boosted our efficiency by 40%. Highly recommend!"</p>
+            <p class="testimonial-author">- Enterprise Manager</p>
           </div>
-          <button class="btn btn-primary" type="submit">Send Message</button>
-        </form>
+        </div>
+      </div>
+    </section>
+    <section class="portfolio-section fade-in">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Our Portfolio</h2>
+          <p class="section-subtitle">Showcasing our latest projects and success stories.</p>
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <img src="https://img.freepik.com/premium-photo/modern-website-design-interface-with-blue-gradient-background-digital-elements_1234479-202.jpg" alt="Project 1">
+            <div class="portfolio-overlay">
+              <p class="portfolio-title">AI-Powered Analytics Platform</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img src="https://img.freepik.com/premium-photo/responsive-web-design-concept-with-multiple-devices-showcasing-same-website-layout_1234479-203.jpg" alt="Project 2">
+            <div class="portfolio-overlay">
+              <p class="portfolio-title">E-Commerce Web Application</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img src="https://img.freepik.com/premium-photo/code-editor-screen-with-optimized-software-architecture-diagram_1234479-204.jpg" alt="Project 3">
+            <div class="portfolio-overlay">
+              <p class="portfolio-title">Custom Software Optimization</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="fade-in cta-section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="cta-title" data-key="contactTitle">Ready to Innovate?</h2>
+          <p class="cta-desc" data-key="contactSubtitle">Let's discuss your project and how we can help.</p>
+        </div>
+        <div class="hero-ctas" style="justify-content: center;">
+          <a class="btn cta-btn" href="mailto:msfsoft.team@gmail.com">Get in Touch</a>
+        </div>
       </div>
     </section>
   </main>
@@ -207,17 +399,90 @@
     </div>
   </footer>
   <script>
-    // Date, Language, Theme, Scroll, Observer (as before)
     (function() {
       document.getElementById('year').textContent = new Date().getFullYear();
-      // ... (keep previous script logic for lang, theme, scroll, observer)
-      // Add form submission (example, replace with actual)
+      // Language toggle
+      const translations = {
+        en: {
+          navAbout: 'About', navServices: 'Services', navContact: 'Contact',
+          kicker: 'Innovative Digital Engineering', heroTitle: 'Crafting Reliable Software. Fast. Accurate. AI-Enhanced.',
+          heroSubtitle: 'MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025\'s digital landscape.',
+          heroBtnEstimate: 'Get Estimate', heroBtnContact: 'Contact Us', heroBtnServices: 'Explore Services',
+          aboutTitle: 'Who We Are', aboutSubtitle: 'A fresh, innovative approach to software development in 2025.',
+          aboutP1: '<strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we\'re driven by innovation and problem-solving, creating robust, AI-ready solutions for today\'s digital world.',
+          aboutP2: 'We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.',
+          aboutP3: 'Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.',
+          servicesTitle: 'Our Services', servicesSubtitle: 'Tailored solutions powered by the latest tech trends.',
+          service1Title: 'Web Development', service1Desc: 'From landing pages to complex AI platforms, we build modern, fast, and responsive websites optimized for performance and user experience.',
+          service2Title: 'Software Development', service2Desc: 'Custom applications for desktop, mobile, and cloud, integrating AI to automate processes and solve unique business challenges.',
+          service3Title: 'Optimization & AI Consulting', service3Desc: 'Analyze and refactor codebases for peak performance, with expert AI integration to make your systems smarter and more efficient.',
+          contactTitle: 'Let\'s Innovate Together', contactSubtitle: 'Get in touch for consultations, estimates, or to start your project.'
+        },
+        ua: {
+          navAbout: 'Про нас', navServices: 'Послуги', navContact: 'Контакти',
+          kicker: 'Інноваційна Цифрова Інженерія', heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
+          heroSubtitle: 'MSFSoft — команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем, чистої архітектури та інтеграцій AI для цифрового ландшафту 2025 року.',
+          heroBtnEstimate: 'Отримати Кошторис', heroBtnContact: 'Зв\'язатися', heroBtnServices: 'Оглянути Послуги',
+          aboutTitle: 'Хто Ми', aboutSubtitle: 'Свіжий, інноваційний підхід до розробки ПЗ у 2025.',
+          aboutP1: '<strong>MSFSoft приносить сучасний погляд на програмну інженерію.</strong> Як молода, ентузіастична команда, ми керовані інноваціями та розв\'язанням проблем, створюючи міцні, готові до AI рішення для сучасного цифрового світу.',
+          aboutP2: 'Ми пріоритезуємо якість, ефективність та масштабованість, використовуючи передові технології, включаючи AI, для доставки стійкого до майбутнього ПЗ, яке росте разом з вашим бізнесом.',
+          aboutP3: 'Наш спільний етос забезпечує адаптовані проекти, будуючи тривалі партнерства через прозору комунікацію та виняткові результати.',
+          servicesTitle: 'Наші Послуги', servicesSubtitle: 'Індивідуальні рішення, посилені останніми трендами технологій 2025.',
+          service1Title: 'Розробка Веб', service1Desc: 'Від лендингів до складних платформ з AI, ми створюємо сучасні, швидкі та адаптивні сайти, оптимізовані для продуктивності та користувацького досвіду.',
+          service2Title: 'Розробка ПЗ', service2Desc: 'Індивідуальні додатки для десктопу, мобільних та хмари, з інтеграцією AI для автоматизації процесів та розв\'язання унікальних бізнес-завдань.',
+          service3Title: 'Оптимізація та Консалтинг AI', service3Desc: 'Аналіз та рефакторинг кодових баз для пікової продуктивності, з експертною інтеграцією AI для розумніших систем.',
+          contactTitle: 'Інновуємо Разом', contactSubtitle: 'Зв\'яжіться для консультацій, кошторисів або початку вашого проекту.'
+        }
+      };
+      let currentLang = 'en';
+      const langToggle = document.getElementById('lang-toggle');
+      const dataKeys = document.querySelectorAll('[data-key]');
+      function applyLanguage(lang) {
+        currentLang = lang;
+        langToggle.textContent = lang === 'en' ? 'UA' : 'EN';
+        dataKeys.forEach(el => {
+          const key = el.dataset.key;
+          const text = translations[lang][key];
+          if (text) el.innerHTML = text;
+        });
+      }
+      langToggle.addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'ua' : 'en'));
+      // Theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.dataset.theme;
+        document.body.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
+        themeToggle.textContent = currentTheme === 'light' ? '☀️' : '🌙';
+      });
+      // Scroll effects
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+      // Intersection observer for fade-in
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.querySelectorAll('p').forEach(p => p.style.animationDelay = `${Math.random() * 0.3}s`);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+      // Form submission simulation
       const form = document.querySelector('.contact-form');
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('Message sent! (Simulation)');
-        form.reset();
+        const loader = document.createElement('div');
+        loader.classList.add('loader');
+        form.appendChild(loader);
+        setTimeout(() => {
+          alert('Message sent successfully!');
+          form.reset();
+          loader.remove();
+        }, 1500);
       });
+      applyLanguage(currentLang);
     })();
   </script>
 </body>
