@@ -181,9 +181,9 @@
     .service-icon { width: 40px; height: 40px; color: var(--accent); margin-bottom: 16px; }
     .service-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
     .service-desc { font-size: 1rem; color: var(--muted); }
-    .portfolio-overlay {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-}
+    .portfolio-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    }
     /* Contact section */
     .contact-form { max-width: 600px; margin: 0 auto; background: var(--card); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-md); }
     .form-group { margin-bottom: 20px; }
@@ -280,7 +280,7 @@
     .alert-close:hover { opacity: 1; }
     /* Badge variants */
     .badge-small { padding: 2px 8px; font-size: 0.75rem; }
-  content: "  .badge-large { padding: 6px 16px; font-size: 1rem; }\n" +
+    .badge-large { padding: 6px 16px; font-size: 1rem; }
     /* Progress variants */
     .progress-sm { height: 4px; }
     .progress-lg { height: 12px; }
@@ -461,7 +461,7 @@
             <svg class="service-icon mb-16" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" stroke="currentColor" stroke-width="1.5"/></svg>
             <h3 class="service-title text-xl font-bold mb-12" data-key="service1Title">Web Development</h3>
             <p class="service-desc text-base leading-relaxed" data-key="service1Desc">From landing pages to complex AI platforms, we build modern, fast, and responsive websites optimized for performance and user experience.</p>
-content: "          </div>\n" +
+          </div>
           <div class="service-card p-32 border rounded shadow-sm hover-translate-y transition">
             <svg class="service-icon mb-16" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5"/></svg>
             <h3 class="service-title text-xl font-bold mb-12" data-key="service2Title">Software Development</h3>
@@ -497,7 +497,7 @@ content: "          </div>\n" +
         </div>
       </div>
     </section>
-content: "    <section class=\"portfolio-section fade-in p-80\">\n" +
+    <section class="portfolio-section fade-in p-80">
       <div class="container">
         <div class="section-head text-center mb-48">
           <h2 class="section-title text-3xl font-bold mb-12">Our Portfolio</h2>
@@ -506,7 +506,6 @@ content: "    <section class=\"portfolio-section fade-in p-80\">\n" +
         <div class="portfolio-grid grid grid-cols-3 gap-32">
           <div class="portfolio-item relative overflow-hidden rounded shadow-md">
             <img src="https://img.freepik.com/premium-photo/modern-website-design-interface-with-blue-gradient-background-digital-elements_1234479-202.jpg" alt="Project 1" class="object-cover w-full h-full">
-            
             <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
               <p class="portfolio-title font-bold text-xl">AI-Powered Analytics Platform</p>
             </div>
@@ -523,8 +522,7 @@ content: "    <section class=\"portfolio-section fade-in p-80\">\n" +
               <p class="portfolio-title font-bold text-xl">Custom Software Optimization</p>
             </div>
           </div>
-
-                    <div class="portfolio-item relative overflow-hidden rounded shadow-md">
+          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
             <img src="https://img.freepik.com/premium-photo/mobile-app-development-interface-with-code-screens-digital-elements_1234479-205.jpg" alt="Project 4" class="object-cover w-full h-full">
             <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
               <p class="portfolio-title font-bold text-xl">Mobile App with AI Features</p>
@@ -536,7 +534,7 @@ content: "    <section class=\"portfolio-section fade-in p-80\">\n" +
               <p class="portfolio-title font-bold text-xl">Cloud-Based Data Analytics Tool</p>
             </div>
           </div>
-  M<div class="portfolio-item relative overflow-hidden rounded shadow-md">
+          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
             <img src="https://img.freepik.com/premium-photo/enterprise-software-optimization-dashboard-with-performance-metrics_1234479-207.jpg" alt="Project 6" class="object-cover w-full h-full">
             <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
               <p class="portfolio-title font-bold text-xl">Enterprise Optimization Suite</p>
@@ -550,7 +548,7 @@ content: "    <section class=\"portfolio-section fade-in p-80\">\n" +
         <div class="section-head text-center mb-48">
           <h2 class="section-title text-3xl font-bold mb-12" data-key="contactTitle">Let's Innovate Together</h2>
           <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto" data-key="contactSubtitle">Get in touch for consultations, estimates, or to start your project.</p>
-s      </div>
+        </div>
         <form class="contact-form w-full max-w-600 mx-auto bg-card p-40 rounded shadow-md">
           <div class="form-group mb-20">
             <label class="form-label block font-semibold mb-8" for="name">Name</label>
@@ -625,11 +623,10 @@ s      </div>
           navAbout: 'Про нас', navServices: 'Послуги', navContact: 'Контакти',
           kicker: 'Інноваційна Цифрова Інженерія', heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
           heroSubtitle: 'MSFSoft — команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем, чистої архітектури та інтеграцій AI для цифрового ландшафту 2025 року.',
-          heroBtnEstimate: 'Отримати Кошторис', heroBtnContact: 'Зв\'язатися', heroBtnServices: 'Оглянути Послуги',
+section-head           heroBtnEstimate: 'Отримати Кошторис', heroBtnContact: 'Зв\'язатися', heroBtnServices: 'Оглянути Послуги',
           aboutTitle: 'Хто Ми', aboutSubtitle: 'Свіжий, інноваційний підхід до розробки ПЗ у 2025.',
           aboutP1: '<strong>MSFSoft приносить сучасний погляд на програмну інженерію.</strong> Як молода, ентузіастична команда, ми керовані інноваціями та розв\'язанням проблем, створюючи міцні, готові до AI рішення для сучасного цифрового світу.',
           aboutP2: 'Ми пріоритезуємо якість, ефективність та масштабованість, використовуючи передові технології, включаючи AI, для доставки стійкого до майбутнього ПЗ, яке росте разом з вашим бізнесом.',
-Example.com: Your reliable partner.
           aboutP3: 'Наш спільний етос забезпечує адаптовані проекти, будучи тривалими партнерствами через прозору комунікацію та виняткові результати.',
           servicesTitle: 'Наші Послуги', servicesSubtitle: 'Індивідуальні рішення, посилені останніми трендами технологій 2025.',
           service1Title: 'Розробка Веб', service1Desc: 'Від лендингів до складних платформ з AI, ми створюємо сучасні, швидкі та адаптивні сайти, оптимізовані для продуктивності та користувацького досвіду.',
@@ -698,14 +695,14 @@ Example.com: Your reliable partner.
             form.reset();
             loader.remove();
             setTimeout(() => alert.remove(), 3000);
-          }, 1500);
+D         }, 1500);
         } else {
           const alert = document.createElement('div');
           alert.classList.add('alert', 'alert-error', 'mb-16');
           alert.innerHTML = '<span>Please fill in all required fields.</span>';
           form.insertBefore(alert, form.firstChild);
           setTimeout(() => alert.remove(), 3000);
-        }
+Two     }
       });
       // Accordion functionality
       document.querySelectorAll('.accordion-header').forEach(header => {
@@ -723,17 +720,17 @@ Example.com: Your reliable partner.
           tabGroup.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
           const panes = tabGroup.nextElementSibling.querySelectorAll('.tab-pane');
-          panes.forEach(p => p.classList.remove('active'));
+Two       panes.forEach(p => p.classList.remove('active'));
           panes[Array.from(tabGroup.querySelectorAll('.tab')).indexOf(tab)].classList.add('active');
         });
       });
       // Modal functionality
       const modal = document.getElementById('modal');
       const openModalBtns = document.querySelectorAll('.open-modal');
-      const closeModal = modal.querySelector('.close-modal');
+Image     const closeModal = modal.querySelector('.close-modal');
       openModalBtns.forEach(btn => {
         btn.addEventListener('click', () => modal.classList.add('open'));
-content: "      });\n" +
+      });
       closeModal.addEventListener('click', () => modal.classList.remove('open'));
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('open');
@@ -741,14 +738,15 @@ content: "      });\n" +
       // Progress bar example
       const progressBars = document.querySelectorAll('.progress-bar');
       progressBars.forEach(bar => {
-  s      setTimeout(() => bar.style.width = bar.dataset.progress + '%', 500);
+        setTimeout(() => bar.style.width = bar.dataset.progress + '%', 500);
       });
       // Lazy loading images
       const lazyImages = document.querySelectorAll('img[data-src]');
       const lazyObserver = new IntersectionObserver((entries) => {
+loc: 622
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-content: "            const img = entry.target;\n" +
+            const img = entry.target;
             img.src = img.dataset.src;
             img.removeAttribute('data-src');
             lazyObserver.unobserve(img);
@@ -756,18 +754,19 @@ content: "            const img = entry.target;\n" +
         });
       });
       lazyImages.forEach(img => lazyObserver.observe(img));
-      // Smooth scroll
+Show     // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
           e.preventDefault();
           const target = document.querySelector(anchor.getAttribute('href'));
-          target.scrollIntoView({ behavior: 'smooth' });
+Image         target.scrollIntoView({ behavior: 'smooth' });
         });
       });
       // Back to top button
       const backToTop = document.createElement('button');
       backToTop.classList.add('btn', 'btn-primary', 'fixed', 'bottom-16', 'right-16', 'hidden', 'z-50', 'rounded-full', 'p-12');
       backToTop.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 19V5m-7 7l7-7 7 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+loc: 647
       document.body.appendChild(backToTop);
       window.addEventListener('scroll', () => {
         backToTop.classList.toggle('hidden', window.scrollY < 300);
@@ -777,7 +776,7 @@ content: "            const img = entry.target;\n" +
       const newsletterForm = document.querySelector('.newsletter-form');
       if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
-          e.preventDefault();
+C          e.preventDefault();
           alert('Subscribed successfully!');
           newsletterForm.reset();
         });
@@ -788,8 +787,8 @@ content: "            const img = entry.target;\n" +
         themeToggle.textContent = '☀️';
       }
       // Language persistence
-      const savedLang = localStorage.getItem('lang');
-s      if (savedLang) {
+  Remember:   const savedLang = localStorage.getItem('lang');
+      if (savedLang) {
         applyLanguage(savedLang);
       }
       // Apply initial language
