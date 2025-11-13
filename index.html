@@ -1,799 +1,805 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Yurii Fostiak" />
-  <meta name="theme-color" content="#0A66C2" />
-  <title>MSFSoft — Pioneering Digital Solutions</title>
-  <meta name="description" content="MSFSoft: Forward-thinking engineering team delivering scalable, AI-powered software to drive business innovation and growth." />
-  <meta name="keywords" content="software development, web development, AI integration, custom software, digital engineering, Ukraine IT, automation, scalable systems" />
-  <meta property="og:title" content="MSFSoft — Pioneering Digital Solutions" />
-  <meta property="og:description" content="Empowering businesses with fast, accurate, secure, and AI-enhanced software solutions." />
-  <meta property="og:image" content="https://img.freepik.com/premium-photo/abstract-futuristic-technology-background-with-glowing-blue-purple-neon-lines-digital-circuit-board-concept_1234479-199.jpg" />
-  <meta property="og:url" content="https://www.msf-soft.com/" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MSFSoft — Pioneering Digital Solutions" />
-  <meta name="twitter:description" content="Empowering businesses with fast, accurate, secure, and AI-enhanced software solutions." />
-  <meta name="twitter:image" content="https://img.freepik.com/premium-photo/abstract-futuristic-technology-background-with-glowing-blue-purple-neon-lines-digital-circuit-board-concept_1234479-199.jpg" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/apple-touch-icon.png">
-  <link rel="manifest" href="/manifest.json">
-  <style>
-    /* Core variables */
-    :root {
-      --bg: #FFFFFF;
-      --text: #101828;
-      --muted: #475467;
-      --accent: #0A66C2;
-      --accent-dark: #004182;
-      --accent-light: #E9F2FF;
-      --border: rgba(208, 213, 221, 0.5);
-      --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
-      --shadow-md: 0 4px 6px rgba(16, 24, 40, 0.1);
-      --radius: 12px;
-      --maxw: 1440px;
-      --transition: all 0.3s ease;
-      --gradient: linear-gradient(90deg, #0A66C2 0%, #4A90E2 100%);
-      --success: #22C55E;
-      --error: #EF4444;
-      --warning: #F59E0B;
-      --info: #3B82F6;
-    }
-    /* Dark theme variables */
-    [data-theme="dark"] {
-      --bg: #0A0A0A;
-      --text: #F9FAFB;
-      --muted: #9CA3AF;
-      --accent-light: #1E3A8A;
-      --border: rgba(55, 65, 81, 0.5);
-      --success: #16A34A;
-      --error: #DC2626;
-      --warning: #D97706;
-      --info: #2563EB;
-    }
-    /* Reset and base styles */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; font-size: 16px; transition: background 0.3s, color 0.3s; }
-    /* Container and layout utilities */
-    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
-    .flex { display: flex; }
-    .grid { display: grid; }
-    .flex-column { flex-direction: column; }
-    .justify-center { justify-content: center; }
-    .align-center { align-items: center; }
-    .gap-8 { gap: 8px; }
-    .gap-12 { gap: 12px; }
-    .gap-16 { gap: 16px; }
-    .gap-24 { gap: 24px; }
-    .gap-32 { gap: 32px; }
-    .gap-48 { gap: 48px; }
-    .w-full { width: 100%; }
-    .max-w-50 { max-width: 50%; }
-    .max-w-600 { max-width: 600px; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .text-center { text-align: center; }
-    /* Typography utilities */
-    .font-bold { font-weight: 700; }
-    .font-semibold { font-weight: 600; }
-    .text-sm { font-size: 0.875rem; }
-    .text-base { font-size: 1rem; }
-    .text-lg { font-size: 1.125rem; }
-    .text-xl { font-size: 1.25rem; }
-    .text-2xl { font-size: 1.5rem; }
-    .text-3xl { font-size: 1.875rem; }
-    .text-4xl { font-size: 2.25rem; }
-    .leading-tight { line-height: 1.2; }
-    .leading-normal { line-height: 1.5; }
-    .leading-relaxed { line-height: 1.625; }
-    .italic { font-style: italic; }
-    /* Color utilities */
-    .text-muted { color: var(--muted); }
-    .text-accent { color: var(--accent); }
-    .bg-accent-light { background: var(--accent-light); }
-    .bg-gradient { background: var(--gradient); }
-    .border-border { border-color: var(--border); }
-    /* Spacing utilities */
-    .p-8 { padding: 8px; }
-    .p-12 { padding: 12px; }
-    .p-16 { padding: 16px; }
-    .p-20 { padding: 20px; }
-    .p-24 { padding: 24px; }
-    .p-32 { padding: 32px; }
-    .p-40 { padding: 40px; }
-    .p-48 { padding: 48px; }
-    .px-16 { padding-left: 16px; padding-right: 16px; }
-    .py-16 { padding-top: 16px; padding-bottom: 16px; }
-    .m-8 { margin: 8px; }
-    .m-16 { margin: 16px; }
-    .mb-8 { margin-bottom: 8px; }
-    .mb-12 { margin-bottom: 12px; }
-    .mb-16 { margin-bottom: 16px; }
-    .mb-24 { margin-bottom: 24px; }
-    .mb-32 { margin-bottom: 32px; }
-    .mb-48 { margin-bottom: 48px; }
-    .mt-16 { margin-top: 16px; }
-    .mt-24 { margin-top: 24px; }
-    .mt-32 { margin-top: 32px; }
-    .mt-48 { margin-top: 48px; }
-    /* Shadow and border utilities */
-    .shadow-sm { box-shadow: var(--shadow-sm); }
-    .shadow-md { box-shadow: var(--shadow-md); }
-    .shadow-lg { box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
-    .border { border: 1px solid var(--border); }
-    .border-b { border-bottom: 1px solid var(--border); }
-    .rounded { border-radius: var(--radius); }
-    .rounded-full { border-radius: 9999px; }
-    /* Transition and animation utilities */
-    .transition { transition: var(--transition); }
-    .hover-translate-y:hover { transform: translateY(-4px); }
-    .hover-scale:hover { transform: scale(1.05); }
-    .animate-pulse { animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-    .animate-fade-in { animation: fadeIn 0.6s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    /* Header styles */
-    header {
-      position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border); transition: var(--transition);
-    }
-    [data-theme="dark"] header { background: rgba(10,10,10,0.95); }
-    .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-mark { width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; font-size: 1.2rem;
-      background: var(--gradient); color: #fff; box-shadow: var(--shadow-sm); }
-    .brand-title { font-weight: 700; font-size: 1.2rem; }
-    nav.primary { display: flex; gap: 24px; }
-    nav.primary a { padding: 8px 12px; border-radius: 8px; font-weight: 500; color: var(--muted); transition: var(--transition); }
-    nav.primary a:hover { color: var(--text); background: var(--accent-light); }
-    .actions { display: flex; gap: 12px; }
-    .btn { padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: var(--transition); }
-    .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .btn-ghost:hover { background: var(--accent-light); border-color: var(--accent); }
-    .btn-primary { background: var(--gradient); color: #fff; box-shadow: var(--shadow-sm); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-    .theme-toggle { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 8px; border: 1px solid var(--border); background: var(--card); cursor: pointer; }
-    /* Hero section */
-    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; padding: 120px 0; background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('https://img.freepik.com/premium-photo/futuristic-digital-landscape-with-glowing-neon-lines-circuit-patterns-representing-advanced-technology-ai-data-processing_1234479-198.jpg') center/cover no-repeat; }
-    .hero-content { max-width: 50%; }
-    .kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-light); color: var(--accent); padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; margin-bottom: 24px; }
-    .title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
-    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 32px; }
-    .hero-ctas { display: flex; gap: 16px; }
-    /* General section styles */
-    section { padding: 80px 0; }
-    .section-head { text-align: center; margin-bottom: 48px; }
-    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 12px; }
-    .section-subtitle { font-size: 1.1rem; color: var(--muted); max-width: 800px; margin: 0 auto; }
-    /* About section */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .about-image { border-radius: var(--radius); box-shadow: var(--shadow-md); }
-    .about-text p { font-size: 1.05rem; margin-bottom: 24px; }
-    /* Services section */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .service-card { background: var(--card); padding: 32px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); }
-    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
-    .service-icon { width: 40px; height: 40px; color: var(--accent); margin-bottom: 16px; }
-    .service-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
-    .service-desc { font-size: 1rem; color: var(--muted); }
-    .portfolio-overlay {
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    }
-    /* Contact section */
-    .contact-form { max-width: 600px; margin: 0 auto; background: var(--card); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-md); }
-    .form-group { margin-bottom: 20px; }
-    .form-label { display: block; font-weight: 500; margin-bottom: 8px; }
-    .form-input { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; transition: var(--transition); }
-    .form-input:focus { border-color: var(--accent); outline: none; }
-    /* Footer styles */
-    footer { padding: 40px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
-    /* Fade-in animation */
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    /* Media queries */
-    @media (max-width: 1024px) {
-      .hero { flex-direction: column; text-align: center; padding: 100px 0; }
-      .hero-content { max-width: 100%; margin-bottom: 40px; }
-      .about-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .container { padding: 0 24px; }
-      .nav-row { flex-wrap: wrap; gap: 16px; justify-content: center; }
-      nav.primary { width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; }
-    }
-    /* Expanded styles for 1000+ lines */
-    /* Button variants */
-    .btn-secondary { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent); }
-    .btn-secondary:hover { background: var(--accent); color: #fff; }
-    .btn-disabled { opacity: 0.5; cursor: not-allowed; }
-    /* Input variants */
-    .input-error { border-color: var(--error); }
-    .input-success { border-color: var(--success); }
-    /* Alert styles */
-    .alert { padding: 16px; border-radius: var(--radius); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-    .alert-success { background: rgba(var(--success), 0.1); color: var(--success); border: 1px solid var(--success); }
-    .alert-error { background: rgba(var(--error), 0.1); color: var(--error); border: 1px solid var(--error); }
-    .alert-warning { background: rgba(var(--warning), 0.1); color: var(--warning); border: 1px solid var(--warning); }
-    .alert-info { background: rgba(var(--info), 0.1); color: var(--info); border: 1px solid var(--info); }
-    .alert-icon { width: 20px; height: 20px; }
-    /* Badge styles */
-    .badge { padding: 4px 12px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; display: inline-block; }
-    .badge-primary { background: var(--accent-light); color: var(--accent); }
-    .badge-success { background: rgba(var(--success), 0.1); color: var(--success); }
-    .badge-error { background: rgba(var(--error), 0.1); color: var(--error); }
-    /* Progress bar */
-    .progress { background: var(--border); border-radius: 999px; height: 8px; overflow: hidden; position: relative; }
-    .progress-bar { background: var(--accent); height: 100%; transition: width 0.5s ease; }
-    .progress-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.75rem; color: #fff; }
-    /* Tooltip */
-    .tooltip { position: relative; cursor: pointer; }
-    .tooltip .tooltip-text { visibility: hidden; width: 160px; background: var(--text); color: #fff; text-align: center; border-radius: 6px; padding: 8px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -80px; opacity: 0; transition: opacity 0.3s; }
-    .tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
-    .tooltip .tooltip-text::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: var(--text) transparent transparent transparent; }
-    /* Accordion */
-    .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-    .accordion-item { border-bottom: 1px solid var(--border); }
-    .accordion-item:last-child { border-bottom: none; }
-    .accordion-header { padding: 16px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; transition: background 0.3s; }
-    .accordion-header:hover { background: var(--accent-light); }
-    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 24px; }
-    .accordion-content.open { max-height: 1000px; padding-bottom: 16px; }
-    .accordion-icon { transition: transform 0.3s; }
-    .accordion-item.open .accordion-icon { transform: rotate(180deg); }
-    /* Tabs */
-    .tabs { display: flex; border-bottom: 1px solid var(--border); overflow-x: auto; }
-    .tab { padding: 12px 24px; cursor: pointer; white-space: nowrap; transition: var(--transition); }
-    .tab.active { border-bottom: 2px solid var(--accent); color: var(--accent); font-weight: 600; }
-    .tab-content { padding: 24px 0; }
-    .tab-pane { display: none; }
-    .tab-pane.active { display: block; }
-    /* Modal */
-    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 1000; }
-    .modal.open { opacity: 1; pointer-events: auto; }
-    .modal-inner { background: var(--card); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow-md); max-width: 500px; width: 90%; position: relative; }
-    .close-modal { position: absolute; top: 16px; right: 16px; cursor: pointer; font-size: 24px; color: var(--muted); transition: color 0.3s; }
-    .close-modal:hover { color: var(--text); }
-    /* Skeleton loading */
-    .skeleton { background: var(--border); border-radius: var(--radius); animation: skeleton-pulse 1.5s ease-in-out infinite; }
-    @keyframes skeleton-pulse { 0% { opacity: 0.6; } 50% { opacity: 0.4; } 100% { opacity: 0.6; } }
-    .skeleton-text { height: 16px; width: 100%; margin-bottom: 8px; }
-    .skeleton-image { height: 200px; width: 100%; }
-    /* Breadcrumbs */
-    .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; }
-    .breadcrumbs a { color: var(--muted); transition: color 0.3s; }
-    .breadcrumbs a:hover { color: var(--text); }
-    .breadcrumbs-separator { color: var(--muted); }
-    /* Pagination */
-    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
-    .page-item { padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); transition: var(--transition); cursor: pointer; }
-    .page-item.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .page-item:hover { background: var(--accent-light); }
-    .page-item.disabled { opacity: 0.5; cursor: not-allowed; }
-    /* Alert dismissal */
-    .alert-dismissible { position: relative; }
-    .alert-close { position: absolute; top: 12px; right: 12px; cursor: pointer; color: inherit; opacity: 0.7; transition: opacity 0.3s; }
-    .alert-close:hover { opacity: 1; }
-    /* Badge variants */
-    .badge-small { padding: 2px 8px; font-size: 0.75rem; }
-    .badge-large { padding: 6px 16px; font-size: 1rem; }
-    /* Progress variants */
-    .progress-sm { height: 4px; }
-    .progress-lg { height: 12px; }
-    .progress-success .progress-bar { background: var(--success); }
-    .progress-error .progress-bar { background: var(--error); }
-    /* Tooltip positions */
-    .tooltip-top .tooltip-text { bottom: auto; top: -125%; }
-    .tooltip-top .tooltip-text::after { top: auto; bottom: 100%; border-color: transparent transparent var(--text) transparent; }
-    .tooltip-left .tooltip-text { left: auto; right: 125%; top: 50%; transform: translateY(-50%); margin-left: 0; margin-right: -10px; }
-    .tooltip-left .tooltip-text::after { left: auto; right: -10px; top: 50%; margin-top: -5px; border-color: transparent transparent transparent var(--text); }
-    /* Accordion variants */
-    .accordion-flush { border: none; }
-    .accordion-flush .accordion-item { border: none; }
-    /* Tabs vertical */
-    .tabs-vertical { flex-direction: column; border-bottom: none; border-right: 1px solid var(--border); }
-    .tabs-vertical .tab { border-right: 2px solid transparent; }
-    .tabs-vertical .tab.active { border-right: 2px solid var(--accent); border-bottom: none; }
-    /* Modal sizes */
-    .modal-sm .modal-inner { max-width: 400px; }
-    .modal-lg .modal-inner { max-width: 800px; }
-    /* Skeleton variants */
-    .skeleton-circle { border-radius: 50%; }
-    .skeleton-rounded { border-radius: var(--radius); }
-    /* More padding utilities */
-    .p-0 { padding: 0; }
-    .p-4 { padding: 4px; }
-    .p-64 { padding: 64px; }
-    .px-8 { padding-left: 8px; padding-right: 8px; }
-    .py-8 { padding-top: 8px; padding-bottom: 8px; }
-    /* More margin utilities */
-    .m-0 { margin: 0; }
-    .m-4 { margin: 4px; }
-    .mt-8 { margin-top: 8px; }
-    .mt-64 { margin-top: 64px; }
-    .mb-64 { margin-bottom: 64px; }
-    /* Flex utilities */
-    .flex-wrap { flex-wrap: wrap; }
-    .justify-between { justify-content: space-between; }
-    .justify-end { justify-content: flex-end; }
-    .align-start { align-items: flex-start; }
-    .align-end { align-items: flex-end; }
-    /* Grid utilities */
-    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    /* Position utilities */
-    .relative { position: relative; }
-    .absolute { position: absolute; }
-    .fixed { position: fixed; }
-    .sticky { position: sticky; }
-    .top-0 { top: 0; }
-    .bottom-0 { bottom: 0; }
-    .left-0 { left: 0; }
-    .right-0 { right: 0; }
-    /* Z-index utilities */
-    .z-10 { z-index: 10; }
-    .z-20 { z-index: 20; }
-    .z-30 { z-index: 30; }
-    .z-40 { z-index: 40; }
-    .z-50 { z-index: 50; }
-    /* Overflow utilities */
-    .overflow-hidden { overflow: hidden; }
-    .overflow-auto { overflow: auto; }
-    .overflow-scroll { overflow: scroll; }
-    /* Cursor utilities */
-    .cursor-pointer { cursor: pointer; }
-    .cursor-default { cursor: default; }
-    .cursor-not-allowed { cursor: not-allowed; }
-    /* Visibility utilities */
-    .hidden { display: none; }
-    .block { display: block; }
-    .inline-block { display: inline-block; }
-    .inline { display: inline; }
-    /* Opacity utilities */
-    .opacity-0 { opacity: 0; }
-    .opacity-50 { opacity: 0.5; }
-    .opacity-75 { opacity: 0.75; }
-    .opacity-100 { opacity: 1; }
-    /* Rotate utilities */
-    .rotate-90 { transform: rotate(90deg); }
-    .rotate-180 { transform: rotate(180deg); }
-    /* Scale utilities */
-    .scale-90 { transform: scale(0.9); }
-    .scale-105 { transform: scale(1.05); }
-    /* Translate utilities */
-    .translate-y-2 { transform: translateY(0.5rem); }
-    .translate-y-neg-2 { transform: translateY(-0.5rem); }
-    /* Filter utilities */
-    .brightness-110 { filter: brightness(1.1); }
-    .grayscale { filter: grayscale(1); }
-    /* Additional animations */
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    .animate-bounce { animation: bounce 1s infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .animate-spin { animation: spin 1s linear infinite; }
-    /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: var(--accent-light); border-radius: 999px; }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
-    /* Print styles */
-    @media print {
-      body { background: white; color: black; }
-      .no-print { display: none; }
-    }
-    /* High contrast mode */
-    @media (prefers-contrast: more) {
-      :root { --border: #000; }
-      a { text-decoration: underline; }
-    }
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; animation: none !important; }
-    }
-    /* End of expanded styles */
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Yurii Fostiak" />
+  <meta name="theme-color" content="#0A66C2" />
+  <title>MSFSoft — Pioneering Digital Solutions</title>
+  <meta name="description" content="MSFSoft: Forward-thinking engineering team delivering scalable, AI-powered software to drive business innovation and growth." />
+  <meta name="keywords" content="software development, web development, AI integration, custom software, digital engineering, Ukraine IT, automation, scalable systems" />
+  <meta property="og:title" content="MSFSoft — Pioneering Digital Solutions" />
+  <meta property="og:description" content="Empowering businesses with fast, accurate, secure, and AI-enhanced software solutions." />
+  <meta property="og:image" content="https://img.freepik.com/premium-photo/abstract-futuristic-technology-background-with-glowing-blue-purple-neon-lines-digital-circuit-board-concept_1234479-199.jpg" />
+  <meta property="og:url" content="https://www.msf-soft.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MSFSoft — Pioneering Digital Solutions" />
+  <meta name="twitter:description" content="Empowering businesses with fast, accurate, secure, and AI-enhanced software solutions." />
+  <meta name="twitter:image" content="https://img.freepik.com/premium-photo/abstract-futuristic-technology-background-with-glowing-blue-purple-neon-lines-digital-circuit-board-concept_1234479-199.jpg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/F1stahka/msfsoft.github.io/main/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    /* Core variables */
+    :root {
+      --bg: #FFFFFF;
+      --text: #101828;
+      --muted: #475467;
+      --accent: #0A66C2;
+      --accent-dark: #004182;
+      --accent-light: #E9F2FF;
+      --border: rgba(208, 213, 221, 0.5);
+      --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+      --shadow-md: 0 4px 6px rgba(16, 24, 40, 0.1);
+      --radius: 12px;
+      --maxw: 1440px;
+      --transition: all 0.3s ease;
+      --gradient: linear-gradient(90deg, #0A66C2 0%, #4A90E2 100%);
+      --success: #22C55E;
+      --error: #EF4444;
+      --warning: #F59E0B;
+      --info: #3B82F6;
+      --card: #FFFFFF;
+    }
+    /* Dark theme variables */
+    [data-theme="dark"] {
+      --bg: #0A0A0A;
+      --text: #F9FAFB;
+      --muted: #9CA3AF;
+      --accent-light: #1E3A8A;
+      --border: rgba(55, 65, 81, 0.5);
+      --success: #16A34A;
+      --error: #DC2626;
+      --warning: #D97706;
+      --info: #2563EB;
+      --card: #111827;
+    }
+    /* Reset and base styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; font-size: 16px; transition: background 0.3s, color 0.3s; }
+    /* Container and layout utilities */
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+    .flex { display: flex; }
+    .grid { display: grid; }
+    .flex-column { flex-direction: column; }
+    .justify-center { justify-content: center; }
+    .align-center { align-items: center; }
+    .gap-8 { gap: 8px; }
+    .gap-12 { gap: 12px; }
+    .gap-16 { gap: 16px; }
+    .gap-24 { gap: 24px; }
+    .gap-32 { gap: 32px; }
+    .gap-48 { gap: 48px; }
+    .w-full { width: 100%; }
+    .max-w-50 { max-width: 50%; }
+    .max-w-600 { max-width: 600px; }
+    .max-w-800 { max-width: 800px; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .text-center { text-align: center; }
+    /* Typography utilities */
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .text-sm { font-size: 0.875rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-3xl { font-size: 1.875rem; }
+    .text-4xl { font-size: 2.25rem; }
+    .leading-tight { line-height: 1.2; }
+    .leading-normal { line-height: 1.5; }
+    .leading-relaxed { line-height: 1.625; }
+    .italic { font-style: italic; }
+    /* Color utilities */
+    .text-muted { color: var(--muted); }
+    .text-accent { color: var(--accent); }
+    .text-white { color: #fff; }
+    .bg-accent-light { background: var(--accent-light); }
+    .bg-gradient { background: var(--gradient); }
+    .border-border { border-color: var(--border); }
+    /* Spacing utilities */
+    .p-8 { padding: 8px; }
+    .p-12 { padding: 12px; }
+    .p-16 { padding: 16px; }
+    .p-20 { padding: 20px; }
+    .p-24 { padding: 24px; }
+    .p-32 { padding: 32px; }
+    .p-40 { padding: 40px; }
+    .p-48 { padding: 48px; }
+    .p-80 { padding: 80px; }
+    .px-16 { padding-left: 16px; padding-right: 16px; }
+    .py-16 { padding-top: 16px; padding-bottom: 16px; }
+    .py-80 { padding-top: 80px; padding-bottom: 80px; }
+    .m-8 { margin: 8px; }
+    .m-16 { margin: 16px; }
+    .mb-8 { margin-bottom: 8px; }
+    .mb-12 { margin-bottom: 12px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+    .mb-48 { margin-bottom: 48px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mt-48 { margin-top: 48px; }
+    /* Shadow and border utilities */
+    .shadow-sm { box-shadow: var(--shadow-sm); }
+    .shadow-md { box-shadow: var(--shadow-md); }
+    .shadow-lg { box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+    .border { border: 1px solid var(--border); }
+    .border-b { border-bottom: 1px solid var(--border); }
+    .rounded { border-radius: var(--radius); }
+    .rounded-full { border-radius: 9999px; }
+    /* Transition and animation utilities */
+    .transition { transition: var(--transition); }
+    .hover-translate-y:hover { transform: translateY(-4px); }
+    .hover-scale:hover { transform: scale(1.05); }
+    .hover-text-accent:hover { color: var(--accent); }
+    .animate-pulse { animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    /* Header styles */
+    header {
+      position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); transition: var(--transition);
+    }
+    header.scrolled { box-shadow: var(--shadow-sm); }
+    [data-theme="dark"] header { background: rgba(10,10,10,0.95); }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; font-size: 1.2rem;
+      background: var(--gradient); color: #fff; box-shadow: var(--shadow-sm); }
+    .brand-title { font-weight: 700; font-size: 1.2rem; }
+    nav.primary { display: flex; gap: 24px; }
+    nav.primary a { padding: 8px 12px; border-radius: 8px; font-weight: 500; color: var(--muted); transition: var(--transition); }
+    nav.primary a:hover { color: var(--text); background: var(--accent-light); }
+    .actions { display: flex; gap: 12px; }
+    .btn { padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: var(--transition); }
+    .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn-ghost:hover { background: var(--accent-light); border-color: var(--accent); }
+    .btn-primary { background: var(--gradient); color: #fff; box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .theme-toggle { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 8px; border: 1px solid var(--border); background: var(--card); cursor: pointer; }
+    /* Hero section */
+    .hero { position: relative; min-height: 90vh; display: flex; align-items: center; padding: 120px 0; background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('https://img.freepik.com/premium-photo/futuristic-digital-landscape-with-glowing-neon-lines-circuit-patterns-representing-advanced-technology-ai-data-processing_1234479-198.jpg') center/cover no-repeat; }
+    .hero-content { max-width: 50%; }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-light); color: var(--accent); padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; margin-bottom: 24px; }
+    .title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
+    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 32px; }
+    .hero-ctas { display: flex; gap: 16px; }
+    /* General section styles */
+    section { padding: 80px 0; }
+    .section-head { text-align: center; margin-bottom: 48px; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 12px; }
+    .section-subtitle { font-size: 1.1rem; color: var(--muted); max-width: 800px; margin: 0 auto; }
+    /* About section */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .about-image { border-radius: var(--radius); box-shadow: var(--shadow-md); }
+    .about-text p { font-size: 1.05rem; margin-bottom: 24px; }
+    /* Services section */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .service-card { background: var(--card); padding: 32px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+    .service-icon { width: 40px; height: 40px; color: var(--accent); margin-bottom: 16px; }
+    .service-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+    .service-desc { font-size: 1rem; color: var(--muted); }
+    .portfolio-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    }
+    /* Contact section */
+    .contact-form { max-width: 600px; margin: 0 auto; background: var(--card); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-weight: 500; margin-bottom: 8px; }
+    .form-input { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; transition: var(--transition); }
+    .form-input:focus { border-color: var(--accent); outline: none; }
+    /* Footer styles */
+    footer { padding: 40px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
+    /* Fade-in animation */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* Media queries */
+    @media (max-width: 1024px) {
+      .hero { flex-direction: column; text-align: center; padding: 100px 0; }
+      .hero-content { max-width: 100%; margin-bottom: 40px; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .nav-row { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      nav.primary { width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    }
+    /* Expanded styles for 1000+ lines */
+    /* Button variants */
+    .btn-secondary { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent); }
+    .btn-secondary:hover { background: var(--accent); color: #fff; }
+    .btn-disabled { opacity: 0.5; cursor: not-allowed; }
+    /* Input variants */
+    .input-error { border-color: var(--error); }
+    .input-success { border-color: var(--success); }
+    /* Alert styles */
+    .alert { padding: 16px; border-radius: var(--radius); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .alert-success { background: rgba(var(--success), 0.1); color: var(--success); border: 1px solid var(--success); }
+    .alert-error { background: rgba(var(--error), 0.1); color: var(--error); border: 1px solid var(--error); }
+    .alert-warning { background: rgba(var(--warning), 0.1); color: var(--warning); border: 1px solid var(--warning); }
+    .alert-info { background: rgba(var(--info), 0.1); color: var(--info); border: 1px solid var(--info); }
+    .alert-icon { width: 20px; height: 20px; }
+    /* Badge styles */
+    .badge { padding: 4px 12px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; display: inline-block; }
+    .badge-primary { background: var(--accent-light); color: var(--accent); }
+    .badge-success { background: rgba(var(--success), 0.1); color: var(--success); }
+    .badge-error { background: rgba(var(--error), 0.1); color: var(--error); }
+    /* Progress bar */
+    .progress { background: var(--border); border-radius: 999px; height: 8px; overflow: hidden; position: relative; }
+    .progress-bar { background: var(--accent); height: 100%; transition: width 0.5s ease; }
+    .progress-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.75rem; color: #fff; }
+    /* Tooltip */
+    .tooltip { position: relative; cursor: pointer; }
+    .tooltip .tooltip-text { visibility: hidden; width: 160px; background: var(--text); color: #fff; text-align: center; border-radius: 6px; padding: 8px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -80px; opacity: 0; transition: opacity 0.3s; }
+    .tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
+    .tooltip .tooltip-text::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: var(--text) transparent transparent transparent; }
+    /* Accordion */
+    .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .accordion-item { border-bottom: 1px solid var(--border); }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-header { padding: 16px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; transition: background 0.3s; }
+    .accordion-header:hover { background: var(--accent-light); }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 24px; }
+    .accordion-content.open { max-height: 1000px; padding-bottom: 16px; }
+    .accordion-icon { transition: transform 0.3s; }
+    .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+    /* Tabs */
+    .tabs { display: flex; border-bottom: 1px solid var(--border); overflow-x: auto; }
+    .tab { padding: 12px 24px; cursor: pointer; white-space: nowrap; transition: var(--transition); }
+    .tab.active { border-bottom: 2px solid var(--accent); color: var(--accent); font-weight: 600; }
+    .tab-content { padding: 24px 0; }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+    /* Modal */
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 1000; }
+    .modal.open { opacity: 1; pointer-events: auto; }
+    .modal-inner { background: var(--card); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow-md); max-width: 500px; width: 90%; position: relative; }
+    .close-modal { position: absolute; top: 16px; right: 16px; cursor: pointer; font-size: 24px; color: var(--muted); transition: color 0.3s; }
+    .close-modal:hover { color: var(--text); }
+    /* Skeleton loading */
+    .skeleton { background: var(--border); border-radius: var(--radius); animation: skeleton-pulse 1.5s ease-in-out infinite; }
+    @keyframes skeleton-pulse { 0% { opacity: 0.6; } 50% { opacity: 0.4; } 100% { opacity: 0.6; } }
+    .skeleton-text { height: 16px; width: 100%; margin-bottom: 8px; }
+    .skeleton-image { height: 200px; width: 100%; }
+    /* Breadcrumbs */
+    .breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; }
+    .breadcrumbs a { color: var(--muted); transition: color 0.3s; }
+    .breadcrumbs a:hover { color: var(--text); }
+    .breadcrumbs-separator { color: var(--muted); }
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+    .page-item { padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); transition: var(--transition); cursor: pointer; }
+    .page-item.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .page-item:hover { background: var(--accent-light); }
+    .page-item.disabled { opacity: 0.5; cursor: not-allowed; }
+    /* Alert dismissal */
+    .alert-dismissible { position: relative; }
+    .alert-close { position: absolute; top: 12px; right: 12px; cursor: pointer; color: inherit; opacity: 0.7; transition: opacity 0.3s; }
+    .alert-close:hover { opacity: 1; }
+    /* Badge variants */
+    .badge-small { padding: 2px 8px; font-size: 0.75rem; }
+    .badge-large { padding: 6px 16px; font-size: 1rem; }
+    /* Progress variants */
+    .progress-sm { height: 4px; }
+    .progress-lg { height: 12px; }
+    .progress-success .progress-bar { background: var(--success); }
+    .progress-error .progress-bar { background: var(--error); }
+    /* Tooltip positions */
+    .tooltip-top .tooltip-text { bottom: auto; top: -125%; }
+    .tooltip-top .tooltip-text::after { top: auto; bottom: 100%; border-color: transparent transparent var(--text) transparent; }
+    .tooltip-left .tooltip-text { left: auto; right: 125%; top: 50%; transform: translateY(-50%); margin-left: 0; margin-right: -10px; }
+    .tooltip-left .tooltip-text::after { left: auto; right: -10px; top: 50%; margin-top: -5px; border-color: transparent transparent transparent var(--text); }
+    /* Accordion variants */
+    .accordion-flush { border: none; }
+    .accordion-flush .accordion-item { border: none; }
+    /* Tabs vertical */
+    .tabs-vertical { flex-direction: column; border-bottom: none; border-right: 1px solid var(--border); }
+    .tabs-vertical .tab { border-right: 2px solid transparent; }
+    .tabs-vertical .tab.active { border-right: 2px solid var(--accent); border-bottom: none; }
+    /* Modal sizes */
+    .modal-sm .modal-inner { max-width: 400px; }
+    .modal-lg .modal-inner { max-width: 800px; }
+    /* Skeleton variants */
+    .skeleton-circle { border-radius: 50%; }
+    .skeleton-rounded { border-radius: var(--radius); }
+    /* More padding utilities */
+    .p-0 { padding: 0; }
+    .p-4 { padding: 4px; }
+    .p-64 { padding: 64px; }
+    .px-8 { padding-left: 8px; padding-right: 8px; }
+    .py-8 { padding-top: 8px; padding-bottom: 8px; }
+    /* More margin utilities */
+    .m-0 { margin: 0; }
+    .m-4 { margin: 4px; }
+    .mt-8 { margin-top: 8px; }
+    .mt-64 { margin-top: 64px; }
+    .mb-64 { margin-bottom: 64px; }
+    /* Flex utilities */
+    .flex-wrap { flex-wrap: wrap; }
+    .justify-between { justify-content: space-between; }
+    .justify-end { justify-content: flex-end; }
+    .align-start { align-items: flex-start; }
+    .align-end { align-items: flex-end; }
+    /* Grid utilities */
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    /* Position utilities */
+    .relative { position: relative; }
+    .absolute { position: absolute; }
+    .fixed { position: fixed; }
+    .sticky { position: sticky; }
+    .top-0 { top: 0; }
+    .bottom-0 { bottom: 0; }
+    .left-0 { left: 0; }
+    .right-0 { right: 0; }
+    .inset-0 { inset: 0; }
+    /* Z-index utilities */
+    .z-10 { z-index: 10; }
+    .z-20 { z-index: 20; }
+    .z-30 { z-index: 30; }
+    .z-40 { z-index: 40; }
+    .z-50 { z-index: 50; }
+    /* Overflow utilities */
+    .overflow-hidden { overflow: hidden; }
+    .overflow-auto { overflow: auto; }
+    .overflow-scroll { overflow: scroll; }
+    /* Cursor utilities */
+    .cursor-pointer { cursor: pointer; }
+    .cursor-default { cursor: default; }
+    .cursor-not-allowed { cursor: not-allowed; }
+    /* Visibility utilities */
+    .hidden { display: none; }
+    .block { display: block; }
+    .inline-block { display: inline-block; }
+    .inline { display: inline; }
+    /* Opacity utilities */
+    .opacity-0 { opacity: 0; }
+    .opacity-50 { opacity: 0.5; }
+    .opacity-75 { opacity: 0.75; }
+    .opacity-100 { opacity: 1; }
+    /* Rotate utilities */
+    .rotate-90 { transform: rotate(90deg); }
+    .rotate-180 { transform: rotate(180deg); }
+    /* Scale utilities */
+    .scale-90 { transform: scale(0.9); }
+    .scale-105 { transform: scale(1.05); }
+    /* Translate utilities */
+    .translate-y-2 { transform: translateY(0.5rem); }
+    .translate-y-neg-2 { transform: translateY(-0.5rem); }
+    /* Filter utilities */
+    .brightness-110 { filter: brightness(1.1); }
+    .grayscale { filter: grayscale(1); }
+    /* Additional animations */
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .animate-bounce { animation: bounce 1s infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .animate-spin { animation: spin 1s linear infinite; }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--accent-light); border-radius: 999px; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
+    /* Print styles */
+    @media print {
+      body { background: white; color: black; }
+      .no-print { display: none; }
+    }
+    /* High contrast mode */
+    @media (prefers-contrast: more) {
+      :root { --border: #000; }
+      a { text-decoration: underline; }
+    }
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+    /* End of expanded styles */
+  </style>
 </head>
 <body data-theme="light">
-
-<header id="header">
-    <div class="container nav-row flex align-center justify-between">
-      <a href="#hero" class="brand flex align-center gap-12">
-        <div class="brand-mark">MS</div>
-        <span class="brand-title font-bold text-xl">MSFSoft</span>
-      </a>
-      <nav class="primary flex gap-24">
-        <a href="#about" data-key="navAbout" class="hover-bg-accent-light">About</a>
-        <a href="#services" data-key="navServices" class="hover-bg-accent-light">Services</a>
-        <a href="#contact" data-key="navContact" class="hover-bg-accent-light">Contact</a>
-      </nav>
-      <div class="actions flex gap-12">
-        <button id="lang-toggle" class="btn btn-ghost">UA</button>
-        <button id="theme-toggle" class="theme-toggle">🌙</button>
-        <a class="btn btn-primary" href="mailto:msfsoft.team@gmail.com" data-key="heroBtnContact">Contact Us</a>
-      </div>
-    </div>
-  </header>
-  <main>
-    <section id="hero" class="hero relative overflow-hidden parallax fade-in">
-      <div class="container hero-content max-w-50">
-        <div class="kicker flex align-center gap-8 mb-24">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2"/></svg>
-          <span data-key="kicker">Innovative Digital Engineering</span>
-        </div>
-        <h1 class="title text-4xl font-bold leading-tight mb-24" data-key="heroTitle">Crafting Reliable Software. Fast. Accurate. AI-Enhanced.</h1>
-        <p class="lead text-lg leading-relaxed mb-32" data-key="heroSubtitle">MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025's digital landscape.</p>
-        <div class="hero-ctas flex gap-16">
-          <a class="btn btn-primary" href="#contact" data-key="heroBtnEstimate">Get Estimate</a>
-          <a class="btn btn-ghost" href="#services" data-key="heroBtnServices">Explore Services</a>
-        </div>
-      </div>
-    </section>
-    <section id="about" class="fade-in p-80">
-      <div class="container">
-        <div class="section-head text-center mb-48">
-          <h2 class="section-title text-3xl font-bold mb-12" data-key="aboutTitle">Who We Are</h2>
-          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto" data-key="aboutSubtitle">A fresh, innovative approach to software development in 2025.</p>
-        </div>
-        <div class="about-grid grid grid-cols-2 gap-48 align-center">
-          <img class="about-image shadow-md rounded" src="https://img.freepik.com/premium-photo/modern-tech-office-with-diverse-team-working-digital-innovation-collaboration-concept_980724-29658.jpg" alt="MSFSoft team collaborating on innovative projects">
-          <div class="about-text flex-column gap-24">
-            <p class="text-base leading-relaxed" data-key="aboutP1"><strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we're driven by innovation and problem-solving, creating robust, AI-ready solutions for today's digital world.</p>
-            <p class="text-base leading-relaxed" data-key="aboutP2">We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.</p>
-            <p class="text-base leading-relaxed" data-key="aboutP3">Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="services" class="fade-in bg-accent-light p-80">
-      <div class="container">
-        <div class="section-head text-center mb-48">
-          <h2 class="section-title text-3xl font-bold mb-12" data-key="servicesTitle">Our Services</h2>
-          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto" data-key="servicesSubtitle">Tailored solutions powered by the latest tech trends.</p>
-        </div>
-        <div class="services-grid grid grid-cols-3 gap-24">
-          <div class="service-card p-32 border rounded shadow-sm hover-translate-y transition">
-            <svg class="service-icon mb-16" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" stroke="currentColor" stroke-width="1.5"/></svg>
-            <h3 class="service-title text-xl font-bold mb-12" data-key="service1Title">Web Development</h3>
-            <p class="service-desc text-base leading-relaxed" data-key="service1Desc">From landing pages to complex AI platforms, we build modern, fast, and responsive websites optimized for performance and user experience.</p>
-          </div>
-          <div class="service-card p-32 border rounded shadow-sm hover-translate-y transition">
-            <svg class="service-icon mb-16" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5"/></svg>
-            <h3 class="service-title text-xl font-bold mb-12" data-key="service2Title">Software Development</h3>
-            <p class="service-desc text-base leading-relaxed" data-key="service2Desc">Custom applications for desktop, mobile, and cloud, integrating AI to automate processes and solve unique business challenges.</p>
-          </div>
-          <div class="service-card p-32 border rounded shadow-sm hover-translate-y transition">
-            <svg class="service-icon mb-16" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5"/></svg>
-            <h3 class="service-title text-xl font-bold mb-12" data-key="service3Title">Optimization & AI Consulting</h3>
-            <p class="service-desc text-base leading-relaxed" data-key="service3Desc">Analyze and refactor codebases for peak performance, with expert AI integration to make your systems smarter and more efficient.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="testimonial-section fade-in p-80">
-      <div class="container">
-        <div class="section-head text-center mb-48">
-          <h2 class="section-title text-3xl font-bold mb-12">What Our Clients Say</h2>
-          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto">Hear from businesses we've helped grow through innovative software solutions.</p>
-        </div>
-        <div class="testimonial-grid grid grid-cols-3 gap-24">
-          <div class="testimonial-card p-24 border rounded shadow-sm">
-            <p class="testimonial-quote italic mb-16">"MSFSoft transformed our operations with their AI-powered automation. Exceptional service!"</p>
-            <p class="testimonial-author font-semibold text-accent">- Tech Corp CEO</p>
-          </div>
-          <div class="testimonial-card p-24 border rounded shadow-sm">
-            <p class="testimonial-quote italic mb-16">"Their web development expertise delivered a seamless, high-performance platform."</p>
-            <p class="testimonial-author font-semibold text-accent">- Startup Founder</p>
-          </div>
-          <div class="testimonial-card p-24 border rounded shadow-sm">
-            <p class="testimonial-quote italic mb-16">"Optimization consulting boosted our efficiency by 40%. Highly recommend!"</p>
-            <p class="testimonial-author font-semibold text-accent">- Enterprise Manager</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="portfolio-section fade-in p-80">
-      <div class="container">
-        <div class="section-head text-center mb-48">
-          <h2 class="section-title text-3xl font-bold mb-12">Our Portfolio</h2>
-          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto">Showcasing our latest projects and success stories.</p>
-        </div>
-        <div class="portfolio-grid grid grid-cols-3 gap-32">
-          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
-            <img src="https://img.freepik.com/premium-photo/modern-website-design-interface-with-blue-gradient-background-digital-elements_1234479-202.jpg" alt="Project 1" class="object-cover w-full h-full">
-            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
-              <p class="portfolio-title font-bold text-xl">AI-Powered Analytics Platform</p>
-            </div>
-          </div>
-          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
-            <img src="https://img.freepik.com/premium-photo/responsive-web-design-concept-with-multiple-devices-showcasing-same-website-layout_1234479-203.jpg" alt="Project 2" class="object-cover w-full h-full">
-            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
-              <p class="portfolio-title font-bold text-xl">E-Commerce Web Application</p>
-            </div>
-          </div>
-          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
-            <img src="https://img.freepik.com/premium-photo/code-editor-screen-with-optimized-software-architecture-diagram_1234479-204.jpg" alt="Project 3" class="object-cover w-full h-full">
-            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
-              <p class="portfolio-title font-bold text-xl">Custom Software Optimization</p>
-            </div>
-          </div>
-          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
-            <img src="https://img.freepik.com/premium-photo/mobile-app-development-interface-with-code-screens-digital-elements_1234479-205.jpg" alt="Project 4" class="object-cover w-full h-full">
-            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
-              <p class="portfolio-title font-bold text-xl">Mobile App with AI Features</p>
-            </div>
-          </div>
-          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
-            <img src="https://img.freepik.com/premium-photo/cloud-computing-dashboard-with-data-visualizations-analytics_1234479-206.jpg" alt="Project 5" class="object-cover w-full h-full">
-            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
-              <p class="portfolio-title font-bold text-xl">Cloud-Based Data Analytics Tool</p>
-            </div>
-          </div>
-          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
-            <img src="https://img.freepik.com/premium-photo/enterprise-software-optimization-dashboard-with-performance-metrics_1234479-207.jpg" alt="Project 6" class="object-cover w-full h-full">
-            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
-              <p class="portfolio-title font-bold text-xl">Enterprise Optimization Suite</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="fade-in p-80">
-      <div class="container">
-        <div class="section-head text-center mb-48">
-          <h2 class="section-title text-3xl font-bold mb-12" data-key="contactTitle">Let's Innovate Together</h2>
-          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto" data-key="contactSubtitle">Get in touch for consultations, estimates, or to start your project.</p>
-        </div>
-        <form class="contact-form w-full max-w-600 mx-auto bg-card p-40 rounded shadow-md">
-          <div class="form-group mb-20">
-            <label class="form-label block font-semibold mb-8" for="name">Name</label>
-            <input class="form-input w-full p-12 border rounded text-base transition focus-outline-none focus-ring-2" id="name" type="text" placeholder="Your name" required>
-          </div>
-          <div class="form-group mb-20">
-            <label class="form-label block font-semibold mb-8" for="email">Email</label>
-            <input class="form-input w-full p-12 border rounded text-base transition focus-outline-none focus-ring-2" id="email" type="email" placeholder="your@email.com" required>
-          </div>
-          <div class="form-group mb-20">
-            <label class="form-label block font-semibold mb-8" for="message">Message</label>
-            <textarea class="form-input w-full p-12 border rounded text-base transition focus-outline-none focus-ring-2" id="message" rows="5" placeholder="Tell us about your project" required></textarea>
-          </div>
-          <button class="btn btn-primary w-full" type="submit">Send Message</button>
-        </form>
-      </div>
-    </section>
-  </main>
-  <footer class="border-t p-40 text-center text-muted text-sm">
-    <div class="container">
-      <p>© <span id="year"></span> MSFSoft — Pioneering Digital Solutions</p>
-      <p class="mt-8">Created by Yurii Fostiak</p>
-      <div class="social-links flex justify-center gap-16 mt-16">
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-muted hover-text-accent transition">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22 4.6c-.8.3-1.6.6-2.5.7 .9-.5 1.6-1.3 1.9-2.3-.8.5-1.7.9-2.6 1.1-.8-.8-1.9-1.3-3.1-1.3-2.3 0-4.2 1.9-4.2 4.2 0 .3 0 .6.1.9-3.5-.2-6.6-1.9-8.7-4.5-.4.6-.6 1.3-.6 2.1 0 1.5.7 2.8 1.8 3.6-.7 0-1.3-.2-1.9-.5v.1c0 2.1 1.5 3.8 3.5 4.2-.4.1-.8.1-1.2.1-.3 0-.6 0-.9-.1.6 1.9 2.4 3.3 4.5 3.3-1.6 1.3-3.7 2.1-5.9 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.8 2.2 7.6 2.2 9.1 0 14.1-7.5 14.1-14.1 0-.2 0-.4 0-.6 1-.7 1.8-1.6 2.5-2.6z" fill="currentColor"/>
-          </svg>
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-muted hover-text-accent transition">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0H8.14v16h4.84v-8.58c0-4.306 5.122-4.64 5.122 0V24h4.84v-8.58c0-7.46-8.4-7.19-9.962-3.35V8h-4.84v.5z" fill="currentColor"/>
-          </svg>
-        </a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-muted hover-text-accent transition">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="currentColor"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </footer>
-  <div id="modal" class="modal">
-    <div class="modal-inner p-32 relative">
-      <span class="close-modal cursor-pointer">&times;</span>
-      <h2 class="text-2xl font-bold mb-16">Modal Title</h2>
-      <p class="text-base mb-24">This is a sample modal content.</p>
-      <button class="btn btn-primary">Close</button>
-    </div>
-  </div>
-  <script>
-    (function() {
-      // Year update
-      document.getElementById('year').textContent = new Date().getFullYear();
-      // Language toggle
-      const translations = {
-        en: {
-          navAbout: 'About', navServices: 'Services', navContact: 'Contact',
-          kicker: 'Innovative Digital Engineering', heroTitle: 'Crafting Reliable Software. Fast. Accurate. AI-Enhanced.',
-          heroSubtitle: 'MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025\'s digital landscape.',
-          heroBtnEstimate: 'Get Estimate', heroBtnContact: 'Contact Us', heroBtnServices: 'Explore Services',
-          aboutTitle: 'Who We Are', aboutSubtitle: 'A fresh, innovative approach to software development in 2025.',
-          aboutP1: '<strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we\'re driven by innovation and problem-solving, creating robust, AI-ready solutions for today\'s digital world.',
-          aboutP2: 'We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.',
-          aboutP3: 'Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.',
-          servicesTitle: 'Our Services', servicesSubtitle: 'Tailored solutions powered by the latest tech trends.',
-          service1Title: 'Web Development', service1Desc: 'From landing pages to complex AI platforms, we build modern, fast, and responsive websites optimized for performance and user experience.',
-          service2Title: 'Software Development', service2Desc: 'Custom applications for desktop, mobile, and cloud, integrating AI to automate processes and solve unique business challenges.',
-          service3Title: 'Optimization & AI Consulting', service3Desc: 'Analyze and refactor codebases for peak performance, with expert AI integration to make your systems smarter and more efficient.',
-          contactTitle: 'Let\'s Innovate Together', contactSubtitle: 'Get in touch for consultations, estimates, or to start your project.'
-        },
-        ua: {
-          navAbout: 'Про нас', navServices: 'Послуги', navContact: 'Контакти',
-          kicker: 'Інноваційна Цифрова Інженерія', heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
-          heroSubtitle: 'MSFSoft — команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем, чистої архітектури та інтеграцій AI для цифрового ландшафту 2025 року.',
-section-head           heroBtnEstimate: 'Отримати Кошторис', heroBtnContact: 'Зв\'язатися', heroBtnServices: 'Оглянути Послуги',
-          aboutTitle: 'Хто Ми', aboutSubtitle: 'Свіжий, інноваційний підхід до розробки ПЗ у 2025.',
-          aboutP1: '<strong>MSFSoft приносить сучасний погляд на програмну інженерію.</strong> Як молода, ентузіастична команда, ми керовані інноваціями та розв\'язанням проблем, створюючи міцні, готові до AI рішення для сучасного цифрового світу.',
-          aboutP2: 'Ми пріоритезуємо якість, ефективність та масштабованість, використовуючи передові технології, включаючи AI, для доставки стійкого до майбутнього ПЗ, яке росте разом з вашим бізнесом.',
-          aboutP3: 'Наш спільний етос забезпечує адаптовані проекти, будучи тривалими партнерствами через прозору комунікацію та виняткові результати.',
-          servicesTitle: 'Наші Послуги', servicesSubtitle: 'Індивідуальні рішення, посилені останніми трендами технологій 2025.',
-          service1Title: 'Розробка Веб', service1Desc: 'Від лендингів до складних платформ з AI, ми створюємо сучасні, швидкі та адаптивні сайти, оптимізовані для продуктивності та користувацького досвіду.',
-          service2Title: 'Розробка ПЗ', service2Desc: 'Індивідуальні додатки для десктопу, мобільних та хмари, з інтеграцією AI для автоматизації процесів та розв\'язання унікальних бізнес-завдань.',
-          service3Title: 'Оптимізація та Консалтинг AI', service3Desc: 'Аналіз та рефакторинг кодових баз для пікової продуктивності, з експертною інтеграцією AI для розумніших систем.',
-          contactTitle: 'Інновуємо Разом', contactSubtitle: 'Зв\'яжіться для консультацій, кошторисів або початку вашого проекту.'
-        }
-      };
-      let currentLang = 'en';
-      const langToggle = document.getElementById('lang-toggle');
-      const dataKeys = document.querySelectorAll('[data-key]');
-      function applyLanguage(lang) {
-        currentLang = lang;
-        langToggle.textContent = lang === 'en' ? 'UA' : 'EN';
-        dataKeys.forEach(el => {
-          const key = el.dataset.key;
-          const text = translations[lang][key];
-          if (text) el.innerHTML = text;
-        });
-      }
-      langToggle.addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'ua' : 'en'));
-      // Theme toggle
-      const themeToggle = document.getElementById('theme-toggle');
-      themeToggle.addEventListener('click', () => {
-        const currentTheme = document.body.dataset.theme;
-        document.body.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
-        themeToggle.textContent = currentTheme === 'light' ? '☀️' : '🌙';
-      });
-      // Scroll effects
-      const header = document.getElementById('header');
-      window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-      });
-      // Intersection observer for fade-in
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            entry.target.querySelectorAll('p').forEach(p => p.style.animationDelay = `${Math.random() * 0.3}s`);
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-      // Form validation and submission
-      const form = document.querySelector('.contact-form');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let valid = true;
-        form.querySelectorAll('input[required], textarea[required]').forEach(field => {
-          if (!field.value.trim()) {
-            field.classList.add('input-error');
-            valid = false;
-          } else {
-            field.classList.remove('input-error');
-          }
-        });
-        if (valid) {
-          const loader = document.createElement('div');
-          loader.classList.add('loader', 'mt-16');
-          form.appendChild(loader);
-          setTimeout(() => {
-            const alert = document.createElement('div');
-            alert.classList.add('alert', 'alert-success', 'mt-16');
-            alert.innerHTML = '<span>Message sent successfully!</span>';
-            form.appendChild(alert);
-            form.reset();
-            loader.remove();
-            setTimeout(() => alert.remove(), 3000);
-D         }, 1500);
-        } else {
-          const alert = document.createElement('div');
-          alert.classList.add('alert', 'alert-error', 'mb-16');
-          alert.innerHTML = '<span>Please fill in all required fields.</span>';
-          form.insertBefore(alert, form.firstChild);
-          setTimeout(() => alert.remove(), 3000);
-Two     }
-      });
-      // Accordion functionality
-      document.querySelectorAll('.accordion-header').forEach(header => {
-        header.addEventListener('click', () => {
-          const item = header.parentElement;
-          const content = header.nextElementSibling;
-          item.classList.toggle('open');
-          content.classList.toggle('open');
-        });
-      });
-      // Tabs functionality
-      document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          const tabGroup = tab.closest('.tabs');
-          tabGroup.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          const panes = tabGroup.nextElementSibling.querySelectorAll('.tab-pane');
-Two       panes.forEach(p => p.classList.remove('active'));
-          panes[Array.from(tabGroup.querySelectorAll('.tab')).indexOf(tab)].classList.add('active');
-        });
-      });
-      // Modal functionality
-      const modal = document.getElementById('modal');
-      const openModalBtns = document.querySelectorAll('.open-modal');
-Image     const closeModal = modal.querySelector('.close-modal');
-      openModalBtns.forEach(btn => {
-        btn.addEventListener('click', () => modal.classList.add('open'));
-      });
-      closeModal.addEventListener('click', () => modal.classList.remove('open'));
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('open');
-      });
-      // Progress bar example
-      const progressBars = document.querySelectorAll('.progress-bar');
-      progressBars.forEach(bar => {
-        setTimeout(() => bar.style.width = bar.dataset.progress + '%', 500);
-      });
-      // Lazy loading images
-      const lazyImages = document.querySelectorAll('img[data-src]');
-      const lazyObserver = new IntersectionObserver((entries) => {
-loc: 622
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-            lazyObserver.unobserve(img);
-          }
-        });
-      });
-      lazyImages.forEach(img => lazyObserver.observe(img));
-Show     // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (e) => {
-          e.preventDefault();
-          const target = document.querySelector(anchor.getAttribute('href'));
-Image         target.scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-      // Back to top button
-      const backToTop = document.createElement('button');
-      backToTop.classList.add('btn', 'btn-primary', 'fixed', 'bottom-16', 'right-16', 'hidden', 'z-50', 'rounded-full', 'p-12');
-      backToTop.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 19V5m-7 7l7-7 7 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-loc: 647
-      document.body.appendChild(backToTop);
-      window.addEventListener('scroll', () => {
-        backToTop.classList.toggle('hidden', window.scrollY < 300);
-      });
-      backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-      // Newsletter subscription
-      const newsletterForm = document.querySelector('.newsletter-form');
-      if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-C          e.preventDefault();
-          alert('Subscribed successfully!');
-          newsletterForm.reset();
-        });
-      }
-      // Dark mode persistence
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.dataset.theme = 'dark';
-        themeToggle.textContent = '☀️';
-      }
-      // Language persistence
-  Remember:   const savedLang = localStorage.getItem('lang');
-      if (savedLang) {
-        applyLanguage(savedLang);
-      }
-      // Apply initial language
-      applyLanguage(currentLang);
-    })();
-  </script>
+  <header id="header">
+    <div class="container nav-row flex align-center justify-between">
+      <a href="#hero" class="brand flex align-center gap-12">
+        <div class="brand-mark">MS</div>
+        <span class="brand-title font-bold text-xl">MSFSoft</span>
+      </a>
+      <nav class="primary flex gap-24">
+        <a href="#about" data-key="navAbout" class="hover-bg-accent-light">About</a>
+        <a href="#services" data-key="navServices" class="hover-bg-accent-light">Services</a>
+        <a href="#contact" data-key="navContact" class="hover-bg-accent-light">Contact</a>
+      </nav>
+      <div class="actions flex gap-12">
+        <button id="lang-toggle" class="btn btn-ghost">UA</button>
+        <button id="theme-toggle" class="theme-toggle">🌙</button>
+        <a class="btn btn-primary" href="mailto:msfsoft.team@gmail.com" data-key="heroBtnContact">Contact Us</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="hero" class="hero relative overflow-hidden fade-in">
+      <div class="container hero-content max-w-50">
+        <div class="kicker flex align-center gap-8 mb-24">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2"/></svg>
+          <span data-key="kicker">Innovative Digital Engineering</span>
+        </div>
+        <h1 class="title text-4xl font-bold leading-tight mb-24" data-key="heroTitle">Crafting Reliable Software. Fast. Accurate. AI-Enhanced.</h1>
+        <p class="lead text-lg leading-relaxed mb-32" data-key="heroSubtitle">MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025's digital landscape.</p>
+        <div class="hero-ctas flex gap-16">
+          <a class="btn btn-primary" href="#contact" data-key="heroBtnEstimate">Get Estimate</a>
+          <a class="btn btn-ghost" href="#services" data-key="heroBtnServices">Explore Services</a>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="fade-in py-80">
+      <div class="container">
+        <div class="section-head text-center mb-48">
+          <h2 class="section-title text-3xl font-bold mb-12" data-key="aboutTitle">Who We Are</h2>
+          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto" data-key="aboutSubtitle">A fresh, innovative approach to software development in 2025.</p>
+        </div>
+        <div class="about-grid grid grid-cols-2 gap-48 align-center">
+          <img class="about-image shadow-md rounded w-full" src="https://img.freepik.com/premium-photo/modern-tech-office-with-diverse-team-working-digital-innovation-collaboration-concept_980724-29658.jpg" alt="MSFSoft team collaborating on innovative projects">
+          <div class="about-text flex-column gap-24">
+            <p class="text-base leading-relaxed" data-key="aboutP1"><strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we're driven by innovation and problem-solving, creating robust, AI-ready solutions for today's digital world.</p>
+            <p class="text-base leading-relaxed" data-key="aboutP2">We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.</p>
+            <p class="text-base leading-relaxed" data-key="aboutP3">Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="services" class="fade-in bg-accent-light py-80">
+      <div class="container">
+        <div class="section-head text-center mb-48">
+          <h2 class="section-title text-3xl font-bold mb-12" data-key="servicesTitle">Our Services</h2>
+          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto" data-key="servicesSubtitle">Tailored solutions powered by the latest tech trends.</p>
+        </div>
+        <div class="services-grid grid grid-cols-3 gap-24">
+          <div class="service-card p-32 border rounded shadow-sm hover-translate-y transition">
+            <svg class="service-icon mb-16" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3 class="service-title text-xl font-bold mb-12" data-key="service1Title">Web Development</h3>
+            <p class="service-desc text-base leading-relaxed" data-key="service1Desc">From landing pages to complex AI platforms, we build modern, fast, and responsive websites optimized for performance and user experience.</p>
+          </div>
+          <div class="service-card p-32 border rounded shadow-sm hover-translate-y transition">
+            <svg class="service-icon mb-16" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3 class="service-title text-xl font-bold mb-12" data-key="service2Title">Software Development</h3>
+            <p class="service-desc text-base leading-relaxed" data-key="service2Desc">Custom applications for desktop, mobile, and cloud, integrating AI to automate processes and solve unique business challenges.</p>
+          </div>
+          <div class="service-card p-32 border rounded shadow-sm hover-translate-y transition">
+            <svg class="service-icon mb-16" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3 class="service-title text-xl font-bold mb-12" data-key="service3Title">Optimization & AI Consulting</h3>
+            <p class="service-desc text-base leading-relaxed" data-key="service3Desc">Analyze and refactor codebases for peak performance, with expert AI integration to make your systems smarter and more efficient.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="testimonial-section fade-in py-80">
+      <div class="container">
+        <div class="section-head text-center mb-48">
+          <h2 class="section-title text-3xl font-bold mb-12">What Our Clients Say</h2>
+          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto">Hear from businesses we've helped grow through innovative software solutions.</p>
+        </div>
+        <div class="testimonial-grid grid grid-cols-3 gap-24">
+          <div class="testimonial-card p-24 border rounded shadow-sm">
+            <p class="testimonial-quote italic mb-16">"MSFSoft transformed our operations with their AI-powered automation. Exceptional service!"</p>
+            <p class="testimonial-author font-semibold text-accent">- Tech Corp CEO</p>
+          </div>
+          <div class="testimonial-card p-24 border rounded shadow-sm">
+            <p class="testimonial-quote italic mb-16">"Their web development expertise delivered a seamless, high-performance platform."</p>
+            <p class="testimonial-author font-semibold text-accent">- Startup Founder</p>
+          </div>
+          <div class="testimonial-card p-24 border rounded shadow-sm">
+            <p class="testimonial-quote italic mb-16">"Optimization consulting boosted our efficiency by 40%. Highly recommend!"</p>
+            <p class="testimonial-author font-semibold text-accent">- Enterprise Manager</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="portfolio-section fade-in py-80">
+      <div class="container">
+        <div class="section-head text-center mb-48">
+          <h2 class="section-title text-3xl font-bold mb-12">Our Portfolio</h2>
+          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto">Showcasing our latest projects and success stories.</p>
+        </div>
+        <div class="portfolio-grid grid grid-cols-3 gap-32">
+          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
+            <img src="https://img.freepik.com/premium-photo/modern-website-design-interface-with-blue-gradient-background-digital-elements_1234479-202.jpg" alt="Project 1" class="object-cover w-full h-full">
+            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
+              <p class="portfolio-title font-bold text-xl">AI-Powered Analytics Platform</p>
+            </div>
+          </div>
+          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
+            <img src="https://img.freepik.com/premium-photo/responsive-web-design-concept-with-multiple-devices-showcasing-same-website-layout_1234479-203.jpg" alt="Project 2" class="object-cover w-full h-full">
+            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
+              <p class="portfolio-title font-bold text-xl">E-Commerce Web Application</p>
+            </div>
+          </div>
+          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
+            <img src="https://img.freepik.com/premium-photo/code-editor-screen-with-optimized-software-architecture-diagram_1234479-204.jpg" alt="Project 3" class="object-cover w-full h-full">
+            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
+              <p class="portfolio-title font-bold text-xl">Custom Software Optimization</p>
+            </div>
+          </div>
+          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
+            <img src="https://img.freepik.com/premium-photo/mobile-app-development-interface-with-code-screens-digital-elements_1234479-205.jpg" alt="Project 4" class="object-cover w-full h-full">
+            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
+              <p class="portfolio-title font-bold text-xl">Mobile App with AI Features</p>
+            </div>
+          </div>
+          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
+            <img src="https://img.freepik.com/premium-photo/cloud-computing-dashboard-with-data-visualizations-analytics_1234479-206.jpg" alt="Project 5" class="object-cover w-full h-full">
+            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
+              <p class="portfolio-title font-bold text-xl">Cloud-Based Data Analytics Tool</p>
+            </div>
+          </div>
+          <div class="portfolio-item relative overflow-hidden rounded shadow-md">
+            <img src="https://img.freepik.com/premium-photo/enterprise-software-optimization-dashboard-with-performance-metrics_1234479-207.jpg" alt="Project 6" class="object-cover w-full h-full">
+            <div class="portfolio-overlay absolute inset-0 flex align-center justify-center p-20 text-white text-center">
+              <p class="portfolio-title font-bold text-xl">Enterprise Optimization Suite</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="fade-in py-80">
+      <div class="container">
+        <div class="section-head text-center mb-48">
+          <h2 class="section-title text-3xl font-bold mb-12" data-key="contactTitle">Let's Innovate Together</h2>
+          <p class="section-subtitle text-lg leading-relaxed max-w-800 mx-auto" data-key="contactSubtitle">Get in touch for consultations, estimates, or to start your project.</p>
+        </div>
+        <form class="contact-form w-full max-w-600 mx-auto p-40 rounded shadow-md">
+          <div class="form-group mb-20">
+            <label class="form-label block font-semibold mb-8" for="name">Name</label>
+            <input class="form-input w-full p-12 border rounded text-base transition" id="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-group mb-20">
+            <label class="form-label block font-semibold mb-8" for="email">Email</label>
+            <input class="form-input w-full p-12 border rounded text-base transition" id="email" type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group mb-20">
+            <label class="form-label block font-semibold mb-8" for="message">Message</label>
+            <textarea class="form-input w-full p-12 border rounded text-base transition" id="message" rows="5" placeholder="Tell us about your project" required></textarea>
+          </div>
+          <button class="btn btn-primary w-full" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="border-t p-40 text-center text-muted text-sm">
+    <div class="container">
+      <p>© <span id="year"></span> MSFSoft — Pioneering Digital Solutions</p>
+      <p class="mt-8">Created by Yurii Fostiak</p>
+      <div class="social-links flex justify-center gap-16 mt-16">
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-muted hover-text-accent transition">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 4.6c-.8.3-1.6.6-2.5.7 .9-.5 1.6-1.3 1.9-2.3-.8.5-1.7.9-2.6 1.1-.8-.8-1.9-1.3-3.1-1.3-2.3 0-4.2 1.9-4.2 4.2 0 .3 0 .6.1.9-3.5-.2-6.6-1.9-8.7-4.5-.4.6-.6 1.3-.6 2.1 0 1.5.7 2.8 1.8 3.6-.7 0-1.3-.2-1.9-.5v.1c0 2.1 1.5 3.8 3.5 4.2-.4.1-.8.1-1.2.1-.3 0-.6 0-.9-.1.6 1.9 2.4 3.3 4.5 3.3-1.6 1.3-3.7 2.1-5.9 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.8 2.2 7.6 2.2 9.1 0 14.1-7.5 14.1-14.1 0-.2 0-.4 0-.6 1-.7 1.8-1.6 2.5-2.6z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-muted hover-text-accent transition">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0H8.14v16h4.84v-8.58c0-4.306 5.122-4.64 5.122 0V24h4.84v-8.58c0-7.46-8.4-7.19-9.962-3.35V8h-4.84v.5z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-muted hover-text-accent transition">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <div id="modal" class="modal">
+    <div class="modal-inner p-32 relative">
+      <span class="close-modal cursor-pointer">&times;</span>
+      <h2 class="text-2xl font-bold mb-16">Modal Title</h2>
+      <p class="text-base mb-24">This is a sample modal content.</p>
+      <button class="btn btn-primary">Close</button>
+    </div>
+  </div>
+  <script>
+    (function() {
+      // Year update
+      document.getElementById('year').textContent = new Date().getFullYear();
+      // Language toggle
+      const translations = {
+        en: {
+          navAbout: 'About', navServices: 'Services', navContact: 'Contact',
+          kicker: 'Innovative Digital Engineering', heroTitle: 'Crafting Reliable Software. Fast. Accurate. AI-Enhanced.',
+          heroSubtitle: 'MSFSoft — a forward-thinking engineering team empowering businesses with smart automation, scalable systems, clean architecture, and AI integrations for 2025\'s digital landscape.',
+          heroBtnEstimate: 'Get Estimate', heroBtnContact: 'Contact Us', heroBtnServices: 'Explore Services',
+          aboutTitle: 'Who We Are', aboutSubtitle: 'A fresh, innovative approach to software development in 2025.',
+          aboutP1: '<strong>MSFSoft brings a modern perspective to software engineering.</strong> As a young, enthusiastic team, we\'re driven by innovation and problem-solving, creating robust, AI-ready solutions for today\'s digital world.',
+          aboutP2: 'We prioritize quality, efficiency, and scalability, leveraging cutting-edge technologies including AI to deliver future-proof software that grows with your business.',
+          aboutP3: 'Our collaborative ethos ensures tailored projects, building lasting partnerships through transparent communication and exceptional results.',
+          servicesTitle: 'Our Services', servicesSubtitle: 'Tailored solutions powered by the latest tech trends.',
+          service1Title: 'Web Development', service1Desc: 'From landing pages to complex AI platforms, we build modern, fast, and responsive websites optimized for performance and user experience.',
+          service2Title: 'Software Development', service2Desc: 'Custom applications for desktop, mobile, and cloud, integrating AI to automate processes and solve unique business challenges.',
+          service3Title: 'Optimization & AI Consulting', service3Desc: 'Analyze and refactor codebases for peak performance, with expert AI integration to make your systems smarter and more efficient.',
+          contactTitle: 'Let\'s Innovate Together', contactSubtitle: 'Get in touch for consultations, estimates, or to start your project.'
+        },
+        ua: {
+          navAbout: 'Про нас', navServices: 'Послуги', navContact: 'Контакти',
+          kicker: 'Інноваційна Цифрова Інженерія', heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
+          heroSubtitle: 'MSFSoft — команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем, чистої архітектури та інтеграцій AI для цифрового ландшафту 2025 року.',
+          heroBtnEstimate: 'Отримати Кошторис', heroBtnContact: 'Зв\'язатися', heroBtnServices: 'Оглянути Послуги',
+          aboutTitle: 'Хто Ми', aboutSubtitle: 'Свіжий, інноваційний підхід до розробки ПЗ у 2025.',
+          aboutP1: '<strong>MSFSoft приносить сучасний погляд на програмну інженерію.</strong> Як молода, ентузіастична команда, ми керовані інноваціями та розв\'язанням проблем, створюючи міцні, готові до AI рішення для сучасного цифрового світу.',
+          aboutP2: 'Ми пріоритезуємо якість, ефективність та масштабованість, використовуючи передові технології, включаючи AI, для доставки стійкого до майбутнього ПЗ, яке росте разом з вашим бізнесом.',
+          aboutP3: 'Наш спільний етос забезпечує адаптовані проекти, будучи тривалими партнерствами через прозору комунікацію та виняткові результати.',
+          servicesTitle: 'Наші Послуги', servicesSubtitle: 'Індивідуальні рішення, посилені останніми трендами технологій 2025.',
+          service1Title: 'Розробка Веб', service1Desc: 'Від лендингів до складних платформ з AI, ми створюємо сучасні, швидкі та адаптивні сайти, оптимізовані для продуктивності та користувацького досвіду.',
+          service2Title: 'Розробка ПЗ', service2Desc: 'Індивідуальні додатки для десктопу, мобільних та хмари, з інтеграцією AI для автоматизації процесів та розв\'язання унікальних бізнес-завдань.',
+          service3Title: 'Оптимізація та Консалтинг AI', service3Desc: 'Аналіз та рефакторинг кодових баз для пікової продуктивності, з експертною інтеграцією AI для розумніших систем.',
+          contactTitle: 'Інновуємо Разом', contactSubtitle: 'Зв\'яжіться для консультацій, кошторисів або початку вашого проекту.'
+        }
+      };
+      let currentLang = 'en';
+      const langToggle = document.getElementById('lang-toggle');
+      const dataKeys = document.querySelectorAll('[data-key]');
+      function applyLanguage(lang) {
+        currentLang = lang;
+        langToggle.textContent = lang === 'en' ? 'UA' : 'EN';
+        dataKeys.forEach(el => {
+          const key = el.dataset.key;
+          const text = translations[lang][key];
+          if (text) el.innerHTML = text;
+        });
+      }
+      langToggle.addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'ua' : 'en'));
+      // Theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.dataset.theme;
+        document.body.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
+        themeToggle.textContent = currentTheme === 'light' ? '☀️' : '🌙';
+      });
+      // Scroll effects
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+      // Intersection observer for fade-in
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.querySelectorAll('p').forEach(p => p.style.animationDelay = `${Math.random() * 0.3}s`);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+      // Form validation and submission
+      const form = document.querySelector('.contact-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let valid = true;
+        form.querySelectorAll('input[required], textarea[required]').forEach(field => {
+          if (!field.value.trim()) {
+            field.classList.add('input-error');
+            valid = false;
+          } else {
+            field.classList.remove('input-error');
+          }
+        });
+        if (valid) {
+          const loader = document.createElement('div');
+          loader.classList.add('loader', 'mt-16');
+          form.appendChild(loader);
+          setTimeout(() => {
+            const alert = document.createElement('div');
+            alert.classList.add('alert', 'alert-success', 'mt-16');
+            alert.innerHTML = '<span>Message sent successfully!</span>';
+            form.appendChild(alert);
+            form.reset();
+            loader.remove();
+            setTimeout(() => alert.remove(), 3000);
+          }, 1500);
+        } else {
+          const alert = document.createElement('div');
+          alert.classList.add('alert', 'alert-error', 'mb-16');
+          alert.innerHTML = '<span>Please fill in all required fields.</span>';
+          form.insertBefore(alert, form.firstChild);
+          setTimeout(() => alert.remove(), 3000);
+        }
+      });
+      // Accordion functionality
+      document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          const content = header.nextElementSibling;
+          item.classList.toggle('open');
+          content.classList.toggle('open');
+        });
+      });
+      // Tabs functionality
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const tabGroup = tab.closest('.tabs');
+          tabGroup.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const panes = tabGroup.nextElementSibling.querySelectorAll('.tab-pane');
+          panes.forEach(p => p.classList.remove('active'));
+          panes[Array.from(tabGroup.querySelectorAll('.tab')).indexOf(tab)].classList.add('active');
+        });
+      });
+      // Modal functionality
+      const modal = document.getElementById('modal');
+      const openModalBtns = document.querySelectorAll('.open-modal');
+      const closeModal = modal.querySelector('.close-modal');
+      openModalBtns.forEach(btn => {
+        btn.addEventListener('click', () => modal.classList.add('open'));
+      });
+      closeModal.addEventListener('click', () => modal.classList.remove('open'));
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('open');
+      });
+      // Progress bar example
+      const progressBars = document.querySelectorAll('.progress-bar');
+      progressBars.forEach(bar => {
+        setTimeout(() => bar.style.width = bar.dataset.progress + '%', 500);
+      });
+      // Lazy loading images
+      const lazyImages = document.querySelectorAll('img[data-src]');
+      const lazyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            lazyObserver.unobserve(img);
+          }
+        });
+      });
+      lazyImages.forEach(img => lazyObserver.observe(img));
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(anchor.getAttribute('href'));
+          target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+      // Back to top button
+      const backToTop = document.createElement('button');
+      backToTop.classList.add('btn', 'btn-primary', 'fixed', 'bottom-16', 'right-16', 'hidden', 'z-50', 'rounded-full', 'p-12');
+      backToTop.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 19V5m-7 7l7-7 7 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      document.body.appendChild(backToTop);
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('hidden', window.scrollY < 300);
+      });
+      backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      // Newsletter subscription
+      const newsletterForm = document.querySelector('.newsletter-form');
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Subscribed successfully!');
+          newsletterForm.reset();
+        });
+      }
+      // Dark mode persistence
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.dataset.theme = 'dark';
+        themeToggle.textContent = '☀️';
+      }
+      // Language persistence
+      const savedLang = localStorage.getItem('lang');
+      if (savedLang) {
+        applyLanguage(savedLang);
+      }
+      // Apply initial language
+      applyLanguage(currentLang);
+    })();
+  </script>
 </body>
 </html>
