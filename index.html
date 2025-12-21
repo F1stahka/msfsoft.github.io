@@ -2,27 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0A66C2" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta name="theme-color" content="#667EEA" />
   <title>MSFSoft — Pioneering Digital Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #FFFFFF;
       --text: #0F172A;
       --muted: #64748B;
-      --accent: #3B82F6;
-      --accent-dark: #1E40AF;
-      --accent-light: #EFF6FF;
-      --border: rgba(148, 163, 184, 0.2);
+      --accent: #667EEA;
+      --accent-dark: #5568D3;
+      --accent-light: #EEF2FF;
+      --border: rgba(148, 163, 184, 0.15);
       --card: #FFFFFF;
       --gradient-1: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
       --gradient-2: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
       --gradient-3: linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%);
-      --gradient-hero: linear-gradient(135deg, #667EEA 0%, #764BA2 50%, #F093FB 100%);
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
     }
     
     [data-theme="dark"] {
@@ -34,40 +35,50 @@
       --card: #1E293B;
     }
     
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
     
-    html { scroll-behavior: smooth; }
+    html { 
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
     
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
       transition: background 0.3s, color 0.3s;
+      font-size: 16px;
     }
     
     .container {
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 16px;
     }
     
-    /* Header */
+    /* Header - Optimized for Mobile */
     header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       transition: all 0.3s;
     }
     
     [data-theme="dark"] header {
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.95);
     }
     
     header.scrolled {
@@ -78,63 +89,36 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 0;
+      height: 64px;
+      gap: 12px;
     }
     
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 800;
-      font-size: 20px;
+      font-size: 18px;
       color: var(--text);
       text-decoration: none;
+      flex-shrink: 0;
     }
     
     .logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       background: var(--gradient-1);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 900;
     }
     
-    nav {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s;
-      position: relative;
-    }
-    
-    nav a:hover {
-      color: var(--accent);
-    }
-    
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s;
-    }
-    
-    nav a:hover::after {
-      width: 100%;
+    .desktop-nav {
+      display: none;
     }
     
     .header-actions {
@@ -143,154 +127,111 @@
       align-items: center;
     }
     
-    .btn {
-      padding: 10px 20px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      border: none;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14px;
-    }
-    
-    .btn-primary {
-      background: var(--gradient-1);
-      color: white;
-      box-shadow: var(--shadow);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      color: var(--text);
-      backdrop-filter: blur(10px);
-      padding: 8px 16px;
-      font-size: 13px;
-    }
-    
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 1);
-      border-color: var(--accent);
-    }
-    
     .icon-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--card);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       cursor: pointer;
-      transition: all 0.3s;
-      font-size: 16px;
+      transition: all 0.2s;
+      font-size: 18px;
+      flex-shrink: 0;
     }
     
-    .icon-btn:hover {
-      transform: scale(1.05);
-      border-color: var(--accent);
+    .icon-btn:active {
+      transform: scale(0.95);
     }
     
-    /* Mobile Menu */
     .mobile-menu-btn {
-      display: none;
-      width: 36px;
-      height: 36px;
-      border: none;
-      background: transparent;
-      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
       flex-direction: column;
-      gap: 5px;
       justify-content: center;
       align-items: center;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
       padding: 0;
     }
     
     .mobile-menu-btn span {
-      width: 22px;
+      width: 20px;
       height: 2px;
       background: var(--text);
-      transition: all 0.3s;
-      display: block;
+      transition: all 0.3s ease;
+      border-radius: 2px;
     }
     
     .mobile-menu-btn.active span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
+      transform: rotate(45deg) translate(5px, 5px);
     }
     
     .mobile-menu-btn.active span:nth-child(2) {
       opacity: 0;
+      transform: translateX(-10px);
     }
     
     .mobile-menu-btn.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
+      transform: rotate(-45deg) translate(5px, -5px);
     }
     
+    /* Mobile Menu */
     .mobile-menu {
       position: fixed;
-      top: 60px;
+      top: 64px;
       left: 0;
       right: 0;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
+      background: var(--bg);
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
+      border-bottom: 1px solid var(--border);
       box-shadow: var(--shadow-lg);
     }
     
     .mobile-menu.active {
-      max-height: 400px;
+      max-height: 100vh;
     }
     
     .mobile-menu nav {
+      padding: 8px;
+      display: flex;
       flex-direction: column;
-      padding: 20px;
-      gap: 0;
+      gap: 4px;
     }
     
-    .mobile-menu nav a {
-      padding: 12px 0;
-      width: 100%;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
+    .mobile-menu a {
+      padding: 16px 20px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 12px;
+      transition: all 0.2s;
+      font-size: 16px;
     }
     
-    .mobile-menu nav a:last-child {
-      border-bottom: none;
+    .mobile-menu a:active {
+      background: var(--accent-light);
+      color: var(--accent);
     }
     
-    /* Hero Section */
+    /* Hero Section - Mobile Optimized */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
       overflow: hidden;
-      padding-top: 80px;
-      background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop');
-      background-size: cover;
-      background-position: center;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.85) 50%, rgba(240, 147, 251, 0.8) 100%);
-      z-index: 1;
-    }
-    
-    [data-theme="dark"] .hero::before {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.9) 50%, rgba(240, 147, 251, 0.85) 100%);
+      padding: 80px 0 60px;
+      background: linear-gradient(135deg, #667EEA 0%, #764BA2 50%, #F093FB 100%);
+      text-align: center;
     }
     
     .hero::after {
@@ -299,77 +240,89 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 120px;
+      height: 80px;
       background: linear-gradient(to top, var(--bg), transparent);
-      z-index: 2;
     }
     
     .hero-content {
       position: relative;
-      z-index: 3;
-      max-width: 700px;
+      z-index: 2;
       color: white;
+      padding: 0 8px;
     }
     
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
-      color: white;
-      padding: 6px 16px;
+      padding: 8px 16px;
       border-radius: 100px;
       font-weight: 600;
       font-size: 13px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       border: 1px solid rgba(255, 255, 255, 0.3);
-      animation: slideIn 0.8s ease-out;
-    }
-    
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(32px, 8vw, 72px);
+      font-size: 36px;
       font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      color: white;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      animation: slideIn 0.8s 0.2s ease-out backwards;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     }
     
     .hero p {
-      font-size: clamp(16px, 4vw, 20px);
+      font-size: 17px;
+      line-height: 1.6;
       color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 28px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      animation: slideIn 0.8s 0.4s ease-out backwards;
+      margin-bottom: 32px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background: white;
+      color: var(--accent);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn-primary:active {
+      transform: scale(0.97);
+    }
+    
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
     }
     
     .hero-buttons {
       display: flex;
+      flex-direction: column;
       gap: 12px;
-      flex-wrap: wrap;
-      animation: slideIn 0.8s 0.6s ease-out backwards;
-    }
-    
-    .hero-buttons .btn-primary {
-      background: white;
-      color: var(--accent);
-    }
-    
-    .hero-buttons .btn-primary:hover {
-      transform: translateY(-2px) scale(1.05);
+      max-width: 300px;
+      margin: 0 auto;
     }
     
     /* Stats Section */
     .stats {
-      padding: 60px 0;
+      padding: 50px 0;
       background: var(--card);
       position: relative;
       z-index: 10;
@@ -382,75 +335,74 @@
       text-align: center;
     }
     
-    .stat-item {
-      animation: fadeIn 1s ease-out;
-    }
-    
     .stat-number {
-      font-size: clamp(32px, 6vw, 48px);
+      font-size: 36px;
       font-weight: 800;
       background: var(--gradient-1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
+      line-height: 1.2;
     }
     
     .stat-label {
       color: var(--muted);
-      font-size: clamp(11px, 2.5vw, 14px);
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      font-weight: 600;
     }
     
     /* Services Section */
     .services {
-      padding: 80px 0;
-      position: relative;
+      padding: 60px 0;
       background: var(--bg);
     }
     
     .section-header {
       text-align: center;
-      max-width: 700px;
-      margin: 0 auto 48px;
+      margin-bottom: 40px;
     }
     
     .section-badge {
       display: inline-block;
       background: var(--accent-light);
       color: var(--accent);
-      padding: 6px 16px;
+      padding: 6px 14px;
       border-radius: 100px;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 12px;
       margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
     .section-title {
-      font-size: clamp(28px, 6vw, 48px);
+      font-size: 32px;
       font-weight: 800;
       margin-bottom: 12px;
       line-height: 1.2;
     }
     
     .section-description {
-      font-size: clamp(15px, 3vw, 18px);
+      font-size: 16px;
       color: var(--muted);
+      line-height: 1.5;
     }
     
     .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
     
     .service-card {
       background: var(--card);
-      padding: 32px 24px;
-      border-radius: 20px;
-      border: 2px solid var(--border);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
       position: relative;
       overflow: hidden;
     }
@@ -461,20 +413,19 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 3px;
       background: var(--gradient-1);
-      transform: scaleX(0);
-      transition: transform 0.4s;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
     
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: transparent;
+    .service-card:active {
+      transform: scale(0.98);
+      box-shadow: var(--shadow);
     }
     
-    .service-card:hover::before {
-      transform: scaleX(1);
+    .service-card:active::before {
+      opacity: 1;
     }
     
     .service-card:nth-child(2)::before {
@@ -490,16 +441,16 @@
     }
     
     .service-icon {
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
       background: var(--gradient-1);
-      border-radius: 14px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      margin-bottom: 20px;
-      font-size: 24px;
+      margin-bottom: 16px;
+      font-size: 22px;
     }
     
     .service-card:nth-child(2) .service-icon {
@@ -515,134 +466,96 @@
     }
     
     .service-title {
-      font-size: clamp(20px, 4vw, 24px);
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     
     .service-description {
       color: var(--muted);
       line-height: 1.6;
-      font-size: clamp(14px, 3vw, 16px);
+      font-size: 15px;
     }
     
     /* Portfolio Section */
     .portfolio {
-      padding: 80px 0;
-      background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-    
-    .portfolio::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(239, 246, 255, 0.95);
-      backdrop-filter: blur(2px);
-    }
-    
-    [data-theme="dark"] .portfolio::before {
-      background: rgba(15, 23, 42, 0.95);
-    }
-    
-    .portfolio > .container {
-      position: relative;
-      z-index: 1;
+      padding: 60px 0;
+      background: var(--accent-light);
     }
     
     .portfolio-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
     
     .portfolio-item {
       position: relative;
-      border-radius: 20px;
+      border-radius: 16px;
       overflow: hidden;
-      aspect-ratio: 16/10;
-      cursor: pointer;
-      transition: transform 0.4s;
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .portfolio-item:hover {
-      transform: scale(1.02);
+      box-shadow: var(--shadow);
+      background: var(--card);
     }
     
     .portfolio-item img {
       width: 100%;
-      height: 100%;
+      height: 220px;
       object-fit: cover;
-      transition: transform 0.4s;
+      display: block;
     }
     
-    .portfolio-item:hover img {
-      transform: scale(1.1);
-    }
-    
-    .portfolio-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-      display: flex;
-      align-items: flex-end;
-      padding: 24px;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    
-    .portfolio-item:hover .portfolio-overlay {
-      opacity: 1;
+    .portfolio-info {
+      padding: 20px;
+      background: var(--card);
     }
     
     .portfolio-title {
-      color: white;
-      font-size: clamp(18px, 4vw, 24px);
+      font-size: 18px;
       font-weight: 700;
+      color: var(--text);
     }
     
     /* FAQ Section */
     .faq {
-      padding: 80px 0;
+      padding: 60px 0;
       background: var(--bg);
     }
     
     .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
     
     .faq-item {
       background: var(--card);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: 14px;
-      margin-bottom: 12px;
       overflow: hidden;
-      transition: all 0.3s;
-    }
-    
-    .faq-item:hover {
-      border-color: var(--accent);
+      transition: all 0.2s;
     }
     
     .faq-question {
-      padding: 20px;
+      padding: 18px;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       font-weight: 600;
-      font-size: clamp(15px, 3.5vw, 18px);
+      font-size: 16px;
       gap: 12px;
+      user-select: none;
+    }
+    
+    .faq-question span:first-child {
+      flex: 1;
     }
     
     .faq-icon {
-      transition: transform 0.3s;
-      font-size: 20px;
       flex-shrink: 0;
+      font-size: 16px;
+      transition: transform 0.3s;
+      color: var(--muted);
     }
     
     .faq-item.open .faq-icon {
@@ -652,80 +565,53 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s;
-      padding: 0 20px;
+      transition: max-height 0.3s ease;
       color: var(--muted);
-      font-size: clamp(14px, 3vw, 16px);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    
+    .faq-answer p {
+      padding: 0 18px 18px;
     }
     
     .faq-item.open .faq-answer {
-      max-height: 300px;
-      padding: 0 20px 20px;
+      max-height: 400px;
     }
     
     /* CTA Section */
     .cta {
-      padding: 80px 0;
+      padding: 60px 0;
       text-align: center;
-      background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&h=800&fit=crop');
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
       color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
-    }
-    
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-      margin: 0 auto;
     }
     
     .cta h2 {
-      font-size: clamp(28px, 6vw, 48px);
+      font-size: 32px;
       font-weight: 800;
-      margin-bottom: 16px;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
     
     .cta p {
-      font-size: clamp(16px, 4vw, 20px);
+      font-size: 17px;
       margin-bottom: 28px;
       opacity: 0.95;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-    
-    .cta .btn {
-      background: white;
-      color: var(--accent);
-    }
-    
-    .cta .btn:hover {
-      transform: scale(1.05);
     }
     
     /* Contact Form */
     .contact {
-      padding: 80px 0;
+      padding: 60px 0;
       background: var(--bg);
     }
     
     .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
       background: var(--card);
-      padding: 32px 24px;
-      border-radius: 20px;
-      box-shadow: var(--shadow-lg);
-      border: 2px solid var(--border);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
     }
     
     .form-group {
@@ -736,18 +622,17 @@
       display: block;
       font-weight: 600;
       margin-bottom: 8px;
-      color: var(--text);
       font-size: 14px;
     }
     
     .form-input {
       width: 100%;
-      padding: 12px 14px;
-      border: 2px solid var(--border);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
       border-radius: 10px;
-      font-size: 15px;
+      font-size: 16px;
       font-family: inherit;
-      transition: all 0.3s;
+      transition: all 0.2s;
       background: var(--bg);
       color: var(--text);
     }
@@ -755,7 +640,7 @@
     .form-input:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
     
     textarea.form-input {
@@ -765,14 +650,14 @@
     
     /* Footer */
     footer {
-      padding: 48px 0 32px;
+      padding: 40px 0 24px;
       background: var(--card);
       border-top: 1px solid var(--border);
     }
     
     .footer-content {
-      display: grid;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 32px;
       margin-bottom: 32px;
     }
@@ -780,9 +665,9 @@
     .footer-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 800;
-      font-size: 20px;
+      font-size: 18px;
       margin-bottom: 12px;
     }
     
@@ -801,17 +686,17 @@
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
     
     .footer-links a {
       color: var(--muted);
       text-decoration: none;
-      transition: color 0.3s;
       font-size: 14px;
+      transition: color 0.2s;
     }
     
-    .footer-links a:hover {
+    .footer-links a:active {
       color: var(--accent);
     }
     
@@ -822,23 +707,21 @@
     }
     
     .social-link {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       background: var(--accent-light);
       color: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 18px;
+      transition: all 0.2s;
     }
     
-    .social-link:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-2px);
+    .social-link:active {
+      transform: scale(0.95);
     }
     
     .footer-bottom {
@@ -849,38 +732,76 @@
       font-size: 13px;
     }
     
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .fade-in {
-      opacity: 0;
-    }
-    
-    .fade-in.visible {
-      animation: fadeIn 0.8s ease-out forwards;
-    }
-    
     /* Desktop Styles */
     @media (min-width: 768px) {
       .container {
-        padding: 0 24px;
+        padding: 0 32px;
       }
       
       .logo {
-        font-size: 24px;
+        font-size: 22px;
       }
       
       .logo-icon {
         width: 40px;
         height: 40px;
+        font-size: 18px;
+      }
+      
+      .mobile-menu-btn {
+        display: none;
+      }
+      
+      .desktop-nav {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+      
+      .desktop-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+        position: relative;
+        font-size: 15px;
+      }
+      
+      .desktop-nav a:hover {
+        color: var(--accent);
+      }
+      
+      .desktop-nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s;
+      }
+      
+      .desktop-nav a:hover::after {
+        width: 100%;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      h1 {
+        font-size: 56px;
+      }
+      
+      .hero p {
         font-size: 20px;
       }
       
-      .header-content {
-        padding: 16px 0;
+      .hero-buttons {
+        flex-direction: row;
+        max-width: none;
+        justify-content: center;
       }
       
       .stats-grid {
@@ -888,33 +809,71 @@
         gap: 48px;
       }
       
+      .stat-number {
+        font-size: 48px;
+      }
+      
+      .stat-label {
+        font-size: 14px;
+      }
+      
+      .section-title {
+        font-size: 42px;
+      }
+      
+      .section-description {
+        font-size: 18px;
+      }
+      
       .services-grid {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-      }
-      
-      .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-      }
-      
-      .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+        gap: 24px;
       }
       
       .service-card {
-        padding: 40px;
+        padding: 32px;
+      }
+      
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+      
+      .service-card:hover::before {
+        opacity: 1;
+      }
+      
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      
+      .portfolio-item img {
+        height: 280px;
       }
       
       .contact-form {
-        padding: 48px;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 40px;
+      }
+      
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
       }
     }
     
     @media (min-width: 1024px) {
+      .container {
+        padding: 0 48px;
+      }
+      
       .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
       }
       
       .portfolio-grid {
@@ -922,43 +881,28 @@
       }
       
       .footer-content {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: 2fr 1fr 1fr 1fr;
       }
     }
     
-    /* Mobile Only */
-    @media (max-width: 767px) {
-      nav {
-        display: none;
+    /* Smooth Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-      
-      .mobile-menu-btn {
-        display: flex;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      
-      .hero {
-        text-align: center;
-        min-height: 90vh;
-        padding-top: 100px;
-      }
-      
-      .hero-content {
-        max-width: 100%;
-      }
-      
-      .hero-buttons {
-        justify-content: center;
-      }
-      
-      .header-actions .btn-ghost {
-        padding: 6px 12px;
-        font-size: 12px;
-      }
-      
-      .btn {
-        padding: 10px 18px;
-        font-size: 14px;
-      }
+    }
+    
+    .fade-in {
+      opacity: 0;
+    }
+    
+    .fade-in.visible {
+      animation: fadeInUp 0.6s ease-out forwards;
     }
   </style>
 </head>
@@ -970,14 +914,14 @@
           <div class="logo-icon">MS</div>
           <span>MSFSoft</span>
         </a>
-        <nav>
+        <nav class="desktop-nav">
           <a href="#services" data-key="navServices">Services</a>
           <a href="#portfolio" data-key="navPortfolio">Portfolio</a>
           <a href="#faq" data-key="navFAQ">FAQ</a>
           <a href="#contact" data-key="navContact">Contact</a>
         </nav>
         <div class="header-actions">
-          <button id="lang-toggle" class="btn btn-ghost">🇺🇦 UA</button>
+          <button id="lang-toggle" class="icon-btn">🇺🇦</button>
           <button id="theme-toggle" class="icon-btn">🌙</button>
           <button class="mobile-menu-btn" id="mobile-toggle">
             <span></span>
@@ -1005,8 +949,8 @@
             <span>✨</span>
             <span data-key="kicker">Innovative Digital Engineering</span>
           </div>
-          <h1 data-key="heroTitle">Crafting Reliable Software. Fast. Accurate. AI-Enhanced.</h1>
-          <p data-key="heroSubtitle">Forward-thinking engineering team empowering businesses with smart automation, scalable systems, and AI integrations for 2025's digital landscape.</p>
+          <h1 data-key="heroTitle">Crafting Reliable Software</h1>
+          <p data-key="heroSubtitle">Forward-thinking engineering team empowering businesses with smart automation and AI integrations.</p>
           <div class="hero-buttons">
             <a href="#contact" class="btn btn-primary" data-key="heroBtnContact">Get Started</a>
             <a href="#services" class="btn btn-ghost" data-key="heroBtnServices">Explore Services</a>
@@ -1020,19 +964,19 @@
         <div class="stats-grid">
           <div class="stat-item fade-in">
             <div class="stat-number">50+</div>
-            <div class="stat-label" data-key="statProjects">Projects Completed</div>
+            <div class="stat-label" data-key="statProjects">Projects</div>
           </div>
           <div class="stat-item fade-in">
             <div class="stat-number">98%</div>
-            <div class="stat-label" data-key="statSatisfaction">Client Satisfaction</div>
+            <div class="stat-label" data-key="statSatisfaction">Satisfaction</div>
           </div>
           <div class="stat-item fade-in">
             <div class="stat-number">24/7</div>
-            <div class="stat-label" data-key="statSupport">Support Available</div>
+            <div class="stat-label" data-key="statSupport">Support</div>
           </div>
           <div class="stat-item fade-in">
             <div class="stat-number">5+</div>
-            <div class="stat-label" data-key="statExperience">Years Experience</div>
+            <div class="stat-label" data-key="statExperience">Years</div>
           </div>
         </div>
       </div>
@@ -1043,356 +987,15 @@
         <div class="section-header">
           <span class="section-badge" data-key="servicesLabel">Services</span>
           <h2 class="section-title" data-key="servicesTitle">What We Offer</h2>
-          <p class="section-description" data-key="servicesSubtitle">Tailored solutions powered by cutting-edge technology</p>
+          <p class="section-description" data-key="servicesSubtitle">Tailored solutions with cutting-edge technology</p>
         </div>
         <div class="services-grid">
           <div class="service-card fade-in">
             <div class="service-icon">🌐</div>
             <h3 class="service-title" data-key="service1Title">Web Development</h3>
-            <p class="service-description" data-key="service1Desc">Modern, fast, and responsive websites optimized for performance and user experience.</p>
+            <p class="service-description" data-key="service1Desc">Modern, fast, and responsive websites optimized for performance.</p>
           </div>
           <div class="service-card fade-in">
             <div class="service-icon">💻</div>
             <h3 class="service-title" data-key="service2Title">Software Development</h3>
-            <p class="service-description" data-key="service2Desc">Custom applications for desktop, mobile, and cloud with AI integration.</p>
-          </div>
-          <div class="service-card fade-in">
-            <div class="service-icon">⚡</div>
-            <h3 class="service-title" data-key="service3Title">Optimization</h3>
-            <p class="service-description" data-key="service3Desc">Analyze and refactor codebases for peak performance and efficiency.</p>
-          </div>
-          <div class="service-card fade-in">
-            <div class="service-icon">🤖</div>
-            <h3 class="service-title" data-key="service4Title">AI Integration</h3>
-            <p class="service-description" data-key="service4Desc">Advanced AI models to enhance functionality and user experience.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="portfolio">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge" data-key="portfolioLabel">Portfolio</span>
-          <h2 class="section-title" data-key="portfolioTitle">Our Latest Work</h2>
-          <p class="section-description" data-key="portfolioSubtitle">Showcasing successful projects and innovations</p>
-        </div>
-        <div class="portfolio-grid">
-          <div class="portfolio-item fade-in">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop" alt="Analytics Platform">
-            <div class="portfolio-overlay">
-              <div class="portfolio-title">AI Analytics Platform</div>
-            </div>
-          </div>
-          <div class="portfolio-item fade-in">
-            <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop" alt="E-Commerce">
-            <div class="portfolio-overlay">
-              <div class="portfolio-title">E-Commerce Solution</div>
-            </div>
-          </div>
-          <div class="portfolio-item fade-in">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop" alt="Dashboard">
-            <div class="portfolio-overlay">
-              <div class="portfolio-title">Business Dashboard</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="faq">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge">FAQ</span>
-          <h2 class="section-title" data-key="faqTitle">Frequently Asked Questions</h2>
-          <p class="section-description" data-key="faqSubtitle">Everything you need to know</p>
-        </div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-key="faq1Q">How long does a typical project take?</span>
-              <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-              <p data-key="faq1A">Project timelines vary based on complexity, but most web projects take 4-8 weeks from concept to launch.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-key="faq2Q">Do you offer maintenance and support?</span>
-              <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-              <p data-key="faq2A">Yes, we provide ongoing maintenance, updates, and 24/7 support for all our projects.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-key="faq3Q">Can you integrate AI into existing systems?</span>
-              <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-              <p data-key="faq3A">Absolutely! We specialize in seamlessly integrating AI capabilities into existing platforms and workflows.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="cta-content">
-        <h2 data-key="ctaTitle">Ready to Transform Your Business?</h2>
-        <p data-key="ctaSubtitle">Let's build something amazing together</p>
-        <a href="#contact" class="btn btn-primary" data-key="ctaBtn">Start Your Project</a>
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge" data-key="contactLabel">Contact</span>
-          <h2 class="section-title" data-key="contactTitle">Get In Touch</h2>
-          <p class="section-description" data-key="contactSubtitle">Ready to start your project? Contact us today!</p>
-        </div>
-        <form class="contact-form">
-          <div class="form-group">
-            <label class="form-label" for="name" data-key="formName">Name</label>
-            <input class="form-input" type="text" id="name" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="email" data-key="formEmail">Email</label>
-            <input class="form-input" type="email" id="email" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="message" data-key="formMessage">Message</label>
-            <textarea class="form-input" id="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;" data-key="formSubmit">Send Message</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <div class="footer-brand">
-            <div class="logo-icon">MS</div>
-            <span>MSFSoft</span>
-          </div>
-          <p class="footer-description" data-key="footerDesc">Pioneering digital solutions for the future of business.</p>
-        </div>
-        <div class="footer-section">
-          <h3 data-key="footerServices">Services</h3>
-          <div class="footer-links">
-            <a href="#services">Web Development</a>
-            <a href="#services">Software Development</a>
-            <a href="#services">AI Integration</a>
-            <a href="#services">Optimization</a>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3 data-key="footerCompany">Company</h3>
-          <div class="footer-links">
-            <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3 data-key="footerConnect">Connect</h3>
-          <div class="social-links">
-            <a href="#" class="social-link">🐦</a>
-            <a href="#" class="social-link">💼</a>
-            <a href="#" class="social-link">📧</a>
-            <a href="#" class="social-link">📱</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© <span id="year"></span> MSFSoft. All rights reserved. Created by Yurii Fostiak</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    const translations = {
-      en: {
-        navServices: 'Services',
-        navPortfolio: 'Portfolio',
-        navFAQ: 'FAQ',
-        navContact: 'Contact',
-        kicker: 'Innovative Digital Engineering',
-        heroTitle: 'Crafting Reliable Software. Fast. Accurate. AI-Enhanced.',
-        heroSubtitle: 'Forward-thinking engineering team empowering businesses with smart automation, scalable systems, and AI integrations for 2025\'s digital landscape.',
-        heroBtnContact: 'Get Started',
-        heroBtnServices: 'Explore Services',
-        statProjects: 'Projects Completed',
-        statSatisfaction: 'Client Satisfaction',
-        statSupport: 'Support Available',
-        statExperience: 'Years Experience',
-        servicesLabel: 'Services',
-        servicesTitle: 'What We Offer',
-        servicesSubtitle: 'Tailored solutions powered by cutting-edge technology',
-        service1Title: 'Web Development',
-        service1Desc: 'Modern, fast, and responsive websites optimized for performance and user experience.',
-        service2Title: 'Software Development',
-        service2Desc: 'Custom applications for desktop, mobile, and cloud with AI integration.',
-        service3Title: 'Optimization',
-        service3Desc: 'Analyze and refactor codebases for peak performance and efficiency.',
-        service4Title: 'AI Integration',
-        service4Desc: 'Advanced AI models to enhance functionality and user experience.',
-        portfolioLabel: 'Portfolio',
-        portfolioTitle: 'Our Latest Work',
-        portfolioSubtitle: 'Showcasing successful projects and innovations',
-        faqTitle: 'Frequently Asked Questions',
-        faqSubtitle: 'Everything you need to know',
-        faq1Q: 'How long does a typical project take?',
-        faq1A: 'Project timelines vary based on complexity, but most web projects take 4-8 weeks from concept to launch.',
-        faq2Q: 'Do you offer maintenance and support?',
-        faq2A: 'Yes, we provide ongoing maintenance, updates, and 24/7 support for all our projects.',
-        faq3Q: 'Can you integrate AI into existing systems?',
-        faq3A: 'Absolutely! We specialize in seamlessly integrating AI capabilities into existing platforms and workflows.',
-        ctaTitle: 'Ready to Transform Your Business?',
-        ctaSubtitle: 'Let\'s build something amazing together',
-        ctaBtn: 'Start Your Project',
-        contactLabel: 'Contact',
-        contactTitle: 'Get In Touch',
-        contactSubtitle: 'Ready to start your project? Contact us today!',
-        formName: 'Name',
-        formEmail: 'Email',
-        formMessage: 'Message',
-        formSubmit: 'Send Message',
-        footerDesc: 'Pioneering digital solutions for the future of business.',
-        footerServices: 'Services',
-        footerCompany: 'Company',
-        footerConnect: 'Connect'
-      },
-      ua: {
-        navServices: 'Послуги',
-        navPortfolio: 'Портфоліо',
-        navFAQ: 'FAQ',
-        navContact: 'Контакти',
-        kicker: 'Інноваційна Цифрова Інженерія',
-        heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
-        heroSubtitle: 'Команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем та інтеграцій AI.',
-        heroBtnContact: 'Почати',
-        heroBtnServices: 'Наші Послуги',
-        statProjects: 'Проектів Завершено',
-        statSatisfaction: 'Задоволених Клієнтів',
-        statSupport: 'Підтримка Доступна',
-        statExperience: 'Років Досвіду',
-        servicesLabel: 'Послуги',
-        servicesTitle: 'Що Ми Пропонуємо',
-        servicesSubtitle: 'Індивідуальні рішення на передових технологіях',
-        service1Title: 'Веб Розробка',
-        service1Desc: 'Сучасні, швидкі та адаптивні веб-сайти, оптимізовані для продуктивності.',
-        service2Title: 'Розробка ПЗ',
-        service2Desc: 'Індивідуальні додатки для десктопу, мобільних та хмари з AI.',
-        service3Title: 'Оптимізація',
-        service3Desc: 'Аналіз та рефакторинг коду для максимальної продуктивності.',
-        service4Title: 'AI Інтеграція',
-        service4Desc: 'Передові AI моделі для покращення функціональності.',
-        portfolioLabel: 'Портфоліо',
-        portfolioTitle: 'Наші Останні Роботи',
-        portfolioSubtitle: 'Демонстрація успішних проектів та інновацій',
-        faqTitle: 'Часті Питання',
-        faqSubtitle: 'Все що вам потрібно знати',
-        faq1Q: 'Скільки часу займає типовий проект?',
-        faq1A: 'Терміни проекту залежать від складності, але більшість веб-проектів займають 4-8 тижнів.',
-        faq2Q: 'Чи надаєте ви підтримку та обслуговування?',
-        faq2A: 'Так, ми надаємо постійну підтримку, оновлення та підтримку 24/7.',
-        faq3Q: 'Чи можете ви інтегрувати AI в існуючі системи?',
-        faq3A: 'Звичайно! Ми спеціалізуємося на безшовній інтеграції AI у існуючі платформи.',
-        ctaTitle: 'Готові Трансформувати Ваш Бізнес?',
-        ctaSubtitle: 'Давайте створимо щось неймовірне разом',
-        ctaBtn: 'Почати Проект',
-        contactLabel: 'Контакти',
-        contactTitle: 'Зв\'яжіться з Нами',
-        contactSubtitle: 'Готові почати проект? Зв\'яжіться сьогодні!',
-        formName: 'Ім\'я',
-        formEmail: 'Email',
-        formMessage: 'Повідомлення',
-        formSubmit: 'Надіслати',
-        footerDesc: 'Піонери цифрових рішень для майбутнього бізнесу.',
-        footerServices: 'Послуги',
-        footerCompany: 'Компанія',
-        footerConnect: 'Зв\'язок'
-      }
-    };
-    
-    let currentLang = 'en';
-    const langToggle = document.getElementById('lang-toggle');
-    
-    function applyLanguage(lang) {
-      currentLang = lang;
-      langToggle.textContent = lang === 'en' ? '🇺🇦 UA' : '🇬🇧 EN';
-      document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.dataset.key;
-        if (translations[lang][key]) {
-          el.textContent = translations[lang][key];
-        }
-      });
-    }
-    
-    langToggle.addEventListener('click', () => {
-      applyLanguage(currentLang === 'en' ? 'ua' : 'en');
-    });
-    
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-      const theme = document.body.dataset.theme;
-      document.body.dataset.theme = theme === 'light' ? 'dark' : 'light';
-      themeToggle.textContent = theme === 'light' ? '☀️' : '🌙';
-    });
-    
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 50);
-    });
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.querySelector('.faq-question').addEventListener('click', () => {
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
-    });
-    
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileToggle.addEventListener('click', () => {
-      mobileToggle.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-    
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      });
-    });
-    
-    document.querySelector('.contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert(currentLang === 'en' ? 'Thank you! We will contact you soon.' : 'Дякуємо! Ми зв\'яжемося з вами найближчим часом.');
-      e.target.reset();
-    });
-  </script>
-</body>
-</html>
+            <p class="service-description" data
