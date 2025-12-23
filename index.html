@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0A66C2" />
-  <title>MSFSoft — Pioneering Digital Solutions</title>
+  <title>MSFSoft — Professional Web Development</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -20,7 +20,6 @@
       --gradient-1: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
       --gradient-2: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
       --gradient-3: linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%);
-      --gradient-hero: linear-gradient(135deg, #667EEA 0%, #764BA2 50%, #F093FB 100%);
       --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
@@ -47,7 +46,6 @@
       transition: background 0.3s, color 0.3s;
     }
     
-    /* Scroll Progress */
     .scroll-progress {
       position: fixed;
       top: 0;
@@ -59,7 +57,6 @@
       transition: width 0.1s ease;
     }
     
-    /* Particles Canvas */
     #particles {
       position: fixed;
       top: 0;
@@ -79,7 +76,6 @@
       z-index: 1;
     }
     
-    /* Header */
     header {
       position: fixed;
       top: 0;
@@ -258,7 +254,6 @@
       border-color: var(--accent);
     }
     
-    /* Mobile Menu */
     .mobile-menu-btn {
       display: none;
       width: 36px;
@@ -327,7 +322,6 @@
       border-bottom: none;
     }
     
-    /* Hero Section */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -335,7 +329,7 @@
       position: relative;
       overflow: hidden;
       padding-top: 80px;
-      background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop');
+      background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -345,7 +339,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.85) 50%, rgba(240, 147, 251, 0.8) 100%);
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.92) 0%, rgba(118, 75, 162, 0.88) 50%, rgba(240, 147, 251, 0.85) 100%);
       z-index: 1;
       animation: gradientShift 15s ease infinite;
     }
@@ -356,7 +350,7 @@
     }
     
     [data-theme="dark"] .hero::before {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.9) 50%, rgba(240, 147, 251, 0.85) 100%);
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.92) 50%, rgba(240, 147, 251, 0.88) 100%);
     }
     
     .hero::after {
@@ -373,7 +367,7 @@
     .hero-content {
       position: relative;
       z-index: 3;
-      max-width: 700px;
+      max-width: 800px;
       color: white;
     }
     
@@ -384,11 +378,11 @@
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
       color: white;
-      padding: 6px 16px;
+      padding: 8px 20px;
       border-radius: 100px;
       font-weight: 600;
-      font-size: 13px;
-      margin-bottom: 20px;
+      font-size: 14px;
+      margin-bottom: 24px;
       border: 1px solid rgba(255, 255, 255, 0.3);
       animation: slideIn 0.8s ease-out, pulse 2s ease-in-out infinite;
     }
@@ -405,21 +399,22 @@
     
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(32px, 8vw, 72px);
+      font-size: clamp(36px, 8vw, 76px);
       font-weight: 700;
       line-height: 1.1;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       color: white;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       animation: slideIn 0.8s 0.2s ease-out backwards;
     }
     
     .hero p {
-      font-size: clamp(16px, 4vw, 20px);
+      font-size: clamp(17px, 4vw, 22px);
       color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       animation: slideIn 0.8s 0.4s ease-out backwards;
+      line-height: 1.7;
     }
     
     .hero-buttons {
@@ -432,107 +427,137 @@
     .hero-buttons .btn-primary {
       background: white;
       color: var(--accent);
+      padding: 14px 32px;
+      font-size: 16px;
     }
     
     .hero-buttons .btn-primary:hover {
       transform: translateY(-2px) scale(1.05);
     }
     
-    /* Stats Section */
-    .stats {
-      padding: 60px 0;
-      background: var(--card);
+    .about {
+      padding: 100px 0;
+      background: var(--bg);
       position: relative;
       z-index: 10;
     }
     
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
       text-align: center;
-    }
-    
-    .stat-item {
-      animation: fadeIn 1s ease-out;
-      transition: transform 0.3s;
-    }
-    
-    .stat-item:hover {
-      transform: translateY(-5px);
-    }
-    
-    .stat-number {
-      font-size: clamp(32px, 6vw, 48px);
-      font-weight: 800;
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 8px;
-      animation: countUp 2s ease-out;
-    }
-    
-    @keyframes countUp {
-      from { opacity: 0; transform: scale(0.5); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    
-    .stat-label {
-      color: var(--muted);
-      font-size: clamp(11px, 2.5vw, 14px);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    /* Services Section */
-    .services {
-      padding: 80px 0;
-      position: relative;
-      background: var(--bg);
-    }
-    
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 48px;
     }
     
     .section-badge {
       display: inline-block;
       background: var(--accent-light);
       color: var(--accent);
-      padding: 6px 16px;
+      padding: 8px 20px;
       border-radius: 100px;
       font-weight: 600;
-      font-size: 13px;
-      margin-bottom: 12px;
+      font-size: 14px;
+      margin-bottom: 16px;
       animation: fadeIn 0.8s ease-out;
     }
     
     .section-title {
-      font-size: clamp(28px, 6vw, 48px);
+      font-size: clamp(32px, 6vw, 52px);
       font-weight: 800;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       line-height: 1.2;
       animation: fadeIn 0.8s 0.2s ease-out backwards;
     }
     
     .section-description {
-      font-size: clamp(15px, 3vw, 18px);
+      font-size: clamp(16px, 3vw, 20px);
       color: var(--muted);
+      line-height: 1.8;
       animation: fadeIn 0.8s 0.4s ease-out backwards;
+    }
+    
+    .tech-stack {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 24px;
+    }
+    
+    .tech-item {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 16px;
+      border: 2px solid var(--border);
+      transition: all 0.3s;
+      text-align: center;
+      animation: fadeIn 1s ease-out backwards;
+    }
+    
+    .tech-item:nth-child(1) { animation-delay: 0.1s; }
+    .tech-item:nth-child(2) { animation-delay: 0.2s; }
+    .tech-item:nth-child(3) { animation-delay: 0.3s; }
+    .tech-item:nth-child(4) { animation-delay: 0.4s; }
+    .tech-item:nth-child(5) { animation-delay: 0.5s; }
+    .tech-item:nth-child(6) { animation-delay: 0.6s; }
+    
+    .tech-item:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .tech-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+    
+    .tech-name {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .services {
+      padding: 100px 0;
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      background-attachment: fixed;
+    }
+    
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(239, 246, 255, 0.96);
+      backdrop-filter: blur(2px);
+    }
+    
+    [data-theme="dark"] .services::before {
+      background: rgba(15, 23, 42, 0.96);
+    }
+    
+    .services > .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
     }
     
     .services-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     
     .service-card {
       background: var(--card);
-      padding: 32px 24px;
+      padding: 48px 40px;
       border-radius: 20px;
       border: 2px solid var(--border);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -546,7 +571,7 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 5px;
       background: var(--gradient-1);
       transform: scaleX(0);
       transition: transform 0.4s;
@@ -559,7 +584,7 @@
       left: 50%;
       width: 0;
       height: 0;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       transition: width 0.6s, height 0.6s;
@@ -588,21 +613,17 @@
       background: var(--gradient-3);
     }
     
-    .service-card:nth-child(4)::before {
-      background: var(--gradient-1);
-    }
-    
     .service-icon {
-      width: 56px;
-      height: 56px;
+      width: 64px;
+      height: 64px;
       background: var(--gradient-1);
-      border-radius: 14px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      margin-bottom: 20px;
-      font-size: 24px;
+      margin-bottom: 24px;
+      font-size: 28px;
       position: relative;
       z-index: 1;
       transition: transform 0.3s;
@@ -620,178 +641,48 @@
       background: var(--gradient-3);
     }
     
-    .service-card:nth-child(4) .service-icon {
-      background: var(--gradient-1);
-    }
-    
     .service-title {
-      font-size: clamp(20px, 4vw, 24px);
+      font-size: clamp(22px, 4vw, 28px);
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
       position: relative;
       z-index: 1;
     }
     
     .service-description {
       color: var(--muted);
-      line-height: 1.6;
-      font-size: clamp(14px, 3vw, 16px);
+      line-height: 1.8;
+      font-size: clamp(15px, 3vw, 18px);
       position: relative;
       z-index: 1;
     }
     
-    /* Portfolio Section */
-    .portfolio {
-      padding: 80px 0;
-      background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      background-attachment: fixed;
-    }
-    
-    .portfolio::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(239, 246, 255, 0.95);
-      backdrop-filter: blur(2px);
-    }
-    
-    [data-theme="dark"] .portfolio::before {
-      background: rgba(15, 23, 42, 0.95);
-    }
-    
-    .portfolio > .container {
+    .service-features {
+      margin-top: 24px;
       position: relative;
       z-index: 1;
     }
     
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    
-    .portfolio-item {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      aspect-ratio: 16/10;
-      cursor: pointer;
-      transition: transform 0.4s;
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .portfolio-item:hover {
-      transform: scale(1.03) translateY(-5px);
-    }
-    
-    .portfolio-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s;
-      filter: grayscale(0.3);
-    }
-    
-    .portfolio-item:hover img {
-      transform: scale(1.15);
-      filter: grayscale(0);
-    }
-    
-    .portfolio-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-      display: flex;
-      align-items: flex-end;
-      padding: 24px;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    
-    .portfolio-item:hover .portfolio-overlay {
-      opacity: 1;
-    }
-    
-    .portfolio-title {
-      color: white;
-      font-size: clamp(18px, 4vw, 24px);
-      font-weight: 700;
-      transform: translateY(20px);
-      transition: transform 0.4s;
-    }
-    
-    .portfolio-item:hover .portfolio-title {
-      transform: translateY(0);
-    }
-    
-    /* FAQ Section */
-    .faq {
-      padding: 80px 0;
-      background: var(--bg);
-    }
-    
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .faq-item {
-      background: var(--card);
-      border: 2px solid var(--border);
-      border-radius: 14px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      transition: all 0.3s;
-    }
-    
-    .faq-item:hover {
-      border-color: var(--accent);
-      transform: translateX(5px);
-    }
-    
-    .faq-question {
-      padding: 20px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      font-size: clamp(15px, 3.5vw, 18px);
-      gap: 12px;
-    }
-    
-    .faq-icon {
-      transition: transform 0.3s;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-    
-    .faq-item.open .faq-icon {
-      transform: rotate(180deg);
-    }
-    
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s;
-      padding: 0 20px;
+    .service-features li {
       color: var(--muted);
-      font-size: clamp(14px, 3vw, 16px);
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+      font-size: 15px;
     }
     
-    .faq-item.open .faq-answer {
-      max-height: 300px;
-      padding: 0 20px 20px;
+    .service-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
     }
     
-    /* CTA Section */
     .cta {
-      padding: 80px 0;
+      padding: 100px 0;
       text-align: center;
-      background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&h=800&fit=crop');
+      background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=800&fit=crop');
       background-size: cover;
       background-position: center;
       color: white;
@@ -804,28 +695,28 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.92) 0%, rgba(118, 75, 162, 0.92) 100%);
       animation: gradientShift 15s ease infinite;
     }
     
     .cta-content {
       position: relative;
       z-index: 1;
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
     }
     
     .cta h2 {
-      font-size: clamp(28px, 6vw, 48px);
+      font-size: clamp(32px, 6vw, 54px);
       font-weight: 800;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       animation: fadeIn 0.8s ease-out;
     }
     
     .cta p {
-      font-size: clamp(16px, 4vw, 20px);
-      margin-bottom: 28px;
+      font-size: clamp(17px, 4vw, 22px);
+      margin-bottom: 36px;
       opacity: 0.95;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       animation: fadeIn 0.8s 0.2s ease-out backwards;
@@ -834,6 +725,8 @@
     .cta .btn {
       background: white;
       color: var(--accent);
+      padding: 16px 40px;
+      font-size: 17px;
       animation: fadeIn 0.8s 0.4s ease-out backwards;
     }
     
@@ -841,18 +734,17 @@
       transform: scale(1.08);
     }
     
-    /* Contact Form */
     .contact {
-      padding: 80px 0;
+      padding: 100px 0;
       background: var(--bg);
     }
     
     .contact-form {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       background: var(--card);
-      padding: 32px 24px;
-      border-radius: 20px;
+      padding: 48px;
+      border-radius: 24px;
       box-shadow: var(--shadow-lg);
       border: 2px solid var(--border);
       transition: all 0.3s;
@@ -864,23 +756,23 @@
     }
     
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     
     .form-label {
       display: block;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       color: var(--text);
-      font-size: 14px;
+      font-size: 15px;
     }
     
     .form-input {
       width: 100%;
-      padding: 12px 14px;
+      padding: 14px 16px;
       border: 2px solid var(--border);
-      border-radius: 10px;
-      font-size: 15px;
+      border-radius: 12px;
+      font-size: 16px;
       font-family: inherit;
       transition: all 0.3s;
       background: var(--bg);
@@ -896,12 +788,11 @@
     
     textarea.form-input {
       resize: vertical;
-      min-height: 100px;
+      min-height: 120px;
     }
     
-    /* Footer */
     footer {
-      padding: 48px 0 32px;
+      padding: 60px 0 40px;
       background: var(--card);
       border-top: 1px solid var(--border);
     }
@@ -909,8 +800,8 @@
     .footer-content {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 32px;
-      margin-bottom: 32px;
+      gap: 40px;
+      margin-bottom: 40px;
     }
     
     .footer-brand {
@@ -918,33 +809,33 @@
       align-items: center;
       gap: 10px;
       font-weight: 800;
-      font-size: 20px;
-      margin-bottom: 12px;
+      font-size: 22px;
+      margin-bottom: 16px;
     }
     
     .footer-description {
       color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
+      line-height: 1.7;
+      font-size: 15px;
     }
     
     .footer-section h3 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     
     .footer-links a {
       color: var(--muted);
       text-decoration: none;
       transition: all 0.3s;
-      font-size: 14px;
+      font-size: 15px;
     }
     
     .footer-links a:hover {
@@ -954,14 +845,14 @@
     
     .social-links {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
     
     .social-link {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       background: var(--accent-light);
       color: var(--accent);
       display: flex;
@@ -969,7 +860,7 @@
       justify-content: center;
       transition: all 0.3s;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 18px;
     }
     
     .social-link:hover {
@@ -979,14 +870,13 @@
     }
     
     .footer-bottom {
-      padding-top: 24px;
+      padding-top: 32px;
       border-top: 1px solid var(--border);
       text-align: center;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
     }
     
-    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -1000,98 +890,7 @@
       animation: fadeIn 0.8s ease-out forwards;
     }
     
-    /* Desktop Styles */
     @media (min-width: 768px) {
-      .container {
-        padding: 0 24px;
-      }
-      
-      .logo {
-        font-size: 24px;
-      }
-      
-      .logo-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-      
-      .header-content {
-        padding: 16px 0;
-      }
-      
-      .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 48px;
-      }
-      
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-      }
-      
-      .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-      }
-      
-      .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-      }
-      
-      .service-card {
-        padding: 40px;
-      }
-      
-      .contact-form {
-        padding: 48px;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .portfolio-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .footer-content {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-    
-    /* Mobile Only */
-    @media (max-width: 767px) {
-      body {
-        cursor: auto;
-      }
-      
-      .cursor, .cursor-follower {
-        display: none;
-      }
-      
-      nav {
-        display: none;
-      }
-      
-      .mobile-menu-btn {
-        display: flex;
-      }
-      
-      .hero {
-        text-align: center;
-        min-height: 90vh;
-        padding-top: 100px;
-        background-attachment: scroll;
-      }
-      
-      .hero-content {
-        max-width: 100%;
-      }
-      
       .hero-buttons {
         justify-content: center;
       }
@@ -1106,16 +905,18 @@
         font-size: 14px;
       }
       
-      .portfolio, .cta {
+      .services, .cta {
         background-attachment: scroll;
+      }
+      
+      .contact-form {
+        padding: 32px 24px;
       }
     }
   </style>
 </head>
 <body data-theme="light">
   <div class="scroll-progress"></div>
-  <div class="cursor"></div>
-  <div class="cursor-follower"></div>
   <canvas id="particles"></canvas>
   
   <header id="header">
@@ -1126,10 +927,9 @@
           <span>MSFSoft</span>
         </a>
         <nav>
-          <a href="#services" data-key="navServices">Services</a>
-          <a href="#portfolio" data-key="navPortfolio">Portfolio</a>
-          <a href="#faq" data-key="navFAQ">FAQ</a>
-          <a href="#contact" data-key="navContact">Contact</a>
+          <a href="#about" data-key="navAbout">Про нас</a>
+          <a href="#services" data-key="navServices">Послуги</a>
+          <a href="#contact" data-key="navContact">Контакти</a>
         </nav>
         <div class="header-actions">
           <button id="lang-toggle" class="btn btn-ghost">🇺🇦 UA</button>
@@ -1144,10 +944,9 @@
     </div>
     <div class="mobile-menu" id="mobile-menu">
       <nav>
-        <a href="#services" data-key="navServices">Services</a>
-        <a href="#portfolio" data-key="navPortfolio">Portfolio</a>
-        <a href="#faq" data-key="navFAQ">FAQ</a>
-        <a href="#contact" data-key="navContact">Contact</a>
+        <a href="#about" data-key="navAbout">Про нас</a>
+        <a href="#services" data-key="navServices">Послуги</a>
+        <a href="#contact" data-key="navContact">Контакти</a>
       </nav>
     </div>
   </header>
@@ -1157,37 +956,50 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-badge">
-            <span>✨</span>
-            <span data-key="kicker">Innovative Digital Engineering</span>
+            <span>🚀</span>
+            <span data-key="heroBadge">Молода команда розробників</span>
           </div>
-          <h1 data-key="heroTitle">Crafting Reliable Software. Fast. Accurate. AI-Enhanced.</h1>
-          <p data-key="heroSubtitle">Forward-thinking engineering team empowering businesses with smart automation, scalable systems, and AI integrations for 2025's digital landscape.</p>
+          <h1 data-key="heroTitle">Створюємо Сучасні Веб-Сайти Для Вашого Бізнесу</h1>
+          <p data-key="heroSubtitle">Ми — молода команда програмістів, яка швидко вчиться і йде нога в ногу з найновішими технологіями. Створюємо якісні, швидкі та красиві веб-сайти за доступними цінами.</p>
           <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary" data-key="heroBtnContact">Get Started</a>
-            <a href="#services" class="btn btn-ghost" data-key="heroBtnServices">Explore Services</a>
+            <a href="#contact" class="btn btn-primary" data-key="heroCTA">Замовити сайт</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="stats">
+    <section id="about" class="about">
       <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item fade-in">
-            <div class="stat-number">50+</div>
-            <div class="stat-label" data-key="statProjects">Projects Completed</div>
-          </div>
-          <div class="stat-item fade-in">
-            <div class="stat-number">98%</div>
-            <div class="stat-label" data-key="statSatisfaction">Client Satisfaction</div>
-          </div>
-          <div class="stat-item fade-in">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label" data-key="statSupport">Support Available</div>
-          </div>
-          <div class="stat-item fade-in">
-            <div class="stat-number">5+</div>
-            <div class="stat-label" data-key="statExperience">Years Experience</div>
+        <div class="about-content">
+          <span class="section-badge" data-key="aboutBadge">Про нас</span>
+          <h2 class="section-title" data-key="aboutTitle">Хто ми такі?</h2>
+          <p class="section-description" data-key="aboutDesc">Ми — молода, амбітна команда розробників, яка постійно навчається та слідкує за всіма трендами у веб-розробці. Використовуємо найсучасніші технології та інструменти для створення якісних сайтів. Наша мета — допомогти бізнесу виходити в онлайн з професійними, швидкими та красивими веб-рішеннями.</p>
+          
+          <div class="tech-stack">
+            <div class="tech-item fade-in">
+              <div class="tech-icon">⚛️</div>
+              <div class="tech-name">React</div>
+            </div>
+            <div class="tech-item fade-in">
+              <div class="tech-icon">📱</div>
+              <div class="tech-name">HTML/CSS</div>
+            </div>
+            <div class="tech-item fade-in">
+              <div class="tech-icon">⚡</div>
+              <div class="tech-name">JavaScript</div>
+            </div>
+            <div class="tech-item fade-in">
+              <div class="tech-icon">🎨</div>
+              <div class="tech-name">Tailwind</div>
+            </div>
+            <div class="tech-item fade-in">
+              <div class="tech-icon">🔧</div>
+              <div class="tech-name">Node.js</div>
+            </div>
+            <div class="tech-item fade-in">
+              <div class="tech-icon">🚀</div>
+              <div class="tech-name">Next.js</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1196,99 +1008,43 @@
     <section id="services" class="services">
       <div class="container">
         <div class="section-header">
-          <span class="section-badge" data-key="servicesLabel">Services</span>
-          <h2 class="section-title" data-key="servicesTitle">What We Offer</h2>
-          <p class="section-description" data-key="servicesSubtitle">Tailored solutions powered by cutting-edge technology</p>
+          <span class="section-badge" data-key="servicesBadge">Наші послуги</span>
+          <h2 class="section-title" data-key="servicesTitle">Що ми пропонуємо</h2>
+          <p class="section-description" data-key="servicesDesc">Комплексні рішення для розвитку вашого бізнесу в інтернеті</p>
         </div>
         <div class="services-grid">
           <div class="service-card fade-in">
             <div class="service-icon">🌐</div>
-            <h3 class="service-title" data-key="service1Title">Web Development</h3>
-            <p class="service-description" data-key="service1Desc">Modern, fast, and responsive websites optimized for performance and user experience.</p>
+            <h3 class="service-title" data-key="service1Title">Лендінг-пейджі</h3>
+            <p class="service-description" data-key="service1Desc">Односторінкові сайти для презентації вашого продукту чи послуги. Ідеально для залучення клієнтів та збільшення конверсії.</p>
+            <ul class="service-features">
+              <li data-key="service1Feature1">Сучасний дизайн</li>
+              <li data-key="service1Feature2">Адаптивна верстка</li>
+              <li data-key="service1Feature3">Швидке завантаження</li>
+              <li data-key="service1Feature4">SEO оптимізація</li>
+            </ul>
           </div>
           <div class="service-card fade-in">
-            <div class="service-icon">💻</div>
-            <h3 class="service-title" data-key="service2Title">Software Development</h3>
-            <p class="service-description" data-key="service2Desc">Custom applications for desktop, mobile, and cloud with AI integration.</p>
+            <div class="service-icon">🏢</div>
+            <h3 class="service-title" data-key="service2Title">Корпоративні сайти</h3>
+            <p class="service-description" data-key="service2Desc">Багатосторінкові сайти для компаній з портфоліо, блогом, контактами та іншими розділами.</p>
+            <ul class="service-features">
+              <li data-key="service2Feature1">Зручна навігація</li>
+              <li data-key="service2Feature2">Система управління</li>
+              <li data-key="service2Feature3">Інтеграції</li>
+              <li data-key="service2Feature4">Підтримка</li>
+            </ul>
           </div>
           <div class="service-card fade-in">
-            <div class="service-icon">⚡</div>
-            <h3 class="service-title" data-key="service3Title">Optimization</h3>
-            <p class="service-description" data-key="service3Desc">Analyze and refactor codebases for peak performance and efficiency.</p>
-          </div>
-          <div class="service-card fade-in">
-            <div class="service-icon">🤖</div>
-            <h3 class="service-title" data-key="service4Title">AI Integration</h3>
-            <p class="service-description" data-key="service4Desc">Advanced AI models to enhance functionality and user experience.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="portfolio">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge" data-key="portfolioLabel">Portfolio</span>
-          <h2 class="section-title" data-key="portfolioTitle">Our Latest Work</h2>
-          <p class="section-description" data-key="portfolioSubtitle">Showcasing successful projects and innovations</p>
-        </div>
-        <div class="portfolio-grid">
-          <div class="portfolio-item fade-in">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop" alt="Analytics Platform">
-            <div class="portfolio-overlay">
-              <div class="portfolio-title">AI Analytics Platform</div>
-            </div>
-          </div>
-          <div class="portfolio-item fade-in">
-            <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop" alt="E-Commerce">
-            <div class="portfolio-overlay">
-              <div class="portfolio-title">E-Commerce Solution</div>
-            </div>
-          </div>
-          <div class="portfolio-item fade-in">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop" alt="Dashboard">
-            <div class="portfolio-overlay">
-              <div class="portfolio-title">Business Dashboard</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="faq">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge">FAQ</span>
-          <h2 class="section-title" data-key="faqTitle">Frequently Asked Questions</h2>
-          <p class="section-description" data-key="faqSubtitle">Everything you need to know</p>
-        </div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-key="faq1Q">How long does a typical project take?</span>
-              <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-              <p data-key="faq1A">Project timelines vary based on complexity, but most web projects take 4-8 weeks from concept to launch.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-key="faq2Q">Do you offer maintenance and support?</span>
-              <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-              <p data-key="faq2A">Yes, we provide ongoing maintenance, updates, and 24/7 support for all our projects.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-key="faq3Q">Can you integrate AI into existing systems?</span>
-              <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-              <p data-key="faq3A">Absolutely! We specialize in seamlessly integrating AI capabilities into existing platforms and workflows.</p>
-            </div>
+            <div class="service-icon">🛍️</div>
+            <h3 class="service-title" data-key="service3Title">Інтернет-магазини</h3>
+            <p class="service-description" data-key="service3Desc">Повнофункціональні онлайн-магазини з каталогом товарів, кошиком та системою оплати.</p>
+            <ul class="service-features">
+              <li data-key="service3Feature1">Каталог товарів</li>
+              <li data-key="service3Feature2">Кошик та оплата</li>
+              <li data-key="service3Feature3">Особистий кабінет</li>
+              <li data-key="service3Feature4">Аналітика продажів</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1296,22 +1052,22 @@
 
     <section class="cta">
       <div class="cta-content">
-        <h2 data-key="ctaTitle">Ready to Transform Your Business?</h2>
-        <p data-key="ctaSubtitle">Let's build something amazing together</p>
-        <a href="#contact" class="btn btn-primary" data-key="ctaBtn">Start Your Project</a>
+        <h2 data-key="ctaTitle">Готові почати проект?</h2>
+        <p data-key="ctaSubtitle">Напишіть нам і ми створимо ідеальний сайт для вашого бізнесу</p>
+        <a href="#contact" class="btn btn-primary" data-key="ctaCTA">Зв'язатись з нами</a>
       </div>
     </section>
 
     <section id="contact" class="contact">
       <div class="container">
         <div class="section-header">
-          <span class="section-badge" data-key="contactLabel">Contact</span>
-          <h2 class="section-title" data-key="contactTitle">Get In Touch</h2>
-          <p class="section-description" data-key="contactSubtitle">Ready to start your project? Contact us today!</p>
+          <span class="section-badge" data-key="contactBadge">Контакти</span>
+          <h2 class="section-title" data-key="contactTitle">Напишіть нам</h2>
+          <p class="section-description" data-key="contactDesc">Заповніть форму і ми зв'яжемось з вами протягом 24 годин</p>
         </div>
         <form class="contact-form">
           <div class="form-group">
-            <label class="form-label" for="name" data-key="formName">Name</label>
+            <label class="form-label" for="name" data-key="formName">Ваше ім'я</label>
             <input class="form-input" type="text" id="name" required>
           </div>
           <div class="form-group">
@@ -1319,10 +1075,10 @@
             <input class="form-input" type="email" id="email" required>
           </div>
           <div class="form-group">
-            <label class="form-label" for="message" data-key="formMessage">Message</label>
+            <label class="form-label" for="message" data-key="formMessage">Опишіть ваш проект</label>
             <textarea class="form-input" id="message" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;" data-key="formSubmit">Send Message</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;" data-key="formSubmit">Надіслати заявку</button>
         </form>
       </div>
     </section>
@@ -1336,38 +1092,35 @@
             <div class="logo-icon">MS</div>
             <span>MSFSoft</span>
           </div>
-          <p class="footer-description" data-key="footerDesc">Pioneering digital solutions for the future of business.</p>
+          <p class="footer-description" data-key="footerDesc">Молода команда розробників, яка створює сучасні веб-сайти для вашого бізнесу.</p>
         </div>
         <div class="footer-section">
-          <h3 data-key="footerServices">Services</h3>
+          <h3 data-key="footerNav">Навігація</h3>
           <div class="footer-links">
-            <a href="#services">Web Development</a>
-            <a href="#services">Software Development</a>
-            <a href="#services">AI Integration</a>
-            <a href="#services">Optimization</a>
+            <a href="#about" data-key="footerAbout">Про нас</a>
+            <a href="#services" data-key="footerServices">Послуги</a>
+            <a href="#contact" data-key="footerContact">Контакти</a>
           </div>
         </div>
         <div class="footer-section">
-          <h3 data-key="footerCompany">Company</h3>
+          <h3 data-key="footerServices2">Послуги</h3>
           <div class="footer-links">
-            <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
+            <a href="#services" data-key="footerLanding">Лендінги</a>
+            <a href="#services" data-key="footerCorporate">Корпоративні сайти</a>
+            <a href="#services" data-key="footerShop">Інтернет-магазини</a>
           </div>
         </div>
         <div class="footer-section">
-          <h3 data-key="footerConnect">Connect</h3>
+          <h3 data-key="footerConnect">Зв'язок</h3>
           <div class="social-links">
-            <a href="#" class="social-link">🐦</a>
-            <a href="#" class="social-link">💼</a>
             <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">💬</a>
             <a href="#" class="social-link">📱</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© <span id="year"></span> MSFSoft. All rights reserved. Created by Yurii Fostiak</p>
+        <p>© <span id="year"></span> MSFSoft. <span data-key="footerRights">Всі права захищені.</span> <span data-key="footerCreated">Створено командою MSFSoft</span></p>
       </div>
     </div>
   </footer>
@@ -1375,113 +1128,120 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Translations
     const translations = {
-      en: {
-        navServices: 'Services',
-        navPortfolio: 'Portfolio',
-        navFAQ: 'FAQ',
-        navContact: 'Contact',
-        kicker: 'Innovative Digital Engineering',
-        heroTitle: 'Crafting Reliable Software. Fast. Accurate. AI-Enhanced.',
-        heroSubtitle: 'Forward-thinking engineering team empowering businesses with smart automation, scalable systems, and AI integrations for 2025\'s digital landscape.',
-        heroBtnContact: 'Get Started',
-        heroBtnServices: 'Explore Services',
-        statProjects: 'Projects Completed',
-        statSatisfaction: 'Client Satisfaction',
-        statSupport: 'Support Available',
-        statExperience: 'Years Experience',
-        servicesLabel: 'Services',
-        servicesTitle: 'What We Offer',
-        servicesSubtitle: 'Tailored solutions powered by cutting-edge technology',
-        service1Title: 'Web Development',
-        service1Desc: 'Modern, fast, and responsive websites optimized for performance and user experience.',
-        service2Title: 'Software Development',
-        service2Desc: 'Custom applications for desktop, mobile, and cloud with AI integration.',
-        service3Title: 'Optimization',
-        service3Desc: 'Analyze and refactor codebases for peak performance and efficiency.',
-        service4Title: 'AI Integration',
-        service4Desc: 'Advanced AI models to enhance functionality and user experience.',
-        portfolioLabel: 'Portfolio',
-        portfolioTitle: 'Our Latest Work',
-        portfolioSubtitle: 'Showcasing successful projects and innovations',
-        faqTitle: 'Frequently Asked Questions',
-        faqSubtitle: 'Everything you need to know',
-        faq1Q: 'How long does a typical project take?',
-        faq1A: 'Project timelines vary based on complexity, but most web projects take 4-8 weeks from concept to launch.',
-        faq2Q: 'Do you offer maintenance and support?',
-        faq2A: 'Yes, we provide ongoing maintenance, updates, and 24/7 support for all our projects.',
-        faq3Q: 'Can you integrate AI into existing systems?',
-        faq3A: 'Absolutely! We specialize in seamlessly integrating AI capabilities into existing platforms and workflows.',
-        ctaTitle: 'Ready to Transform Your Business?',
-        ctaSubtitle: 'Let\'s build something amazing together',
-        ctaBtn: 'Start Your Project',
-        contactLabel: 'Contact',
-        contactTitle: 'Get In Touch',
-        contactSubtitle: 'Ready to start your project? Contact us today!',
-        formName: 'Name',
-        formEmail: 'Email',
-        formMessage: 'Message',
-        formSubmit: 'Send Message',
-        footerDesc: 'Pioneering digital solutions for the future of business.',
-        footerServices: 'Services',
-        footerCompany: 'Company',
-        footerConnect: 'Connect'
-      },
       ua: {
+        navAbout: 'Про нас',
         navServices: 'Послуги',
-        navPortfolio: 'Портфоліо',
-        navFAQ: 'FAQ',
         navContact: 'Контакти',
-        kicker: 'Інноваційна Цифрова Інженерія',
-        heroTitle: 'Створюємо Надійне ПЗ. Швидко. Точно. З AI.',
-        heroSubtitle: 'Команда інженерів майбутнього, яка розширює бізнес за допомогою розумної автоматизації, масштабованих систем та інтеграцій AI.',
-        heroBtnContact: 'Почати',
-        heroBtnServices: 'Наші Послуги',
-        statProjects: 'Проектів Завершено',
-        statSatisfaction: 'Задоволених Клієнтів',
-        statSupport: 'Підтримка Доступна',
-        statExperience: 'Років Досвіду',
-        servicesLabel: 'Послуги',
-        servicesTitle: 'Що Ми Пропонуємо',
-        servicesSubtitle: 'Індивідуальні рішення на передових технологіях',
-        service1Title: 'Веб Розробка',
-        service1Desc: 'Сучасні, швидкі та адаптивні веб-сайти, оптимізовані для продуктивності.',
-        service2Title: 'Розробка ПЗ',
-        service2Desc: 'Індивідуальні додатки для десктопу, мобільних та хмари з AI.',
-        service3Title: 'Оптимізація',
-        service3Desc: 'Аналіз та рефакторинг коду для максимальної продуктивності.',
-        service4Title: 'AI Інтеграція',
-        service4Desc: 'Передові AI моделі для покращення функціональності.',
-        portfolioLabel: 'Портфоліо',
-        portfolioTitle: 'Наші Останні Роботи',
-        portfolioSubtitle: 'Демонстрація успішних проектів та інновацій',
-        faqTitle: 'Часті Питання',
-        faqSubtitle: 'Все що вам потрібно знати',
-        faq1Q: 'Скільки часу займає типовий проект?',
-        faq1A: 'Терміни проекту залежать від складності, але більшість веб-проектів займають 4-8 тижнів.',
-        faq2Q: 'Чи надаєте ви підтримку та обслуговування?',
-        faq2A: 'Так, ми надаємо постійну підтримку, оновлення та підтримку 24/7.',
-        faq3Q: 'Чи можете ви інтегрувати AI в існуючі системи?',
-        faq3A: 'Звичайно! Ми спеціалізуємося на безшовній інтеграції AI у існуючі платформи.',
-        ctaTitle: 'Готові Трансформувати Ваш Бізнес?',
-        ctaSubtitle: 'Давайте створимо щось неймовірне разом',
-        ctaBtn: 'Почати Проект',
-        contactLabel: 'Контакти',
-        contactTitle: 'Зв\'яжіться з Нами',
-        contactSubtitle: 'Готові почати проект? Зв\'яжіться сьогодні!',
-        formName: 'Ім\'я',
+        heroBadge: 'Молода команда розробників',
+        heroTitle: 'Створюємо Сучасні Веб-Сайти Для Вашого Бізнесу',
+        heroSubtitle: 'Ми — молода команда програмістів, яка швидко вчиться і йде нога в ногу з найновішими технологіями. Створюємо якісні, швидкі та красиві веб-сайти за доступними цінами.',
+        heroCTA: 'Замовити сайт',
+        aboutBadge: 'Про нас',
+        aboutTitle: 'Хто ми такі?',
+        aboutDesc: 'Ми — молода, амбітна команда розробників, яка постійно навчається та слідкує за всіма трендами у веб-розробці. Використовуємо найсучасніші технології та інструменти для створення якісних сайтів. Наша мета — допомогти бізнесу виходити в онлайн з професійними, швидкими та красивими веб-рішеннями.',
+        servicesBadge: 'Наші послуги',
+        servicesTitle: 'Що ми пропонуємо',
+        servicesDesc: 'Комплексні рішення для розвитку вашого бізнесу в інтернеті',
+        service1Title: 'Лендінг-пейджі',
+        service1Desc: 'Односторінкові сайти для презентації вашого продукту чи послуги. Ідеально для залучення клієнтів та збільшення конверсії.',
+        service1Feature1: 'Сучасний дизайн',
+        service1Feature2: 'Адаптивна верстка',
+        service1Feature3: 'Швидке завантаження',
+        service1Feature4: 'SEO оптимізація',
+        service2Title: 'Корпоративні сайти',
+        service2Desc: 'Багатосторінкові сайти для компаній з портфоліо, блогом, контактами та іншими розділами.',
+        service2Feature1: 'Зручна навігація',
+        service2Feature2: 'Система управління',
+        service2Feature3: 'Інтеграції',
+        service2Feature4: 'Підтримка',
+        service3Title: 'Інтернет-магазини',
+        service3Desc: 'Повнофункціональні онлайн-магазини з каталогом товарів, кошиком та системою оплати.',
+        service3Feature1: 'Каталог товарів',
+        service3Feature2: 'Кошик та оплата',
+        service3Feature3: 'Особистий кабінет',
+        service3Feature4: 'Аналітика продажів',
+        ctaTitle: 'Готові почати проект?',
+        ctaSubtitle: 'Напишіть нам і ми створимо ідеальний сайт для вашого бізнесу',
+        ctaCTA: 'Зв\'язатись з нами',
+        contactBadge: 'Контакти',
+        contactTitle: 'Напишіть нам',
+        contactDesc: 'Заповніть форму і ми зв\'яжемось з вами протягом 24 годин',
+        formName: 'Ваше ім\'я',
         formEmail: 'Email',
-        formMessage: 'Повідомлення',
-        formSubmit: 'Надіслати',
-        footerDesc: 'Піонери цифрових рішень для майбутнього бізнесу.',
+        formMessage: 'Опишіть ваш проект',
+        formSubmit: 'Надіслати заявку',
+        footerDesc: 'Молода команда розробників, яка створює сучасні веб-сайти для вашого бізнесу.',
+        footerNav: 'Навігація',
+        footerAbout: 'Про нас',
         footerServices: 'Послуги',
-        footerCompany: 'Компанія',
-        footerConnect: 'Зв\'язок'
+        footerContact: 'Контакти',
+        footerServices2: 'Послуги',
+        footerLanding: 'Лендінги',
+        footerCorporate: 'Корпоративні сайти',
+        footerShop: 'Інтернет-магазини',
+        footerConnect: 'Зв\'язок',
+        footerRights: 'Всі права захищені.',
+        footerCreated: 'Створено командою MSFSoft'
+      },
+      en: {
+        navAbout: 'About',
+        navServices: 'Services',
+        navContact: 'Contact',
+        heroBadge: 'Young Development Team',
+        heroTitle: 'We Create Modern Websites For Your Business',
+        heroSubtitle: 'We are a young team of programmers who learn quickly and keep up with the latest technologies. We create high-quality, fast and beautiful websites at affordable prices.',
+        heroCTA: 'Order a Website',
+        aboutBadge: 'About Us',
+        aboutTitle: 'Who We Are?',
+        aboutDesc: 'We are a young, ambitious team of developers who constantly learn and follow all trends in web development. We use the most modern technologies and tools to create quality websites. Our goal is to help businesses go online with professional, fast and beautiful web solutions.',
+        servicesBadge: 'Our Services',
+        servicesTitle: 'What We Offer',
+        servicesDesc: 'Comprehensive solutions for your business growth online',
+        service1Title: 'Landing Pages',
+        service1Desc: 'Single-page websites to present your product or service. Perfect for attracting customers and increasing conversion.',
+        service1Feature1: 'Modern design',
+        service1Feature2: 'Responsive layout',
+        service1Feature3: 'Fast loading',
+        service1Feature4: 'SEO optimization',
+        service2Title: 'Corporate Websites',
+        service2Desc: 'Multi-page websites for companies with portfolio, blog, contacts and other sections.',
+        service2Feature1: 'Easy navigation',
+        service2Feature2: 'Management system',
+        service2Feature3: 'Integrations',
+        service2Feature4: 'Support',
+        service3Title: 'Online Stores',
+        service3Desc: 'Full-featured online stores with product catalog, cart and payment system.',
+        service3Feature1: 'Product catalog',
+        service3Feature2: 'Cart and payment',
+        service3Feature3: 'User account',
+        service3Feature4: 'Sales analytics',
+        ctaTitle: 'Ready to Start a Project?',
+        ctaSubtitle: 'Contact us and we will create the perfect website for your business',
+        ctaCTA: 'Contact Us',
+        contactBadge: 'Contact',
+        contactTitle: 'Write to Us',
+        contactDesc: 'Fill out the form and we will contact you within 24 hours',
+        formName: 'Your Name',
+        formEmail: 'Email',
+        formMessage: 'Describe Your Project',
+        formSubmit: 'Send Request',
+        footerDesc: 'Young development team creating modern websites for your business.',
+        footerNav: 'Navigation',
+        footerAbout: 'About',
+        footerServices: 'Services',
+        footerContact: 'Contact',
+        footerServices2: 'Services',
+        footerLanding: 'Landings',
+        footerCorporate: 'Corporate Sites',
+        footerShop: 'Online Stores',
+        footerConnect: 'Connect',
+        footerRights: 'All rights reserved.',
+        footerCreated: 'Created by MSFSoft team'
       }
     };
     
-    let currentLang = 'en';
+    let currentLang = 'ua';
     const langToggle = document.getElementById('lang-toggle');
     
     function applyLanguage(lang) {
@@ -1499,7 +1259,6 @@
       applyLanguage(currentLang === 'en' ? 'ua' : 'en');
     });
     
-    // Theme toggle
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
       const theme = document.body.dataset.theme;
@@ -1507,13 +1266,11 @@
       themeToggle.textContent = theme === 'light' ? '☀️' : '🌙';
     });
     
-    // Header scroll effect
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 50);
     });
     
-    // Scroll progress bar
     window.addEventListener('scroll', () => {
       const h = document.documentElement;
       const st = h.scrollTop || document.body.scrollTop;
@@ -1522,32 +1279,6 @@
       document.querySelector('.scroll-progress').style.width = percent + '%';
     });
     
-    // Custom cursor
-    const cursor = document.querySelector('.cursor');
-    const cursorFollower = document.querySelector('.cursor-follower');
-    
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
-    });
-    
-    function animateFollower() {
-      const distX = mouseX - followerX;
-      const distY = mouseY - followerY;
-      followerX += distX / 10;
-      followerY += distY / 10;
-      cursorFollower.style.left = followerX + 'px';
-      cursorFollower.style.top = followerY + 'px';
-      requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
-    
-    // Intersection Observer for fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1558,16 +1289,6 @@
     
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     
-    // FAQ accordion
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.querySelector('.faq-question').addEventListener('click', () => {
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
-    });
-    
-    // Mobile menu
     const mobileToggle = document.getElementById('mobile-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -1583,7 +1304,6 @@
       });
     });
     
-    // Particles canvas
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     
@@ -1620,7 +1340,6 @@
         ctx.fill();
       });
       
-      // Connect particles
       ctx.strokeStyle = theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(59, 130, 246, 0.1)';
       ctx.lineWidth = 1;
       
@@ -1649,14 +1368,12 @@
       canvas.height = window.innerHeight;
     });
     
-    // Contact form
     document.querySelector('.contact-form').addEventListener('submit', (e) => {
       e.preventDefault();
-      alert(currentLang === 'en' ? 'Thank you! We will contact you soon.' : 'Дякуємо! Ми зв\'яжемося з вами найближчим часом.');
+      alert(currentLang === 'en' ? 'Thank you! We will contact you within 24 hours.' : 'Дякуємо! Ми зв\'яжемося з вами протягом 24 годин.');
       e.target.reset();
     });
     
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1671,4 +1388,65 @@
     });
   </script>
 </body>
-</html>
+</html>container {
+        padding: 0 24px;
+      }
+      
+      .logo {
+        font-size: 24px;
+      }
+      
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      
+      .header-content {
+        padding: 16px 0;
+      }
+      
+      .tech-stack {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .tech-stack {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      
+      .footer-content {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: flex;
+      }
+      
+      .hero {
+        text-align: center;
+        min-height: 90vh;
+        padding-top: 100px;
+        background-attachment: scroll;
+      }
+      
+      .hero-content {
+        max-width: 100%;
+      }
+      
+      .
