@@ -1,1490 +1,338 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0A66C2" />
-  <title>MSFSoft — Professional Web Development</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #FFFFFF;
-      --text: #0F172A;
-      --muted: #64748B;
-      --accent: #3B82F6;
-      --accent-dark: #1E40AF;
-      --accent-light: #EFF6FF;
-      --border: rgba(148, 163, 184, 0.2);
-      --card: #FFFFFF;
-      --gradient-1: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
-      --gradient-2: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
-      --gradient-3: linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%);
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-    
-    [data-theme="dark"] {
-      --bg: #0F172A;
-      --text: #F1F5F9;
-      --muted: #94A3B8;
-      --accent-light: #1E3A8A;
-      --border: rgba(148, 163, 184, 0.1);
-      --card: #1E293B;
-    }
-    
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html { scroll-behavior: smooth; }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      transition: background 0.3s, color 0.3s;
-    }
-    
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 4px;
-      background: var(--gradient-1);
-      z-index: 9999;
-      transition: width 0.1s ease;
-    }
-    
-    #particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.3;
-    }
-    
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      transition: all 0.3s;
-    }
-    
-    [data-theme="dark"] header {
-      background: rgba(15, 23, 42, 0.8);
-    }
-    
-    header.scrolled {
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-    }
-    
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 0;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 20px;
-      color: var(--text);
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-    
-    .logo:hover {
-      transform: scale(1.05);
-    }
-    
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--gradient-1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 16px;
-      font-weight: 900;
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-    }
-    
-    nav {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s;
-      position: relative;
-    }
-    
-    nav a:hover {
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-    
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s;
-    }
-    
-    nav a:hover::after {
-      width: 100%;
-    }
-    
-    .header-actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    
-    .btn {
-      padding: 10px 20px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      border: none;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-    
-    .btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-    
-    .btn-primary {
-      background: var(--gradient-1);
-      color: white;
-      box-shadow: var(--shadow);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      color: var(--text);
-      backdrop-filter: blur(10px);
-      padding: 8px 16px;
-      font-size: 13px;
-    }
-    
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 1);
-      border-color: var(--accent);
-    }
-    
-    .icon-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--card);
-      border: 2px solid var(--border);
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 16px;
-    }
-    
-    .icon-btn:hover {
-      transform: scale(1.1) rotate(15deg);
-      border-color: var(--accent);
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      width: 36px;
-      height: 36px;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-    }
-    
-    .mobile-menu-btn span {
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      transition: all 0.3s;
-      display: block;
-    }
-    
-    .mobile-menu-btn.active span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
-    }
-    
-    .mobile-menu-btn.active span:nth-child(2) {
-      opacity: 0;
-    }
-    
-    .mobile-menu-btn.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-    
-    .mobile-menu {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .mobile-menu.active {
-      max-height: 400px;
-    }
-    
-    .mobile-menu nav {
-      flex-direction: column;
-      padding: 20px;
-      gap: 0;
-    }
-    
-    .mobile-menu nav a {
-      padding: 12px 0;
-      width: 100%;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-    
-    .mobile-menu nav a:last-child {
-      border-bottom: none;
-    }
-    
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 80px;
-      background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.92) 0%, rgba(118, 75, 162, 0.88) 50%, rgba(240, 147, 251, 0.85) 100%);
-      z-index: 1;
-      animation: gradientShift 15s ease infinite;
-    }
-    
-    @keyframes gradientShift {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.9; }
-    }
-    
-    [data-theme="dark"] .hero::before {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.92) 50%, rgba(240, 147, 251, 0.88) 100%);
-    }
-    
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 120px;
-      background: linear-gradient(to top, var(--bg), transparent);
-      z-index: 2;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      max-width: 800px;
-      color: white;
-    }
-    
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      color: white;
-      padding: 8px 20px;
-      border-radius: 100px;
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      animation: slideIn 0.8s ease-out, pulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(36px, 8vw, 76px);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      color: white;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      animation: slideIn 0.8s 0.2s ease-out backwards;
-    }
-    
-    .hero p {
-      font-size: clamp(17px, 4vw, 22px);
-      color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 32px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      animation: slideIn 0.8s 0.4s ease-out backwards;
-      line-height: 1.7;
-    }
-    
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      animation: slideIn 0.8s 0.6s ease-out backwards;
-    }
-    
-    .hero-buttons .btn-primary {
-      background: white;
-      color: var(--accent);
-      padding: 14px 32px;
-      font-size: 16px;
-    }
-    
-    .hero-buttons .btn-primary:hover {
-      transform: translateY(-2px) scale(1.05);
-    }
-    
-    .about {
-      padding: 100px 0;
-      background: var(--bg);
-      position: relative;
-      z-index: 10;
-    }
-    
-    .about-content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .section-badge {
-      display: inline-block;
-      background: var(--accent-light);
-      color: var(--accent);
-      padding: 8px 20px;
-      border-radius: 100px;
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 16px;
-      animation: fadeIn 0.8s ease-out;
-    }
-    
-    .section-title {
-      font-size: clamp(32px, 6vw, 52px);
-      font-weight: 800;
-      margin-bottom: 20px;
-      line-height: 1.2;
-      animation: fadeIn 0.8s 0.2s ease-out backwards;
-    }
-    
-    .section-description {
-      font-size: clamp(16px, 3vw, 20px);
-      color: var(--muted);
-      line-height: 1.8;
-      animation: fadeIn 0.8s 0.4s ease-out backwards;
-    }
-    
-    .tech-stack {
-      margin-top: 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 24px;
-    }
-    
-    .tech-item {
-      background: var(--card);
-      padding: 24px;
-      border-radius: 16px;
-      border: 2px solid var(--border);
-      transition: all 0.3s;
-      text-align: center;
-      animation: fadeIn 1s ease-out backwards;
-    }
-    
-    .tech-item:nth-child(1) { animation-delay: 0.1s; }
-    .tech-item:nth-child(2) { animation-delay: 0.2s; }
-    .tech-item:nth-child(3) { animation-delay: 0.3s; }
-    .tech-item:nth-child(4) { animation-delay: 0.4s; }
-    .tech-item:nth-child(5) { animation-delay: 0.5s; }
-    .tech-item:nth-child(6) { animation-delay: 0.6s; }
-    
-    .tech-item:hover {
-      transform: translateY(-8px);
-      border-color: var(--accent);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .tech-icon {
-      font-size: 40px;
-      margin-bottom: 12px;
-    }
-    
-    .tech-name {
-      font-weight: 600;
-      font-size: 16px;
-    }
-    
-    .services {
-      padding: 100px 0;
-      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      background-attachment: fixed;
-    }
-    
-    .services::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(239, 246, 255, 0.96);
-      backdrop-filter: blur(2px);
-    }
-    
-    [data-theme="dark"] .services::before {
-      background: rgba(15, 23, 42, 0.96);
-    }
-    
-    .services > .container {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .section-header {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 60px;
-    }
-    
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .service-card {
-      background: var(--card);
-      padding: 48px 40px;
-      border-radius: 20px;
-      border: 2px solid var(--border);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: var(--gradient-1);
-      transform: scaleX(0);
-      transition: transform 0.4s;
-    }
-    
-    .service-card::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-    
-    .service-card:hover::after {
-      width: 500px;
-      height: 500px;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-lg);
-      border-color: transparent;
-    }
-    
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .service-card:nth-child(2)::before {
-      background: var(--gradient-2);
-    }
-    
-    .service-card:nth-child(3)::before {
-      background: var(--gradient-3);
-    }
-    
-    .service-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--gradient-1);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      margin-bottom: 24px;
-      font-size: 28px;
-      position: relative;
-      z-index: 1;
-      transition: transform 0.3s;
-    }
-    
-    .service-card:hover .service-icon {
-      transform: scale(1.1) rotate(5deg);
-    }
-    
-    .service-card:nth-child(2) .service-icon {
-      background: var(--gradient-2);
-    }
-    
-    .service-card:nth-child(3) .service-icon {
-      background: var(--gradient-3);
-    }
-    
-    .service-title {
-      font-size: clamp(22px, 4vw, 28px);
-      font-weight: 700;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .service-description {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: clamp(15px, 3vw, 18px);
-      position: relative;
-      z-index: 1;
-    }
-    
-    .service-features {
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .service-features li {
-      color: var(--muted);
-      margin-bottom: 12px;
-      padding-left: 24px;
-      position: relative;
-      font-size: 15px;
-    }
-    
-    .service-features li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: bold;
-    }
-    
-    .cta {
-      padding: 100px 0;
-      text-align: center;
-      background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=800&fit=crop');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      background-attachment: fixed;
-    }
-    
-    .cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.92) 0%, rgba(118, 75, 162, 0.92) 100%);
-      animation: gradientShift 15s ease infinite;
-    }
-    
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    .cta h2 {
-      font-size: clamp(32px, 6vw, 54px);
-      font-weight: 800;
-      margin-bottom: 20px;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      animation: fadeIn 0.8s ease-out;
-    }
-    
-    .cta p {
-      font-size: clamp(17px, 4vw, 22px);
-      margin-bottom: 36px;
-      opacity: 0.95;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 0.8s 0.2s ease-out backwards;
-    }
-    
-    .cta .btn {
-      background: white;
-      color: var(--accent);
-      padding: 16px 40px;
-      font-size: 17px;
-      animation: fadeIn 0.8s 0.4s ease-out backwards;
-    }
-    
-    .cta .btn:hover {
-      transform: scale(1.08);
-    }
-    
-    .contact {
-      padding: 100px 0;
-      background: var(--bg);
-    }
-    
-    .contact-form {
-      max-width: 700px;
-      margin: 0 auto;
-      background: var(--card);
-      padding: 48px;
-      border-radius: 24px;
-      box-shadow: var(--shadow-lg);
-      border: 2px solid var(--border);
-      transition: all 0.3s;
-    }
-    
-    .contact-form:hover {
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      border-color: var(--accent);
-    }
-    
-    .form-group {
-      margin-bottom: 24px;
-    }
-    
-    .form-label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--text);
-      font-size: 15px;
-    }
-    
-    .form-input {
-      width: 100%;
-      padding: 14px 16px;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      font-size: 16px;
-      font-family: inherit;
-      transition: all 0.3s;
-      background: var(--bg);
-      color: var(--text);
-    }
-    
-    .form-input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-      transform: translateY(-2px);
-    }
-    
-    textarea.form-input {
-      resize: vertical;
-      min-height: 120px;
-    }
-    
-    footer {
-      padding: 60px 0 40px;
-      background: var(--card);
-      border-top: 1px solid var(--border);
-    }
-    
-    .footer-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 22px;
-      margin-bottom: 16px;
-    }
-    
-    .footer-description {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-    
-    .footer-section h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: all 0.3s;
-      font-size: 15px;
-    }
-    
-    .footer-links a:hover {
-      color: var(--accent);
-      transform: translateX(5px);
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    
-    .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--accent-light);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-      text-decoration: none;
-      font-size: 18px;
-    }
-    
-    .social-link:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-2px) rotate(360deg);
-    }
-    
-    .footer-bottom {
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .fade-in {
-      opacity: 0;
-    }
-    
-    .fade-in.visible {
-      animation: fadeIn 0.8s ease-out forwards;
-    }
-    
-    @media (min-width: 768px) {
-      .container {
-        padding: 0 24px;
-      }
-      
-      .logo {
-        font-size: 24px;
-      }
-      
-      .logo-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-      
-      .header-content {
-        padding: 16px 0;
-      }
-      
-      .tech-stack {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .tech-stack {
-        grid-template-columns: repeat(6, 1fr);
-      }
-      
-      .footer-content {
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-      }
-    }
-    
-    @media (max-width: 767px) {
-      nav {
-        display: none;
-      }
-      
-      .mobile-menu-btn {
-        display: flex;
-      }
-      
-      .hero {
-        text-align: center;
-        min-height: 90vh;
-        padding-top: 100px;
-        background-attachment: scroll;
-      }
-      
-      .hero-content {
-        max-width: 100%;
-      }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSFSoft — Розробка Сайтів</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF;--text:#0F172A;--muted:#64748B;--accent:#3B82F6;--border:rgba(148,163,184,0.2);--card:#FFF;--gradient:linear-gradient(135deg,#667EEA,#764BA2);--shadow:0 4px 6px -1px rgba(0,0,0,0.1)}
+[data-theme="dark"]{--bg:#0F172A;--text:#F1F5F9;--muted:#94A3B8;--border:rgba(148,163,184,0.1);--card:#1E293B}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background 0.3s}
+.container{max-width:1280px;margin:0 auto;padding:0 20px}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+[data-theme="dark"] header{background:rgba(15,23,42,0.8)}
+.header-content{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:var(--text);text-decoration:none}
+.logo-icon{width:40px;height:40px;background:var(--gradient);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+nav{display:flex;gap:32px}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;transition:color 0.3s}
+nav a:hover{color:var(--accent)}
+.header-actions{display:flex;gap:8px}
+.btn{padding:10px 20px;border-radius:12px;font-weight:600;cursor:pointer;border:none;text-decoration:none;font-size:14px;transition:all 0.3s}
+.btn-primary{background:var(--gradient);color:#fff;box-shadow:var(--shadow)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{background:var(--card);border:2px solid var(--border);color:var(--text);padding:8px 16px;font-size:13px}
+.icon-btn{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--card);border:2px solid var(--border);cursor:pointer;font-size:16px}
+.mobile-menu-btn{display:none;width:36px;height:36px;border:none;background:transparent;cursor:pointer;flex-direction:column;gap:5px;justify-content:center}
+.mobile-menu-btn span{width:22px;height:2px;background:var(--text);transition:all 0.3s}
+.mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.mobile-menu-btn.active span:nth-child(2){opacity:0}
+.mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobile-menu{position:fixed;top:68px;left:0;right:0;background:var(--card);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.3s}
+.mobile-menu.active{max-height:300px}
+.mobile-menu nav{flex-direction:column;padding:20px;gap:0}
+.mobile-menu nav a{padding:12px 0;text-align:center;border-bottom:1px solid var(--border)}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:80px;background:url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop') center/cover}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(102,126,234,0.92),rgba(118,75,162,0.88) 50%,rgba(240,147,251,0.85));z-index:1}
+.hero-content{position:relative;z-index:2;max-width:800px;color:#fff}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);color:#fff;padding:8px 20px;border-radius:100px;font-weight:600;font-size:14px;margin-bottom:24px;border:1px solid rgba(255,255,255,0.3)}
+h1{font-size:clamp(36px,7vw,72px);font-weight:700;line-height:1.1;margin-bottom:24px;text-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.hero p{font-size:clamp(17px,3vw,20px);margin-bottom:32px;line-height:1.7}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.hero-buttons .btn-primary{background:#fff;color:var(--accent);padding:14px 32px;font-size:16px}
+.about{padding:100px 0;background:var(--bg)}
+.about-content{max-width:900px;margin:0 auto;text-align:center}
+.section-badge{display:inline-block;background:#EFF6FF;color:var(--accent);padding:8px 20px;border-radius:100px;font-weight:600;font-size:14px;margin-bottom:16px}
+.section-title{font-size:clamp(32px,5vw,48px);font-weight:800;margin-bottom:20px}
+.section-description{font-size:clamp(16px,3vw,18px);color:var(--muted);line-height:1.8}
+.tech-stack{margin-top:60px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.tech-item{background:var(--card);padding:24px;border-radius:16px;border:2px solid var(--border);transition:all 0.3s;text-align:center}
+.tech-item:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:var(--shadow)}
+.tech-icon{font-size:40px;margin-bottom:12px}
+.tech-name{font-weight:600;font-size:16px}
+.services{padding:100px 0;background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop') center/cover;position:relative}
+.services::before{content:'';position:absolute;inset:0;background:rgba(239,246,255,0.96)}
+[data-theme="dark"] .services::before{background:rgba(15,23,42,0.96)}
+.services>.container{position:relative;z-index:1}
+.section-header{text-align:center;max-width:800px;margin:0 auto 60px}
+.services-grid{display:grid;grid-template-columns:1fr;gap:32px;max-width:1000px;margin:0 auto}
+.service-card{background:var(--card);padding:48px 40px;border-radius:20px;border:2px solid var(--border);transition:all 0.4s}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--accent)}
+.service-icon{width:64px;height:64px;background:var(--gradient);border-radius:16px;display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:24px;font-size:28px}
+.service-title{font-size:clamp(22px,4vw,26px);font-weight:700;margin-bottom:16px}
+.service-description{color:var(--muted);line-height:1.8;font-size:16px}
+.service-features{margin-top:24px;list-style:none}
+.service-features li{color:var(--muted);margin-bottom:12px;padding-left:24px;position:relative;font-size:15px}
+.service-features li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:bold}
+.cta{padding:100px 0;text-align:center;background:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=800&fit=crop') center/cover;color:#fff;position:relative}
+.cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(102,126,234,0.92),rgba(118,75,162,0.92))}
+.cta-content{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.cta h2{font-size:clamp(32px,5vw,48px);font-weight:800;margin-bottom:20px}
+.cta p{font-size:clamp(17px,3vw,20px);margin-bottom:36px}
+.contact{padding:100px 0;background:var(--bg)}
+.contact-form{max-width:700px;margin:0 auto;background:var(--card);padding:48px;border-radius:24px;box-shadow:var(--shadow);border:2px solid var(--border)}
+.form-group{margin-bottom:24px}
+.form-label{display:block;font-weight:600;margin-bottom:10px;font-size:15px}
+.form-input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-size:16px;font-family:inherit;background:var(--bg);color:var(--text);transition:all 0.3s}
+.form-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
+textarea.form-input{resize:vertical;min-height:120px}
+footer{padding:60px 0 40px;background:var(--card);border-top:1px solid var(--border)}
+.footer-content{display:grid;grid-template-columns:1fr;gap:40px;margin-bottom:40px}
+.footer-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;margin-bottom:16px}
+.footer-description{color:var(--muted);line-height:1.7;font-size:15px}
+.footer-section h3{font-size:18px;font-weight:700;margin-bottom:16px}
+.footer-links{display:flex;flex-direction:column;gap:12px}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.3s;font-size:15px}
+.footer-links a:hover{color:var(--accent)}
+.social-links{display:flex;gap:12px}
+.social-link{width:40px;height:40px;border-radius:10px;background:#EFF6FF;color:var(--accent);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;transition:all 0.3s}
+.social-link:hover{background:var(--accent);color:#fff}
+.footer-bottom{padding-top:32px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:14px}
+@media (min-width:768px){.tech-stack{grid-template-columns:repeat(3,1fr)}.footer-content{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.tech-stack{grid-template-columns:repeat(6,1fr)}.footer-content{grid-template-columns:2fr 1fr 1fr 1fr}}
+@media (max-width:767px){nav{display:none}.mobile-menu-btn{display:flex}.hero{text-align:center}.contact-form{padding:32px 24px}}
+</style>
 </head>
 <body data-theme="light">
-  <div class="scroll-progress"></div>
-  <canvas id="particles"></canvas>
-  
-  <header id="header">
-    <div class="container">
-      <div class="header-content">
-        <a href="#" class="logo">
-          <div class="logo-icon">MS</div>
-          <span>MSFSoft</span>
-        </a>
-        <nav>
-          <a href="#about" data-key="navAbout">Про нас</a>
-          <a href="#services" data-key="navServices">Послуги</a>
-          <a href="#contact" data-key="navContact">Контакти</a>
-        </nav>
-        <div class="header-actions">
-          <button id="lang-toggle" class="btn btn-ghost">🇺🇦 UA</button>
-          <button id="theme-toggle" class="icon-btn">🌙</button>
-          <button class="mobile-menu-btn" id="mobile-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobile-menu">
-      <nav>
-        <a href="#about" data-key="navAbout">Про нас</a>
-        <a href="#services" data-key="navServices">Послуги</a>
-        <a href="#contact" data-key="navContact">Контакти</a>
-      </nav>
-    </div>
-  </header>
+<header id="header">
+<div class="container">
+<div class="header-content">
+<a href="#" class="logo">
+<div class="logo-icon">MS</div>
+<span>MSFSoft</span>
+</a>
+<nav>
+<a href="#about">Про нас</a>
+<a href="#services">Послуги</a>
+<a href="#contact">Контакти</a>
+</nav>
+<div class="header-actions">
+<button id="theme-toggle" class="icon-btn">🌙</button>
+<button class="mobile-menu-btn" id="mobile-toggle">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</div>
+</div>
+<div class="mobile-menu" id="mobile-menu">
+<nav>
+<a href="#about">Про нас</a>
+<a href="#services">Послуги</a>
+<a href="#contact">Контакти</a>
+</nav>
+</div>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span>🚀</span>
-            <span data-key="heroBadge">Молода команда розробників</span>
-          </div>
-          <h1 data-key="heroTitle">Створюємо Сучасні Веб-Сайти Для Вашого Бізнесу</h1>
-          <p data-key="heroSubtitle">Ми — молода команда програмістів, яка швидко вчиться і йде нога в ногу з найновішими технологіями. Створюємо якісні, швидкі та красиві веб-сайти за доступними цінами.</p>
-          <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary" data-key="heroCTA">Замовити сайт</a>
-          </div>
-        </div>
-      </div>
-    </section>
+<main>
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+<div class="hero-badge">
+<span>🚀</span>
+<span>Молода команда розробників</span>
+</div>
+<h1>Створюємо Сучасні Веб-Сайти</h1>
+<p>Ми — молода команда програмістів, яка швидко вчиться і йде нога в ногу з найновішими технологіями. Створюємо якісні, швидкі та красиві веб-сайти.</p>
+<div class="hero-buttons">
+<a href="#contact" class="btn btn-primary">Замовити сайт</a>
+</div>
+</div>
+</div>
+</section>
 
-    <section id="about" class="about">
-      <div class="container">
-        <div class="about-content">
-          <span class="section-badge" data-key="aboutBadge">Про нас</span>
-          <h2 class="section-title" data-key="aboutTitle">Хто ми такі?</h2>
-          <p class="section-description" data-key="aboutDesc">Ми — молода, амбітна команда розробників, яка постійно навчається та слідкує за всіма трендами у веб-розробці. Використовуємо найсучасніші технології та інструменти для створення якісних сайтів. Наша мета — допомогти бізнесу виходити в онлайн з професійними, швидкими та красивими веб-рішеннями.</p>
-          
-          <div class="tech-stack">
-            <div class="tech-item fade-in">
-              <div class="tech-icon">⚛️</div>
-              <div class="tech-name">React</div>
-            </div>
-            <div class="tech-item fade-in">
-              <div class="tech-icon">📱</div>
-              <div class="tech-name">HTML/CSS</div>
-            </div>
-            <div class="tech-item fade-in">
-              <div class="tech-icon">⚡</div>
-              <div class="tech-name">JavaScript</div>
-            </div>
-            <div class="tech-item fade-in">
-              <div class="tech-icon">🎨</div>
-              <div class="tech-name">Tailwind</div>
-            </div>
-            <div class="tech-item fade-in">
-              <div class="tech-icon">🔧</div>
-              <div class="tech-name">Node.js</div>
-            </div>
-            <div class="tech-item fade-in">
-              <div class="tech-icon">🚀</div>
-              <div class="tech-name">Next.js</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="about" class="about">
+<div class="container">
+<div class="about-content">
+<span class="section-badge">Про нас</span>
+<h2 class="section-title">Хто ми такі?</h2>
+<p class="section-description">Ми — молода, амбітна команда розробників, яка постійно навчається та слідкує за всіма трендами у веб-розробці. Наша мета — допомогти бізнесу виходити в онлайн з професійними та красивими веб-рішеннями.</p>
+<div class="tech-stack">
+<div class="tech-item">
+<div class="tech-icon">⚛️</div>
+<div class="tech-name">React</div>
+</div>
+<div class="tech-item">
+<div class="tech-icon">📱</div>
+<div class="tech-name">HTML/CSS</div>
+</div>
+<div class="tech-item">
+<div class="tech-icon">⚡</div>
+<div class="tech-name">JavaScript</div>
+</div>
+<div class="tech-item">
+<div class="tech-icon">🎨</div>
+<div class="tech-name">Tailwind</div>
+</div>
+<div class="tech-item">
+<div class="tech-icon">🔧</div>
+<div class="tech-name">Node.js</div>
+</div>
+<div class="tech-item">
+<div class="tech-icon">🚀</div>
+<div class="tech-name">Next.js</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-    <section id="services" class="services">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge" data-key="servicesBadge">Наші послуги</span>
-          <h2 class="section-title" data-key="servicesTitle">Що ми пропонуємо</h2>
-          <p class="section-description" data-key="servicesDesc">Комплексні рішення для розвитку вашого бізнесу в інтернеті</p>
-        </div>
-        <div class="services-grid">
-          <div class="service-card fade-in">
-            <div class="service-icon">🌐</div>
-            <h3 class="service-title" data-key="service1Title">Лендінг-пейджі</h3>
-            <p class="service-description" data-key="service1Desc">Односторінкові сайти для презентації вашого продукту чи послуги. Ідеально для залучення клієнтів та збільшення конверсії.</p>
-            <ul class="service-features">
-              <li data-key="service1Feature1">Сучасний дизайн</li>
-              <li data-key="service1Feature2">Адаптивна верстка</li>
-              <li data-key="service1Feature3">Швидке завантаження</li>
-              <li data-key="service1Feature4">SEO оптимізація</li>
-            </ul>
-          </div>
-          <div class="service-card fade-in">
-            <div class="service-icon">🏢</div>
-            <h3 class="service-title" data-key="service2Title">Корпоративні сайти</h3>
-            <p class="service-description" data-key="service2Desc">Багатосторінкові сайти для компаній з портфоліо, блогом, контактами та іншими розділами.</p>
-            <ul class="service-features">
-              <li data-key="service2Feature1">Зручна навігація</li>
-              <li data-key="service2Feature2">Система управління</li>
-              <li data-key="service2Feature3">Інтеграції</li>
-              <li data-key="service2Feature4">Підтримка</li>
-            </ul>
-          </div>
-          <div class="service-card fade-in">
-            <div class="service-icon">🛍️</div>
-            <h3 class="service-title" data-key="service3Title">Інтернет-магазини</h3>
-            <p class="service-description" data-key="service3Desc">Повнофункціональні онлайн-магазини з каталогом товарів, кошиком та системою оплати.</p>
-            <ul class="service-features">
-              <li data-key="service3Feature1">Каталог товарів</li>
-              <li data-key="service3Feature2">Кошик та оплата</li>
-              <li data-key="service3Feature3">Особистий кабінет</li>
-              <li data-key="service3Feature4">Аналітика продажів</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="services" class="services">
+<div class="container">
+<div class="section-header">
+<span class="section-badge">Наші послуги</span>
+<h2 class="section-title">Що ми пропонуємо</h2>
+<p class="section-description">Комплексні рішення для розвитку вашого бізнесу в інтернеті</p>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">🌐</div>
+<h3 class="service-title">Лендінг-пейджі</h3>
+<p class="service-description">Односторінкові сайти для презентації вашого продукту. Ідеально для залучення клієнтів.</p>
+<ul class="service-features">
+<li>Сучасний дизайн</li>
+<li>Адаптивна верстка</li>
+<li>Швидке завантаження</li>
+<li>SEO оптимізація</li>
+</ul>
+</div>
+<div class="service-card">
+<div class="service-icon">🏢</div>
+<h3 class="service-title">Корпоративні сайти</h3>
+<p class="service-description">Багатосторінкові сайти для компаній з портфоліо, блогом та контактами.</p>
+<ul class="service-features">
+<li>Зручна навігація</li>
+<li>Система управління</li>
+<li>Інтеграції</li>
+<li>Підтримка</li>
+</ul>
+</div>
+<div class="service-card">
+<div class="service-icon">🛍️</div>
+<h3 class="service-title">Інтернет-магазини</h3>
+<p class="service-description">Онлайн-магазини з каталогом товарів, кошиком та системою оплати.</p>
+<ul class="service-features">
+<li>Каталог товарів</li>
+<li>Кошик та оплата</li>
+<li>Особистий кабінет</li>
+<li>Аналітика продажів</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 
-    <section class="cta">
-      <div class="cta-content">
-        <h2 data-key="ctaTitle">Готові почати проект?</h2>
-        <p data-key="ctaSubtitle">Напишіть нам і ми створимо ідеальний сайт для вашого бізнесу</p>
-        <a href="#contact" class="btn btn-primary" data-key="ctaCTA">Зв'язатись з нами</a>
-      </div>
-    </section>
+<section class="cta">
+<div class="cta-content">
+<h2>Готові почати проект?</h2>
+<p>Напишіть нам і ми створимо ідеальний сайт для вашого бізнесу</p>
+<a href="#contact" class="btn btn-primary">Зв'язатись з нами</a>
+</div>
+</section>
 
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge" data-key="contactBadge">Контакти</span>
-          <h2 class="section-title" data-key="contactTitle">Напишіть нам</h2>
-          <p class="section-description" data-key="contactDesc">Заповніть форму і ми зв'яжемось з вами протягом 24 годин</p>
-        </div>
-        <form class="contact-form">
-          <div class="form-group">
-            <label class="form-label" for="name" data-key="formName">Ваше ім'я</label>
-            <input class="form-input" type="text" id="name" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="email" data-key="formEmail">Email</label>
-            <input class="form-input" type="email" id="email" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="message" data-key="formMessage">Опишіть ваш проект</label>
-            <textarea class="form-input" id="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;" data-key="formSubmit">Надіслати заявку</button>
-        </form>
-      </div>
-    </section>
-  </main>
+<section id="contact" class="contact">
+<div class="container">
+<div class="section-header">
+<span class="section-badge">Контакти</span>
+<h2 class="section-title">Напишіть нам</h2>
+<p class="section-description">Заповніть форму і ми зв'яжемось з вами протягом 24 годин</p>
+</div>
+<form class="contact-form" id="contactForm">
+<div class="form-group">
+<label class="form-label" for="name">Ваше ім'я</label>
+<input class="form-input" type="text" id="name" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="email">Email</label>
+<input class="form-input" type="email" id="email" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="message">Опишіть ваш проект</label>
+<textarea class="form-input" id="message" required></textarea>
+</div>
+<button type="submit" class="btn btn-primary" style="width:100%">Надіслати заявку</button>
+</form>
+</div>
+</section>
+</main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <div class="footer-brand">
-            <div class="logo-icon">MS</div>
-            <span>MSFSoft</span>
-          </div>
-          <p class="footer-description" data-key="footerDesc">Молода команда розробників, яка створює сучасні веб-сайти для вашого бізнесу.</p>
-        </div>
-        <div class="footer-section">
-          <h3 data-key="footerNav">Навігація</h3>
-          <div class="footer-links">
-            <a href="#about" data-key="footerAbout">Про нас</a>
-            <a href="#services" data-key="footerServices">Послуги</a>
-            <a href="#contact" data-key="footerContact">Контакти</a>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3 data-key="footerServices2">Послуги</h3>
-          <div class="footer-links">
-            <a href="#services" data-key="footerLanding">Лендінги</a>
-            <a href="#services" data-key="footerCorporate">Корпоративні сайти</a>
-            <a href="#services" data-key="footerShop">Інтернет-магазини</a>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3 data-key="footerConnect">Зв'язок</h3>
-          <div class="social-links">
-            <a href="#" class="social-link">📧</a>
-            <a href="#" class="social-link">💬</a>
-            <a href="#" class="social-link">📱</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© <span id="year"></span> MSFSoft. <span data-key="footerRights">Всі права захищені.</span> <span data-key="footerCreated">Створено командою MSFSoft</span></p>
-      </div>
-    </div>
-  </footer>
+<footer>
+<div class="container">
+<div class="footer-content">
+<div>
+<div class="footer-brand">
+<div class="logo-icon">MS</div>
+<span>MSFSoft</span>
+</div>
+<p class="footer-description">Молода команда розробників, яка створює сучасні веб-сайти для вашого бізнесу.</p>
+</div>
+<div class="footer-section">
+<h3>Навігація</h3>
+<div class="footer-links">
+<a href="#about">Про нас</a>
+<a href="#services">Послуги</a>
+<a href="#contact">Контакти</a>
+</div>
+</div>
+<div class="footer-section">
+<h3>Послуги</h3>
+<div class="footer-links">
+<a href="#services">Лендінги</a>
+<a href="#services">Корпоративні</a>
+<a href="#services">Магазини</a>
+</div>
+</div>
+<div class="footer-section">
+<h3>Зв'язок</h3>
+<div class="social-links">
+<a href="#" class="social-link">📧</a>
+<a href="#" class="social-link">💬</a>
+<a href="#" class="social-link">📱</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 MSFSoft. Всі права захищені.</p>
+</div>
+</div>
+</footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    const translations = {
-      ua: {
-        navAbout: 'Про нас',
-        navServices: 'Послуги',
-        navContact: 'Контакти',
-        heroBadge: 'Молода команда розробників',
-        heroTitle: 'Створюємо Сучасні Веб-Сайти Для Вашого Бізнесу',
-        heroSubtitle: 'Ми — молода команда програмістів, яка швидко вчиться і йде нога в ногу з найновішими технологіями. Створюємо якісні, швидкі та красиві веб-сайти за доступними цінами.',
-        heroCTA: 'Замовити сайт',
-        aboutBadge: 'Про нас',
-        aboutTitle: 'Хто ми такі?',
-        aboutDesc: 'Ми — молода, амбітна команда розробників, яка постійно навчається та слідкує за всіма трендами у веб-розробці. Використовуємо найсучасніші технології та інструменти для створення якісних сайтів. Наша мета — допомогти бізнесу виходити в онлайн з професійними, швидкими та красивими веб-рішеннями.',
-        servicesBadge: 'Наші послуги',
-        servicesTitle: 'Що ми пропонуємо',
-        servicesDesc: 'Комплексні рішення для розвитку вашого бізнесу в інтернеті',
-        service1Title: 'Лендінг-пейджі',
-        service1Desc: 'Односторінкові сайти для презентації вашого продукту чи послуги. Ідеально для залучення клієнтів та збільшення конверсії.',
-        service1Feature1: 'Сучасний дизайн',
-        service1Feature2: 'Адаптивна верстка',
-        service1Feature3: 'Швидке завантаження',
-        service1Feature4: 'SEO оптимізація',
-        service2Title: 'Корпоративні сайти',
-        service2Desc: 'Багатосторінкові сайти для компаній з портфоліо, блогом, контактами та іншими розділами.',
-        service2Feature1: 'Зручна навігація',
-        service2Feature2: 'Система управління',
-        service2Feature3: 'Інтеграції',
-        service2Feature4: 'Підтримка',
-        service3Title: 'Інтернет-магазини',
-        service3Desc: 'Повнофункціональні онлайн-магазини з каталогом товарів, кошиком та системою оплати.',
-        service3Feature1: 'Каталог товарів',
-        service3Feature2: 'Кошик та оплата',
-        service3Feature3: 'Особистий кабінет',
-        service3Feature4: 'Аналітика продажів',
-        ctaTitle: 'Готові почати проект?',
-        ctaSubtitle: 'Напишіть нам і ми створимо ідеальний сайт для вашого бізнесу',
-        ctaCTA: 'Зв\'язатись з нами',
-        contactBadge: 'Контакти',
-        contactTitle: 'Напишіть нам',
-        contactDesc: 'Заповніть форму і ми зв\'яжемось з вами протягом 24 годин',
-        formName: 'Ваше ім\'я',
-        formEmail: 'Email',
-        formMessage: 'Опишіть ваш проект',
-        formSubmit: 'Надіслати заявку',
-        footerDesc: 'Молода команда розробників, яка створює сучасні веб-сайти для вашого бізнесу.',
-        footerNav: 'Навігація',
-        footerAbout: 'Про нас',
-        footerServices: 'Послуги',
-        footerContact: 'Контакти',
-        footerServices2: 'Послуги',
-        footerLanding: 'Лендінги',
-        footerCorporate: 'Корпоративні сайти',
-        footerShop: 'Інтернет-магазини',
-        footerConnect: 'Зв\'язок',
-        footerRights: 'Всі права захищені.',
-        footerCreated: 'Створено командою MSFSoft'
-      },
-      en: {
-        navAbout: 'About',
-        navServices: 'Services',
-        navContact: 'Contact',
-        heroBadge: 'Young Development Team',
-        heroTitle: 'We Create Modern Websites For Your Business',
-        heroSubtitle: 'We are a young team of programmers who learn quickly and keep up with the latest technologies. We create high-quality, fast and beautiful websites at affordable prices.',
-        heroCTA: 'Order a Website',
-        aboutBadge: 'About Us',
-        aboutTitle: 'Who We Are?',
-        aboutDesc: 'We are a young, ambitious team of developers who constantly learn and follow all trends in web development. We use the most modern technologies and tools to create quality websites. Our goal is to help businesses go online with professional, fast and beautiful web solutions.',
-        servicesBadge: 'Our Services',
-        servicesTitle: 'What We Offer',
-        servicesDesc: 'Comprehensive solutions for your business growth online',
-        service1Title: 'Landing Pages',
-        service1Desc: 'Single-page websites to present your product or service. Perfect for attracting customers and increasing conversion.',
-        service1Feature1: 'Modern design',
-        service1Feature2: 'Responsive layout',
-        service1Feature3: 'Fast loading',
-        service1Feature4: 'SEO optimization',
-        service2Title: 'Corporate Websites',
-        service2Desc: 'Multi-page websites for companies with portfolio, blog, contacts and other sections.',
-        service2Feature1: 'Easy navigation',
-        service2Feature2: 'Management system',
-        service2Feature3: 'Integrations',
-        service2Feature4: 'Support',
-        service3Title: 'Online Stores',
-        service3Desc: 'Full-featured online stores with product catalog, cart and payment system.',
-        service3Feature1: 'Product catalog',
-        service3Feature2: 'Cart and payment',
-        service3Feature3: 'User account',
-        service3Feature4: 'Sales analytics',
-        ctaTitle: 'Ready to Start a Project?',
-        ctaSubtitle: 'Contact us and we will create the perfect website for your business',
-        ctaCTA: 'Contact Us',
-        contactBadge: 'Contact',
-        contactTitle: 'Write to Us',
-        contactDesc: 'Fill out the form and we will contact you within 24 hours',
-        formName: 'Your Name',
-        formEmail: 'Email',
-        formMessage: 'Describe Your Project',
-        formSubmit: 'Send Request',
-        footerDesc: 'Young development team creating modern websites for your business.',
-        footerNav: 'Navigation',
-        footerAbout: 'About',
-        footerServices: 'Services',
-        footerContact: 'Contact',
-        footerServices2: 'Services',
-        footerLanding: 'Landings',
-        footerCorporate: 'Corporate Sites',
-        footerShop: 'Online Stores',
-        footerConnect: 'Connect',
-        footerRights: 'All rights reserved.',
-        footerCreated: 'Created by MSFSoft team'
-      }
-    };
-    
-    let currentLang = 'ua';
-    const langToggle = document.getElementById('lang-toggle');
-    
-    function applyLanguage(lang) {
-      currentLang = lang;
-      langToggle.textContent = lang === 'en' ? '🇺🇦 UA' : '🇬🇧 EN';
-      document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.dataset.key;
-        if (translations[lang][key]) {
-          el.textContent = translations[lang][key];
-        }
-      });
-    }
-    
-    langToggle.addEventListener('click', () => {
-      applyLanguage(currentLang === 'en' ? 'ua' : 'en');
-    });
-    
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-      const theme = document.body.dataset.theme;
-      document.body.dataset.theme = theme === 'light' ? 'dark' : 'light';
-      themeToggle.textContent = theme === 'light' ? '☀️' : '🌙';
-    });
-    
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 50);
-    });
-    
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      const st = h.scrollTop || document.body.scrollTop;
-      const sh = h.scrollHeight || document.body.scrollHeight;
-      const percent = st / (sh - h.clientHeight) * 100;
-      document.querySelector('.scroll-progress').style.width = percent + '%';
-    });
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileToggle.addEventListener('click', () => {
-      mobileToggle.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-    
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      });
-    });
-    
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    const particles = [];
-    const particleCount = 50;
-    
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 2 + 1
-      });
-    }
-    
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const theme = document.body.dataset.theme;
-      ctx.fillStyle = theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(59, 130, 246, 0.5)';
-      
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      
-      ctx.strokeStyle = theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(59, 130, 246, 0.1)';
-      ctx.lineWidth = 1;
-      
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      
-      requestAnimationFrame(drawParticles);
-    }
-    
-    drawParticles();
-    
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-    
-    document.querySelector('.contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert(currentLang === 'en' ? 'Thank you! We will contact you within 24 hours.' : 'Дякуємо! Ми зв\'яжемося з вами протягом 24 годин.');
-      e.target.reset();
-    });
-    
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-  </script>
+<script>
+const toggle=document.getElementById('theme-toggle');
+toggle.addEventListener('click',()=>{
+const theme=document.body.dataset.theme;
+document.body.dataset.theme=theme==='light'?'dark':'light';
+toggle.textContent=theme==='light'?'☀️':'🌙';
+});
+
+const mobileToggle=document.getElementById('mobile-toggle');
+const mobileMenu=document.getElementById('mobile-menu');
+mobileToggle.addEventListener('click',()=>{
+mobileToggle.classList.toggle('active');
+mobileMenu.classList.toggle('active');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener('click',function(e){
+e.preventDefault();
+const target=document.querySelector(this.getAttribute('href'));
+if(target){
+target.scrollIntoView({behavior:'smooth'});
+mobileToggle.classList.remove('active');
+mobileMenu.classList.remove('active');
+}
+});
+});
+
+document.getElementById('contactForm').addEventListener('submit',e=>{
+e.preventDefault();
+alert('Дякуємо! Ми зв\'яжемося з вами протягом 24 годин.');
+e.target.reset();
+});
+</script>
 </body>
-</html>container {
-        padding: 0 24px;
-      }
-      
-      .logo {
-        font-size: 24px;
-      }
-      
-      .logo-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-      
-      .header-content {
-        padding: 16px 0;
-      }
-      
-      .tech-stack {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .tech-stack {
-        grid-template-columns: repeat(6, 1fr);
-      }
-      
-      .footer-content {
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-      }
-    }
-    
-    @media (max-width: 767px) {
-      nav {
-        display: none;
-      }
-      
-      .mobile-menu-btn {
-        display: flex;
-      }
-      
-      .hero {
-        text-align: center;
-        min-height: 90vh;
-        padding-top: 100px;
-        background-attachment: scroll;
-      }
-      
-      .hero-content {
-        max-width: 100%;
-      }
-      
-      .
+</html>
